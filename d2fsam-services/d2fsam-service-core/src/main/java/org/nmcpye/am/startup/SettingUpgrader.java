@@ -20,7 +20,7 @@ public class SettingUpgrader
         throws Exception {
         String startModule = manager.getStringSetting(SettingKey.START_MODULE);
 
-        if ("amSystem-web-dashboard-integration".equals(startModule)) {
+        if ("d2fsam-web-dashboard-integration".equals(startModule)) {
             manager.saveSystemSetting(SettingKey.START_MODULE, SettingKey.START_MODULE.getDefaultValue());
         }
     }

@@ -84,7 +84,7 @@ public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V>
      * NoOpCache instance will be returned which does not cache anything. This
      * can be used during system testings where cache has to be disabled. If
      * {@code maximumSize} is greater than 0 than based on {@code redis.enabled}
-     * property in d2fm.conf, either Redis backed implementation
+     * property in d2fsam.conf, either Redis backed implementation
      * {@link RedisCache} will be returned or a Local Caffeine backed cache
      * implementation {@link LocalCache} will be returned. For Local cache,
      * every instance created using this method will be logically separate and

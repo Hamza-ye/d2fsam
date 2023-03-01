@@ -52,9 +52,9 @@ import java.util.Properties;
 @ComponentScan("org.nmcpye.am")
 public class IntegrationTestConfig {
     private static final Logger log = LoggerFactory.getLogger(IntegrationTestConfig.class);
-    private static final String POSTGRES_DATABASE_NAME = "amSystemBack";
+    private static final String POSTGRES_DATABASE_NAME = "d2fsam";
 
-    private static final String POSTGRES_USERNAME = "amSystemBack";
+    private static final String POSTGRES_USERNAME = "d2fsam";
 
     private static final String POSTGRES_PASSWORD = "Dedo771*";
 

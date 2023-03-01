@@ -34,7 +34,7 @@ echo "Hostname: $DHIS2_HOSTNAME"
 echo -e "Port: $DHIS2_PORT\n"
 
 [ ! -d $DHIS2_HOME ] && echo "DHIS2_HOME directory '$DHIS2_HOME' DOES NOT exists, aborting..." && exit 1;
-[ ! -f "$DHIS2_HOME/d2fm.conf" ] && echo "d2fm.conf in directory '$DHIS2_HOME' DOES NOT exists, aborting..." && exit 1;
+[ ! -f "$DHIS2_HOME/d2fsam.conf" ] && echo "d2fsam.conf in directory '$DHIS2_HOME' DOES NOT exists, aborting..." && exit 1;
 
 read -p "Do you want to skip compile? (if yes press y/Y) " -n 1 -r
 echo

@@ -46,7 +46,7 @@ import java.util.stream.Collectors;
 import static org.nmcpye.am.security.oidc.provider.AbstractOidcProvider.*;
 
 /**
- * Parses the D2FM.conf file for valid generic OIDC provider configurations. See
+ * Parses the d2fsam.conf file for valid generic OIDC provider configurations. See
  * the D2-F  manual for how to configure a OIDC provider correctly.
  *
  * @author Morten Svanæs <msvanaes@dhis2.org>

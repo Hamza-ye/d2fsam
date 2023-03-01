@@ -14,6 +14,6 @@
 //    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
 //        // set a default to use when no profile is configured.
 //        DefaultProfileUtil.addDefaultProfile(application.application());
-//        return application.sources(AmSystemBackApp.class);
+//        return application.sources(d2fsamApp.class);
 //    }
 //}

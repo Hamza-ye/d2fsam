@@ -69,7 +69,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 @Slf4j
 public class DefaultAmConfigurationProvider extends LogOnceLogger
     implements AmConfigurationProvider {
-    private static final String CONF_FILENAME = "d2fm.conf";
+    private static final String CONF_FILENAME = "d2fsam.conf";
 
     private static final String GOOGLE_AUTH_FILENAME = "am-google-auth.json";
 

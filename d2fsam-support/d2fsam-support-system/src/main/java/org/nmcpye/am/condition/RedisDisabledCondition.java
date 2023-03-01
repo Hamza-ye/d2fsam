@@ -33,7 +33,7 @@ import org.springframework.core.type.AnnotatedTypeMetadata;
 
 /**
  * Condition that matches to true if redis.enabled property is absent in
- * d2fm.conf or if it is explicitly set to anything other than true
+ * d2fsam.conf or if it is explicitly set to anything other than true
  *
  * @author Ameen Mohamed
  */

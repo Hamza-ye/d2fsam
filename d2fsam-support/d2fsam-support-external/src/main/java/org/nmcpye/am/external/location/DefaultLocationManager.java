@@ -17,7 +17,7 @@ public class DefaultLocationManager extends LogOnceLogger implements LocationMan
 
     private final Logger log = LoggerFactory.getLogger(DefaultLocationManager.class);
 
-    private static final String DEFAULT_AM_SYSTEM_HOME = "/opt/amSystem";
+    private static final String DEFAULT_AM_SYSTEM_HOME = "/opt/d2fsam";
 
     private static final String DEFAULT_ENV_VAR = "AM_HOME";
 

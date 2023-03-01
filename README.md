@@ -1,4 +1,11 @@
-# amSystemBack
+# D2FSAM
+
+DHIS2 + Field Short-lived Activity Management.
+DHIS2 + some functionalities for managing field short-lived activities that we need to be part of
+the core to meet some of our requirements, after the activity is completed and its data is reviewed,
+the data gets synchronized to a DHIS2 instance used as the core system for warehousing the core data.
+The main reason it was created for started to replace some of the tasks that is hard to manage by KOBO|ODK,
+or other general data collection tools.
 
 ## Project Structure
 

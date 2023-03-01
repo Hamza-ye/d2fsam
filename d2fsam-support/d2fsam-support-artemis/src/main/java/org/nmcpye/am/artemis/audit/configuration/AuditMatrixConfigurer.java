@@ -43,7 +43,7 @@ import java.util.Optional;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- * Configures the Audit Matrix based on configuration properties from d2fm.conf
+ * Configures the Audit Matrix based on configuration properties from d2fsam.conf
  * <p>
  * This configurator uses properties with prefix "audit.". Each property
  * prefixed with "audit." must match the (lowercase) name of an
@@ -56,7 +56,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * <p>
  * Misspelled entries are ignored, and the specific type is set to false.
  * Missing {@see AuditScope} are replaced with all-false types. To disable
- * Auditing completely, simply do not declare any audit.* property in d2fm.conf
+ * Auditing completely, simply do not declare any audit.* property in d2fsam.conf
  *
  * @author Luciano Fiandesio
  */
