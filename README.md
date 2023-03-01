@@ -44,7 +44,7 @@ In the project root, D2FSAM generates configuration files for tools like git, pr
   
 - `npmw` - wrapper to use locally installed npm.
   D2FSAM installs Node and npm locally using the build tool by default. This wrapper makes sure npm is installed locally and uses it avoiding some differences different versions can cause. By using `./npmw` instead of the traditional `npm` you can configure a Node-less environment to develop or test your application.
-- `/src/main/docker` - Docker configurations for the application and services that the application depends on
+- `/docker` - Docker configurations for the application and services that the application depends on
 
 ## Development
 
@@ -80,7 +80,7 @@ The `npm run` command will list all of the scripts available to run for this pro
 
 D2FSAM ships with PWA (Progressive Web App) support, and it's turned off by default. One of the main components of a PWA is a service worker.
 
-The service worker initialization code is disabled by default. To enable it, uncomment the following code in `src/main/webapp/app/app.module.ts`:
+The service worker initialization code is disabled by default. To enable it, uncomment the following code in `webapp/app/app.module.ts`:
 
 ```typescript
 ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
@@ -101,13 +101,13 @@ npm install --save-dev --save-exact @types/leaflet
 ```
 
 Then you would import the JS and CSS files specified in library's installation instructions so that [Webpack][] knows about them:
-Edit [src/main/webapp/app/app.module.ts](d2fsam-web-api/src/main/webapp/app/app.module.ts) file:
+Edit [d2fsam-web-app/webapp/app/app.module.ts](d2fsam-web-api/src/main/webapp/app/app.module.ts) file:
 
 ```
 import 'leaflet/dist/leaflet.js';
 ```
 
-Edit [src/main/webapp/content/scss/vendor.scss](d2fsam-web-api/src/main/webapp/content/scss/vendor.scss) file:
+Edit [d2fsam-web-app/webapp/content/scss/vendor.scss](d2fsam-web-api/src/main/webapp/content/scss/vendor.scss) file:
 
 ```
 @import '~leaflet/dist/leaflet.css';
@@ -130,9 +130,9 @@ ng generate component my-component
 will generate few files:
 
 ```
-create src/main/webapp/app/my-component/my-component.component.html
-create src/main/webapp/app/my-component/my-component.component.ts
-update src/main/webapp/app/app.module.ts
+create d2fsam-web-app/webapp/app/my-component/my-component.component.html
+create d2fsam-web-app/webapp/app/my-component/my-component.component.ts
+update d2fsam-web-app/webapp/app/app.module.ts
 ```
 
 ## Building for production
@@ -188,10 +188,10 @@ For more information, refer to the [Running tests page][].
 Sonar is used to analyse code quality. You can start a local Sonar server (accessible on http://localhost:9001) with:
 
 ```
-docker-compose -f src/main/docker/sonar.yml up -d
+docker-compose -f docker/sonar.yml up -d
 ```
 
-Note: we have turned off authentication in [src/main/docker/sonar.yml](src/main/docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
+Note: we have turned off authentication in [docker/sonar.yml](docker/sonar.yml) for out of the box experience while trying out SonarQube, for real use cases turn it back on.
 
 You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqube.org/display/SCAN/Analyzing+with+SonarQube+Scanner) or by using the maven plugin.
 
@@ -211,18 +211,18 @@ For more information, refer to the [Code quality page][].
 
 ## Using Docker to simplify development (optional)
 
-You can use Docker to improve your D2FSAM development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
+You can use Docker to improve your D2FSAM development experience. A number of docker-compose configuration are available in the [docker](docker) folder to launch required third party services.
 
 For example, to start a postgresql database in a docker container, run:
 
 ```
-docker-compose -f src/main/docker/postgresql.yml up -d
+docker-compose -f docker/postgresql.yml up -d
 ```
 
 To stop it and remove the container, run:
 
 ```
-docker-compose -f src/main/docker/postgresql.yml down
+docker-compose -f docker/postgresql.yml down
 ```
 
 You can also fully dockerize your application and all the services that it depends on.
@@ -241,7 +241,7 @@ npm run java:docker:arm64
 Then run:
 
 ```
-docker-compose -f src/main/docker/app.yml up -d
+docker-compose -f docker/app.yml up -d
 ```
 
 When running Docker Desktop on MacOS Big Sur or later, consider enabling experimental `Use the new Virtualization framework` for better processing performance ([disk access performance is worse](https://github.com/docker/roadmap/issues/7)).
