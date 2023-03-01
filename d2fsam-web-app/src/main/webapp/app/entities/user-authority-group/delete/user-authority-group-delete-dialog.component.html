@@ -1,0 +1,28 @@
+<form *ngIf="userAuthorityGroup" name="deleteForm" (ngSubmit)="confirmDelete(userAuthorityGroup.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="userAuthorityGroupDeleteDialogHeading" appTranslate="entity.delete.title">Confirm delete operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <app-alert-error></app-alert-error>
+    <p
+      id="app-delete-userAuthorityGroup-heading"
+      appTranslate="amSystemBackApp.userAuthorityGroup.delete.question"
+      [translateValues]="{ id: userAuthorityGroup.id }"
+    >
+      Are you sure you want to delete User Authority Group {{ userAuthorityGroup.id }}?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="app-confirm-delete-userAuthorityGroup" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span appTranslate="entity.action.delete">Delete</span>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,38 @@
+{
+  "amSystemBackApp": {
+    "fileResource": {
+      "home": {
+        "title": "File Resources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new File Resource",
+        "createOrEditLabel": "Create or edit a File Resource",
+        "notFound": "No File Resources found"
+      },
+      "created": "A new File Resource is created with identifier {{ param }}",
+      "updated": "A File Resource is updated with identifier {{ param }}",
+      "deleted": "A File Resource is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete File Resource {{ id }}?"
+      },
+      "detail": {
+        "title": "File Resource"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "contentType": "Content Type",
+      "contentLength": "Content Length",
+      "contentMd5": "Content Md 5",
+      "storageKey": "Storage Key",
+      "assigned": "Assigned",
+      "domain": "Domain",
+      "hasMultipleStorageFiles": "Has Multiple Storage Files",
+      "fileResourceOwner": "File Resource Owner",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

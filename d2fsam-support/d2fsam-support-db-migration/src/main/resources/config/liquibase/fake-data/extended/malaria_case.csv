@@ -1,0 +1,4 @@
+id;uuid;code;name;entry_started;age;created;updated;last_synced;deleted;date_of_examination;mobile;gender;is_pregnant;malaria_test_result;severity;referral;bar_image_url;comment;status
+11;c45a0ec6-2324-49e5-a6bb-79fe7409a599;1;معاذ عبدالخبير;2022-09-17T13:36:57;22;2022-09-17T07:33:04;2022-09-17T10:28:53;2022-09-17T05:37:41;false;2022-09-17;project transmitter Tactics;FEMALE;true;NEGATIVE;SEVERE;true;Credit Gourde Manager;Central deposit Chips;UNAPPROVED
+12;dc5cfdb5-d407-473e-9e54-aae8d042f504;2;سالم محمد احمج;2022-09-17T11:00:09;115;2022-09-17T12:29:30;2022-09-17T08:09:10;2022-09-16T23:04:49;false;2022-09-17;magnetic International;MALE;false;PF;SEVERE;true;Tools transmitter Account;generate;UNAPPROVED
+13;25f0c7e7-0208-4ddf-82a5-3ee34c60743f;3;علي قاسم;2022-09-17T14:53:39;22;2022-09-17T07:05:13;2022-09-16T19:24:05;2022-09-17T05:11:37;true;2022-09-16;Rustic content;MALE;true;PV;SEVERE;false;Passage;capability reintermediate;UNAPPROVED

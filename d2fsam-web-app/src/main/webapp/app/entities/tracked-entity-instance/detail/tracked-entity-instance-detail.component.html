@@ -1,0 +1,118 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityInstance">
+      <h2 data-cy="trackedEntityInstanceDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityInstance.detail.title">Tracked Entity Instance</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.uid">Uid</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.uuid">Uuid</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.uuid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.code">Code</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.createdAtClient">Created At Client</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.createdAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.updatedAtClient">Updated At Client</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.updatedAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.lastSynchronized">Last Synchronized</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.lastSynchronized | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.featureType">Feature Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.FeatureType.' + trackedEntityInstance.featureType }}">{{
+            trackedEntityInstance.featureType
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.coordinates">Coordinates</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.coordinates }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.potentialDuplicate">Potential Duplicate</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.potentialDuplicate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.storedBy">Stored By</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.storedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.period">Period</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityInstance.period">
+            <a [routerLink]="['/period', trackedEntityInstance.period.id, 'view']">{{ trackedEntityInstance.period.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityInstance.organisationUnit">
+            <a [routerLink]="['/organisation-unit', trackedEntityInstance.organisationUnit.id, 'view']">{{
+              trackedEntityInstance.organisationUnit.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.trackedEntityType">Tracked Entity Type</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityInstance.trackedEntityType">
+            <a [routerLink]="['/tracked-entity-type', trackedEntityInstance.trackedEntityType.id, 'view']">{{
+              trackedEntityInstance.trackedEntityType.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstance.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstance.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tracked-entity-instance', trackedEntityInstance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

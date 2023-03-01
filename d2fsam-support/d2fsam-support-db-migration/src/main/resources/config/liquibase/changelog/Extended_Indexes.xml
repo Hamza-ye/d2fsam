@@ -1,0 +1,252 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <changeSet author="Hamza (generated)" id="01000-indexes">
+        <createIndex tableName="program_instance" indexName="in_program_instance_deleted">
+            <column name="deleted"/>
+        </createIndex>
+        <createIndex tableName="program_stage_instance" indexName="in_program_stage_instance_deleted">
+            <column name="deleted"/>
+        </createIndex>
+        <createIndex tableName="tracked_entity_instance" indexName="in_tracked_entity_instance_deleted">
+            <column name="deleted"/>
+        </createIndex>
+
+        <createIndex tableName="data_value_audit" indexName="in_data_value_audit_created">
+            <column name="created"/>
+        </createIndex>
+
+
+        <!--        CREATE INDEX id_datavalueaudit_created ON data_value_audit USING btree (created);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_categoryoptioncombo_name; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_categoryoptioncombo_name ON categoryoptioncombo USING btree (name);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_dataapprovallevel_level; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_dataapprovallevel_level ON dataapprovallevel USING btree (level);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_datavalue_deleted; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_datavalue_deleted ON data_value USING btree (deleted);-->
+
+        <createIndex tableName="data_value" indexName="in_data_value_deleted">
+            <column name="deleted">deleted</column>
+        </createIndex>
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_datavalue_lastupdated; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_data_value_updated ON data_value USING btree (updated);-->
+        <createIndex tableName="data_value" indexName="in_data_value_updated">
+            <column name="updated"/>
+        </createIndex>
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_data_value_audit; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_datavalueaudit ON datavalueaudit USING btree (dataelementid, periodid, organisationunitid, categoryoptioncomboid, attributeoptioncomboid);-->
+
+        <createIndex tableName="data_value_audit" indexName="in_data_value_audit">
+            <column name="dataelementid"/>
+            <column name="periodid"/>
+            <column name="organisationunitid"/>
+        </createIndex>
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_interpretation_mentions_username; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_interpretation_mentions_username ON interpretation USING gin (((mentions -> 'username'::text)) jsonb_path_ops);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_interpretationcomment_mentions_username; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_interpretationcomment_mentions_username ON interpretationcomment USING gin (((mentions -> 'username'::text)) jsonb_path_ops);-->
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_organisationunit_hierarchylevel; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_organisationunit_hierarchylevel ON organisationunit USING btree (hierarchylevel);-->
+        <!--        -->
+        <createIndex tableName="organisation_unit" indexName="in_organisation_unit_hierarchy_level">
+            <column name="hierarchylevel"/>
+        </createIndex>
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_organisationunit_path; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+        <!--        CREATE INDEX in_organisationunit_path ON organisationunit USING btree (path);-->
+        <!--        -->
+        <createIndex tableName="organisation_unit" indexName="in_organisation_unit_path">
+            <column name="path"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_parentid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <createIndex tableName="organisation_unit" indexName="in_organisation_parent_id">
+            <column name="parentid"/>
+        </createIndex>
+        <!--        CREATE INDEX in_parentid ON organisation_unit USING btree (parentid);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_program_instance_deleted; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_program_instance_deleted ON program_instance USING btree (deleted);-->
+        <!--        -->
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: in_tracked_entity_attribute_value_attributeid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX in_tracked_entity_attribute_value_attributeid ON tracked_entity_attribute_value USING btree (tracked_entity_attributeid);-->
+        <!--        -->
+        <createIndex tableName="tracked_entity_attribute_value"
+                     indexName="in_tracked_entity_attribute_value_attribute_id">
+            <column name="trackedentityattributeid"/>
+        </createIndex>
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: index_program_instance; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX index_program_instance ON program_instance USING btree (program_instanceid);-->
+        <!--        -->
+        <createIndex tableName="program_instance" indexName="in_program_instance">
+            <column name="programinstanceid"/>
+        </createIndex>
+
+        <!--        <createIndex tableName="tracked_entity_data_value" indexName="in_tracked_entity_data_value__program_stage_instance_id">-->
+        <!--            <column>programstageinstanceid</column>-->
+        <!--        </createIndex>-->
+
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: index_trackedentitydatavalueaudit_program_stage_instanceid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX index_tracked_entity_data_value_audit_program_stage_instance_id ON trackedentitydatavalueaudit USING btree (program_stage_instanceid);-->
+        <!--        -->
+        <createIndex tableName="tracked_entity_data_value_audit"
+                     indexName="in_tracked_entity_data_value_audit_program_stage_instance_id">
+            <column name="programstageinstanceid"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: interpretation_lastupdated; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX interpretation_lastupdated ON interpretation USING btree (lastupdated);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: maplegend_endvalue; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX maplegend_endvalue ON maplegend USING btree (endvalue);-->
+        <!--        -->
+        <createIndex tableName="map_legend" indexName="in_map_legend_end_value">
+            <column name="endvalue"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: maplegend_startvalue; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX maplegend_startvalue ON maplegend USING btree (startvalue);-->
+
+        <createIndex tableName="map_legend" indexName="in_map_legend_start_value">
+            <column name="startvalue"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: messageconversation_lastmessage; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX messageconversation_lastmessage ON messageconversation USING btree (lastmessage);-->
+        <!--        -->
+        <createIndex tableName="message_conversation" indexName="in_message_conversation_last_message">
+            <column name="lastmessage"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: outbound_sms_status_index; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX outbound_sms_status_index ON outbound_sms USING btree (status);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: program_stage_instance_executiondate; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX program_stage_instance_executiondate ON program_stage_instance USING btree (executiondate);-->
+        <!--        -->
+        <createIndex tableName="program_stage_instance" indexName="in_program_stage_instance_execution_date">
+            <column name="executiondate"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: program_stage_instance_organisation_unitid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX program_stage_instance_organisation_unitid ON program_stage_instance USING btree (organisation_unitid);-->
+        <!--        -->
+        <createIndex tableName="program_stage_instance" indexName="in_program_stage_instance_organisation_unit_id">
+            <column name="organisationunitid"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: program_stage_instance_program_instanceid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX program_stage_instance_program_instanceid ON program_stage_instance USING btree (program_instanceid);-->
+
+        <createIndex tableName="program_stage_instance" indexName="in_program_stage_instance_program_instance_id">
+            <column name="programinstanceid"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: sms_originator_index; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX sms_originator_index ON incomingsms USING btree (originator);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: sms_status_index; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX sms_status_index ON incomingsms USING btree (status);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: userkeyjsonvalue_user; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX userkeyjsonvalue_user ON userkeyjsonvalue USING btree (userid);-->
+        <!--        -->
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: usermessage_isread; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX usermessage_isread ON usermessage USING btree (isread);-->
+        <!--        -->
+        <createIndex tableName="user_message" indexName="in_user_message_is_read">
+            <column name="isread"/>
+        </createIndex>
+        <!--        &#45;&#45;-->
+        <!--        &#45;&#45; Name: usermessage_userid; Type: INDEX; Schema: public; Owner: - -->
+        <!--        &#45;&#45;-->
+
+        <!--        CREATE INDEX usermessage_userid ON usermessage USING btree (userid);-->
+        <createIndex tableName="user_message" indexName="in_user_message_user_id">
+            <column name="userid"/>
+        </createIndex>
+
+    </changeSet>
+</databaseChangeLog>

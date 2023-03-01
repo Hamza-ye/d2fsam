@@ -1,0 +1,101 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-tracked-entity-instance-audit-heading"
+        data-cy="TrackedEntityInstanceAuditCreateUpdateHeading"
+        appTranslate="amSystemBackApp.trackedEntityInstanceAudit.home.createOrEditLabel"
+      >
+        Create or edit a Tracked Entity Instance Audit
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.trackedEntityInstanceAudit.trackedEntityInstance"
+            for="field_trackedEntityInstance"
+            >Tracked Entity Instance</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="trackedEntityInstance"
+            id="field_trackedEntityInstance"
+            data-cy="trackedEntityInstance"
+            formControlName="trackedEntityInstance"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityInstanceAudit.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityInstanceAudit.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityInstanceAudit.accessedBy" for="field_accessedBy"
+            >Accessed By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="accessedBy"
+            id="field_accessedBy"
+            data-cy="accessedBy"
+            formControlName="accessedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityInstanceAudit.auditType" for="field_auditType"
+            >Audit Type</label
+          >
+          <select class="form-control" name="auditType" formControlName="auditType" id="field_auditType" data-cy="auditType">
+            <option [ngValue]="null">{{ 'amSystemBackApp.AuditType.null' | translate }}</option>
+            <option *ngFor="let auditType of auditTypeValues" [value]="auditType">
+              {{ 'amSystemBackApp.AuditType.' + auditType | translate }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

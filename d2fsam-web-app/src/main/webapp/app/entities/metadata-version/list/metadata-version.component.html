@@ -1,0 +1,139 @@
+<div>
+  <h2 id="page-heading" data-cy="MetadataVersionHeading">
+    <span appTranslate="amSystemBackApp.metadataVersion.home.title">Metadata Versions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.metadataVersion.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-metadata-version"
+        [routerLink]="['/metadata-version/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.metadataVersion.home.createLabel"> Create a new Metadata Version </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="metadataVersions?.length === 0">
+    <span appTranslate="amSystemBackApp.metadataVersion.home.notFound">No Metadata Versions found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="metadataVersions && metadataVersions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="importDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.importDate">Import Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="type">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.type">Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="hashCode">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.hashCode">Hash Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.metadataVersion.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let metadataVersion of metadataVersions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/metadata-version', metadataVersion.id, 'view']">{{ metadataVersion.id }}</a>
+          </td>
+          <td>{{ metadataVersion.uid }}</td>
+          <td>{{ metadataVersion.code }}</td>
+          <td>{{ metadataVersion.created | formatMediumDatetime }}</td>
+          <td>{{ metadataVersion.updated | formatMediumDatetime }}</td>
+          <td>{{ metadataVersion.importDate | formatMediumDatetime }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.VersionType.' + metadataVersion.type }}">{{ metadataVersion.type }}</td>
+          <td>{{ metadataVersion.hashCode }}</td>
+          <td>
+            {{ metadataVersion.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/metadata-version', metadataVersion.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/metadata-version', metadataVersion.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(metadataVersion)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

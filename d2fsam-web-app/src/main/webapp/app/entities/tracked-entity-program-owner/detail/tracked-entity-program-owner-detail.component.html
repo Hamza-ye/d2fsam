@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityProgramOwner">
+      <h2 data-cy="trackedEntityProgramOwnerDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityProgramOwner.detail.title">Tracked Entity Program Owner</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityProgramOwner.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityProgramOwner.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityProgramOwner.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ trackedEntityProgramOwner.createdBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.entityInstance">Entity Instance</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityProgramOwner.entityInstance">
+            <a [routerLink]="['/tracked-entity-instance', trackedEntityProgramOwner.entityInstance.id, 'view']">{{
+              trackedEntityProgramOwner.entityInstance.uid
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.program">Program</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityProgramOwner.program">
+            <a [routerLink]="['/program', trackedEntityProgramOwner.program.id, 'view']">{{ trackedEntityProgramOwner.program.uid }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityProgramOwner.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityProgramOwner.organisationUnit">
+            <a [routerLink]="['/organisation-unit', trackedEntityProgramOwner.organisationUnit.id, 'view']">{{
+              trackedEntityProgramOwner.organisationUnit.name
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tracked-entity-program-owner', trackedEntityProgramOwner.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

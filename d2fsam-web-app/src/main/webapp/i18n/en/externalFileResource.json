@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "externalFileResource": {
+      "home": {
+        "title": "External File Resources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new External File Resource",
+        "createOrEditLabel": "Create or edit a External File Resource",
+        "notFound": "No External File Resources found"
+      },
+      "created": "A new External File Resource is created with identifier {{ param }}",
+      "updated": "A External File Resource is updated with identifier {{ param }}",
+      "deleted": "A External File Resource is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete External File Resource {{ id }}?"
+      },
+      "detail": {
+        "title": "External File Resource"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "accessToken": "Access Token",
+      "expires": "Expires",
+      "fileResource": "File Resource",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

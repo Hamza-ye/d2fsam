@@ -1,0 +1,30 @@
+<form *ngIf="trackedEntityTypeAttribute" name="deleteForm" (ngSubmit)="confirmDelete(trackedEntityTypeAttribute.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="trackedEntityTypeAttributeDeleteDialogHeading" appTranslate="entity.delete.title">
+      Confirm delete operation
+    </h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <app-alert-error></app-alert-error>
+    <p
+      id="app-delete-trackedEntityTypeAttribute-heading"
+      appTranslate="amSystemBackApp.trackedEntityTypeAttribute.delete.question"
+      [translateValues]="{ id: trackedEntityTypeAttribute.id }"
+    >
+      Are you sure you want to delete Tracked Entity Type Attribute {{ trackedEntityTypeAttribute.id }}?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="app-confirm-delete-trackedEntityTypeAttribute" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span appTranslate="entity.action.delete">Delete</span>
+    </button>
+  </div>
+</form>

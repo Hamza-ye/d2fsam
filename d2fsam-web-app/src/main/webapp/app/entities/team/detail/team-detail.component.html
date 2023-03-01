@@ -1,0 +1,96 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="team">
+      <h2 data-cy="teamDetailsHeading"><span appTranslate="amSystemBackApp.team.detail.title">Team</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ team.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.uid">Uid</span></dt>
+        <dd>
+          <span>{{ team.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.code">Code</span></dt>
+        <dd>
+          <span>{{ team.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.created">Created</span></dt>
+        <dd>
+          <span>{{ team.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.updated">Updated</span></dt>
+        <dd>
+          <span>{{ team.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.name">Name</span></dt>
+        <dd>
+          <span>{{ team.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.description">Description</span></dt>
+        <dd>
+          <span>{{ team.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.comments">Comments</span></dt>
+        <dd>
+          <span>{{ team.comments }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.rating">Rating</span></dt>
+        <dd>
+          <span>{{ team.rating }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.teamType">Team Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.TeamType.' + team.teamType }}">{{ team.teamType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ team.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.activity">Activity</span></dt>
+        <dd>
+          <div *ngIf="team.activity">
+            <a [routerLink]="['/activity', team.activity.id, 'view']">{{ team.activity.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ team.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ team.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.member">Member</span></dt>
+        <dd>
+          <span *ngFor="let member of team.members; let last = last">
+            <a [routerLink]="['/user-data', member.id, 'view']">{{ member.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.team.managedTeam">Managed Team</span></dt>
+        <dd>
+          <span *ngFor="let managedTeam of team.managedTeams; let last = last">
+            <a [routerLink]="['/team', managedTeam.id, 'view']">{{ managedTeam.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/team', team.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,78 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dataValue">
+      <h2 data-cy="dataValueDetailsHeading"><span appTranslate="amSystemBackApp.dataValue.detail.title">Data Value</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dataValue.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.value">Value</span></dt>
+        <dd>
+          <span>{{ dataValue.value }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.storedBy">Stored By</span></dt>
+        <dd>
+          <span>{{ dataValue.storedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.created">Created</span></dt>
+        <dd>
+          <span>{{ dataValue.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.updated">Updated</span></dt>
+        <dd>
+          <span>{{ dataValue.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.comment">Comment</span></dt>
+        <dd>
+          <span>{{ dataValue.comment }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.followup">Followup</span></dt>
+        <dd>
+          <span>{{ dataValue.followup }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ dataValue.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.auditType">Audit Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.AuditType.' + dataValue.auditType }}">{{ dataValue.auditType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.dataElement">Data Element</span></dt>
+        <dd>
+          <div *ngIf="dataValue.dataElement">
+            <a [routerLink]="['/data-element', dataValue.dataElement.id, 'view']">{{ dataValue.dataElement.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.period">Period</span></dt>
+        <dd>
+          <div *ngIf="dataValue.period">
+            <a [routerLink]="['/period', dataValue.period.id, 'view']">{{ dataValue.period.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataValue.source">Source</span></dt>
+        <dd>
+          <div *ngIf="dataValue.source">
+            <a [routerLink]="['/organisation-unit', dataValue.source.id, 'view']">{{ dataValue.source.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/data-value', dataValue.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

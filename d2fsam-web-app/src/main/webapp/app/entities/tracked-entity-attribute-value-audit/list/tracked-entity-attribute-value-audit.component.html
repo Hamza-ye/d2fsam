@@ -1,0 +1,173 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityAttributeValueAuditHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.home.title">Tracked Entity Attribute Value Audits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-attribute-value-audit"
+        [routerLink]="['/tracked-entity-attribute-value-audit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.home.createLabel">
+          Create a new Tracked Entity Attribute Value Audit
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityAttributeValueAudits?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.home.notFound"
+      >No Tracked Entity Attribute Value Audits found</span
+    >
+  </div>
+
+  <div
+    class="table-responsive table-entities"
+    id="entities"
+    *ngIf="trackedEntityAttributeValueAudits && trackedEntityAttributeValueAudits.length > 0"
+  >
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="encryptedValue">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.encryptedValue">Encrypted Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="plainValue">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.plainValue">Plain Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="value">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.value">Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="modifiedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="auditType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.auditType">Audit Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="attribute.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.attribute">Attribute</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="entityInstance.uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValueAudit.entityInstance">Entity Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityAttributeValueAudit of trackedEntityAttributeValueAudits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-attribute-value-audit', trackedEntityAttributeValueAudit.id, 'view']">{{
+              trackedEntityAttributeValueAudit.id
+            }}</a>
+          </td>
+          <td>{{ trackedEntityAttributeValueAudit.encryptedValue }}</td>
+          <td>{{ trackedEntityAttributeValueAudit.plainValue }}</td>
+          <td>{{ trackedEntityAttributeValueAudit.value }}</td>
+          <td>{{ trackedEntityAttributeValueAudit.modifiedBy }}</td>
+          <td>{{ trackedEntityAttributeValueAudit.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityAttributeValueAudit.updated | formatMediumDatetime }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.AuditType.' + trackedEntityAttributeValueAudit.auditType }}">
+            {{ trackedEntityAttributeValueAudit.auditType }}
+          </td>
+          <td>
+            <div *ngIf="trackedEntityAttributeValueAudit.attribute">
+              <a [routerLink]="['/data-element', trackedEntityAttributeValueAudit.attribute.id, 'view']">{{
+                trackedEntityAttributeValueAudit.attribute.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityAttributeValueAudit.entityInstance">
+              <a [routerLink]="['/tracked-entity-instance', trackedEntityAttributeValueAudit.entityInstance.id, 'view']">{{
+                trackedEntityAttributeValueAudit.entityInstance.uid
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-attribute-value-audit', trackedEntityAttributeValueAudit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-attribute-value-audit', trackedEntityAttributeValueAudit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button
+                type="submit"
+                (click)="delete(trackedEntityAttributeValueAudit)"
+                class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton"
+              >
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

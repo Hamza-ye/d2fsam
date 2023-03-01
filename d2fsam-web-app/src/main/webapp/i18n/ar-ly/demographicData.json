@@ -1,0 +1,49 @@
+{
+  "amSystemBackApp": {
+    "demographicData": {
+      "home": {
+        "title": "Demographic Data",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Demographic Data",
+        "createOrEditLabel": "Create or edit a Demographic Data",
+        "notFound": "No Demographic Data found"
+      },
+      "created": "A new Demographic Data is created with identifier {{ param }}",
+      "updated": "A Demographic Data is updated with identifier {{ param }}",
+      "deleted": "A Demographic Data is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Demographic Data {{ id }}?"
+      },
+      "detail": {
+        "title": "Demographic Data"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "date": "Date",
+      "level": "Level",
+      "totalPopulation": "Total Population",
+      "malePopulation": "Male Population",
+      "femalePopulation": "Female Population",
+      "lessThan5Population": "Less Than 5 Population",
+      "greaterThan5Population": "Greater Than 5 Population",
+      "bw5And15Population": "Bw 5 And 15 Population",
+      "greaterThan15Population": "Greater Than 15 Population",
+      "households": "Households",
+      "houses": "Houses",
+      "healthFacilities": "Health Facilities",
+      "avgNoOfRooms": "Avg No Of Rooms",
+      "avgRoomArea": "Avg Room Area",
+      "avgHouseArea": "Avg House Area",
+      "individualsPerHousehold": "Individuals Per Household",
+      "populationGrowthRate": "Population Growth Rate",
+      "comment": "Comment",
+      "organisationUnit": "Organisation Unit",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "source": "Source"
+    }
+  }
+}

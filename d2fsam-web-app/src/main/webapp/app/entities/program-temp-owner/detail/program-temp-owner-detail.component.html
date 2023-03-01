@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programTempOwner">
+      <h2 data-cy="programTempOwnerDetailsHeading">
+        <span appTranslate="amSystemBackApp.programTempOwner.detail.title">Program Temp Owner</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programTempOwner.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTempOwner.reason">Reason</span></dt>
+        <dd>
+          <span>{{ programTempOwner.reason }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTempOwner.validTill">Valid Till</span></dt>
+        <dd>
+          <span>{{ programTempOwner.validTill | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTempOwner.program">Program</span></dt>
+        <dd>
+          <div *ngIf="programTempOwner.program">
+            <a [routerLink]="['/program', programTempOwner.program.id, 'view']">{{ programTempOwner.program.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTempOwner.entityInstance">Entity Instance</span></dt>
+        <dd>
+          <div *ngIf="programTempOwner.entityInstance">
+            <a [routerLink]="['/tracked-entity-instance', programTempOwner.entityInstance.id, 'view']">{{
+              programTempOwner.entityInstance.uid
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTempOwner.user">User</span></dt>
+        <dd>
+          <span>{{ programTempOwner.user?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program-temp-owner', programTempOwner.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

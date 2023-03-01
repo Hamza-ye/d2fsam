@@ -1,0 +1,38 @@
+{
+  "amSystemBackApp": {
+    "programStageDataElement": {
+      "home": {
+        "title": "Program Stage Data Elements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program Stage Data Element",
+        "createOrEditLabel": "Create or edit a Program Stage Data Element",
+        "notFound": "No Program Stage Data Elements found"
+      },
+      "created": "A new Program Stage Data Element is created with identifier {{ param }}",
+      "updated": "A Program Stage Data Element is updated with identifier {{ param }}",
+      "deleted": "A Program Stage Data Element is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Stage Data Element {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Stage Data Element"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "compulsory": "Compulsory",
+      "allowProvidedElsewhere": "Allow Provided Elsewhere",
+      "sortOrder": "Sort Order",
+      "displayInReports": "Display In Reports",
+      "allowFutureDate": "Allow Future Date",
+      "skipSynchronization": "Skip Synchronization",
+      "defaultValue": "Default Value",
+      "programStage": "Program Stage",
+      "dataElement": "Data Element",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

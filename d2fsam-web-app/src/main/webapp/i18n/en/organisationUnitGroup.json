@@ -1,0 +1,36 @@
+{
+  "amSystemBackApp": {
+    "organisationUnitGroup": {
+      "home": {
+        "title": "Organisation Unit Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Organisation Unit Group",
+        "createOrEditLabel": "Create or edit a Organisation Unit Group",
+        "notFound": "No Organisation Unit Groups found"
+      },
+      "created": "A new Organisation Unit Group is created with identifier {{ param }}",
+      "updated": "A Organisation Unit Group is updated with identifier {{ param }}",
+      "deleted": "A Organisation Unit Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organisation Unit Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Organisation Unit Group"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "shortName": "Short Name",
+      "created": "Created",
+      "updated": "Updated",
+      "symbol": "Symbol",
+      "color": "Color",
+      "inactive": "Inactive",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "member": "Member",
+      "groupSet": "Group Set"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity programRule.
+    -->
+    <changeSet id="20231230204050-1" author="hamza3">
+        <createTable tableName="job_configuration">
+            <column name="jobconfigurationid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_job_configuration__uid" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_job_configuration__code" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_job_configuration__name" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="cron_expression" type="VARCHAR(255)"/>
+            <column name="delay" type="INT"/>
+            <column name="enabled" type="BOOLEAN"/>
+            <column name="in_memory_job" type="BOOLEAN"/>
+            <column name="job_parameters" type="json"/>
+            <column name="job_status" type="VARCHAR(255)"/>
+            <column name="job_type" type="VARCHAR(255)"/>
+            <column name="last_executed" type="TIMESTAMP"/>
+            <column name="last_executed_status" type="VARCHAR(255)"/>
+            <column name="last_runtime_executed" type="VARCHAR(255)"/>
+            <column name="leader_only_job" type="BOOLEAN"/>
+            <column name="next_execution_time" type="TIMESTAMP"/>
+            <column name="user_uid" type="VARCHAR(255)"/>
+            <column name="lastupdatedby" type="BIGINT"/>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="job_configuration" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="job_configuration" columnName="updated" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+</databaseChangeLog>

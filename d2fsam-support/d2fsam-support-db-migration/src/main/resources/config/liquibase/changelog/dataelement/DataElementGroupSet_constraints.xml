@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElementGroupSet.
+    -->
+    <changeSet id="20230114231140-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="data_element_group_set"
+                                 constraintName="fk_data_element_group_set__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementgroupsetid"
+                                 baseTableName="data_element_group_set__members"
+                                 constraintName="fk_rel_data_element_group_set____data_element_group_set_b7_id"
+                                 referencedColumnNames="dataelementgroupsetid"
+                                 referencedTableName="data_element_group_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementgroupid"
+                                 baseTableName="data_element_group_set__members"
+                                 constraintName="fk_data_element_group_set__members__members_id"
+                                 referencedColumnNames="dataelementgroupid"
+                                 referencedTableName="data_element_group"/>
+    </changeSet>
+</databaseChangeLog>

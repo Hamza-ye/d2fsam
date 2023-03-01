@@ -1,0 +1,11 @@
+{
+  "amSystemBackApp": {
+    "AccessLevel": {
+      "null": "",
+      "OPEN": "OPEN",
+      "AUDITED": "AUDITED",
+      "PROTECTED": "PROTECTED",
+      "CLOSED": "CLOSED"
+    }
+  }
+}

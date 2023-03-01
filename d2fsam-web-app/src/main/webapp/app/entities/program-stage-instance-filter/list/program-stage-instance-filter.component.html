@@ -1,0 +1,157 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramStageInstanceFilterHeading">
+    <span appTranslate="amSystemBackApp.programStageInstanceFilter.home.title">Program Stage Instance Filters</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.programStageInstanceFilter.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program-stage-instance-filter"
+        [routerLink]="['/program-stage-instance-filter/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.programStageInstanceFilter.home.createLabel"> Create a new Program Stage Instance Filter </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programStageInstanceFilters?.length === 0">
+    <span appTranslate="amSystemBackApp.programStageInstanceFilter.home.notFound">No Program Stage Instance Filters found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="programStageInstanceFilters && programStageInstanceFilters.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="program">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.program">Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="programStage">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.programStage">Program Stage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageInstanceFilter.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let programStageInstanceFilter of programStageInstanceFilters; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program-stage-instance-filter', programStageInstanceFilter.id, 'view']">{{
+              programStageInstanceFilter.id
+            }}</a>
+          </td>
+          <td>{{ programStageInstanceFilter.uid }}</td>
+          <td>{{ programStageInstanceFilter.code }}</td>
+          <td>{{ programStageInstanceFilter.name }}</td>
+          <td>{{ programStageInstanceFilter.created | formatMediumDatetime }}</td>
+          <td>{{ programStageInstanceFilter.updated | formatMediumDatetime }}</td>
+          <td>{{ programStageInstanceFilter.description }}</td>
+          <td>{{ programStageInstanceFilter.program }}</td>
+          <td>{{ programStageInstanceFilter.programStage }}</td>
+          <td>
+            {{ programStageInstanceFilter.createdBy?.login }}
+          </td>
+          <td>
+            {{ programStageInstanceFilter.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program-stage-instance-filter', programStageInstanceFilter.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program-stage-instance-filter', programStageInstanceFilter.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(programStageInstanceFilter)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

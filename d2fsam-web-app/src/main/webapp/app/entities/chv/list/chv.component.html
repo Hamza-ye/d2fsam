@@ -1,0 +1,221 @@
+<div>
+  <h2 id="page-heading" data-cy="ChvHeading">
+    <span appTranslate="amSystemBackApp.chv.home.title">Chvs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.chv.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-chv"
+        [routerLink]="['/chv/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.chv.home.createLabel"> Create a new Chv </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="chvs?.length === 0">
+    <span appTranslate="amSystemBackApp.chv.home.notFound">No Chvs found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="chvs && chvs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="withdrawn">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.withdrawn">Withdrawn</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="dateJoined">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.dateJoined">Date Joined</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="dateWithdrawn">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.dateWithdrawn">Date Withdrawn</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="assignedTo.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.assignedTo">Assigned To</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="district.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.district">District</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="homeSubvillage.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.homeSubvillage">Home Subvillage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="managingHf.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.managingHf">Managing Hf</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.chv.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let chv of chvs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/chv', chv.id, 'view']">{{ chv.id }}</a>
+          </td>
+          <td>{{ chv.uid }}</td>
+          <td>{{ chv.code }}</td>
+          <td>{{ chv.created | formatMediumDatetime }}</td>
+          <td>{{ chv.updated | formatMediumDatetime }}</td>
+          <td>{{ chv.withdrawn }}</td>
+          <td>{{ chv.dateJoined | formatMediumDate }}</td>
+          <td>{{ chv.dateWithdrawn | formatMediumDate }}</td>
+          <td>{{ chv.name }}</td>
+          <td>{{ chv.description }}</td>
+          <td>{{ chv.inactive }}</td>
+          <td>
+            <div *ngIf="chv.assignedTo">
+              <a [routerLink]="['/user-data', chv.assignedTo.id, 'view']">{{ chv.assignedTo.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="chv.district">
+              <a [routerLink]="['/organisation-unit', chv.district.id, 'view']">{{ chv.district.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="chv.homeSubvillage">
+              <a [routerLink]="['/organisation-unit', chv.homeSubvillage.id, 'view']">{{ chv.homeSubvillage.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="chv.managingHf">
+              <a [routerLink]="['/organisation-unit', chv.managingHf.id, 'view']">{{ chv.managingHf.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ chv.createdBy?.login }}
+          </td>
+          <td>
+            {{ chv.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/chv', chv.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/chv', chv.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(chv)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="chvs && chvs.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

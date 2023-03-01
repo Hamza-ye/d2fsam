@@ -1,0 +1,30 @@
+{
+  "amSystemBackApp": {
+    "organisationUnitLevel": {
+      "home": {
+        "title": "Organisation Unit Levels",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Organisation Unit Level",
+        "createOrEditLabel": "Create or edit a Organisation Unit Level",
+        "notFound": "No Organisation Unit Levels found"
+      },
+      "created": "A new Organisation Unit Level is created with identifier {{ param }}",
+      "updated": "A Organisation Unit Level is updated with identifier {{ param }}",
+      "deleted": "A Organisation Unit Level is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Organisation Unit Level {{ id }}?"
+      },
+      "detail": {
+        "title": "Organisation Unit Level"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "level": "Level",
+      "offlineLevels": "Offline Levels"
+    }
+  }
+}

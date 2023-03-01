@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityTypeAttribute.
+    -->
+    <changeSet id="20221120204111-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
+                                 baseTableName="tracked_entity_type_attribute"
+                                 constraintName="fk_tracked_entity_type_attribute__tracked_entity_attribute_id"
+                                 referencedColumnNames="trackedentityattributeid"
+                                 referencedTableName="tracked_entity_attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitytypeid"
+                                 baseTableName="tracked_entity_type_attribute"
+                                 constraintName="fk_tracked_entity_type_attribute__tracked_entity_type_id"
+                                 referencedColumnNames="trackedentitytypeid"
+                                 referencedTableName="tracked_entity_type"/>
+<!--        referencedTableName="tracked_entity_type" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="tracked_entity_type_attribute"
+                                 constraintName="fk_tracked_entity_type_attribute__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+<!--        <addUniqueConstraint columnNames="trackedentitytypeid, trackedentityattributeid"-->
+<!--                             constraintName="UX_tracked_entity_type_attribute_unique_key"-->
+<!--                             tableName="tracked_entity_type_attribute"/>-->
+    </changeSet>
+</databaseChangeLog>

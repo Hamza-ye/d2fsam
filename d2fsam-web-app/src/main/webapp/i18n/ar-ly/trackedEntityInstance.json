@@ -1,0 +1,45 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityInstance": {
+      "home": {
+        "title": "Tracked Entity Instances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Instance",
+        "createOrEditLabel": "Create or edit a Tracked Entity Instance",
+        "notFound": "No Tracked Entity Instances found"
+      },
+      "created": "A new Tracked Entity Instance is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Instance is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Instance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Instance {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Instance"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "uuid": "Uuid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "createdAtClient": "Created At Client",
+      "updatedAtClient": "Updated At Client",
+      "lastSynchronized": "Last Synchronized",
+      "featureType": "Feature Type",
+      "coordinates": "Coordinates",
+      "potentialDuplicate": "Potential Duplicate",
+      "deleted": "Deleted",
+      "storedBy": "Stored By",
+      "inactive": "Inactive",
+      "period": "Period",
+      "organisationUnit": "Organisation Unit",
+      "trackedEntityType": "Tracked Entity Type",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "programInstance": "Program Instance",
+      "programOwner": "Program Owner",
+      "trackedEntityAttributeValue": "Tracked Entity Attribute Value"
+    }
+  }
+}

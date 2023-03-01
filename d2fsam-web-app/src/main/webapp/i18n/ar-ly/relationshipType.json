@@ -1,0 +1,37 @@
+{
+  "amSystemBackApp": {
+    "relationshipType": {
+      "home": {
+        "title": "Relationship Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Relationship Type",
+        "createOrEditLabel": "Create or edit a Relationship Type",
+        "notFound": "No Relationship Types found"
+      },
+      "created": "A new Relationship Type is created with identifier {{ param }}",
+      "updated": "A Relationship Type is updated with identifier {{ param }}",
+      "deleted": "A Relationship Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Relationship Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Relationship Type"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "description": "Description",
+      "bidirectional": "Bidirectional",
+      "fromToName": "From To Name",
+      "toFromName": "To From Name",
+      "referral": "Referral",
+      "fromConstraint": "From Constraint",
+      "toConstraint": "To Constraint",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

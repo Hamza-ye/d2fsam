@@ -1,0 +1,27 @@
+{
+  "amSystemBackApp": {
+    "relationshipItem": {
+      "home": {
+        "title": "Relationship Items",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Relationship Item",
+        "createOrEditLabel": "Create or edit a Relationship Item",
+        "notFound": "No Relationship Items found"
+      },
+      "created": "A new Relationship Item is created with identifier {{ param }}",
+      "updated": "A Relationship Item is updated with identifier {{ param }}",
+      "deleted": "A Relationship Item is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Relationship Item {{ id }}?"
+      },
+      "detail": {
+        "title": "Relationship Item"
+      },
+      "id": "ID",
+      "relationship": "Relationship",
+      "trackedEntityInstance": "Tracked Entity Instance",
+      "programInstance": "Program Instance",
+      "programStageInstance": "Program Stage Instance"
+    }
+  }
+}

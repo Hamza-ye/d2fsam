@@ -1,0 +1,104 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="assignment">
+      <h2 data-cy="assignmentDetailsHeading"><span appTranslate="amSystemBackApp.assignment.detail.title">Assignment</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ assignment.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.uid">Uid</span></dt>
+        <dd>
+          <span>{{ assignment.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.code">Code</span></dt>
+        <dd>
+          <span>{{ assignment.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.created">Created</span></dt>
+        <dd>
+          <span>{{ assignment.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.updated">Updated</span></dt>
+        <dd>
+          <span>{{ assignment.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.description">Description</span></dt>
+        <dd>
+          <span>{{ assignment.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ assignment.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.startPeriod">Start Period</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.PeriodLabel.' + assignment.startPeriod }}">{{ assignment.startPeriod }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.targetSource">Target Source</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.TargetSource.' + assignment.targetSource }}">{{ assignment.targetSource }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.status">Status</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.EventStatus.' + assignment.status }}">{{ assignment.status }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ assignment.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.deletedAt">Deleted At</span></dt>
+        <dd>
+          <span>{{ assignment.deletedAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.activity">Activity</span></dt>
+        <dd>
+          <div *ngIf="assignment.activity">
+            <a [routerLink]="['/activity', assignment.activity.id, 'view']">{{ assignment.activity.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="assignment.organisationUnit">
+            <a [routerLink]="['/organisation-unit', assignment.organisationUnit.id, 'view']">{{ assignment.organisationUnit.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.assignedTeam">Assigned Team</span></dt>
+        <dd>
+          <div *ngIf="assignment.assignedTeam">
+            <a [routerLink]="['/team', assignment.assignedTeam.id, 'view']">{{ assignment.assignedTeam.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.period">Period</span></dt>
+        <dd>
+          <div *ngIf="assignment.period">
+            <a [routerLink]="['/period', assignment.period.id, 'view']">{{ assignment.period.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ assignment.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.assignment.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ assignment.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/assignment', assignment.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,240 @@
+<div>
+  <h2 id="page-heading" data-cy="DataElementHeading">
+    <span appTranslate="amSystemBackApp.dataElement.home.title">Data Elements</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.dataElement.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-data-element"
+        [routerLink]="['/data-element/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.dataElement.home.createLabel"> Create a new Data Element </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="dataElements?.length === 0">
+    <span appTranslate="amSystemBackApp.dataElement.home.notFound">No Data Elements found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="dataElements && dataElements.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="valueType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.valueType">Value Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="aggregationType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.aggregationType">Aggregation Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="displayInListNoProgram">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.displayInListNoProgram">Display In List No Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="zeroIsSignificant">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.zeroIsSignificant">Zero Is Significant</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="mandatory">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.mandatory">Mandatory</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uniqueAttribute">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.uniqueAttribute">Unique Attribute</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="fieldMask">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.fieldMask">Field Mask</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="orgunitScope">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.orgunitScope">Orgunit Scope</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="skipSynchronization">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.skipSynchronization">Skip Synchronization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="confidential">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.confidential">Confidential</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="optionSet.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.optionSet">Option Set</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.dataElement.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let dataElement of dataElements; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/data-element', dataElement.id, 'view']">{{ dataElement.id }}</a>
+          </td>
+          <td>{{ dataElement.uid }}</td>
+          <td>{{ dataElement.code }}</td>
+          <td>{{ dataElement.created | formatMediumDatetime }}</td>
+          <td>{{ dataElement.updated | formatMediumDatetime }}</td>
+          <td>{{ dataElement.name }}</td>
+          <td>{{ dataElement.description }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.ValueType.' + dataElement.valueType }}">{{ dataElement.valueType }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.AggregationType.' + dataElement.aggregationType }}">{{ dataElement.aggregationType }}</td>
+          <td>{{ dataElement.displayInListNoProgram }}</td>
+          <td>{{ dataElement.zeroIsSignificant }}</td>
+          <td>{{ dataElement.mandatory }}</td>
+          <td>{{ dataElement.uniqueAttribute }}</td>
+          <td>{{ dataElement.fieldMask }}</td>
+          <td>{{ dataElement.orgunitScope }}</td>
+          <td>{{ dataElement.skipSynchronization }}</td>
+          <td>{{ dataElement.confidential }}</td>
+          <td>
+            <div *ngIf="dataElement.optionSet">
+              <a [routerLink]="['/option-set', dataElement.optionSet.id, 'view']">{{ dataElement.optionSet.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ dataElement.createdBy?.login }}
+          </td>
+          <td>
+            {{ dataElement.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/data-element', dataElement.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/data-element', dataElement.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(dataElement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="dataElements && dataElements.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityDataValueAudit": {
+      "home": {
+        "title": "Tracked Entity Data Value Audits",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Data Value Audit",
+        "createOrEditLabel": "Create or edit a Tracked Entity Data Value Audit",
+        "notFound": "No Tracked Entity Data Value Audits found"
+      },
+      "created": "A new Tracked Entity Data Value Audit is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Data Value Audit is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Data Value Audit is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Data Value Audit {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Data Value Audit"
+      },
+      "id": "ID",
+      "value": "Value",
+      "created": "Created",
+      "updated": "Updated",
+      "modifiedBy": "Modified By",
+      "providedElsewhere": "Provided Elsewhere",
+      "auditType": "Audit Type",
+      "programStageInstance": "Program Stage Instance",
+      "dataElement": "Data Element",
+      "period": "Period"
+    }
+  }
+}

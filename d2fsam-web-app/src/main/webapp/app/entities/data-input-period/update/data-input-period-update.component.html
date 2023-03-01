@@ -1,0 +1,91 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-data-input-period-heading"
+        data-cy="DataInputPeriodCreateUpdateHeading"
+        appTranslate="amSystemBackApp.dataInputPeriod.home.createOrEditLabel"
+      >
+        Create or edit a Data Input Period
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataInputPeriod.openingDate" for="field_openingDate">Opening Date</label>
+          <div class="input-group">
+            <input
+              id="field_openingDate"
+              data-cy="openingDate"
+              type="text"
+              class="form-control"
+              name="openingDate"
+              ngbDatepicker
+              #openingDateDp="ngbDatepicker"
+              formControlName="openingDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="openingDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataInputPeriod.closingDate" for="field_closingDate">Closing Date</label>
+          <div class="input-group">
+            <input
+              id="field_closingDate"
+              data-cy="closingDate"
+              type="text"
+              class="form-control"
+              name="closingDate"
+              ngbDatepicker
+              #closingDateDp="ngbDatepicker"
+              formControlName="closingDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="closingDateDp.toggle()">
+              <fa-icon icon="calendar-alt"></fa-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataInputPeriod.period" for="field_period">Period</label>
+          <select
+            class="form-control"
+            id="field_period"
+            data-cy="period"
+            name="period"
+            formControlName="period"
+            [compareWith]="comparePeriod"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodOption" *ngFor="let periodOption of periodsSharedCollection">{{ periodOption.name }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

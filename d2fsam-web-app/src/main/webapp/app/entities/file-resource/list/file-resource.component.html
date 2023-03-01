@@ -1,0 +1,190 @@
+<div>
+  <h2 id="page-heading" data-cy="FileResourceHeading">
+    <span appTranslate="amSystemBackApp.fileResource.home.title">File Resources</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.fileResource.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-file-resource"
+        [routerLink]="['/file-resource/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.fileResource.home.createLabel"> Create a new File Resource </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="fileResources?.length === 0">
+    <span appTranslate="amSystemBackApp.fileResource.home.notFound">No File Resources found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="fileResources && fileResources.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="contentType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.contentType">Content Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="contentLength">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.contentLength">Content Length</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="contentMd5">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.contentMd5">Content Md 5</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="storageKey">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.storageKey">Storage Key</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="assigned">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.assigned">Assigned</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="domain">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.domain">Domain</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="hasMultipleStorageFiles">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.hasMultipleStorageFiles">Has Multiple Storage Files</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="fileResourceOwner">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.fileResourceOwner">File Resource Owner</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.fileResource.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let fileResource of fileResources; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/file-resource', fileResource.id, 'view']">{{ fileResource.id }}</a>
+          </td>
+          <td>{{ fileResource.uid }}</td>
+          <td>{{ fileResource.code }}</td>
+          <td>{{ fileResource.name }}</td>
+          <td>{{ fileResource.created | formatMediumDatetime }}</td>
+          <td>{{ fileResource.updated | formatMediumDatetime }}</td>
+          <td>{{ fileResource.contentType }}</td>
+          <td>{{ fileResource.contentLength }}</td>
+          <td>{{ fileResource.contentMd5 }}</td>
+          <td>{{ fileResource.storageKey }}</td>
+          <td>{{ fileResource.assigned }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.FileResourceDomain.' + fileResource.domain }}">{{ fileResource.domain }}</td>
+          <td>{{ fileResource.hasMultipleStorageFiles }}</td>
+          <td>{{ fileResource.fileResourceOwner }}</td>
+          <td>
+            {{ fileResource.createdBy?.login }}
+          </td>
+          <td>
+            {{ fileResource.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/file-resource', fileResource.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/file-resource', fileResource.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(fileResource)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

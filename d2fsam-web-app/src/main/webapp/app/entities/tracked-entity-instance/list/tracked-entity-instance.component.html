@@ -1,0 +1,254 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityInstanceHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityInstance.home.title">Tracked Entity Instances</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityInstance.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-instance"
+        [routerLink]="['/tracked-entity-instance/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityInstance.home.createLabel"> Create a new Tracked Entity Instance </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityInstances?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityInstance.home.notFound">No Tracked Entity Instances found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="trackedEntityInstances && trackedEntityInstances.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uuid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.uuid">Uuid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.createdAtClient">Created At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.updatedAtClient">Updated At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastSynchronized">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.lastSynchronized">Last Synchronized</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="featureType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.featureType">Feature Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="coordinates">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.coordinates">Coordinates</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="potentialDuplicate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.potentialDuplicate">Potential Duplicate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deleted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.deleted">Deleted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="storedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.storedBy">Stored By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="period.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.period">Period</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="organisationUnit.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.organisationUnit">Organisation Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.trackedEntityType">Tracked Entity Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstance.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityInstance of trackedEntityInstances; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-instance', trackedEntityInstance.id, 'view']">{{ trackedEntityInstance.id }}</a>
+          </td>
+          <td>{{ trackedEntityInstance.uid }}</td>
+          <td>{{ trackedEntityInstance.uuid }}</td>
+          <td>{{ trackedEntityInstance.code }}</td>
+          <td>{{ trackedEntityInstance.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityInstance.updated | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityInstance.createdAtClient | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityInstance.updatedAtClient | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityInstance.lastSynchronized | formatMediumDatetime }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.FeatureType.' + trackedEntityInstance.featureType }}">
+            {{ trackedEntityInstance.featureType }}
+          </td>
+          <td>{{ trackedEntityInstance.coordinates }}</td>
+          <td>{{ trackedEntityInstance.potentialDuplicate }}</td>
+          <td>{{ trackedEntityInstance.deleted }}</td>
+          <td>{{ trackedEntityInstance.storedBy }}</td>
+          <td>{{ trackedEntityInstance.inactive }}</td>
+          <td>
+            <div *ngIf="trackedEntityInstance.period">
+              <a [routerLink]="['/period', trackedEntityInstance.period.id, 'view']">{{ trackedEntityInstance.period.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityInstance.organisationUnit">
+              <a [routerLink]="['/organisation-unit', trackedEntityInstance.organisationUnit.id, 'view']">{{
+                trackedEntityInstance.organisationUnit.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityInstance.trackedEntityType">
+              <a [routerLink]="['/tracked-entity-type', trackedEntityInstance.trackedEntityType.id, 'view']">{{
+                trackedEntityInstance.trackedEntityType.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            {{ trackedEntityInstance.createdBy?.login }}
+          </td>
+          <td>
+            {{ trackedEntityInstance.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-instance', trackedEntityInstance.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-instance', trackedEntityInstance.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(trackedEntityInstance)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trackedEntityInstances && trackedEntityInstances.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

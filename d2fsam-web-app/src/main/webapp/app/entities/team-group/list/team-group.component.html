@@ -1,0 +1,156 @@
+<div>
+  <h2 id="page-heading" data-cy="TeamGroupHeading">
+    <span appTranslate="amSystemBackApp.teamGroup.home.title">Team Groups</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.teamGroup.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-team-group"
+        [routerLink]="['/team-group/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.teamGroup.home.createLabel"> Create a new Team Group </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="teamGroups?.length === 0">
+    <span appTranslate="amSystemBackApp.teamGroup.home.notFound">No Team Groups found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="teamGroups && teamGroups.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uuid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.uuid">Uuid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="activeFrom">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.activeFrom">Active From</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="activeTo">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.activeTo">Active To</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="member.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.teamGroup.member">Member</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let teamGroup of teamGroups; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/team-group', teamGroup.id, 'view']">{{ teamGroup.id }}</a>
+          </td>
+          <td>{{ teamGroup.uid }}</td>
+          <td>{{ teamGroup.code }}</td>
+          <td>{{ teamGroup.name }}</td>
+          <td>{{ teamGroup.uuid }}</td>
+          <td>{{ teamGroup.created | formatMediumDatetime }}</td>
+          <td>{{ teamGroup.updated | formatMediumDatetime }}</td>
+          <td>{{ teamGroup.activeFrom | formatMediumDatetime }}</td>
+          <td>{{ teamGroup.activeTo | formatMediumDatetime }}</td>
+          <td>{{ teamGroup.inactive }}</td>
+          <td>
+            <span *ngFor="let member of teamGroup.members; let last = last">
+              <a class="form-control-static" [routerLink]="['/team', member.id, 'view']">{{ member.name }}</a
+              >{{ last ? '' : ', ' }}
+            </span>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/team-group', teamGroup.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/team-group', teamGroup.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(teamGroup)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

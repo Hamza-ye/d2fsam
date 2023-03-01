@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Attribute.
+    -->
+    <changeSet id="20231230204040-2" author="hamza22">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="attribute"
+                                 constraintName="fk_attribute__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="attribute"
+                                 constraintName="fk_attribute__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="optionsetid"
+                                 baseTableName="attribute"
+                                 constraintName="fk_attribute__option_set_id"
+                                 referencedColumnNames="optionvalueid"
+                                 referencedTableName="option_value"/>
+    </changeSet>
+</databaseChangeLog>

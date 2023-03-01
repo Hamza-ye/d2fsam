@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ProgramInstance.
+    -->
+    <changeSet id="20221120204039-1" author="jhipster">
+        <createTable tableName="program_instance">
+            <column name="programinstanceid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_program_instance__uid" />
+            </column>
+            <column name="uuid" type="${uuidType}">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_program_instance__uuid" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="createdatclient" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedatclient" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastsynchronized" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="incidentdate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="enrollmentdate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="periodlabel" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="enddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="storedby" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completedby" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completeddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="followup" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="deletedat" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="trackedentityinstanceid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="programid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="organisationunitid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="activityid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdbyuserinfo" type="JSONB"/>
+            <column name="lastupdatedbyuserinfo" type="JSONB"/>
+            <column name="geometry" type="geometry(GEOMETRY, 4326)">
+                <constraints nullable="true"/>
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="program_instance" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="updated" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="createdatclient" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="lastupdatedatclient" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="lastsynchronized" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="incidentdate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="enrollmentdate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="enddate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="completeddate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_instance" columnName="deletedat" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="20221120204039-1-relations" author="jhipster">
+
+        <createTable tableName="program_instance__comments">
+            <column name="programinstanceid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trackedentitycommentid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="programinstanceid, sortorder" tableName="program_instance__comments"/>
+
+        <createTable tableName="program_instance__message_conversations">
+            <column name="programinstanceid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="messageconversationid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="programinstanceid, sortorder" tableName="program_instance__message_conversations"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+<!--    <changeSet id="20221120204039-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/program_instance.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="program_instance"-->
+<!--                  usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="uid" type="string"/>-->
+<!--            <column name="uuid" type="${uuidType}"/>-->
+<!--            <column name="created" type="date"/>-->
+<!--            <column name="updated" type="date"/>-->
+<!--            <column name="createdatclient" type="date"/>-->
+<!--            <column name="lastupdatedatclient" type="date"/>-->
+<!--            <column name="lastsynchronized" type="date"/>-->
+<!--            <column name="incidentdate" type="date"/>-->
+<!--            <column name="enrollmentdate" type="date"/>-->
+<!--            <column name="periodlabel" type="string"/>-->
+<!--            <column name="enddate" type="date"/>-->
+<!--            <column name="status" type="string"/>-->
+<!--            <column name="storedby" type="string"/>-->
+<!--            <column name="completedby" type="string"/>-->
+<!--            <column name="completeddate" type="date"/>-->
+<!--            <column name="followup" type="boolean"/>-->
+<!--            <column name="deleted" type="boolean"/>-->
+<!--            <column name="deletedat" type="date"/>-->
+<!--            <column name="trackedentityinstanceid" type="numeric"/>-->
+<!--            <column name="programid" type="numeric"/>-->
+<!--            <column name="organisationunitid" type="numeric"/>-->
+<!--            <column name="activityid" type="numeric"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

@@ -1,0 +1,12 @@
+{
+  "amSystemBackApp": {
+    "AuditType": {
+      "null": "",
+      "CREATE": "CREATE",
+      "READ": "READ",
+      "UPDATE": "UPDATE",
+      "DELETE": "DELETE",
+      "SEARCH": "SEARCH"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Period.
+    -->
+    <changeSet id="20221120204019-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="periodtypeid"
+                                 baseTableName="period"
+                                 constraintName="fk_period__period_type_id"
+                                 referencedColumnNames="periodtypeid"
+                                 referencedTableName="period_type"/>
+
+        <addNotNullConstraint columnDataType="varchar(31)"
+                              columnName="name" tableName="period_type"
+                              validate="true"/>
+    </changeSet>
+</databaseChangeLog>

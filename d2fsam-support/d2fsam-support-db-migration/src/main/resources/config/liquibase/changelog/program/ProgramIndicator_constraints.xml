@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElement.
+    -->
+    <changeSet id="20501120204044-2" author="Hamza">
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_indicator"
+                                 constraintName="fk_program_indicator__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_indicator"
+                                 constraintName="fk_program_indicator__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_indicator"
+                                 constraintName="fk_program_indicator__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programindicatorid"
+                                 baseTableName="program_indicator__legend_set"
+                                 constraintName="fk_program_indicator__legend_set__program_indicator_id"
+                                 referencedColumnNames="programindicatorid"
+                                 referencedTableName="program_indicator"/>
+
+        <addForeignKeyConstraint baseColumnNames="maplegendsetid"
+                                 baseTableName="program_indicator__legend_set"
+                                 constraintName="fk_program_indicator__legend_set__legend_set_id"
+                                 referencedColumnNames="maplegendsetid"
+                                 referencedTableName="map_legend_set"/>
+    </changeSet>
+</databaseChangeLog>

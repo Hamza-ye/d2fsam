@@ -1,0 +1,291 @@
+<div>
+  <h2 id="page-heading" data-cy="MalariaCaseHeading">
+    <span appTranslate="amSystemBackApp.malariaCase.home.title">Malaria Cases</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.malariaCase.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-malaria-case"
+        [routerLink]="['/malaria-case/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.malariaCase.home.createLabel"> Create a new Malaria Case </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="malariaCases?.length === 0">
+    <span appTranslate="amSystemBackApp.malariaCase.home.notFound">No Malaria Cases found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="malariaCases && malariaCases.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uuid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.uuid">Uuid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="entryStarted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.entryStarted">Entry Started</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastSynced">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.lastSynced">Last Synced</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deleted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.deleted">Deleted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="dateOfExamination">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.dateOfExamination">Date Of Examination</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="mobile">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.mobile">Mobile</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="gender">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.gender">Gender</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="age">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.age">Age</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="isPregnant">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.isPregnant">Is Pregnant</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="malariaTestResult">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.malariaTestResult">Malaria Test Result</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="severity">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.severity">Severity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="referral">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.referral">Referral</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="barImageUrl">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.barImageUrl">Bar Image Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="comment">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="status">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="seen">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.seen">Seen</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.createdAtClient">Created At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.updatedAtClient">Updated At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deletedAt">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.deletedAt">Deleted At</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="subVillage.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.subVillage">Sub Village</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.malariaCase.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let malariaCase of malariaCases; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/malaria-case', malariaCase.id, 'view']">{{ malariaCase.id }}</a>
+          </td>
+          <td>{{ malariaCase.uuid }}</td>
+          <td>{{ malariaCase.code }}</td>
+          <td>{{ malariaCase.name }}</td>
+          <td>{{ malariaCase.entryStarted | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.lastSynced | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.deleted }}</td>
+          <td>{{ malariaCase.dateOfExamination | formatMediumDate }}</td>
+          <td>{{ malariaCase.mobile }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.Gender.' + malariaCase.gender }}">{{ malariaCase.gender }}</td>
+          <td>{{ malariaCase.age }}</td>
+          <td>{{ malariaCase.isPregnant }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.MalariaTestResult.' + malariaCase.malariaTestResult }}">
+            {{ malariaCase.malariaTestResult }}
+          </td>
+          <td appTranslate="{{ 'amSystemBackApp.Severity.' + malariaCase.severity }}">{{ malariaCase.severity }}</td>
+          <td>{{ malariaCase.referral }}</td>
+          <td>{{ malariaCase.barImageUrl }}</td>
+          <td>{{ malariaCase.comment }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.EventStatus.' + malariaCase.status }}">{{ malariaCase.status }}</td>
+          <td>{{ malariaCase.seen }}</td>
+          <td>{{ malariaCase.created | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.updated | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.createdAtClient | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.updatedAtClient | formatMediumDatetime }}</td>
+          <td>{{ malariaCase.deletedAt | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="malariaCase.subVillage">
+              <a [routerLink]="['/organisation-unit', malariaCase.subVillage.id, 'view']">{{ malariaCase.subVillage.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ malariaCase.createdBy?.login }}
+          </td>
+          <td>
+            {{ malariaCase.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/malaria-case', malariaCase.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/malaria-case', malariaCase.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(malariaCase)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="malariaCases && malariaCases.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,202 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramStageDataElementHeading">
+    <span appTranslate="amSystemBackApp.programStageDataElement.home.title">Program Stage Data Elements</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.programStageDataElement.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program-stage-data-element"
+        [routerLink]="['/program-stage-data-element/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.programStageDataElement.home.createLabel"> Create a new Program Stage Data Element </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programStageDataElements?.length === 0">
+    <span appTranslate="amSystemBackApp.programStageDataElement.home.notFound">No Program Stage Data Elements found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="programStageDataElements && programStageDataElements.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="compulsory">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.compulsory">Compulsory</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="allowProvidedElsewhere">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.allowProvidedElsewhere">Allow Provided Elsewhere</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="sortOrder">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.sortOrder">Sort Order</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="displayInReports">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.displayInReports">Display In Reports</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="allowFutureDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.allowFutureDate">Allow Future Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="skipSynchronization">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.skipSynchronization">Skip Synchronization</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="defaultValue">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.defaultValue">Default Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="programStage.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.programStage">Program Stage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="dataElement.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.dataElement">Data Element</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programStageDataElement.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let programStageDataElement of programStageDataElements; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program-stage-data-element', programStageDataElement.id, 'view']">{{ programStageDataElement.id }}</a>
+          </td>
+          <td>{{ programStageDataElement.uid }}</td>
+          <td>{{ programStageDataElement.code }}</td>
+          <td>{{ programStageDataElement.created | formatMediumDatetime }}</td>
+          <td>{{ programStageDataElement.updated | formatMediumDatetime }}</td>
+          <td>{{ programStageDataElement.compulsory }}</td>
+          <td>{{ programStageDataElement.allowProvidedElsewhere }}</td>
+          <td>{{ programStageDataElement.sortOrder }}</td>
+          <td>{{ programStageDataElement.displayInReports }}</td>
+          <td>{{ programStageDataElement.allowFutureDate }}</td>
+          <td>{{ programStageDataElement.skipSynchronization }}</td>
+          <td>{{ programStageDataElement.defaultValue }}</td>
+          <td>
+            <div *ngIf="programStageDataElement.programStage">
+              <a [routerLink]="['/program-stage', programStageDataElement.programStage.id, 'view']">{{
+                programStageDataElement.programStage.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="programStageDataElement.dataElement">
+              <a [routerLink]="['/data-element', programStageDataElement.dataElement.id, 'view']">{{
+                programStageDataElement.dataElement.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            {{ programStageDataElement.createdBy?.login }}
+          </td>
+          <td>
+            {{ programStageDataElement.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program-stage-data-element', programStageDataElement.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program-stage-data-element', programStageDataElement.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(programStageDataElement)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

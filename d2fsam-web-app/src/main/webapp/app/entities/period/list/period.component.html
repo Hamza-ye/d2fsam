@@ -1,0 +1,103 @@
+<div>
+  <h2 id="page-heading" data-cy="PeriodHeading">
+    <span appTranslate="amSystemBackApp.period.home.title">Periods</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.period.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-period"
+        [routerLink]="['/period/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.period.home.createLabel"> Create a new Period </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="periods?.length === 0">
+    <span appTranslate="amSystemBackApp.period.home.notFound">No Periods found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="periods && periods.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.period.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="startDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.period.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="endDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.period.endDate">End Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="periodType.id">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.period.periodType">Period Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let period of periods; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/period', period.id, 'view']">{{ period.id }}</a>
+          </td>
+          <td>{{ period.name }}</td>
+          <td>{{ period.startDate | formatMediumDate }}</td>
+          <td>{{ period.endDate | formatMediumDate }}</td>
+          <td>
+            <div *ngIf="period.periodType">
+              <a [routerLink]="['/period-type', period.periodType.id, 'view']">{{ period.periodType.id }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" [routerLink]="['/period', period.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button type="submit" [routerLink]="['/period', period.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(period)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

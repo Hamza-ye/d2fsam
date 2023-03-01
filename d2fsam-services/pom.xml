@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>d2fsam</artifactId>
+        <groupId>org.nmcpye.am</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>d2fsam-services</artifactId>
+    <packaging>pom</packaging>
+    <name>D2-F Services Parent Project</name>
+
+    <modules>
+        <!-- Level 1 -->
+        <module>d2fsam-service-schema</module>
+        <module>d2fsam-service-setting</module>
+        <!-- Level 2 -->
+        <module>d2fsam-service-acl</module>
+        <!-- Level 4 -->
+<!--        <module>am-service-node</module>-->
+        <!-- Level 5 -->
+        <module>d2fsam-service-core</module>
+        <!-- Level 6 -->
+<!--        <module>am-service-validation</module>-->
+        <!-- Level 7 -->
+        <module>d2fsam-service-administration</module>
+        <module>d2fsam-service-dxf2</module>
+        <module>d2fsam-service-field-filtering</module>
+        <!-- Level 8 -->
+<!--        <module>am-service-metadata-workflow</module>-->
+<!--        <module>am-service-analytics</module>-->
+        <module>d2fsam-service-tracker</module>
+        <module>d2fsam-service-program-rule</module>
+        <module>d2fsam-service-audit-consumer</module>
+        <!-- Level 9 -->
+        <module>d2fsam-service-reporting</module>
+<!--        <module>am-service-data-exchange</module>-->
+    </modules>
+
+    <properties>
+        <rootDir>../</rootDir>
+    </properties>
+
+</project>

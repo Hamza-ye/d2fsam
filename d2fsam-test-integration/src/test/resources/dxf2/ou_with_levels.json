@@ -1,0 +1,42 @@
+{
+  "organisationUnits": [
+    {
+      "name": "OrgUnitB",
+      "shortName": "OrgUnitB",
+      "organisationUnitType": "COUNTRY",
+      "openingDate": "2016-03-11T17:00:00.000+0000",
+      "featureType": "NONE",
+      "parent": {
+        "id": "inVD5SdytkT"
+      }
+    },
+    {
+      "name": "OrgUnitC",
+      "shortName": "OrgUnitC",
+      "organisationUnitType": "COUNTRY",
+      "openingDate": "2016-03-11T17:00:00.000+0000",
+      "featureType": "NONE",
+      "parent": {
+        "id": "inVD5SdytkT"
+      }
+    },
+    {
+      "name": "OrgUnitD",
+      "shortName": "OrgUnitD",
+      "organisationUnitType": "COUNTRY",
+      "openingDate": "2016-03-11T17:00:00.000+0000",
+      "featureType": "NONE",
+      "parent": {
+        "id": "inVD5SdytkT"
+      }
+    },
+    {
+      "id": "inVD5SdytkT",
+      "name": "OrgUnitA",
+      "organisationUnitType": "COUNTRY",
+      "shortName": "OrgUnitA",
+      "openingDate": "2016-03-11T17:00:00.000+0000",
+      "featureType": "NONE"
+    }
+  ]
+}

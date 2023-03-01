@@ -1,0 +1,5 @@
+export enum DemographicDataLevel {
+  SUBVILLAGE_LEVEL = 'SUBVILLAGE_LEVEL',
+
+  DISTRICT_LEVEL = 'DISTRICT_LEVEL',
+}

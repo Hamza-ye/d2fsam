@@ -1,0 +1,34 @@
+{
+  "amSystemBackApp": {
+    "sqlView": {
+      "home": {
+        "title": "Sql Views",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Sql View",
+        "createOrEditLabel": "Create or edit a Sql View",
+        "notFound": "No Sql Views found"
+      },
+      "created": "A new Sql View is created with identifier {{ param }}",
+      "updated": "A Sql View is updated with identifier {{ param }}",
+      "deleted": "A Sql View is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Sql View {{ id }}?"
+      },
+      "detail": {
+        "title": "Sql View"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "description": "Description",
+      "sqlQuery": "Sql Query",
+      "type": "Type",
+      "cacheStrategy": "Cache Strategy",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

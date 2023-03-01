@@ -1,0 +1,188 @@
+<div>
+  <h2 id="page-heading" data-cy="RelationshipHeading">
+    <span appTranslate="amSystemBackApp.relationship.home.title">Relationships</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.relationship.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-relationship"
+        [routerLink]="['/relationship/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.relationship.home.createLabel"> Create a new Relationship </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="relationships?.length === 0">
+    <span appTranslate="amSystemBackApp.relationship.home.notFound">No Relationships found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="relationships && relationships.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="formName">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.formName">Form Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="key">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.key">Key</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="invertedKey">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.invertedKey">Inverted Key</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deleted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.deleted">Deleted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="relationshipType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.relationshipType">Relationship Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="from.id">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.from">From</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="to.id">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.to">To</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationship.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let relationship of relationships; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/relationship', relationship.id, 'view']">{{ relationship.id }}</a>
+          </td>
+          <td>{{ relationship.uid }}</td>
+          <td>{{ relationship.code }}</td>
+          <td>{{ relationship.created | formatMediumDatetime }}</td>
+          <td>{{ relationship.updated | formatMediumDatetime }}</td>
+          <td>{{ relationship.formName }}</td>
+          <td>{{ relationship.description }}</td>
+          <td>{{ relationship.key }}</td>
+          <td>{{ relationship.invertedKey }}</td>
+          <td>{{ relationship.deleted }}</td>
+          <td>
+            <div *ngIf="relationship.relationshipType">
+              <a [routerLink]="['/relationship-type', relationship.relationshipType.id, 'view']">{{
+                relationship.relationshipType.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="relationship.from">
+              <a [routerLink]="['/relationship-item', relationship.from.id, 'view']">{{ relationship.from.id }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="relationship.to">
+              <a [routerLink]="['/relationship-item', relationship.to.id, 'view']">{{ relationship.to.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ relationship.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/relationship', relationship.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/relationship', relationship.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(relationship)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

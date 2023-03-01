@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityAttributeValue">
+      <h2 data-cy="trackedEntityAttributeValueDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.detail.title">Tracked Entity Attribute Value</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.encryptedValue">Encrypted Value</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.encryptedValue }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.plainValue">Plain Value</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.plainValue }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.value">Value</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.value }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.storedBy">Stored By</span></dt>
+        <dd>
+          <span>{{ trackedEntityAttributeValue.storedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.attribute">Attribute</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityAttributeValue.attribute">
+            <a [routerLink]="['/data-element', trackedEntityAttributeValue.attribute.id, 'view']">{{
+              trackedEntityAttributeValue.attribute.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityAttributeValue.entityInstance">Entity Instance</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityAttributeValue.entityInstance">
+            <a [routerLink]="['/tracked-entity-instance', trackedEntityAttributeValue.entityInstance.id, 'view']">{{
+              trackedEntityAttributeValue.entityInstance.uid
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/tracked-entity-attribute-value', trackedEntityAttributeValue.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

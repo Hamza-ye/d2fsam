@@ -1,0 +1,42 @@
+{
+  "amSystemBackApp": {
+    "dataElement": {
+      "home": {
+        "title": "Data Elements",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Data Element",
+        "createOrEditLabel": "Create or edit a Data Element",
+        "notFound": "No Data Elements found"
+      },
+      "created": "A new Data Element is created with identifier {{ param }}",
+      "updated": "A Data Element is updated with identifier {{ param }}",
+      "deleted": "A Data Element is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Data Element {{ id }}?"
+      },
+      "detail": {
+        "title": "Data Element"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "name": "Name",
+      "description": "Description",
+      "valueType": "Value Type",
+      "aggregationType": "Aggregation Type",
+      "displayInListNoProgram": "Display In List No Program",
+      "zeroIsSignificant": "Zero Is Significant",
+      "mandatory": "Mandatory",
+      "uniqueAttribute": "Unique Attribute",
+      "fieldMask": "Field Mask",
+      "orgunitScope": "Orgunit Scope",
+      "skipSynchronization": "Skip Synchronization",
+      "confidential": "Confidential",
+      "optionSet": "Option Set",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityProgramOwner.
+    -->
+    <changeSet id="20221120204049-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityinstanceid"
+                                 baseTableName="tracked_entity_program_owner"
+                                 constraintName="fk_tracked_entity_program_owner__entity_instance_id"
+                                 referencedColumnNames="trackedentityinstanceid"
+                                 referencedTableName="tracked_entity_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="tracked_entity_program_owner"
+                                 constraintName="fk_tracked_entity_program_owner__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="tracked_entity_program_owner"
+                                 constraintName="fk_tracked_entity_program_owner__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addUniqueConstraint columnNames="trackedentityinstanceid, programid"
+                             constraintName="UX_tei_program"
+                             tableName="tracked_entity_program_owner"/>
+    </changeSet>
+</databaseChangeLog>

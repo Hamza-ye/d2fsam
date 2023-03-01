@@ -1,0 +1,5 @@
+id,uid,code,created,updated,name,description,mindaysfromstart,repeatable,executiondatelabel,duedatelabel,autogenerateevent,blockentryform,openafterenrollment,hide_due_date,featuretype,enableuserassignment,enableteamassignment,inactive,programid
+11,P_STAGE11,P_STAGE11,2022-10-18T05:34:06,2022-10-18T00:55:21,House Bnets dispensing event,House Bnets dispensing event,0,FALSE,Day,-,TRUE,FALSE,TRUE,TRUE,NONE,FALSE,FALSE,FALSE,11
+12,P_STAGE12,P_STAGE12,2022-10-18T03:01:11,2022-10-17T20:56:13,WH Bnets Movement,WH Bnets Movement,0,TRUE,Day,-,TRUE,FALSE,TRUE,TRUE,NONE,FALSE,FALSE,FALSE,12
+13,P_STAGE13,P_STAGE13,2022-10-18T03:40:08,2022-10-18T13:37:06,Malaria Case Treatment & Diagnosis event,Malaria Case Treatement event,0,TRUE,Treatment Date,-,TRUE,FALSE,TRUE,TRUE,NONE,FALSE,FALSE,FALSE,13
+14,P_STAGE14,P_STAGE14,2022-10-17T19:56:36,2022-10-17T17:31:37,Malaria Drugs Despensing event,Malaria Drugs Despensing event,0,TRUE,Date,-,TRUE,FALSE,TRUE,TRUE,NONE,FALSE,FALSE,FALSE,14

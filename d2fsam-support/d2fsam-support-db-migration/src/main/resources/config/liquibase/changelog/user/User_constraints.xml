@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity UserData.
+    -->
+    <changeSet id="20221120204017-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="app_user"
+                                 constraintName="fk_app_user__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="app_user"
+                                 constraintName="fk_app_user__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="avatar"
+                                 baseTableName="app_user"
+                                 constraintName="fk_file_resource__avatar_id"
+                                 referencedColumnNames="fileresourceid"
+                                 referencedTableName="file_resource"/>
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="user__organisation_unit"
+                                 constraintName="fk_user__organisation_unit__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="user__organisation_unit"
+                                 constraintName="fk_user__organisation_unit__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="user__tei_search_organisation_unit"
+                                 constraintName="fk_user_tei_search_org_unit__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="user__tei_search_organisation_unit"
+                                 constraintName="fk_user_tei_search_org_unit__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="user__data_view_organisation_unit"
+                                 constraintName="fk_user_data_view_org_unit__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="user__data_view_organisation_unit"
+                                 constraintName="fk_user_data_view_org_unit__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="user__user_authority_group"
+                                 constraintName="fk_user_user_aut_group__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+<!--        referencedTableName="app_user" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="userroleid"
+                                 baseTableName="user__user_authority_group"
+                                 constraintName="fk_user_user_aut_group__auth_group_id"
+                                 referencedColumnNames="userroleid"
+                                 referencedTableName="user_authority_group"/>
+<!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+    </changeSet>
+</databaseChangeLog>

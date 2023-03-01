@@ -1,0 +1,11 @@
+{
+  "organisationUnits": [
+    {
+      "code": "org-unit-1",
+      "name": "org-unit-1-new-name",
+      "shortName": "org-unit-1-new-name",
+      "organisationUnitType": "COUNTRY",
+      "openingDate": "2020-01-01"
+    }
+  ]
+}

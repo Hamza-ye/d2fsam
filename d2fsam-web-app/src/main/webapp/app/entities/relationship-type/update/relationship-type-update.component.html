@@ -1,0 +1,231 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-relationship-type-heading"
+        data-cy="RelationshipTypeCreateUpdateHeading"
+        appTranslate="amSystemBackApp.relationshipType.home.createOrEditLabel"
+      >
+        Create or edit a Relationship Type
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.bidirectional" for="field_bidirectional"
+            >Bidirectional</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="bidirectional"
+            id="field_bidirectional"
+            data-cy="bidirectional"
+            formControlName="bidirectional"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.fromToName" for="field_fromToName">From To Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="fromToName"
+            id="field_fromToName"
+            data-cy="fromToName"
+            formControlName="fromToName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.toFromName" for="field_toFromName">To From Name</label>
+          <input
+            type="text"
+            class="form-control"
+            name="toFromName"
+            id="field_toFromName"
+            data-cy="toFromName"
+            formControlName="toFromName"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.referral" for="field_referral">Referral</label>
+          <input type="checkbox" class="form-check" name="referral" id="field_referral" data-cy="referral" formControlName="referral" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.fromConstraint" for="field_fromConstraint"
+            >From Constraint</label
+          >
+          <select
+            class="form-control"
+            id="field_fromConstraint"
+            data-cy="fromConstraint"
+            name="fromConstraint"
+            formControlName="fromConstraint"
+            [compareWith]="compareRelationshipConstraint"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="relationshipConstraintOption"
+              *ngFor="let relationshipConstraintOption of relationshipConstraintsSharedCollection"
+            >
+              {{ relationshipConstraintOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.toConstraint" for="field_toConstraint"
+            >To Constraint</label
+          >
+          <select
+            class="form-control"
+            id="field_toConstraint"
+            data-cy="toConstraint"
+            name="toConstraint"
+            formControlName="toConstraint"
+            [compareWith]="compareRelationshipConstraint"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="relationshipConstraintOption"
+              *ngFor="let relationshipConstraintOption of relationshipConstraintsSharedCollection"
+            >
+              {{ relationshipConstraintOption.id }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipType.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

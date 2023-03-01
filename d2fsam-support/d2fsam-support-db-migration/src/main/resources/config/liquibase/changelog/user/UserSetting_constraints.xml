@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="20231120205030-02" author="Hamza">
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="user_setting"
+                                 constraintName="fk_user_setting__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addPrimaryKey columnNames="userid, name"
+                       constraintName="pk_user_setting"
+                       tableName="user_setting"
+                       validate="true"/>
+    </changeSet>
+</databaseChangeLog>

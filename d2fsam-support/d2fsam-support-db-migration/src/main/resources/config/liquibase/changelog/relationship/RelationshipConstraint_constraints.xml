@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity RelationshipConstraint.
+    -->
+    <changeSet id="20221120204110-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitytypeid"
+                                 baseTableName="relationship_constraint"
+                                 constraintName="fk_relationship_constraint__tracked_entity_type_id"
+                                 referencedColumnNames="trackedentitytypeid"
+                                 referencedTableName="tracked_entity_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="relationship_constraint"
+                                 constraintName="fk_relationship_constraint__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="relationship_constraint"
+                                 constraintName="fk_relationship_constraint__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+    </changeSet>
+</databaseChangeLog>

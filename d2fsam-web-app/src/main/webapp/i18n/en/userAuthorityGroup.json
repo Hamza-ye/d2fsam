@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "userAuthorityGroup": {
+      "home": {
+        "title": "User Authority Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new User Authority Group",
+        "createOrEditLabel": "Create or edit a User Authority Group",
+        "notFound": "No User Authority Groups found"
+      },
+      "created": "A new User Authority Group is created with identifier {{ param }}",
+      "updated": "A User Authority Group is updated with identifier {{ param }}",
+      "deleted": "A User Authority Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete User Authority Group {{ id }}?"
+      },
+      "detail": {
+        "title": "User Authority Group"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "description": "Description",
+      "created": "Created",
+      "updated": "Updated",
+      "inactive": "Inactive",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "member": "Member"
+    }
+  }
+}

@@ -1,0 +1,117 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-relationship-item-heading"
+        data-cy="RelationshipItemCreateUpdateHeading"
+        appTranslate="amSystemBackApp.relationshipItem.home.createOrEditLabel"
+      >
+        Create or edit a Relationship Item
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipItem.relationship" for="field_relationship"
+            >Relationship</label
+          >
+          <select
+            class="form-control"
+            id="field_relationship"
+            data-cy="relationship"
+            name="relationship"
+            formControlName="relationship"
+            [compareWith]="compareRelationship"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="relationshipOption" *ngFor="let relationshipOption of relationshipsSharedCollection">
+              {{ relationshipOption.uid }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipItem.trackedEntityInstance" for="field_trackedEntityInstance"
+            >Tracked Entity Instance</label
+          >
+          <select
+            class="form-control"
+            id="field_trackedEntityInstance"
+            data-cy="trackedEntityInstance"
+            name="trackedEntityInstance"
+            formControlName="trackedEntityInstance"
+            [compareWith]="compareTrackedEntityInstance"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="trackedEntityInstanceOption"
+              *ngFor="let trackedEntityInstanceOption of trackedEntityInstancesSharedCollection"
+            >
+              {{ trackedEntityInstanceOption.uid }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipItem.programInstance" for="field_programInstance"
+            >Program Instance</label
+          >
+          <select
+            class="form-control"
+            id="field_programInstance"
+            data-cy="programInstance"
+            name="programInstance"
+            formControlName="programInstance"
+            [compareWith]="compareProgramInstance"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="programInstanceOption" *ngFor="let programInstanceOption of programInstancesSharedCollection">
+              {{ programInstanceOption.uid }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relationshipItem.programStageInstance" for="field_programStageInstance"
+            >Program Stage Instance</label
+          >
+          <select
+            class="form-control"
+            id="field_programStageInstance"
+            data-cy="programStageInstance"
+            name="programStageInstance"
+            formControlName="programStageInstance"
+            [compareWith]="compareProgramStageInstance"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="programStageInstanceOption" *ngFor="let programStageInstanceOption of programStageInstancesSharedCollection">
+              {{ programStageInstanceOption.uid }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

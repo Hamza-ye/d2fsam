@@ -1,0 +1,363 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-program-stage-heading"
+        data-cy="ProgramStageCreateUpdateHeading"
+        appTranslate="amSystemBackApp.programStage.home.createOrEditLabel"
+      >
+        Create or edit a Program Stage
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+          <div *ngIf="editForm.get('name')!.invalid && (editForm.get('name')!.dirty || editForm.get('name')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('name')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.minDaysFromStart" for="field_minDaysFromStart"
+            >Min Days From Start</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="minDaysFromStart"
+            id="field_minDaysFromStart"
+            data-cy="minDaysFromStart"
+            formControlName="minDaysFromStart"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.repeatable" for="field_repeatable">Repeatable</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="repeatable"
+            id="field_repeatable"
+            data-cy="repeatable"
+            formControlName="repeatable"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.executionDateLabel" for="field_executionDateLabel"
+            >Execution Date Label</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="executionDateLabel"
+            id="field_executionDateLabel"
+            data-cy="executionDateLabel"
+            formControlName="executionDateLabel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.dueDateLabel" for="field_dueDateLabel">Due Date Label</label>
+          <input
+            type="text"
+            class="form-control"
+            name="dueDateLabel"
+            id="field_dueDateLabel"
+            data-cy="dueDateLabel"
+            formControlName="dueDateLabel"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.autoGenerateEvent" for="field_autoGenerateEvent"
+            >Auto Generate Event</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="autoGenerateEvent"
+            id="field_autoGenerateEvent"
+            data-cy="autoGenerateEvent"
+            formControlName="autoGenerateEvent"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.validationStrategy" for="field_validationStrategy"
+            >Validation Strategy</label
+          >
+          <select
+            class="form-control"
+            name="validationStrategy"
+            formControlName="validationStrategy"
+            id="field_validationStrategy"
+            data-cy="validationStrategy"
+          >
+            <option [ngValue]="null">{{ 'amSystemBackApp.ValidationStrategy.null' | translate }}</option>
+            <option *ngFor="let validationStrategy of validationStrategyValues" [value]="validationStrategy">
+              {{ 'amSystemBackApp.ValidationStrategy.' + validationStrategy | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.blockEntryForm" for="field_blockEntryForm"
+            >Block Entry Form</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="blockEntryForm"
+            id="field_blockEntryForm"
+            data-cy="blockEntryForm"
+            formControlName="blockEntryForm"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.openAfterEnrollment" for="field_openAfterEnrollment"
+            >Open After Enrollment</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="openAfterEnrollment"
+            id="field_openAfterEnrollment"
+            data-cy="openAfterEnrollment"
+            formControlName="openAfterEnrollment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.programStage.generatedByEnrollmentDate"
+            for="field_generatedByEnrollmentDate"
+            >Generated By Enrollment Date</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="generatedByEnrollmentDate"
+            id="field_generatedByEnrollmentDate"
+            data-cy="generatedByEnrollmentDate"
+            formControlName="generatedByEnrollmentDate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.sortOrder" for="field_sortOrder">Sort Order</label>
+          <input type="number" class="form-control" name="sortOrder" id="field_sortOrder" data-cy="sortOrder" formControlName="sortOrder" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.hideDueDate" for="field_hideDueDate">Hide Due Date</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="hideDueDate"
+            id="field_hideDueDate"
+            data-cy="hideDueDate"
+            formControlName="hideDueDate"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.featureType" for="field_featureType">Feature Type</label>
+          <select class="form-control" name="featureType" formControlName="featureType" id="field_featureType" data-cy="featureType">
+            <option [ngValue]="null">{{ 'amSystemBackApp.FeatureType.null' | translate }}</option>
+            <option *ngFor="let featureType of featureTypeValues" [value]="featureType">
+              {{ 'amSystemBackApp.FeatureType.' + featureType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.enableUserAssignment" for="field_enableUserAssignment"
+            >Enable User Assignment</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="enableUserAssignment"
+            id="field_enableUserAssignment"
+            data-cy="enableUserAssignment"
+            formControlName="enableUserAssignment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.enableTeamAssignment" for="field_enableTeamAssignment"
+            >Enable Team Assignment</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="enableTeamAssignment"
+            id="field_enableTeamAssignment"
+            data-cy="enableTeamAssignment"
+            formControlName="enableTeamAssignment"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.inactive" for="field_inactive">Inactive</label>
+          <input type="checkbox" class="form-check" name="inactive" id="field_inactive" data-cy="inactive" formControlName="inactive" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.periodType" for="field_periodType">Period Type</label>
+          <select
+            class="form-control"
+            id="field_periodType"
+            data-cy="periodType"
+            name="periodType"
+            formControlName="periodType"
+            [compareWith]="comparePeriod"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodOption" *ngFor="let periodOption of periodsSharedCollection">{{ periodOption.id }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.program" for="field_program">Program</label>
+          <select
+            class="form-control"
+            id="field_program"
+            data-cy="program"
+            name="program"
+            formControlName="program"
+            [compareWith]="compareProgram"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="programOption" *ngFor="let programOption of programsSharedCollection">{{ programOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStage.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

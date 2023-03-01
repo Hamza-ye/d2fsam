@@ -1,0 +1,100 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="chv">
+      <h2 data-cy="chvDetailsHeading"><span appTranslate="amSystemBackApp.chv.detail.title">Chv</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ chv.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.uid">Uid</span></dt>
+        <dd>
+          <span>{{ chv.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.code">Code</span></dt>
+        <dd>
+          <span>{{ chv.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.created">Created</span></dt>
+        <dd>
+          <span>{{ chv.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.updated">Updated</span></dt>
+        <dd>
+          <span>{{ chv.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.withdrawn">Withdrawn</span></dt>
+        <dd>
+          <span>{{ chv.withdrawn }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.dateJoined">Date Joined</span></dt>
+        <dd>
+          <span>{{ chv.dateJoined | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.dateWithdrawn">Date Withdrawn</span></dt>
+        <dd>
+          <span>{{ chv.dateWithdrawn | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.name">Name</span></dt>
+        <dd>
+          <span>{{ chv.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.description">Description</span></dt>
+        <dd>
+          <span>{{ chv.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ chv.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.assignedTo">Assigned To</span></dt>
+        <dd>
+          <div *ngIf="chv.assignedTo">
+            <a [routerLink]="['/user-data', chv.assignedTo.id, 'view']">{{ chv.assignedTo.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.district">District</span></dt>
+        <dd>
+          <div *ngIf="chv.district">
+            <a [routerLink]="['/organisation-unit', chv.district.id, 'view']">{{ chv.district.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.homeSubvillage">Home Subvillage</span></dt>
+        <dd>
+          <div *ngIf="chv.homeSubvillage">
+            <a [routerLink]="['/organisation-unit', chv.homeSubvillage.id, 'view']">{{ chv.homeSubvillage.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.managingHf">Managing Hf</span></dt>
+        <dd>
+          <div *ngIf="chv.managingHf">
+            <a [routerLink]="['/organisation-unit', chv.managingHf.id, 'view']">{{ chv.managingHf.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ chv.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.chv.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ chv.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/chv', chv.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+d2fsam-web-app/node_modules/
+src/main/docker/
+jest.conf.js
+d2fsam-web-app/webpack/
+target/
+*/target/
+build/
+*/build/
+*/node/
+*/postcss.config.js

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity Option.
+    -->
+    <changeSet id="20221120204054-1" author="jhipster">
+        <createTable tableName="option_value">
+            <column name="optionvalueid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_option_value__uid" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="false" uniqueConstraintName="ux_option_value__name" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="optionsetid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="attributevalues" type="JSONB" defaultValue="{}"/>
+            <column name="translations" type="JSONB"/>
+            <column name="style" type="JSONB"/>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="option_value" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="option_value" columnName="updated" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+<!--    <changeSet id="20221120204054-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/option_value.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="option_value"-->
+<!--                  usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="uid" type="string"/>-->
+<!--            <column name="code" type="string"/>-->
+<!--            <column name="name" type="string"/>-->
+<!--            <column name="created" type="date"/>-->
+<!--            <column name="updated" type="date"/>-->
+<!--            <column name="description" type="string"/>-->
+<!--            <column name="sortorder" type="numeric"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

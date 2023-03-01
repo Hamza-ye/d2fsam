@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Program.
+    -->
+    <changeSet id="20221120204037-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="periodid"
+                                 baseTableName="program"
+                                 constraintName="fk_program__period_id"
+                                 referencedColumnNames="periodid"
+                                 referencedTableName="period"/>
+
+        <addForeignKeyConstraint baseColumnNames="expiryperiodtypeid"
+                                 baseTableName="program"
+                                 constraintName="fk_program__expiry_period_type_id"
+                                 referencedColumnNames="periodtypeid"
+                                 referencedTableName="period_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="relatedprogramid"
+                                 baseTableName="program"
+                                 constraintName="fk_program__related_program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitytypeid"
+                                 baseTableName="program"
+                                 constraintName="fk_program__tracked_entity_type_id"
+                                 referencedColumnNames="trackedentitytypeid"
+                                 referencedTableName="tracked_entity_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program"
+                                 constraintName="fk_program__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program"
+                                 constraintName="fk_program__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program__organisation_units"
+                                 constraintName="fk_program_organisation_unit__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="program__organisation_units"
+                                 constraintName="fk_program_organisation_unit__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program__user_authority_group"
+                                 constraintName="fk_program_user_aut_group__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+<!--        referencedTableName="program" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="userroleid"
+                                 baseTableName="program__user_authority_group"
+                                 constraintName="fk_program_user_aut_group__auth_group_id"
+                                 referencedColumnNames="userroleid"
+                                 referencedTableName="user_authority_group"/>
+<!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+    </changeSet>
+</databaseChangeLog>

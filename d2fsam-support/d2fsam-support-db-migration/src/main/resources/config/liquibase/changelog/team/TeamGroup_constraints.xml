@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TeamGroup.
+    -->
+    <changeSet id="20221120204102-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="teamgroupid"
+                                 baseTableName="team_group__members"
+                                 constraintName="fk_team_group_member__team_group_id"
+                                 referencedColumnNames="teamgroupid"
+                                 referencedTableName="team_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="team_group__members"
+                                 constraintName="fk_team_group_member__member_id"
+                                 referencedColumnNames="teamid"
+                                 referencedTableName="team"/>
+    </changeSet>
+</databaseChangeLog>

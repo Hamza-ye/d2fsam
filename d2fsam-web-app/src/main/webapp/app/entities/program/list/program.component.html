@@ -1,0 +1,308 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramHeading">
+    <span appTranslate="amSystemBackApp.program.home.title">Programs</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.program.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program"
+        [routerLink]="['/program/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.program.home.createLabel"> Create a new Program </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programs?.length === 0">
+    <span appTranslate="amSystemBackApp.program.home.notFound">No Programs found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="programs && programs.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="shortName">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.shortName">Short Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="version">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.version">Version</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="incidentDateLabel">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.incidentDateLabel">Incident Date Label</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="programType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.programType">Program Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="displayIncidentDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.displayIncidentDate">Display Incident Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="onlyEnrollOnce">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.onlyEnrollOnce">Only Enroll Once</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="captureCoordinates">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.captureCoordinates">Capture Coordinates</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="expiryDays">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.expiryDays">Expiry Days</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="completeEventsExpiryDays">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.completeEventsExpiryDays">Complete Events Expiry Days</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="accessLevel">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.accessLevel">Access Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="ignoreOverDueEvents">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.ignoreOverDueEvents">Ignore Over Due Events</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="selectEnrollmentDatesInFuture">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.selectEnrollmentDatesInFuture">Select Enrollment Dates In Future</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="selectIncidentDatesInFuture">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.selectIncidentDatesInFuture">Select Incident Dates In Future</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="featureType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.featureType">Feature Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="period.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.period">Period</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="expiryPeriodType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.expiryPeriodType">Expiry Period Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="relatedProgram.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.relatedProgram">Related Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.trackedEntityType">Tracked Entity Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.program.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let program of programs; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program', program.id, 'view']">{{ program.id }}</a>
+          </td>
+          <td>{{ program.uid }}</td>
+          <td>{{ program.code }}</td>
+          <td>{{ program.created | formatMediumDatetime }}</td>
+          <td>{{ program.updated | formatMediumDatetime }}</td>
+          <td>{{ program.name }}</td>
+          <td>{{ program.shortName }}</td>
+          <td>{{ program.description }}</td>
+          <td>{{ program.version }}</td>
+          <td>{{ program.incidentDateLabel }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.ProgramType.' + program.programType }}">{{ program.programType }}</td>
+          <td>{{ program.displayIncidentDate }}</td>
+          <td>{{ program.onlyEnrollOnce }}</td>
+          <td>{{ program.captureCoordinates }}</td>
+          <td>{{ program.expiryDays }}</td>
+          <td>{{ program.completeEventsExpiryDays }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.AccessLevel.' + program.accessLevel }}">{{ program.accessLevel }}</td>
+          <td>{{ program.ignoreOverDueEvents }}</td>
+          <td>{{ program.selectEnrollmentDatesInFuture }}</td>
+          <td>{{ program.selectIncidentDatesInFuture }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.FeatureType.' + program.featureType }}">{{ program.featureType }}</td>
+          <td>{{ program.inactive }}</td>
+          <td>
+            <div *ngIf="program.period">
+              <a [routerLink]="['/period', program.period.id, 'view']">{{ program.period.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="program.expiryPeriodType">
+              <a [routerLink]="['/period-type', program.expiryPeriodType.id, 'view']">{{ program.expiryPeriodType.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="program.relatedProgram">
+              <a [routerLink]="['/program', program.relatedProgram.id, 'view']">{{ program.relatedProgram.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="program.trackedEntityType">
+              <a [routerLink]="['/tracked-entity-type', program.trackedEntityType.id, 'view']">{{ program.trackedEntityType.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ program.createdBy?.login }}
+          </td>
+          <td>
+            {{ program.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program', program.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program', program.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(program)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="programs && programs.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

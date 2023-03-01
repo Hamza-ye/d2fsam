@@ -1,0 +1,49 @@
+{
+  "amSystemBackApp": {
+    "malariaCase": {
+      "home": {
+        "title": "Malaria Cases",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Malaria Case",
+        "createOrEditLabel": "Create or edit a Malaria Case",
+        "notFound": "No Malaria Cases found"
+      },
+      "created": "A new Malaria Case is created with identifier {{ param }}",
+      "updated": "A Malaria Case is updated with identifier {{ param }}",
+      "deleted": "A Malaria Case is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Malaria Case {{ id }}?"
+      },
+      "detail": {
+        "title": "Malaria Case"
+      },
+      "id": "ID",
+      "uuid": "Uuid",
+      "code": "Code",
+      "name": "Name",
+      "entryStarted": "Entry Started",
+      "lastSynced": "Last Synced",
+      "deleted": "Deleted",
+      "dateOfExamination": "Date Of Examination",
+      "mobile": "Mobile",
+      "gender": "Gender",
+      "age": "Age",
+      "isPregnant": "Is Pregnant",
+      "malariaTestResult": "Malaria Test Result",
+      "severity": "Severity",
+      "referral": "Referral",
+      "barImageUrl": "Bar Image Url",
+      "comment": "Comment",
+      "status": "Status",
+      "seen": "Seen",
+      "created": "Created",
+      "updated": "Updated",
+      "createdAtClient": "Created At Client",
+      "updatedAtClient": "Updated At Client",
+      "deletedAt": "Deleted At",
+      "subVillage": "Sub Village",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

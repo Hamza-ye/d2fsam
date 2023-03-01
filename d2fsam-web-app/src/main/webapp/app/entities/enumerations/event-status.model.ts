@@ -1,0 +1,19 @@
+export enum EventStatus {
+  ACTIVE = 'ACTIVE',
+
+  COMPLETED = 'COMPLETED',
+
+  VISITED = 'VISITED',
+
+  SCHEDULE = 'SCHEDULE',
+
+  OVERDUE = 'OVERDUE',
+
+  SKIPPED = 'SKIPPED',
+
+  CANCELLED = 'CANCELLED',
+
+  APPROVED = 'APPROVED',
+
+  REVIEWED = 'REVIEWED',
+}

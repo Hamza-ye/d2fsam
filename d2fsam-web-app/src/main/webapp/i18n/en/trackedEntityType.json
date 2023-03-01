@@ -1,0 +1,35 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityType": {
+      "home": {
+        "title": "Tracked Entity Types",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Type",
+        "createOrEditLabel": "Create or edit a Tracked Entity Type",
+        "notFound": "No Tracked Entity Types found"
+      },
+      "created": "A new Tracked Entity Type is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Type is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Type is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Type {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Type"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "name": "Name",
+      "description": "Description",
+      "maxTeiCountToReturn": "Max Tei Count To Return",
+      "allowAuditLog": "Allow Audit Log",
+      "featureType": "Feature Type",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "trackedEntityTypeAttribute": "Tracked Entity Type Attribute"
+    }
+  }
+}

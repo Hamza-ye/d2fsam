@@ -1,0 +1,13 @@
+export enum OrganisationUnitType {
+  COUNTRY = 'COUNTRY',
+
+  GOV = 'GOV',
+
+  DISTRICT = 'DISTRICT',
+
+  VILLAGE = 'VILLAGE',
+
+  SUB_VILLAGE = 'SUB_VILLAGE',
+
+  HEALTH_FACILITY = 'HEALTH_FACILITY',
+}

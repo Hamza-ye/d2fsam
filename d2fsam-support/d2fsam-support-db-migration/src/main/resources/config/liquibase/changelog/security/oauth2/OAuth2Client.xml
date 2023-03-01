@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Added the entity apiToken.
+    -->
+    <changeSet id="20101080204025-88" author="Hamza">
+        <createTable tableName="oauth2_client">
+            <column name="oauth2clientid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_oauth2_client__uid"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_oauth2_client__code"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="cid" type="varchar(230)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="secret" type="varchar(512)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+        </createTable>
+        <dropDefaultValue tableName="oauth2_client" columnName="updated" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="oauth2_client_redirect_uris" author="Hamza">
+        <createTable tableName="oauth2_client_redirect_uris">
+            <column name="oauth2clientid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort_order" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="redirecturi" type="text"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseColumnNames="oauth2clientid"
+            baseTableName="oauth2_client_redirect_uris"
+            constraintName="FK_oauth2_client_redirect_uris__oauth2clientid"
+            deferrable="false" initiallyDeferred="false"
+            referencedColumnNames="oauth2clientid"
+            referencedTableName="oauth2_client" validate="true"/>
+    </changeSet>
+
+    <changeSet id="oauth2_client_grant_types" author="Hamza">
+        <createTable tableName="oauth2_client_grant_types">
+            <column name="oauth2clientid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sort_order" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="granttype" type="text"/>
+        </createTable>
+
+        <addForeignKeyConstraint
+            baseColumnNames="oauth2clientid"
+            baseTableName="oauth2_client_grant_types"
+            constraintName="FK_oauth2_client_grant_types__oauth2clientid"
+            deferrable="false" initiallyDeferred="false"
+            referencedColumnNames="oauth2clientid"
+            referencedTableName="oauth2_client" validate="true"/>
+    </changeSet>
+</databaseChangeLog>

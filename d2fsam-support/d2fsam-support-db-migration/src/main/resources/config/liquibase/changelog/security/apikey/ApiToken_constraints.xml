@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Added the entity UserGroup.
+    -->
+    <changeSet id="2039990204025-99" author="Hamza">
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="api_token"
+                                 constraintName="fk_api_token__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="api_token"
+                                 constraintName="fk_api_token__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+
+</databaseChangeLog>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity message.
+    -->
+    <changeSet id="20221120204037-2" author="jhipster">
+        <addForeignKeyConstraint baseColumnNames="senderid"
+                                 baseTableName="message"
+                                 constraintName="fk_message__sender_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+
+        <addForeignKeyConstraint baseColumnNames="messageid"
+                                 baseTableName="message__attachments"
+                                 constraintName="fk_message__attachments_message_id"
+                                 referencedColumnNames="messageid"
+                                 referencedTableName="message"/>
+<!--        referencedTableName="message" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="fileresourceid"
+                                 baseTableName="message__attachments"
+                                 constraintName="fk_message__attachments_file_resource_id"
+                                 referencedColumnNames="fileresourceid"
+                                 referencedTableName="file_resource"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityTypeAttribute">
+      <h2 data-cy="trackedEntityTypeAttributeDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.detail.title">Tracked Entity Type Attribute</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.uid">Uid</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.code">Code</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.displayInList">Display In List</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.displayInList }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.mandatory">Mandatory</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.mandatory }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.searchable">Searchable</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.searchable }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityAttribute">Tracked Entity Attribute</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityTypeAttribute.trackedEntityAttribute">
+            <a [routerLink]="['/data-element', trackedEntityTypeAttribute.trackedEntityAttribute.id, 'view']">{{
+              trackedEntityTypeAttribute.trackedEntityAttribute.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityType">Tracked Entity Type</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityTypeAttribute.trackedEntityType">
+            <a [routerLink]="['/tracked-entity-type', trackedEntityTypeAttribute.trackedEntityType.id, 'view']">{{
+              trackedEntityTypeAttribute.trackedEntityType.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ trackedEntityTypeAttribute.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/tracked-entity-type-attribute', trackedEntityTypeAttribute.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

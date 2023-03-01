@@ -1,0 +1,156 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-program-ownership-history-heading"
+        data-cy="ProgramOwnershipHistoryCreateUpdateHeading"
+        appTranslate="amSystemBackApp.programOwnershipHistory.home.createOrEditLabel"
+      >
+        Create or edit a Program Ownership History
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.createdBy" for="field_createdBy"
+            >Created By</label
+          >
+          <input type="text" class="form-control" name="createdBy" id="field_createdBy" data-cy="createdBy" formControlName="createdBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.startDate" for="field_startDate"
+            >Start Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="datetime-local"
+              class="form-control"
+              name="startDate"
+              formControlName="startDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.endDate" for="field_endDate">End Date</label>
+          <div class="d-flex">
+            <input
+              id="field_endDate"
+              data-cy="endDate"
+              type="datetime-local"
+              class="form-control"
+              name="endDate"
+              formControlName="endDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.program" for="field_program">Program</label>
+          <select
+            class="form-control"
+            id="field_program"
+            data-cy="program"
+            name="program"
+            formControlName="program"
+            [compareWith]="compareProgram"
+          >
+            <option *ngIf="!editForm.get('program')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="programOption" *ngFor="let programOption of programsSharedCollection">{{ programOption.name }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['program'])!.invalid && (editForm.get(['program'])!.dirty || editForm.get(['program'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['program'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.entityInstance" for="field_entityInstance"
+            >Entity Instance</label
+          >
+          <select
+            class="form-control"
+            id="field_entityInstance"
+            data-cy="entityInstance"
+            name="entityInstance"
+            formControlName="entityInstance"
+            [compareWith]="compareTrackedEntityInstance"
+          >
+            <option *ngIf="!editForm.get('entityInstance')!.value" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="trackedEntityInstanceOption"
+              *ngFor="let trackedEntityInstanceOption of trackedEntityInstancesSharedCollection"
+            >
+              {{ trackedEntityInstanceOption.uid }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['entityInstance'])!.invalid &&
+            (editForm.get(['entityInstance'])!.dirty || editForm.get(['entityInstance'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['entityInstance'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programOwnershipHistory.organisationUnit" for="field_organisationUnit"
+            >Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_organisationUnit"
+            data-cy="organisationUnit"
+            name="organisationUnit"
+            formControlName="organisationUnit"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

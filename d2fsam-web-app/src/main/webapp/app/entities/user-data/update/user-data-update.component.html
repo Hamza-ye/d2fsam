@@ -1,0 +1,203 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="app-user-data-heading" data-cy="UserDataCreateUpdateHeading" appTranslate="amSystemBackApp.userData.home.createOrEditLabel">
+        Create or edit a User Data
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.name" for="field_name">Name</label>
+          <input type="text" class="form-control" name="name" id="field_name" data-cy="name" formControlName="name" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.uuid" for="field_uuid">Uuid</label>
+          <input type="text" class="form-control" name="uuid" id="field_uuid" data-cy="uuid" formControlName="uuid" />
+          <div *ngIf="editForm.get('uuid')!.invalid && (editForm.get('uuid')!.dirty || editForm.get('uuid')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.inactive" for="field_inactive">Inactive</label>
+          <input type="checkbox" class="form-check" name="inactive" id="field_inactive" data-cy="inactive" formControlName="inactive" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.userData.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label appTranslate="amSystemBackApp.userData.organisationUnit" for="field_organisationUnits">Organisation Unit</label>
+          <select
+            class="form-control"
+            id="field_organisationUnits"
+            data-cy="organisationUnit"
+            multiple
+            name="organisationUnits"
+            formControlName="organisationUnits"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label appTranslate="amSystemBackApp.userData.teiSearchOrganisationUnit" for="field_teiSearchOrganisationUnits"
+            >Tei Search Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_teiSearchOrganisationUnits"
+            data-cy="teiSearchOrganisationUnit"
+            multiple
+            name="teiSearchOrganisationUnits"
+            formControlName="teiSearchOrganisationUnits"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label appTranslate="amSystemBackApp.userData.dataViewOrganisationUnit" for="field_dataViewOrganisationUnits"
+            >Data View Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_dataViewOrganisationUnits"
+            data-cy="dataViewOrganisationUnit"
+            multiple
+            name="dataViewOrganisationUnits"
+            formControlName="dataViewOrganisationUnits"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label appTranslate="amSystemBackApp.userData.userAuthorityGroups" for="field_userAuthorityGroups">User Authority Groups</label>
+          <select
+            class="form-control"
+            id="field_userAuthorityGroups"
+            data-cy="userAuthorityGroups"
+            multiple
+            name="userAuthorityGroups"
+            formControlName="userAuthorityGroups"
+            [compareWith]="compareUserAuthorityGroup"
+          >
+            <option [ngValue]="userAuthorityGroupOption" *ngFor="let userAuthorityGroupOption of userAuthorityGroupsSharedCollection">
+              {{ userAuthorityGroupOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

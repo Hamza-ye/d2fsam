@@ -1,0 +1,11 @@
+id,value,created,modifiedby,providedelsewhere,audittype,programstageinstanceid,dataelementid
+1,Account,2022-11-20T10:19:41,back-end withdrawal,FALSE,DELETE,1,1
+2,back-end deposit,2022-11-20T06:35:36,Interactions Garden primary,TRUE,CREATE,2,2
+3,Euro,2022-11-20T18:40:18,Rustic,TRUE,SEARCH,3,3
+4,cross-platform,2022-11-20T16:49:03,tan,TRUE,READ,4,4
+5,tan,2022-11-20T12:03:27,Berkshire,FALSE,READ,5,5
+6,Unbranded,2022-11-20T04:47:02,Cotton web-readiness,FALSE,CREATE,6,6
+7,Sausages Human Inverse,2022-11-20T04:14:24,Soft SSL multi-tasking,FALSE,READ,7,7
+8,Branding hacking,2022-11-19T21:38:27,Forward Facilitator,FALSE,DELETE,8,8
+9,service-desk,2022-11-20T03:19:19,Center Palau,FALSE,SEARCH,9,9
+10,Technician Arkansas Operative,2022-11-20T13:16:09,Bike,TRUE,SEARCH,10,10

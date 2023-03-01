@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programOwnershipHistory">
+      <h2 data-cy="programOwnershipHistoryDetailsHeading">
+        <span appTranslate="amSystemBackApp.programOwnershipHistory.detail.title">Program Ownership History</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programOwnershipHistory.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ programOwnershipHistory.createdBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ programOwnershipHistory.startDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ programOwnershipHistory.endDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.program">Program</span></dt>
+        <dd>
+          <div *ngIf="programOwnershipHistory.program">
+            <a [routerLink]="['/program', programOwnershipHistory.program.id, 'view']">{{ programOwnershipHistory.program.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.entityInstance">Entity Instance</span></dt>
+        <dd>
+          <div *ngIf="programOwnershipHistory.entityInstance">
+            <a [routerLink]="['/tracked-entity-instance', programOwnershipHistory.entityInstance.id, 'view']">{{
+              programOwnershipHistory.entityInstance.uid
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programOwnershipHistory.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="programOwnershipHistory.organisationUnit">
+            <a [routerLink]="['/organisation-unit', programOwnershipHistory.organisationUnit.id, 'view']">{{
+              programOwnershipHistory.organisationUnit.name
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program-ownership-history', programOwnershipHistory.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

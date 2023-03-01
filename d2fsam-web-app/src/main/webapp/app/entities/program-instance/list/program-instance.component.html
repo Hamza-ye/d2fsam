@@ -1,0 +1,300 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramInstanceHeading">
+    <span appTranslate="amSystemBackApp.programInstance.home.title">Program Instances</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.programInstance.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program-instance"
+        [routerLink]="['/program-instance/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.programInstance.home.createLabel"> Create a new Program Instance </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programInstances?.length === 0">
+    <span appTranslate="amSystemBackApp.programInstance.home.notFound">No Program Instances found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="programInstances && programInstances.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uuid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.uuid">Uuid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.createdAtClient">Created At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedAtClient">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.updatedAtClient">Updated At Client</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastSynchronized">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.lastSynchronized">Last Synchronized</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="incidentDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.incidentDate">Incident Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="enrollmentDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.enrollmentDate">Enrollment Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="periodLabel">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.periodLabel">Period Label</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="endDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.endDate">End Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="status">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="storedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.storedBy">Stored By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="completedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.completedBy">Completed By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="completedDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.completedDate">Completed Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="followup">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.followup">Followup</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deleted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.deleted">Deleted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deletedAt">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.deletedAt">Deleted At</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="entityInstance.uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.entityInstance">Entity Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="program.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.program">Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="organisationUnit.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.organisationUnit">Organisation Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="activity.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.activity">Activity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="approvedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programInstance.approvedBy">Approved By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let programInstance of programInstances; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program-instance', programInstance.id, 'view']">{{ programInstance.id }}</a>
+          </td>
+          <td>{{ programInstance.uid }}</td>
+          <td>{{ programInstance.uuid }}</td>
+          <td>{{ programInstance.created | formatMediumDatetime }}</td>
+          <td>{{ programInstance.updated | formatMediumDatetime }}</td>
+          <td>{{ programInstance.createdAtClient | formatMediumDatetime }}</td>
+          <td>{{ programInstance.updatedAtClient | formatMediumDatetime }}</td>
+          <td>{{ programInstance.lastSynchronized | formatMediumDatetime }}</td>
+          <td>{{ programInstance.incidentDate | formatMediumDatetime }}</td>
+          <td>{{ programInstance.enrollmentDate | formatMediumDatetime }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.PeriodLabel.' + programInstance.periodLabel }}">{{ programInstance.periodLabel }}</td>
+          <td>{{ programInstance.endDate | formatMediumDatetime }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.EventStatus.' + programInstance.status }}">{{ programInstance.status }}</td>
+          <td>{{ programInstance.storedBy }}</td>
+          <td>{{ programInstance.completedBy }}</td>
+          <td>{{ programInstance.completedDate | formatMediumDatetime }}</td>
+          <td>{{ programInstance.followup }}</td>
+          <td>{{ programInstance.deleted }}</td>
+          <td>{{ programInstance.deletedAt | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="programInstance.entityInstance">
+              <a [routerLink]="['/tracked-entity-instance', programInstance.entityInstance.id, 'view']">{{
+                programInstance.entityInstance.uid
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="programInstance.program">
+              <a [routerLink]="['/program', programInstance.program.id, 'view']">{{ programInstance.program.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="programInstance.organisationUnit">
+              <a [routerLink]="['/organisation-unit', programInstance.organisationUnit.id, 'view']">{{
+                programInstance.organisationUnit.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="programInstance.activity">
+              <a [routerLink]="['/activity', programInstance.activity.id, 'view']">{{ programInstance.activity.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ programInstance.createdBy?.login }}
+          </td>
+          <td>
+            {{ programInstance.updatedBy?.login }}
+          </td>
+          <td>
+            {{ programInstance.approvedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program-instance', programInstance.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program-instance', programInstance.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(programInstance)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="programInstances && programInstances.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

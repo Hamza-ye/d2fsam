@@ -1,0 +1,11 @@
+userid,authorityname
+11,all
+11,create_all
+11,all_chvMalariaCase
+11,view_chvMalariaCase
+11,create_chvMalariaCase
+11,delete_chvMalariaCase
+11,all_chvStockMovement
+11,view_chvStockMovement
+11,create_chvStockMovement
+11,delete_chvStockMovement

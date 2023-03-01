@@ -1,0 +1,11 @@
+id;uid;code;name;created;updated;description;sqlquery;type;cachestrategy
+1;red;bandwidth-monitored;Borders Product Mayotte;2022-11-19T22:58:33;2022-11-20T10:59:57;backing;experiences;QUERY;CACHE_10_MINUTES
+2;calculating;emulation;withdrawal;2022-11-20T14:15:39;2022-11-20T00:19:50;Metical Customer compressing;Generic sensor;QUERY;CACHE_1_HOUR
+3;Metal;website GB;communities quantifying;2022-11-20T11:44:22;2022-11-20T13:51:09;online collaborative;IB;QUERY;CACHE_1_MINUTE
+4;Dominican;yellow Moldova;Guam Grass-roots Facilitator;2022-11-20T02:11:25;2022-11-20T15:15:53;Corner Idaho;scalable;MATERIALIZED_VIEW;CACHE_30_MINUTES
+5;tan Unit 6t;Garden Baby Alaska;up superstructure;2022-11-20T15:09:32;2022-11-20T15:02:39;metrics synthesize Alaska;exuding Bedfordshire;QUERY;RESPECT_SYSTEM_SETTING
+6;extend Cons;analyzer e-commerce;Virginia Berkshire;2022-11-19T21:20:35;2022-11-20T09:19:14;wireless California Intranet;Right-sized navigate;VIEW;CACHE_1_HOUR
+7;Implementat;client-server Health withdrawal;Creative benchmark deposit;2022-11-20T10:15:11;2022-11-20T06:22:34;payment Music;Security;VIEW;CACHE_5_MINUTES
+8;disintermed;Administrator;invoice revolutionize neural;2022-11-20T14:10:07;2022-11-20T20:22:59;multi-byte Gloves;cyan Bhutan Brand;QUERY;CACHE_TWO_WEEKS
+9;Credit bus;Manat systemic;Pre-emptive;2022-11-19T22:25:04;2022-11-20T11:26:29;Computer turquoise;FTP static;VIEW;CACHE_1_HOUR
+10;initiative ;payment Dollar;transmit withdrawal SMTP;2022-11-20T00:13:12;2022-11-20T16:50:35;drive Account;next-generation reintermediate 1080p;QUERY;NO_CACHE

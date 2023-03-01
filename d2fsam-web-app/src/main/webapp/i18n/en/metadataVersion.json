@@ -1,0 +1,31 @@
+{
+  "amSystemBackApp": {
+    "metadataVersion": {
+      "home": {
+        "title": "Metadata Versions",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Metadata Version",
+        "createOrEditLabel": "Create or edit a Metadata Version",
+        "notFound": "No Metadata Versions found"
+      },
+      "created": "A new Metadata Version is created with identifier {{ param }}",
+      "updated": "A Metadata Version is updated with identifier {{ param }}",
+      "deleted": "A Metadata Version is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Metadata Version {{ id }}?"
+      },
+      "detail": {
+        "title": "Metadata Version"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "importDate": "Import Date",
+      "type": "Type",
+      "hashCode": "Hash Code",
+      "updatedBy": "Updated By"
+    }
+  }
+}

@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programTrackedEntityAttribute">
+      <h2 data-cy="programTrackedEntityAttributeDetailsHeading">
+        <span appTranslate="amSystemBackApp.programTrackedEntityAttribute.detail.title">Program Tracked Entity Attribute</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.uid">Uid</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.code">Code</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.created">Created</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.updated">Updated</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.displayInList">Display In List</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.displayInList }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.sortOrder">Sort Order</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.sortOrder }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.mandatory">Mandatory</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.mandatory }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.allowFutureDate">Allow Future Date</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.allowFutureDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.searchable">Searchable</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.searchable }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.defaultValue">Default Value</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.defaultValue }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.program">Program</span></dt>
+        <dd>
+          <div *ngIf="programTrackedEntityAttribute.program">
+            <a [routerLink]="['/program', programTrackedEntityAttribute.program.id, 'view']">{{
+              programTrackedEntityAttribute.program.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.attribute">Attribute</span></dt>
+        <dd>
+          <div *ngIf="programTrackedEntityAttribute.attribute">
+            <a [routerLink]="['/data-element', programTrackedEntityAttribute.attribute.id, 'view']">{{
+              programTrackedEntityAttribute.attribute.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programTrackedEntityAttribute.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ programTrackedEntityAttribute.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/program-tracked-entity-attribute', programTrackedEntityAttribute.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

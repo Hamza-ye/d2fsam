@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramRuleAction.
+    -->
+    <changeSet id="20221230204036-6" author="hamza">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programruleid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__program_rule_id"
+                                 referencedColumnNames="programruleid"
+                                 referencedTableName="program_rule"/>
+<!--        referencedTableName="program_rule" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__attribute_id"
+                                 referencedColumnNames="trackedentityattributeid"
+                                 referencedTableName="tracked_entity_attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+
+        <addForeignKeyConstraint baseColumnNames="optionvalueid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__option_id"
+                                 referencedColumnNames="optionvalueid"
+                                 referencedTableName="option_value"/>
+
+        <addForeignKeyConstraint baseColumnNames="optiongroupid"
+                                 baseTableName="program_rule_action"
+                                 constraintName="fk_program_rule_action__option_group_id"
+                                 referencedColumnNames="optiongroupid"
+                                 referencedTableName="option_group"/>
+    </changeSet>
+</databaseChangeLog>

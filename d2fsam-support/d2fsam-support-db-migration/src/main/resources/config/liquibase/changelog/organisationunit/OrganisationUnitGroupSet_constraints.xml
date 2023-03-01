@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity OrganisationUnitGroupSet.
+    -->
+    <changeSet id="20221120204023-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="orgunit_groupset"
+                                 constraintName="fk_orgunit_groupset__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="orgunit_groupset"
+                                 constraintName="fk_orgunit_groupset__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="orgunitgroupsetid"
+                                 baseTableName="orgunit_groupset__orgunit_group"
+                                 constraintName="fk_orgunit_groupset__orgunit_group__groupset_id"
+                                 referencedColumnNames="orgunitgroupsetid"
+                                 referencedTableName="orgunit_groupset"/>
+
+        <addForeignKeyConstraint baseColumnNames="orgunitgroupid"
+                                 baseTableName="orgunit_groupset__orgunit_group"
+                                 constraintName="fk_orgunit_groupset__orgunit_group__organisation_unit_group_id"
+                                 referencedColumnNames="orgunitgroupid"
+                                 referencedTableName="orgunit_group"/>
+    </changeSet>
+</databaseChangeLog>

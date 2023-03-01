@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityInstance.
+    -->
+    <changeSet id="20221120204040-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="periodid"
+                                 baseTableName="tracked_entity_instance"
+                                 constraintName="fk_tracked_entity_instance__period_id"
+                                 referencedColumnNames="periodid"
+                                 referencedTableName="period"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="tracked_entity_instance"
+                                 constraintName="fk_tracked_entity_instance__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitytypeid"
+                                 baseTableName="tracked_entity_instance"
+                                 constraintName="fk_tracked_entity_instance__tracked_entity_type_id"
+                                 referencedColumnNames="trackedentitytypeid"
+                                 referencedTableName="tracked_entity_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="tracked_entity_instance"
+                                 constraintName="fk_tracked_entity_instance__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="tracked_entity_instance"
+                                 constraintName="fk_tracked_entity_instance__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

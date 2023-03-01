@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Activity.
+    -->
+    <changeSet id="20221120204035-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="projectid"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity__project_id"
+                                 referencedColumnNames="projectid"
+                                 referencedTableName="project"/>
+
+        <addForeignKeyConstraint baseColumnNames="activitytargetid"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity__activity_used_as_target_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="demographicdataid"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity__demographic_data_id"
+                                 referencedColumnNames="demographicdataid"
+                                 referencedTableName="demographic_data"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="activity"
+                                 constraintName="fk_activity__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="activityid"
+                                 baseTableName="activity__targeted_organisation_units"
+                                 constraintName="fk_activity_targeted_org_units__activity_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="activity__targeted_organisation_units"
+                                 constraintName="fk_activity_targeted_org_units__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="activityid"
+                                 baseTableName="activity__programs"
+                                 constraintName="fk_activity__programs__activity_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="activity__programs"
+                                 constraintName="fk_activity__programs__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program" onDelete="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

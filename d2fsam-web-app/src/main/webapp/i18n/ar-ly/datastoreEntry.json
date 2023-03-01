@@ -1,0 +1,32 @@
+{
+  "amSystemBackApp": {
+    "datastoreEntry": {
+      "home": {
+        "title": "Datastore Entries",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Datastore Entry",
+        "createOrEditLabel": "Create or edit a Datastore Entry",
+        "notFound": "No Datastore Entries found"
+      },
+      "created": "A new Datastore Entry is created with identifier {{ param }}",
+      "updated": "A Datastore Entry is updated with identifier {{ param }}",
+      "deleted": "A Datastore Entry is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Datastore Entry {{ id }}?"
+      },
+      "detail": {
+        "title": "Datastore Entry"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "key": "Key",
+      "namespace": "Namespace",
+      "encrypted": "Encrypted",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

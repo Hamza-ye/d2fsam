@@ -1,0 +1,193 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityDataValueAuditHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.home.title">Tracked Entity Data Value Audits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-data-value-audit"
+        [routerLink]="['/tracked-entity-data-value-audit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.home.createLabel">
+          Create a new Tracked Entity Data Value Audit
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityDataValueAudits?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.home.notFound">No Tracked Entity Data Value Audits found</span>
+  </div>
+
+  <div
+    class="table-responsive table-entities"
+    id="entities"
+    *ngIf="trackedEntityDataValueAudits && trackedEntityDataValueAudits.length > 0"
+  >
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="value">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.value">Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="modifiedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.modifiedBy">Modified By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="providedElsewhere">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.providedElsewhere">Provided Elsewhere</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="auditType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.auditType">Audit Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="programStageInstance.uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.programStageInstance">Program Stage Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="dataElement.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.dataElement">Data Element</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="period.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.period">Period</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityDataValueAudit of trackedEntityDataValueAudits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-data-value-audit', trackedEntityDataValueAudit.id, 'view']">{{
+              trackedEntityDataValueAudit.id
+            }}</a>
+          </td>
+          <td>{{ trackedEntityDataValueAudit.value }}</td>
+          <td>{{ trackedEntityDataValueAudit.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityDataValueAudit.updated | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityDataValueAudit.modifiedBy }}</td>
+          <td>{{ trackedEntityDataValueAudit.providedElsewhere }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.AuditType.' + trackedEntityDataValueAudit.auditType }}">
+            {{ trackedEntityDataValueAudit.auditType }}
+          </td>
+          <td>
+            <div *ngIf="trackedEntityDataValueAudit.programStageInstance">
+              <a [routerLink]="['/program-stage-instance', trackedEntityDataValueAudit.programStageInstance.id, 'view']">{{
+                trackedEntityDataValueAudit.programStageInstance.uid
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityDataValueAudit.dataElement">
+              <a [routerLink]="['/data-element', trackedEntityDataValueAudit.dataElement.id, 'view']">{{
+                trackedEntityDataValueAudit.dataElement.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityDataValueAudit.period">
+              <a [routerLink]="['/period', trackedEntityDataValueAudit.period.id, 'view']">{{ trackedEntityDataValueAudit.period.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-data-value-audit', trackedEntityDataValueAudit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-data-value-audit', trackedEntityDataValueAudit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button
+                type="submit"
+                (click)="delete(trackedEntityDataValueAudit)"
+                class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton"
+              >
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trackedEntityDataValueAudits && trackedEntityDataValueAudits.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

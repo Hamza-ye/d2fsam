@@ -1,0 +1,24 @@
+<form *ngIf="teamGroup" name="deleteForm" (ngSubmit)="confirmDelete(teamGroup.id!)">
+  <div class="modal-header">
+    <h4 class="modal-title" data-cy="teamGroupDeleteDialogHeading" appTranslate="entity.delete.title">Confirm delete operation</h4>
+
+    <button type="button" class="btn-close" data-dismiss="modal" aria-hidden="true" (click)="cancel()">&times;</button>
+  </div>
+
+  <div class="modal-body">
+    <app-alert-error></app-alert-error>
+    <p id="app-delete-teamGroup-heading" appTranslate="amSystemBackApp.teamGroup.delete.question" [translateValues]="{ id: teamGroup.id }">
+      Are you sure you want to delete Team Group {{ teamGroup.id }}?
+    </p>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="cancel()">
+      <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+    </button>
+
+    <button id="app-confirm-delete-teamGroup" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <fa-icon icon="times"></fa-icon>&nbsp;<span appTranslate="entity.action.delete">Delete</span>
+    </button>
+  </div>
+</form>

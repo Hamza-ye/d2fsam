@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="datastoreEntry">
+      <h2 data-cy="datastoreEntryDetailsHeading">
+        <span appTranslate="amSystemBackApp.datastoreEntry.detail.title">Datastore Entry</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.uid">Uid</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.code">Code</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.created">Created</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.updated">Updated</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.key">Key</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.key }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.namespace">Namespace</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.namespace }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.encrypted">Encrypted</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.encrypted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.datastoreEntry.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ datastoreEntry.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/datastore-entry', datastoreEntry.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

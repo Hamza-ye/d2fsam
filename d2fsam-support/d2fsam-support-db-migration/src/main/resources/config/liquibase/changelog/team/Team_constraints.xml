@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Team.
+    -->
+    <changeSet id="20221120204031-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="activityid"
+                                 baseTableName="team"
+                                 constraintName="fk_team__activity_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="team"
+                                 constraintName="fk_team__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="team"
+                                 constraintName="fk_team__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="teamid"
+                                 baseTableName="team__members"
+                                 constraintName="fk_team__member__team_id"
+                                 referencedColumnNames="teamid"
+                                 referencedTableName="team"/>
+
+        <addForeignKeyConstraint baseColumnNames="member_id"
+                                 baseTableName="team__members"
+                                 constraintName="fk_team__member__member_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="teamid"
+                                 baseTableName="team__managed_teams"
+                                 constraintName="fk_team_managed_team__team_id"
+                                 referencedColumnNames="teamid"
+                                 referencedTableName="team"/>
+
+        <addForeignKeyConstraint baseColumnNames="managedteamid"
+                                 baseTableName="team__managed_teams"
+                                 constraintName="fk_team_managed_team__managed_team_id"
+                                 referencedColumnNames="teamid"
+                                 referencedTableName="team"/>
+    </changeSet>
+</databaseChangeLog>

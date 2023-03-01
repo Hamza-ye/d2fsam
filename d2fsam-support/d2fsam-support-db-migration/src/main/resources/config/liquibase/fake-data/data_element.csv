@@ -1,0 +1,11 @@
+id;uid;code;created;updated;name;description;valuetype;aggregationtype;displayinlistnoprogram;zeroissignificant;mandatory;uniquefield;fieldmask;orgunitscope;skipsynchronization;confidential
+1;HTTP Orchar;seize Borders Berkshire;2022-11-19T22:14:41;2022-11-20T14:32:49;database;port sticky extensible;FILE_RESOURCE;COUNT;false;true;false;true;input Manors;true;false;false
+2;Automotive ;local Borders;2022-11-19T21:43:46;2022-11-20T03:31:08;Books;Bedfordshire Idaho Plastic;EMAIL;LAST;true;true;true;false;Front-line Industrial visualize;false;false;true
+3;Som;Bike;2022-11-20T02:41:46;2022-11-20T00:57:34;Awesome;Architect Oklahoma;COORDINATE;AVERAGE_SUM_ORG_UNIT;false;false;true;true;Colorado French;true;false;true
+4;Metal conne;zero;2022-11-20T09:47:04;2022-11-20T12:49:08;Money;open-source Handcrafted;URL;AVERAGE;false;false;false;true;Utah Optimization;true;false;true
+5;program;Dynamic;2022-11-20T15:11:55;2022-11-20T11:48:37;Fully-configurable Chicken Car;interactive;ORGANISATION_UNIT;COUNT;false;true;false;true;parse hacking;true;true;false
+6;invoice Shi;Berkshire;2022-11-20T15:45:08;2022-11-20T06:28:30;protocol payment Incredible;plug-and-play quantify;AGE;STDDEV;false;false;false;false;Avon;false;true;true
+7;hardware gr;Organized PCI optical;2022-11-20T11:46:37;2022-11-20T13:05:36;orchid;application;TRACKER_ASSOCIATE;CUSTOM;false;false;false;true;collaboration Principal;true;false;true
+8;Soap;incentivize Integration Future;2022-11-20T14:30:30;2022-11-20T14:51:31;invoice;Cambridgeshire;MULTI_TEXT;DEFAULT;false;true;false;false;bus;true;true;true
+9;virtual Bik;Island;2022-11-20T03:21:20;2022-11-20T10:52:13;maximize;attitude Burundi copying;FILE_RESOURCE;DEFAULT;false;false;true;false;Dale networks;false;false;true
+10;neural Sala;Leone calculate;2022-11-20T15:37:45;2022-11-20T02:12:09;reboot;sensor Health Alabama;INTEGER_NEGATIVE;CUSTOM;false;false;true;false;haptic Awesome;false;false;false

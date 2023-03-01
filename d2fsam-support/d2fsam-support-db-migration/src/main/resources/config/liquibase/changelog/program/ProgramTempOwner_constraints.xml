@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramTempOwner.
+    -->
+    <changeSet id="20221120204059-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_temp_owner"
+                                 constraintName="fk_program_temp_owner__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityinstanceid"
+                                 baseTableName="program_temp_owner"
+                                 constraintName="fk_program_temp_owner__entity_instance_id"
+                                 referencedColumnNames="trackedentityinstanceid"
+                                 referencedTableName="tracked_entity_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="userid"
+                                 baseTableName="program_temp_owner"
+                                 constraintName="fk_program_temp_owner__user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

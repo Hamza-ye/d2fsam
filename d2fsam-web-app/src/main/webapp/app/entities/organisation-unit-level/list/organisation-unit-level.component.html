@@ -1,0 +1,130 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganisationUnitLevelHeading">
+    <span appTranslate="amSystemBackApp.organisationUnitLevel.home.title">Organisation Unit Levels</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.organisationUnitLevel.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organisation-unit-level"
+        [routerLink]="['/organisation-unit-level/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.organisationUnitLevel.home.createLabel"> Create a new Organisation Unit Level </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="organisationUnitLevels?.length === 0">
+    <span appTranslate="amSystemBackApp.organisationUnitLevel.home.notFound">No Organisation Unit Levels found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="organisationUnitLevels && organisationUnitLevels.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="level">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.level">Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="offlineLevels">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnitLevel.offlineLevels">Offline Levels</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let organisationUnitLevel of organisationUnitLevels; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/organisation-unit-level', organisationUnitLevel.id, 'view']">{{ organisationUnitLevel.id }}</a>
+          </td>
+          <td>{{ organisationUnitLevel.uid }}</td>
+          <td>{{ organisationUnitLevel.code }}</td>
+          <td>{{ organisationUnitLevel.name }}</td>
+          <td>{{ organisationUnitLevel.created | formatMediumDatetime }}</td>
+          <td>{{ organisationUnitLevel.updated | formatMediumDatetime }}</td>
+          <td>{{ organisationUnitLevel.level }}</td>
+          <td>{{ organisationUnitLevel.offlineLevels }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/organisation-unit-level', organisationUnitLevel.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/organisation-unit-level', organisationUnitLevel.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(organisationUnitLevel)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

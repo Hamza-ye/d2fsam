@@ -1,0 +1,68 @@
+/*
+ * Copyright (c) 2004-2022, University of Oslo
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+ *
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * Neither the name of the HISP project nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package org.nmcpye.am.webapi.controller.event.mapper;
+
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
+import org.nmcpye.am.webapi.controller.event.webrequest.OrderCriteria;
+
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static org.nmcpye.am.trackedentity.TrackedEntityInstanceQueryParams.OrderColumn.isStaticColumn;
+
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
+public class OrderParamsHelper {
+
+    public static List<OrderParam> toOrderParams(List<OrderCriteria> criteria) {
+        return Optional.ofNullable(criteria)
+            .orElse(Collections.emptyList())
+            .stream()
+            .filter(Objects::nonNull)
+            .map(orderCriteria -> new OrderParam(orderCriteria.getField(), orderCriteria.getDirection()))
+            .collect(Collectors.toList());
+    }
+
+    public static List<String> validateOrderParams(List<OrderParam> orderParams,
+                                                   Map<String, TrackedEntityAttribute> attributes) {
+        List<String> errors = new ArrayList<>();
+
+        if (orderParams == null || orderParams.isEmpty()) {
+            return errors;
+        }
+
+        for (OrderParam orderParam : orderParams) {
+            if (!isStaticColumn(orderParam.getField()) && !attributes.containsKey(orderParam.getField())) {
+                errors.add("Invalid order property: " + orderParam.getField());
+            }
+        }
+
+        return errors;
+    }
+}

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Added the entity Attribute.
+    -->
+    <changeSet id="20231230204039-1" author="hamza2">
+        <createTable tableName="attribute">
+            <column name="attributeid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_attribute__uid"/>
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_attribute__code"/>
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_attribute__name"/>
+            </column>
+            <column name="shortname" type="varchar(50)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_attribute__short_name"/>
+            </column>
+            <column name="description" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="true"/>
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="valuetype" type="varchar(255)">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="mandatory" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="isunique" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="sortorder" type="integer">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="data_element_attribute" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="data_element_group_attribute" type="boolean"/>
+
+            <!--            NMCP TODO Make nullable="false" -->
+            <column name="indicator_attribute" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="indicator_group_attribute" type="boolean"/>
+
+            <column name="data_set_attribute" type="boolean"/>
+
+            <column name="organisation_unit_attribute" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="organisation_unit_group_attribute" type="boolean"/>
+
+            <column name="organisation_unit_group_set_attribute" type="boolean"/>
+
+            <column name="user_attribute" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="user_group_attribute" type="boolean"/>
+            <column name="activity_attribute" type="boolean"/>
+            <column name="project_attribute" type="boolean"/>
+            <column name="team_attribute" type="boolean"/>
+            <column name="team_group_attribute" type="boolean"/>
+
+            <column name="program_attribute" type="boolean"/>
+
+            <column name="program_stage_attribute" type="boolean"/>
+
+            <column name="tracked_entity_type_attribute" type="boolean"/>
+
+            <column name="tracked_entity_attribute_attribute" type="boolean"/>
+
+            <!--            <column name="categoryOptionAttribute" type="boolean" />-->
+            <!---->
+            <!--            <column name="categoryOptionGroupAttribute" type="boolean" />-->
+
+            <column name="document_attribute" type="boolean"/>
+
+            <column name="option_attribute" type="boolean"/>
+
+            <column name="option_set_attribute" type="boolean"/>
+
+            <column name="constant_attribute" type="boolean"/>
+
+            <column name="legend_set_attribute" type="boolean"/>
+
+            <column name="program_indicator_attribute" type="boolean"/>
+
+            <column name="sql_view_attribute" type="boolean"/>
+
+            <column name="section_attribute" type="boolean"/>
+
+            <!--            <column name="categoryOptionComboAttribute" type="boolean" />-->
+
+            <!--            <column name="categoryOptionGroupSetAttribute" type="boolean"/>-->
+
+            <column name="data_element_group_set_attribute" type="boolean"/>
+
+            <column name="validation_rule_attribute" type="boolean"/>
+
+            <column name="validation_rule_group_attribute" type="boolean"/>
+
+            <!--            <column name="categoryAttribute" type="boolean"/>-->
+
+            <!--            NMCP TODO Make nullable="false" -->
+            <column name="visualization_attribute" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <!--            NMCP TODO Make nullable="false" -->
+            <column name="map_attribute" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <!--            NMCP TODO Make nullable="false" -->
+            <column name="event_report_attribute" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <!--            NMCP TODO Make nullable="false" -->
+            <column name="event_chart_attribute" type="boolean">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="relationship_type_attribute" type="boolean" defaultValueBoolean="false">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="optionsetid" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="createdby" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true"/>
+            </column>
+
+            <column name="translations" type="JSONB"/>
+            <column name="sharing" type="JSONB" defaultValue="{}"/>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="attribute" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="attribute" columnName="updated" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!--    <changeSet id="001_add_attribute_objectType" author="Hamza">-->
+    <!--        <createTable tableName="object_type">-->
+    <!--            <column name="trackedentityattributeid" type="bigint"/>-->
+    <!--            <column name="object_type" type="varchar(255)">-->
+    <!--                <constraints nullable="false"/>-->
+    <!--            </column>-->
+    <!--        </createTable>-->
+    <!--    </changeSet>-->
+
+    <!--    <changeSet author="Hamza (generated)" id="001_add_attribute_objectType-constraints">-->
+    <!--        <addForeignKeyConstraint-->
+    <!--            baseColumnNames="trackedentityattributeid"-->
+    <!--            baseTableName="object_type"-->
+    <!--            constraintName="FK_attribute_object_type"-->
+    <!--            deferrable="false" initiallyDeferred="false"-->
+    <!--            referencedColumnNames="id"-->
+    <!--            referencedTableName="attribute" validate="true"/>-->
+    <!--    </changeSet>-->
+
+</databaseChangeLog>

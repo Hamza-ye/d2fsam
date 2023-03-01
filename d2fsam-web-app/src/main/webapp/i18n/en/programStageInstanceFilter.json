@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "programStageInstanceFilter": {
+      "home": {
+        "title": "Program Stage Instance Filters",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program Stage Instance Filter",
+        "createOrEditLabel": "Create or edit a Program Stage Instance Filter",
+        "notFound": "No Program Stage Instance Filters found"
+      },
+      "created": "A new Program Stage Instance Filter is created with identifier {{ param }}",
+      "updated": "A Program Stage Instance Filter is updated with identifier {{ param }}",
+      "deleted": "A Program Stage Instance Filter is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Stage Instance Filter {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Stage Instance Filter"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "description": "Description",
+      "program": "Program",
+      "programStage": "Program Stage",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

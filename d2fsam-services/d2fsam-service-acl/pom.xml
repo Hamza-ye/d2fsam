@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>d2fsam-services</artifactId>
+        <groupId>org.nmcpye.am</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>d2fsam-service-acl</artifactId>
+    <name>D2-F ACL service</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+        </dependency>
+
+        <!-- D2-F -->
+
+        <dependency>
+            <groupId>org.nmcpye.am</groupId>
+            <artifactId>d2fsam-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.nmcpye.am</groupId>
+            <artifactId>d2fsam-support-commons</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.nmcpye.am</groupId>
+            <artifactId>d2fsam-service-schema</artifactId>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>d2fsam-support-test</artifactId>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>d2fsam-support-system</artifactId>-->
+        <!--        </dependency>-->
+
+        <!-- Test -->
+
+        <!-- Unused but declared dependencies   -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <properties>
+        <rootDir>../../</rootDir>
+        <!--        <jib.skip>true</jib.skip>-->
+    </properties>
+
+</project>

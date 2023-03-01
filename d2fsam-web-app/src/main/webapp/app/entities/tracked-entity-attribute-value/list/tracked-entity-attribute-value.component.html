@@ -1,0 +1,180 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityAttributeValueHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.home.title">Tracked Entity Attribute Values</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-attribute-value"
+        [routerLink]="['/tracked-entity-attribute-value/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.home.createLabel">
+          Create a new Tracked Entity Attribute Value
+        </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityAttributeValues?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.home.notFound">No Tracked Entity Attribute Values found</span>
+  </div>
+
+  <div
+    class="table-responsive table-entities"
+    id="entities"
+    *ngIf="trackedEntityAttributeValues && trackedEntityAttributeValues.length > 0"
+  >
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="encryptedValue">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.encryptedValue">Encrypted Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="plainValue">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.plainValue">Plain Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="value">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.value">Value</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="storedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.storedBy">Stored By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="attribute.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.attribute">Attribute</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="entityInstance.uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityAttributeValue.entityInstance">Entity Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityAttributeValue of trackedEntityAttributeValues; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-attribute-value', trackedEntityAttributeValue.id, 'view']">{{
+              trackedEntityAttributeValue.id
+            }}</a>
+          </td>
+          <td>{{ trackedEntityAttributeValue.encryptedValue }}</td>
+          <td>{{ trackedEntityAttributeValue.plainValue }}</td>
+          <td>{{ trackedEntityAttributeValue.value }}</td>
+          <td>{{ trackedEntityAttributeValue.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityAttributeValue.updated | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityAttributeValue.storedBy }}</td>
+          <td>
+            <div *ngIf="trackedEntityAttributeValue.attribute">
+              <a [routerLink]="['/data-element', trackedEntityAttributeValue.attribute.id, 'view']">{{
+                trackedEntityAttributeValue.attribute.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityAttributeValue.entityInstance">
+              <a [routerLink]="['/tracked-entity-instance', trackedEntityAttributeValue.entityInstance.id, 'view']">{{
+                trackedEntityAttributeValue.entityInstance.uid
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-attribute-value', trackedEntityAttributeValue.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-attribute-value', trackedEntityAttributeValue.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button
+                type="submit"
+                (click)="delete(trackedEntityAttributeValue)"
+                class="btn btn-danger btn-sm"
+                data-cy="entityDeleteButton"
+              >
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trackedEntityAttributeValues && trackedEntityAttributeValues.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

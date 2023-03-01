@@ -1,0 +1,126 @@
+<div>
+  <h2 id="page-heading" data-cy="ProgramTempOwnershipAuditHeading">
+    <span appTranslate="amSystemBackApp.programTempOwnershipAudit.home.title">Program Temp Ownership Audits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.programTempOwnershipAudit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-program-temp-ownership-audit"
+        [routerLink]="['/program-temp-ownership-audit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.programTempOwnershipAudit.home.createLabel"> Create a new Program Temp Ownership Audit </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="programTempOwnershipAudits?.length === 0">
+    <span appTranslate="amSystemBackApp.programTempOwnershipAudit.home.notFound">No Program Temp Ownership Audits found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="programTempOwnershipAudits && programTempOwnershipAudits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="reason">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programTempOwnershipAudit.reason">Reason</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programTempOwnershipAudit.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="accessedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programTempOwnershipAudit.accessedBy">Accessed By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="program.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programTempOwnershipAudit.program">Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="entityInstance.uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.programTempOwnershipAudit.entityInstance">Entity Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let programTempOwnershipAudit of programTempOwnershipAudits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/program-temp-ownership-audit', programTempOwnershipAudit.id, 'view']">{{ programTempOwnershipAudit.id }}</a>
+          </td>
+          <td>{{ programTempOwnershipAudit.reason }}</td>
+          <td>{{ programTempOwnershipAudit.created | formatMediumDatetime }}</td>
+          <td>{{ programTempOwnershipAudit.accessedBy }}</td>
+          <td>
+            <div *ngIf="programTempOwnershipAudit.program">
+              <a [routerLink]="['/program', programTempOwnershipAudit.program.id, 'view']">{{ programTempOwnershipAudit.program.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="programTempOwnershipAudit.entityInstance">
+              <a [routerLink]="['/tracked-entity-instance', programTempOwnershipAudit.entityInstance.id, 'view']">{{
+                programTempOwnershipAudit.entityInstance.uid
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/program-temp-ownership-audit', programTempOwnershipAudit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/program-temp-ownership-audit', programTempOwnershipAudit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(programTempOwnershipAudit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

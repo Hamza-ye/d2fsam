@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity RelationshipType.
+    -->
+    <changeSet id="20221120204108-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="from_relationshipconstraintid"
+                                 baseTableName="relationship_type"
+                                 constraintName="fk_relationship_type__from_constraint_id"
+                                 referencedColumnNames="relationshipconstraintid"
+                                 referencedTableName="relationship_constraint"/>
+<!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="to_relationshipconstraintid"
+                                 baseTableName="relationship_type"
+                                 constraintName="fk_relationship_type__to_constraint_id"
+                                 referencedColumnNames="relationshipconstraintid"
+                                 referencedTableName="relationship_constraint"/>
+<!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="relationship_type"
+                                 constraintName="fk_relationship_type__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="relationship_type"
+                                 constraintName="fk_relationship_type__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

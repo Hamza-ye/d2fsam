@@ -1,0 +1,82 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityDataValueAudit">
+      <h2 data-cy="trackedEntityDataValueAuditDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.detail.title">Tracked Entity Data Value Audit</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.value">Value</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.value }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.modifiedBy">Modified By</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.modifiedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.providedElsewhere">Provided Elsewhere</span></dt>
+        <dd>
+          <span>{{ trackedEntityDataValueAudit.providedElsewhere }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.auditType">Audit Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.AuditType.' + trackedEntityDataValueAudit.auditType }}">{{
+            trackedEntityDataValueAudit.auditType
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.programStageInstance">Program Stage Instance</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityDataValueAudit.programStageInstance">
+            <a [routerLink]="['/program-stage-instance', trackedEntityDataValueAudit.programStageInstance.id, 'view']">{{
+              trackedEntityDataValueAudit.programStageInstance.uid
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.dataElement">Data Element</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityDataValueAudit.dataElement">
+            <a [routerLink]="['/data-element', trackedEntityDataValueAudit.dataElement.id, 'view']">{{
+              trackedEntityDataValueAudit.dataElement.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityDataValueAudit.period">Period</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityDataValueAudit.period">
+            <a [routerLink]="['/period', trackedEntityDataValueAudit.period.id, 'view']">{{ trackedEntityDataValueAudit.period.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/tracked-entity-data-value-audit', trackedEntityDataValueAudit.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

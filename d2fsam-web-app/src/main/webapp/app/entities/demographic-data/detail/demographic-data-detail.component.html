@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="demographicData">
+      <h2 data-cy="demographicDataDetailsHeading">
+        <span appTranslate="amSystemBackApp.demographicData.detail.title">Demographic Data</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ demographicData.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.uid">Uid</span></dt>
+        <dd>
+          <span>{{ demographicData.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.code">Code</span></dt>
+        <dd>
+          <span>{{ demographicData.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.created">Created</span></dt>
+        <dd>
+          <span>{{ demographicData.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.updated">Updated</span></dt>
+        <dd>
+          <span>{{ demographicData.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.date">Date</span></dt>
+        <dd>
+          <span>{{ demographicData.date | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.level">Level</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.DemographicDataLevel.' + demographicData.level }}">{{ demographicData.level }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.totalPopulation">Total Population</span></dt>
+        <dd>
+          <span>{{ demographicData.totalPopulation }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.malePopulation">Male Population</span></dt>
+        <dd>
+          <span>{{ demographicData.malePopulation }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.femalePopulation">Female Population</span></dt>
+        <dd>
+          <span>{{ demographicData.femalePopulation }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.lessThan5Population">Less Than 5 Population</span></dt>
+        <dd>
+          <span>{{ demographicData.lessThan5Population }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.greaterThan5Population">Greater Than 5 Population</span></dt>
+        <dd>
+          <span>{{ demographicData.greaterThan5Population }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.bw5And15Population">Bw 5 And 15 Population</span></dt>
+        <dd>
+          <span>{{ demographicData.bw5And15Population }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.greaterThan15Population">Greater Than 15 Population</span></dt>
+        <dd>
+          <span>{{ demographicData.greaterThan15Population }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.households">Households</span></dt>
+        <dd>
+          <span>{{ demographicData.households }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.houses">Houses</span></dt>
+        <dd>
+          <span>{{ demographicData.houses }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.healthFacilities">Health Facilities</span></dt>
+        <dd>
+          <span>{{ demographicData.healthFacilities }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.avgNoOfRooms">Avg No Of Rooms</span></dt>
+        <dd>
+          <span>{{ demographicData.avgNoOfRooms }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.avgRoomArea">Avg Room Area</span></dt>
+        <dd>
+          <span>{{ demographicData.avgRoomArea }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.avgHouseArea">Avg House Area</span></dt>
+        <dd>
+          <span>{{ demographicData.avgHouseArea }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.individualsPerHousehold">Individuals Per Household</span></dt>
+        <dd>
+          <span>{{ demographicData.individualsPerHousehold }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.populationGrowthRate">Population Growth Rate</span></dt>
+        <dd>
+          <span>{{ demographicData.populationGrowthRate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.comment">Comment</span></dt>
+        <dd>
+          <span>{{ demographicData.comment }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="demographicData.organisationUnit">
+            <a [routerLink]="['/organisation-unit', demographicData.organisationUnit.id, 'view']">{{
+              demographicData.organisationUnit.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ demographicData.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ demographicData.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.demographicData.source">Source</span></dt>
+        <dd>
+          <div *ngIf="demographicData.source">
+            <a [routerLink]="['/demographic-data-source', demographicData.source.id, 'view']">{{ demographicData.source.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/demographic-data', demographicData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

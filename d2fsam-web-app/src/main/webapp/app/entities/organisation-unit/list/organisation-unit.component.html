@@ -1,0 +1,302 @@
+<div>
+  <h2 id="page-heading" data-cy="OrganisationUnitHeading">
+    <span appTranslate="amSystemBackApp.organisationUnit.home.title">Organisation Units</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.organisationUnit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-organisation-unit"
+        [routerLink]="['/organisation-unit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.organisationUnit.home.createLabel"> Create a new Organisation Unit </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="organisationUnits?.length === 0">
+    <span appTranslate="amSystemBackApp.organisationUnit.home.notFound">No Organisation Units found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="organisationUnits && organisationUnits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="shortName">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.shortName">Short Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="path">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.path">Path</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="hierarchyLevel">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.hierarchyLevel">Hierarchy Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="openingDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.openingDate">Opening Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="comment">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="closedDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.closedDate">Closed Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="url">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.url">Url</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="contactPerson">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.contactPerson">Contact Person</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="address">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.address">Address</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="email">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.email">Email</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="phoneNumber">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.phoneNumber">Phone Number</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="organisationUnitType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.organisationUnitType">Organisation Unit Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="parent.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.parent">Parent</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="hfHomeSubVillage.id">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.hfHomeSubVillage">Hf Home Sub Village</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="servicingHf.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.servicingHf">Servicing Hf</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="image.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.image">Image</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="assignedChv.code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.organisationUnit.assignedChv">Assigned Chv</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let organisationUnit of organisationUnits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/organisation-unit', organisationUnit.id, 'view']">{{ organisationUnit.id }}</a>
+          </td>
+          <td>{{ organisationUnit.uid }}</td>
+          <td>{{ organisationUnit.code }}</td>
+          <td>{{ organisationUnit.name }}</td>
+          <td>{{ organisationUnit.shortName }}</td>
+          <td>{{ organisationUnit.created | formatMediumDatetime }}</td>
+          <td>{{ organisationUnit.updated | formatMediumDatetime }}</td>
+          <td>{{ organisationUnit.path }}</td>
+          <td>{{ organisationUnit.hierarchyLevel }}</td>
+          <td>{{ organisationUnit.openingDate | formatMediumDate }}</td>
+          <td>{{ organisationUnit.comment }}</td>
+          <td>{{ organisationUnit.closedDate | formatMediumDate }}</td>
+          <td>{{ organisationUnit.url }}</td>
+          <td>{{ organisationUnit.contactPerson }}</td>
+          <td>{{ organisationUnit.address }}</td>
+          <td>{{ organisationUnit.email }}</td>
+          <td>{{ organisationUnit.phoneNumber }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.OrganisationUnitType.' + organisationUnit.organisationUnitType }}">
+            {{ organisationUnit.organisationUnitType }}
+          </td>
+          <td>{{ organisationUnit.inactive }}</td>
+          <td>
+            <div *ngIf="organisationUnit.parent">
+              <a [routerLink]="['/organisation-unit', organisationUnit.parent.id, 'view']">{{ organisationUnit.parent.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="organisationUnit.hfHomeSubVillage">
+              <a [routerLink]="['/organisation-unit', organisationUnit.hfHomeSubVillage.id, 'view']">{{
+                organisationUnit.hfHomeSubVillage.id
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="organisationUnit.servicingHf">
+              <a [routerLink]="['/organisation-unit', organisationUnit.servicingHf.id, 'view']">{{ organisationUnit.servicingHf.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="organisationUnit.image">
+              <a [routerLink]="['/file-resource', organisationUnit.image.id, 'view']">{{ organisationUnit.image.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ organisationUnit.createdBy?.login }}
+          </td>
+          <td>
+            {{ organisationUnit.updatedBy?.login }}
+          </td>
+          <td>
+            <div *ngIf="organisationUnit.assignedChv">
+              <a [routerLink]="['/chv', organisationUnit.assignedChv.id, 'view']">{{ organisationUnit.assignedChv.code }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/organisation-unit', organisationUnit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/organisation-unit', organisationUnit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(organisationUnit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="organisationUnits && organisationUnits.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

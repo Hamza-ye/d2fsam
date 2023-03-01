@@ -1,0 +1,44 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dataInputPeriod">
+      <h2 data-cy="dataInputPeriodDetailsHeading">
+        <span appTranslate="amSystemBackApp.dataInputPeriod.detail.title">Data Input Period</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dataInputPeriod.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataInputPeriod.openingDate">Opening Date</span></dt>
+        <dd>
+          <span>{{ dataInputPeriod.openingDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataInputPeriod.closingDate">Closing Date</span></dt>
+        <dd>
+          <span>{{ dataInputPeriod.closingDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataInputPeriod.period">Period</span></dt>
+        <dd>
+          <div *ngIf="dataInputPeriod.period">
+            <a [routerLink]="['/period', dataInputPeriod.period.id, 'view']">{{ dataInputPeriod.period.name }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/data-input-period', dataInputPeriod.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

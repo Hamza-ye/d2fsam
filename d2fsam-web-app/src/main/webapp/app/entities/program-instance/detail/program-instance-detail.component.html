@@ -1,0 +1,149 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programInstance">
+      <h2 data-cy="programInstanceDetailsHeading">
+        <span appTranslate="amSystemBackApp.programInstance.detail.title">Program Instance</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programInstance.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.uid">Uid</span></dt>
+        <dd>
+          <span>{{ programInstance.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.uuid">Uuid</span></dt>
+        <dd>
+          <span>{{ programInstance.uuid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.created">Created</span></dt>
+        <dd>
+          <span>{{ programInstance.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.updated">Updated</span></dt>
+        <dd>
+          <span>{{ programInstance.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.createdAtClient">Created At Client</span></dt>
+        <dd>
+          <span>{{ programInstance.createdAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.updatedAtClient">Updated At Client</span></dt>
+        <dd>
+          <span>{{ programInstance.updatedAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.lastSynchronized">Last Synchronized</span></dt>
+        <dd>
+          <span>{{ programInstance.lastSynchronized | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.incidentDate">Incident Date</span></dt>
+        <dd>
+          <span>{{ programInstance.incidentDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.enrollmentDate">Enrollment Date</span></dt>
+        <dd>
+          <span>{{ programInstance.enrollmentDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.periodLabel">Period Label</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.PeriodLabel.' + programInstance.periodLabel }}">{{ programInstance.periodLabel }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ programInstance.endDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.status">Status</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.EventStatus.' + programInstance.status }}">{{ programInstance.status }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.storedBy">Stored By</span></dt>
+        <dd>
+          <span>{{ programInstance.storedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.completedBy">Completed By</span></dt>
+        <dd>
+          <span>{{ programInstance.completedBy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.completedDate">Completed Date</span></dt>
+        <dd>
+          <span>{{ programInstance.completedDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.followup">Followup</span></dt>
+        <dd>
+          <span>{{ programInstance.followup }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ programInstance.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.deletedAt">Deleted At</span></dt>
+        <dd>
+          <span>{{ programInstance.deletedAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.entityInstance">Entity Instance</span></dt>
+        <dd>
+          <div *ngIf="programInstance.entityInstance">
+            <a [routerLink]="['/tracked-entity-instance', programInstance.entityInstance.id, 'view']">{{
+              programInstance.entityInstance.uid
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.program">Program</span></dt>
+        <dd>
+          <div *ngIf="programInstance.program">
+            <a [routerLink]="['/program', programInstance.program.id, 'view']">{{ programInstance.program.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <div *ngIf="programInstance.organisationUnit">
+            <a [routerLink]="['/organisation-unit', programInstance.organisationUnit.id, 'view']">{{
+              programInstance.organisationUnit.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.activity">Activity</span></dt>
+        <dd>
+          <div *ngIf="programInstance.activity">
+            <a [routerLink]="['/activity', programInstance.activity.id, 'view']">{{ programInstance.activity.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ programInstance.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ programInstance.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.approvedBy">Approved By</span></dt>
+        <dd>
+          <span>{{ programInstance.approvedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programInstance.comment">Comment</span></dt>
+        <dd>
+          <span *ngFor="let comment of programInstance.comments; let last = last">
+            <a [routerLink]="['/comment', comment.id, 'view']">{{ comment.commentText }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program-instance', programInstance.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

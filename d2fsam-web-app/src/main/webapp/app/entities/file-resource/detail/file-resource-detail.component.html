@@ -1,0 +1,88 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="fileResource">
+      <h2 data-cy="fileResourceDetailsHeading"><span appTranslate="amSystemBackApp.fileResource.detail.title">File Resource</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ fileResource.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.uid">Uid</span></dt>
+        <dd>
+          <span>{{ fileResource.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.code">Code</span></dt>
+        <dd>
+          <span>{{ fileResource.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.name">Name</span></dt>
+        <dd>
+          <span>{{ fileResource.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.created">Created</span></dt>
+        <dd>
+          <span>{{ fileResource.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.updated">Updated</span></dt>
+        <dd>
+          <span>{{ fileResource.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.contentType">Content Type</span></dt>
+        <dd>
+          <span>{{ fileResource.contentType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.contentLength">Content Length</span></dt>
+        <dd>
+          <span>{{ fileResource.contentLength }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.contentMd5">Content Md 5</span></dt>
+        <dd>
+          <span>{{ fileResource.contentMd5 }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.storageKey">Storage Key</span></dt>
+        <dd>
+          <span>{{ fileResource.storageKey }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.assigned">Assigned</span></dt>
+        <dd>
+          <span>{{ fileResource.assigned }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.domain">Domain</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.FileResourceDomain.' + fileResource.domain }}">{{ fileResource.domain }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.hasMultipleStorageFiles">Has Multiple Storage Files</span></dt>
+        <dd>
+          <span>{{ fileResource.hasMultipleStorageFiles }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.fileResourceOwner">File Resource Owner</span></dt>
+        <dd>
+          <span>{{ fileResource.fileResourceOwner }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ fileResource.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.fileResource.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ fileResource.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/file-resource', fileResource.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

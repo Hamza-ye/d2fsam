@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="sqlView">
+      <h2 data-cy="sqlViewDetailsHeading"><span appTranslate="amSystemBackApp.sqlView.detail.title">Sql View</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ sqlView.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.uid">Uid</span></dt>
+        <dd>
+          <span>{{ sqlView.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.code">Code</span></dt>
+        <dd>
+          <span>{{ sqlView.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.name">Name</span></dt>
+        <dd>
+          <span>{{ sqlView.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.created">Created</span></dt>
+        <dd>
+          <span>{{ sqlView.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.updated">Updated</span></dt>
+        <dd>
+          <span>{{ sqlView.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.description">Description</span></dt>
+        <dd>
+          <span>{{ sqlView.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.sqlQuery">Sql Query</span></dt>
+        <dd>
+          <span>{{ sqlView.sqlQuery }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.type">Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.SqlViewType.' + sqlView.type }}">{{ sqlView.type }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.cacheStrategy">Cache Strategy</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.CacheStrategy.' + sqlView.cacheStrategy }}">{{ sqlView.cacheStrategy }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ sqlView.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.sqlView.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ sqlView.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/sql-view', sqlView.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userAuthorityGroup">
+      <h2 data-cy="userAuthorityGroupDetailsHeading">
+        <span appTranslate="amSystemBackApp.userAuthorityGroup.detail.title">User Authority Group</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.uid">Uid</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.code">Code</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.name">Name</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.description">Description</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.created">Created</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.updated">Updated</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userAuthorityGroup.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ userAuthorityGroup.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-authority-group', userAuthorityGroup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

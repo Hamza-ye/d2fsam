@@ -1,0 +1,29 @@
+{
+  "amSystemBackApp": {
+    "programOwnershipHistory": {
+      "home": {
+        "title": "Program Ownership Histories",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program Ownership History",
+        "createOrEditLabel": "Create or edit a Program Ownership History",
+        "notFound": "No Program Ownership Histories found"
+      },
+      "created": "A new Program Ownership History is created with identifier {{ param }}",
+      "updated": "A Program Ownership History is updated with identifier {{ param }}",
+      "deleted": "A Program Ownership History is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Ownership History {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Ownership History"
+      },
+      "id": "ID",
+      "createdBy": "Created By",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "program": "Program",
+      "entityInstance": "Entity Instance",
+      "organisationUnit": "Organisation Unit"
+    }
+  }
+}

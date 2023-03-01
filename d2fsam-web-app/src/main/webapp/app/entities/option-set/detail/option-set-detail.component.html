@@ -1,0 +1,64 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="optionSet">
+      <h2 data-cy="optionSetDetailsHeading"><span appTranslate="amSystemBackApp.optionSet.detail.title">Option Set</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ optionSet.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.uid">Uid</span></dt>
+        <dd>
+          <span>{{ optionSet.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.code">Code</span></dt>
+        <dd>
+          <span>{{ optionSet.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.name">Name</span></dt>
+        <dd>
+          <span>{{ optionSet.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.created">Created</span></dt>
+        <dd>
+          <span>{{ optionSet.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.updated">Updated</span></dt>
+        <dd>
+          <span>{{ optionSet.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.valueType">Value Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.ValueType.' + optionSet.valueType }}">{{ optionSet.valueType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.version">Version</span></dt>
+        <dd>
+          <span>{{ optionSet.version }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ optionSet.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.optionSet.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ optionSet.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/option-set', optionSet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

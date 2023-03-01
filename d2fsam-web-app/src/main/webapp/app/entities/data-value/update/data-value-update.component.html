@@ -1,0 +1,173 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-data-value-heading"
+        data-cy="DataValueCreateUpdateHeading"
+        appTranslate="amSystemBackApp.dataValue.home.createOrEditLabel"
+      >
+        Create or edit a Data Value
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.value" for="field_value">Value</label>
+          <input type="text" class="form-control" name="value" id="field_value" data-cy="value" formControlName="value" />
+          <div *ngIf="editForm.get('value')!.invalid && (editForm.get('value')!.dirty || editForm.get('value')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('value')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 50000 }"
+            >
+              This field cannot be longer than 50000 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.storedBy" for="field_storedBy">Stored By</label>
+          <input type="text" class="form-control" name="storedBy" id="field_storedBy" data-cy="storedBy" formControlName="storedBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.followup" for="field_followup">Followup</label>
+          <input type="checkbox" class="form-check" name="followup" id="field_followup" data-cy="followup" formControlName="followup" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.deleted" for="field_deleted">Deleted</label>
+          <input type="checkbox" class="form-check" name="deleted" id="field_deleted" data-cy="deleted" formControlName="deleted" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.auditType" for="field_auditType">Audit Type</label>
+          <select class="form-control" name="auditType" formControlName="auditType" id="field_auditType" data-cy="auditType">
+            <option [ngValue]="null">{{ 'amSystemBackApp.AuditType.null' | translate }}</option>
+            <option *ngFor="let auditType of auditTypeValues" [value]="auditType">
+              {{ 'amSystemBackApp.AuditType.' + auditType | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.dataElement" for="field_dataElement">Data Element</label>
+          <select
+            class="form-control"
+            id="field_dataElement"
+            data-cy="dataElement"
+            name="dataElement"
+            formControlName="dataElement"
+            [compareWith]="compareDataElement"
+          >
+            <option *ngIf="!editForm.get('dataElement')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="dataElementOption" *ngFor="let dataElementOption of dataElementsSharedCollection">
+              {{ dataElementOption.name }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="editForm.get(['dataElement'])!.invalid && (editForm.get(['dataElement'])!.dirty || editForm.get(['dataElement'])!.touched)"
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['dataElement'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.period" for="field_period">Period</label>
+          <select
+            class="form-control"
+            id="field_period"
+            data-cy="period"
+            name="period"
+            formControlName="period"
+            [compareWith]="comparePeriod"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodOption" *ngFor="let periodOption of periodsSharedCollection">{{ periodOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.dataValue.source" for="field_source">Source</label>
+          <select
+            class="form-control"
+            id="field_source"
+            data-cy="source"
+            name="source"
+            formControlName="source"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

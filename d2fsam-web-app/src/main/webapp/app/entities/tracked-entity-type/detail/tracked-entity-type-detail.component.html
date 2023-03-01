@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityType">
+      <h2 data-cy="trackedEntityTypeDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityType.detail.title">Tracked Entity Type</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.uid">Uid</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.code">Code</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.name">Name</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.description">Description</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.maxTeiCountToReturn">Max Tei Count To Return</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.maxTeiCountToReturn }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.allowAuditLog">Allow Audit Log</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.allowAuditLog }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.featureType">Feature Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.FeatureType.' + trackedEntityType.featureType }}">{{
+            trackedEntityType.featureType
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityType.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ trackedEntityType.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tracked-entity-type', trackedEntityType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

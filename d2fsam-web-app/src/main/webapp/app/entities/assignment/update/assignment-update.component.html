@@ -1,0 +1,301 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-assignment-heading"
+        data-cy="AssignmentCreateUpdateHeading"
+        appTranslate="amSystemBackApp.assignment.home.createOrEditLabel"
+      >
+        Create or edit a Assignment
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.description" for="field_description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            name="description"
+            id="field_description"
+            data-cy="description"
+            formControlName="description"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.startDate" for="field_startDate">Start Date</label>
+          <div class="input-group">
+            <input
+              id="field_startDate"
+              data-cy="startDate"
+              type="text"
+              class="form-control"
+              name="startDate"
+              ngbDatepicker
+              #startDateDp="ngbDatepicker"
+              formControlName="startDate"
+            />
+            <button type="button" class="btn btn-secondary" (click)="startDateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.startPeriod" for="field_startPeriod">Start Period</label>
+          <select class="form-control" name="startPeriod" formControlName="startPeriod" id="field_startPeriod" data-cy="startPeriod">
+            <option [ngValue]="null">{{ 'amSystemBackApp.PeriodLabel.null' | translate }}</option>
+            <option *ngFor="let periodLabel of periodLabelValues" [value]="periodLabel">
+              {{ 'amSystemBackApp.PeriodLabel.' + periodLabel | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.targetSource" for="field_targetSource">Target Source</label>
+          <select class="form-control" name="targetSource" formControlName="targetSource" id="field_targetSource" data-cy="targetSource">
+            <option [ngValue]="null">{{ 'amSystemBackApp.TargetSource.null' | translate }}</option>
+            <option *ngFor="let targetSource of targetSourceValues" [value]="targetSource">
+              {{ 'amSystemBackApp.TargetSource.' + targetSource | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'amSystemBackApp.EventStatus.null' | translate }}</option>
+            <option *ngFor="let eventStatus of eventStatusValues" [value]="eventStatus">
+              {{ 'amSystemBackApp.EventStatus.' + eventStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.deleted" for="field_deleted">Deleted</label>
+          <input type="checkbox" class="form-check" name="deleted" id="field_deleted" data-cy="deleted" formControlName="deleted" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.deletedAt" for="field_deletedAt">Deleted At</label>
+          <div class="d-flex">
+            <input
+              id="field_deletedAt"
+              data-cy="deletedAt"
+              type="datetime-local"
+              class="form-control"
+              name="deletedAt"
+              formControlName="deletedAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.activity" for="field_activity">Activity</label>
+          <select
+            class="form-control"
+            id="field_activity"
+            data-cy="activity"
+            name="activity"
+            formControlName="activity"
+            [compareWith]="compareActivity"
+          >
+            <option *ngIf="editForm.get(['activity'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="activityOption" *ngFor="let activityOption of activitiesSharedCollection">{{ activityOption.name }}</option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['activity'])!.invalid && (editForm.get(['activity'])!.dirty || editForm.get(['activity'])!.touched)">
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['activity'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.organisationUnit" for="field_organisationUnit"
+            >Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_organisationUnit"
+            data-cy="organisationUnit"
+            name="organisationUnit"
+            formControlName="organisationUnit"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option *ngIf="editForm.get(['organisationUnit'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['organisationUnit'])!.invalid &&
+            (editForm.get(['organisationUnit'])!.dirty || editForm.get(['organisationUnit'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['organisationUnit'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.assignedTeam" for="field_assignedTeam">Assigned Team</label>
+          <select
+            class="form-control"
+            id="field_assignedTeam"
+            data-cy="assignedTeam"
+            name="assignedTeam"
+            formControlName="assignedTeam"
+            [compareWith]="compareTeam"
+          >
+            <option *ngIf="editForm.get(['assignedTeam'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="teamOption" *ngFor="let teamOption of teamsSharedCollection">{{ teamOption.name }}</option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['assignedTeam'])!.invalid && (editForm.get(['assignedTeam'])!.dirty || editForm.get(['assignedTeam'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['assignedTeam'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.period" for="field_period">Period</label>
+          <select
+            class="form-control"
+            id="field_period"
+            data-cy="period"
+            name="period"
+            formControlName="period"
+            [compareWith]="comparePeriod"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodOption" *ngFor="let periodOption of periodsSharedCollection">{{ periodOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.assignment.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

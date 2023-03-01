@@ -1,0 +1,148 @@
+<div>
+  <h2 id="page-heading" data-cy="DatastoreEntryHeading">
+    <span appTranslate="amSystemBackApp.datastoreEntry.home.title">Datastore Entries</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.datastoreEntry.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-datastore-entry"
+        [routerLink]="['/datastore-entry/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.datastoreEntry.home.createLabel"> Create a new Datastore Entry </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="datastoreEntries?.length === 0">
+    <span appTranslate="amSystemBackApp.datastoreEntry.home.notFound">No Datastore Entries found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="datastoreEntries && datastoreEntries.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="key">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.key">Key</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="namespace">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.namespace">Namespace</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="encrypted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.encrypted">Encrypted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.datastoreEntry.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let datastoreEntry of datastoreEntries; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/datastore-entry', datastoreEntry.id, 'view']">{{ datastoreEntry.id }}</a>
+          </td>
+          <td>{{ datastoreEntry.uid }}</td>
+          <td>{{ datastoreEntry.code }}</td>
+          <td>{{ datastoreEntry.created | formatMediumDatetime }}</td>
+          <td>{{ datastoreEntry.updated | formatMediumDatetime }}</td>
+          <td>{{ datastoreEntry.key }}</td>
+          <td>{{ datastoreEntry.namespace }}</td>
+          <td>{{ datastoreEntry.encrypted }}</td>
+          <td>
+            {{ datastoreEntry.createdBy?.login }}
+          </td>
+          <td>
+            {{ datastoreEntry.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/datastore-entry', datastoreEntry.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/datastore-entry', datastoreEntry.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(datastoreEntry)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

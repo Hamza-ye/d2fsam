@@ -1,0 +1,238 @@
+<div>
+  <h2 id="page-heading" data-cy="AssignmentHeading">
+    <span appTranslate="amSystemBackApp.assignment.home.title">Assignments</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.assignment.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-assignment"
+        [routerLink]="['/assignment/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.assignment.home.createLabel"> Create a new Assignment </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="assignments?.length === 0">
+    <span appTranslate="amSystemBackApp.assignment.home.notFound">No Assignments found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="assignments && assignments.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="startDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="startPeriod">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.startPeriod">Start Period</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="targetSource">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.targetSource">Target Source</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="status">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.status">Status</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deleted">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.deleted">Deleted</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="deletedAt">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.deletedAt">Deleted At</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="activity.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.activity">Activity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="organisationUnit.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.organisationUnit">Organisation Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="assignedTeam.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.assignedTeam">Assigned Team</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="period.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.period">Period</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.assignment.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let assignment of assignments; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/assignment', assignment.id, 'view']">{{ assignment.id }}</a>
+          </td>
+          <td>{{ assignment.uid }}</td>
+          <td>{{ assignment.code }}</td>
+          <td>{{ assignment.created | formatMediumDatetime }}</td>
+          <td>{{ assignment.updated | formatMediumDatetime }}</td>
+          <td>{{ assignment.description }}</td>
+          <td>{{ assignment.startDate | formatMediumDate }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.PeriodLabel.' + assignment.startPeriod }}">{{ assignment.startPeriod }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.TargetSource.' + assignment.targetSource }}">{{ assignment.targetSource }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.EventStatus.' + assignment.status }}">{{ assignment.status }}</td>
+          <td>{{ assignment.deleted }}</td>
+          <td>{{ assignment.deletedAt | formatMediumDatetime }}</td>
+          <td>
+            <div *ngIf="assignment.activity">
+              <a [routerLink]="['/activity', assignment.activity.id, 'view']">{{ assignment.activity.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="assignment.organisationUnit">
+              <a [routerLink]="['/organisation-unit', assignment.organisationUnit.id, 'view']">{{ assignment.organisationUnit.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="assignment.assignedTeam">
+              <a [routerLink]="['/team', assignment.assignedTeam.id, 'view']">{{ assignment.assignedTeam.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="assignment.period">
+              <a [routerLink]="['/period', assignment.period.id, 'view']">{{ assignment.period.name }}</a>
+            </div>
+          </td>
+          <td>
+            {{ assignment.createdBy?.login }}
+          </td>
+          <td>
+            {{ assignment.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/assignment', assignment.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/assignment', assignment.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(assignment)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="assignments && assignments.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

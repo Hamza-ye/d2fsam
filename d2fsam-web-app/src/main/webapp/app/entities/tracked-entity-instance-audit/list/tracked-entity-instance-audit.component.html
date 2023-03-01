@@ -1,0 +1,138 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityInstanceAuditHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.home.title">Tracked Entity Instance Audits</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-instance-audit"
+        [routerLink]="['/tracked-entity-instance-audit/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.home.createLabel"> Create a new Tracked Entity Instance Audit </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityInstanceAudits?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.home.notFound">No Tracked Entity Instance Audits found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="trackedEntityInstanceAudits && trackedEntityInstanceAudits.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityInstance">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.trackedEntityInstance">Tracked Entity Instance</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="comment">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="accessedBy">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.accessedBy">Accessed By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="auditType">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityInstanceAudit.auditType">Audit Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityInstanceAudit of trackedEntityInstanceAudits; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-instance-audit', trackedEntityInstanceAudit.id, 'view']">{{
+              trackedEntityInstanceAudit.id
+            }}</a>
+          </td>
+          <td>{{ trackedEntityInstanceAudit.trackedEntityInstance }}</td>
+          <td>{{ trackedEntityInstanceAudit.comment }}</td>
+          <td>{{ trackedEntityInstanceAudit.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityInstanceAudit.accessedBy }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.AuditType.' + trackedEntityInstanceAudit.auditType }}">
+            {{ trackedEntityInstanceAudit.auditType }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-instance-audit', trackedEntityInstanceAudit.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-instance-audit', trackedEntityInstanceAudit.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(trackedEntityInstanceAudit)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="trackedEntityInstanceAudits && trackedEntityInstanceAudits.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

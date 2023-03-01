@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programStageInstanceFilter">
+      <h2 data-cy="programStageInstanceFilterDetailsHeading">
+        <span appTranslate="amSystemBackApp.programStageInstanceFilter.detail.title">Program Stage Instance Filter</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.uid">Uid</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.code">Code</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.name">Name</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.created">Created</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.updated">Updated</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.description">Description</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.program">Program</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.program }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.programStage">Program Stage</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.programStage }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageInstanceFilter.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ programStageInstanceFilter.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/program-stage-instance-filter', programStageInstanceFilter.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

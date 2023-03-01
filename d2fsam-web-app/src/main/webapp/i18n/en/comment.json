@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "comment": {
+      "home": {
+        "title": "Comments",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Comment",
+        "createOrEditLabel": "Create or edit a Comment",
+        "notFound": "No Comments found"
+      },
+      "created": "A new Comment is created with identifier {{ param }}",
+      "updated": "A Comment is updated with identifier {{ param }}",
+      "deleted": "A Comment is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Comment {{ id }}?"
+      },
+      "detail": {
+        "title": "Comment"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "commentText": "Comment Text",
+      "creator": "Creator",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "programInstance": "Program Instance",
+      "programStageInstance": "Program Stage Instance"
+    }
+  }
+}

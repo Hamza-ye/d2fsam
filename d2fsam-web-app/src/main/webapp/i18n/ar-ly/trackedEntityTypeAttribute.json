@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityTypeAttribute": {
+      "home": {
+        "title": "Tracked Entity Type Attributes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Type Attribute",
+        "createOrEditLabel": "Create or edit a Tracked Entity Type Attribute",
+        "notFound": "No Tracked Entity Type Attributes found"
+      },
+      "created": "A new Tracked Entity Type Attribute is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Type Attribute is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Type Attribute is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Type Attribute {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Type Attribute"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "displayInList": "Display In List",
+      "mandatory": "Mandatory",
+      "searchable": "Searchable",
+      "trackedEntityAttribute": "Tracked Entity Attribute",
+      "trackedEntityType": "Tracked Entity Type",
+      "updatedBy": "Updated By"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "amSystemBackApp": {
+    "MalariaTestResult": {
+      "null": "",
+      "NEGATIVE": "NEGATIVE",
+      "PF": "PF",
+      "PV": "PV",
+      "MIX": "MIX",
+      "INVALID": "INVALID"
+    }
+  }
+}

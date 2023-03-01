@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity UserSetting.
+    -->
+    <changeSet id="20230320203649-20" author="Hamza">
+        <createTable tableName="i18n_locale">
+            <column name="i18nlocaleid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_i18n_locale__uid" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_i18n_locale__code" />
+            </column>
+            <column name="name" type="varchar(255)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_i18n_locale__name" />
+            </column>
+            <column name="locale" type="varchar(15)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_i18n_locale__locale"/>
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

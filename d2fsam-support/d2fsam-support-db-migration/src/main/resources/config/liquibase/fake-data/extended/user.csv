@@ -1,0 +1,8 @@
+userid,uid,username,passwordhash,firstname,surname,email,imageurl,disabled,langkey
+11,ADMIN11UID,admin10,$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC,Administrator,Administrator,admin2@localhost,,FALSE,en
+12,USER12UID,user2,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User,user2@localhost,,FALSE,en
+13,USER13UID,user3,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User,user3@localhost,,FALSE,en
+14,USER14UID,user4,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User,user4@localhost,,FALSE,en
+15,USER15UID,user5,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User,user5@localhost,,FALSE,en
+16,USER16UID,user6,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User BNET SUP,user6@localhost,,FALSE,en
+17,USER17UID,user7,$2a$10$VEjxo0jq2YG9Rbk2HmX9S.k1uZBGYUHdUcid3g/vfiEl7lwWgOH/K,User,User7 CHV SUP,user7@localhost,,FALSE,en

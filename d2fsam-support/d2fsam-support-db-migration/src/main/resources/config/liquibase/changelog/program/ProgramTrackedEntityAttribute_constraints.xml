@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramTrackedEntityAttribute.
+    -->
+    <changeSet id="20221120204053-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program__attributes"
+                                 constraintName="fk_program__attributes__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+<!--        referencedTableName="program" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
+                                 baseTableName="program__attributes"
+                                 constraintName="fk_program__attributes__attribute_id"
+                                 referencedColumnNames="trackedentityattributeid"
+                                 referencedTableName="tracked_entity_attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program__attributes"
+                                 constraintName="fk_program__attributes__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program__attributes"
+                                 constraintName="fk_program__attributes__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addUniqueConstraint columnNames="programid, trackedentityattributeid"
+                             constraintName="UX_program__attributes"
+                             tableName="program__attributes"/>
+    </changeSet>
+</databaseChangeLog>

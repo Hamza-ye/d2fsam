@@ -1,0 +1,17 @@
+{
+  "amSystemBackApp": {
+    "CacheStrategy": {
+      "null": "",
+      "NO_CACHE": "NO_CACHE",
+      "CACHE_1_MINUTE": "CACHE_1_MINUTE",
+      "CACHE_5_MINUTES": "CACHE_5_MINUTES",
+      "CACHE_10_MINUTES": "CACHE_10_MINUTES",
+      "CACHE_15_MINUTES": "CACHE_15_MINUTES",
+      "CACHE_30_MINUTES": "CACHE_30_MINUTES",
+      "CACHE_1_HOUR": "CACHE_1_HOUR",
+      "CACHE_6AM_TOMORROW": "CACHE_6AM_TOMORROW",
+      "CACHE_TWO_WEEKS": "CACHE_TWO_WEEKS",
+      "RESPECT_SYSTEM_SETTING": "RESPECT_SYSTEM_SETTING"
+    }
+  }
+}

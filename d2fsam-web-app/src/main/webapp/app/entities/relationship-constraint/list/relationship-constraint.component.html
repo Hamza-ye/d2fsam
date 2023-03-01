@@ -1,0 +1,127 @@
+<div>
+  <h2 id="page-heading" data-cy="RelationshipConstraintHeading">
+    <span appTranslate="amSystemBackApp.relationshipConstraint.home.title">Relationship Constraints</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.relationshipConstraint.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-relationship-constraint"
+        [routerLink]="['/relationship-constraint/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.relationshipConstraint.home.createLabel"> Create a new Relationship Constraint </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="relationshipConstraints?.length === 0">
+    <span appTranslate="amSystemBackApp.relationshipConstraint.home.notFound">No Relationship Constraints found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="relationshipConstraints && relationshipConstraints.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="relationshipEntity">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationshipConstraint.relationshipEntity">Relationship Entity</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationshipConstraint.trackedEntityType">Tracked Entity Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="program.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationshipConstraint.program">Program</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="programStage.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relationshipConstraint.programStage">Program Stage</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let relationshipConstraint of relationshipConstraints; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/relationship-constraint', relationshipConstraint.id, 'view']">{{ relationshipConstraint.id }}</a>
+          </td>
+          <td appTranslate="{{ 'amSystemBackApp.RelationshipEntity.' + relationshipConstraint.relationshipEntity }}">
+            {{ relationshipConstraint.relationshipEntity }}
+          </td>
+          <td>
+            <div *ngIf="relationshipConstraint.trackedEntityType">
+              <a [routerLink]="['/tracked-entity-type', relationshipConstraint.trackedEntityType.id, 'view']">{{
+                relationshipConstraint.trackedEntityType.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="relationshipConstraint.program">
+              <a [routerLink]="['/program', relationshipConstraint.program.id, 'view']">{{ relationshipConstraint.program.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="relationshipConstraint.programStage">
+              <a [routerLink]="['/program-stage', relationshipConstraint.programStage.id, 'view']">{{
+                relationshipConstraint.programStage.name
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/relationship-constraint', relationshipConstraint.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/relationship-constraint', relationshipConstraint.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(relationshipConstraint)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

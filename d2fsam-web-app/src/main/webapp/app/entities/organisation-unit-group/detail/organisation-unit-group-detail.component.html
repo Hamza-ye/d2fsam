@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="organisationUnitGroup">
+      <h2 data-cy="organisationUnitGroupDetailsHeading">
+        <span appTranslate="amSystemBackApp.organisationUnitGroup.detail.title">Organisation Unit Group</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.uid">Uid</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.code">Code</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.name">Name</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.shortName">Short Name</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.shortName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.created">Created</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.updated">Updated</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.symbol">Symbol</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.symbol }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.color">Color</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.color }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroup.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroup.member">Member</span></dt>
+        <dd>
+          <span *ngFor="let member of organisationUnitGroup.members; let last = last">
+            <a [routerLink]="['/organisation-unit', member.id, 'view']">{{ member.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/organisation-unit-group', organisationUnitGroup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

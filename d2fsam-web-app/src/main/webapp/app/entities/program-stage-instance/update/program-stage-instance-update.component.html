@@ -1,0 +1,412 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-program-stage-instance-heading"
+        data-cy="ProgramStageInstanceCreateUpdateHeading"
+        appTranslate="amSystemBackApp.programStageInstance.home.createOrEditLabel"
+      >
+        Create or edit a Program Stage Instance
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.uuid" for="field_uuid">Uuid</label>
+          <input type="text" class="form-control" name="uuid" id="field_uuid" data-cy="uuid" formControlName="uuid" />
+          <div *ngIf="editForm.get('uuid')!.invalid && (editForm.get('uuid')!.dirty || editForm.get('uuid')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.createdAtClient" for="field_createdAtClient"
+            >Created At Client</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_createdAtClient"
+              data-cy="createdAtClient"
+              type="datetime-local"
+              class="form-control"
+              name="createdAtClient"
+              formControlName="createdAtClient"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.updatedAtClient" for="field_updatedAtClient"
+            >Updated At Client</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_updatedAtClient"
+              data-cy="updatedAtClient"
+              type="datetime-local"
+              class="form-control"
+              name="updatedAtClient"
+              formControlName="updatedAtClient"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.lastSynchronized" for="field_lastSynchronized"
+            >Last Synchronized</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_lastSynchronized"
+              data-cy="lastSynchronized"
+              type="datetime-local"
+              class="form-control"
+              name="lastSynchronized"
+              formControlName="lastSynchronized"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.dueDate" for="field_dueDate">Due Date</label>
+          <div class="d-flex">
+            <input
+              id="field_dueDate"
+              data-cy="dueDate"
+              type="datetime-local"
+              class="form-control"
+              name="dueDate"
+              formControlName="dueDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.executionDate" for="field_executionDate"
+            >Execution Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_executionDate"
+              data-cy="executionDate"
+              type="datetime-local"
+              class="form-control"
+              name="executionDate"
+              formControlName="executionDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.status" for="field_status">Status</label>
+          <select class="form-control" name="status" formControlName="status" id="field_status" data-cy="status">
+            <option [ngValue]="null">{{ 'amSystemBackApp.EventStatus.null' | translate }}</option>
+            <option *ngFor="let eventStatus of eventStatusValues" [value]="eventStatus">
+              {{ 'amSystemBackApp.EventStatus.' + eventStatus | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.storedBy" for="field_storedBy">Stored By</label>
+          <input type="text" class="form-control" name="storedBy" id="field_storedBy" data-cy="storedBy" formControlName="storedBy" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.completedBy" for="field_completedBy"
+            >Completed By</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="completedBy"
+            id="field_completedBy"
+            data-cy="completedBy"
+            formControlName="completedBy"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.completedDate" for="field_completedDate"
+            >Completed Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_completedDate"
+              data-cy="completedDate"
+              type="datetime-local"
+              class="form-control"
+              name="completedDate"
+              formControlName="completedDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.deleted" for="field_deleted">Deleted</label>
+          <input type="checkbox" class="form-check" name="deleted" id="field_deleted" data-cy="deleted" formControlName="deleted" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.deletedAt" for="field_deletedAt">Deleted At</label>
+          <div class="d-flex">
+            <input
+              id="field_deletedAt"
+              data-cy="deletedAt"
+              type="datetime-local"
+              class="form-control"
+              name="deletedAt"
+              formControlName="deletedAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.programInstance" for="field_programInstance"
+            >Program Instance</label
+          >
+          <select
+            class="form-control"
+            id="field_programInstance"
+            data-cy="programInstance"
+            name="programInstance"
+            formControlName="programInstance"
+            [compareWith]="compareProgramInstance"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="programInstanceOption" *ngFor="let programInstanceOption of programInstancesSharedCollection">
+              {{ programInstanceOption.uid }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.programStage" for="field_programStage"
+            >Program Stage</label
+          >
+          <select
+            class="form-control"
+            id="field_programStage"
+            data-cy="programStage"
+            name="programStage"
+            formControlName="programStage"
+            [compareWith]="compareProgramStage"
+          >
+            <option *ngIf="!editForm.get('programStage')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="programStageOption" *ngFor="let programStageOption of programStagesSharedCollection">
+              {{ programStageOption.name }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['programStage'])!.invalid && (editForm.get(['programStage'])!.dirty || editForm.get(['programStage'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['programStage'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.organisationUnit" for="field_organisationUnit"
+            >Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_organisationUnit"
+            data-cy="organisationUnit"
+            name="organisationUnit"
+            formControlName="organisationUnit"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.assignedUser" for="field_assignedUser"
+            >Assigned User</label
+          >
+          <select
+            class="form-control"
+            id="field_assignedUser"
+            data-cy="assignedUser"
+            name="assignedUser"
+            formControlName="assignedUser"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.period" for="field_period">Period</label>
+          <select
+            class="form-control"
+            id="field_period"
+            data-cy="period"
+            name="period"
+            formControlName="period"
+            [compareWith]="comparePeriod"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="periodOption" *ngFor="let periodOption of periodsSharedCollection">{{ periodOption.name }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.programStageInstance.approvedBy" for="field_approvedBy"
+            >Approved By</label
+          >
+          <select
+            class="form-control"
+            id="field_approvedBy"
+            data-cy="approvedBy"
+            name="approvedBy"
+            formControlName="approvedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label appTranslate="amSystemBackApp.programStageInstance.comment" for="field_comments">Comment</label>
+          <select
+            class="form-control"
+            id="field_comments"
+            data-cy="comment"
+            multiple
+            name="comments"
+            formControlName="comments"
+            [compareWith]="compareComment"
+          >
+            <option [ngValue]="commentOption" *ngFor="let commentOption of commentsSharedCollection">
+              {{ commentOption.commentText }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

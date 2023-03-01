@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramStageDataElement.
+    -->
+    <changeSet id="20221120204042-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="program_stage_data_element"
+                                 constraintName="fk_program_stage_data_element__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+<!--        referencedTableName="program_stage" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="program_stage_data_element"
+                                 constraintName="fk_program_stage_data_element__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_stage_data_element"
+                                 constraintName="fk_program_stage_data_element__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_stage_data_element"
+                                 constraintName="fk_program_stage_data_element__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addUniqueConstraint columnNames="programstageid, dataelementid"
+                             constraintName="UX_program_stage_data_element"
+                             tableName="program_stage_data_element"/>
+    </changeSet>
+</databaseChangeLog>

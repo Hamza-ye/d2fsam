@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramStage.
+    -->
+    <changeSet id="20221120204038-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="periodtypeid"
+                                 baseTableName="program_stage"
+                                 constraintName="fk_program_stage__period_type_id"
+                                 referencedColumnNames="periodid"
+                                 referencedTableName="period"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_stage"
+                                 constraintName="fk_program_stage__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="nextscheduledateid"
+                                 baseTableName="program_stage"
+                                 constraintName="fk_program_stage__next_schedule_date_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_stage"
+                                 constraintName="fk_program_stage__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_stage"
+                                 constraintName="fk_program_stage__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,94 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="relationshipType">
+      <h2 data-cy="relationshipTypeDetailsHeading">
+        <span appTranslate="amSystemBackApp.relationshipType.detail.title">Relationship Type</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ relationshipType.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.uid">Uid</span></dt>
+        <dd>
+          <span>{{ relationshipType.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.code">Code</span></dt>
+        <dd>
+          <span>{{ relationshipType.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.name">Name</span></dt>
+        <dd>
+          <span>{{ relationshipType.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.created">Created</span></dt>
+        <dd>
+          <span>{{ relationshipType.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.updated">Updated</span></dt>
+        <dd>
+          <span>{{ relationshipType.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.description">Description</span></dt>
+        <dd>
+          <span>{{ relationshipType.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.bidirectional">Bidirectional</span></dt>
+        <dd>
+          <span>{{ relationshipType.bidirectional }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.fromToName">From To Name</span></dt>
+        <dd>
+          <span>{{ relationshipType.fromToName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.toFromName">To From Name</span></dt>
+        <dd>
+          <span>{{ relationshipType.toFromName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.referral">Referral</span></dt>
+        <dd>
+          <span>{{ relationshipType.referral }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.fromConstraint">From Constraint</span></dt>
+        <dd>
+          <div *ngIf="relationshipType.fromConstraint">
+            <a [routerLink]="['/relationship-constraint', relationshipType.fromConstraint.id, 'view']">{{
+              relationshipType.fromConstraint.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.toConstraint">To Constraint</span></dt>
+        <dd>
+          <div *ngIf="relationshipType.toConstraint">
+            <a [routerLink]="['/relationship-constraint', relationshipType.toConstraint.id, 'view']">{{
+              relationshipType.toConstraint.id
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ relationshipType.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationshipType.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ relationshipType.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/relationship-type', relationshipType.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

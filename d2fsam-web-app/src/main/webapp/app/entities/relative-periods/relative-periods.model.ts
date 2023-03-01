@@ -1,0 +1,44 @@
+export interface IRelativePeriods {
+  id: number;
+  thisDay?: boolean | null;
+  yesterday?: boolean | null;
+  last3Days?: boolean | null;
+  last7Days?: boolean | null;
+  last14Days?: boolean | null;
+  thisMonth?: boolean | null;
+  lastMonth?: boolean | null;
+  thisBimonth?: boolean | null;
+  lastBimonth?: boolean | null;
+  thisQuarter?: boolean | null;
+  lastQuarter?: boolean | null;
+  thisSixMonth?: boolean | null;
+  lastSixMonth?: boolean | null;
+  weeksThisYear?: boolean | null;
+  monthsThisYear?: boolean | null;
+  biMonthsThisYear?: boolean | null;
+  quartersThisYear?: boolean | null;
+  thisYear?: boolean | null;
+  monthsLastYear?: boolean | null;
+  quartersLastYear?: boolean | null;
+  lastYear?: boolean | null;
+  last5Years?: boolean | null;
+  last12Months?: boolean | null;
+  last6Months?: boolean | null;
+  last3Months?: boolean | null;
+  last6BiMonths?: boolean | null;
+  last4Quarters?: boolean | null;
+  last2SixMonths?: boolean | null;
+  thisFinancialYear?: boolean | null;
+  lastFinancialYear?: boolean | null;
+  last5FinancialYears?: boolean | null;
+  thisWeek?: boolean | null;
+  lastWeek?: boolean | null;
+  thisBiWeek?: boolean | null;
+  lastBiWeek?: boolean | null;
+  last4Weeks?: boolean | null;
+  last4BiWeeks?: boolean | null;
+  last12Weeks?: boolean | null;
+  last52Weeks?: boolean | null;
+}
+
+export type NewRelativePeriods = Omit<IRelativePeriods, 'id'> & { id: null };

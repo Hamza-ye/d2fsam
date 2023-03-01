@@ -1,0 +1,31 @@
+{
+  "amSystemBackApp": {
+    "demographicDataSource": {
+      "home": {
+        "title": "Demographic Data Sources",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Demographic Data Source",
+        "createOrEditLabel": "Create or edit a Demographic Data Source",
+        "notFound": "No Demographic Data Sources found"
+      },
+      "created": "A new Demographic Data Source is created with identifier {{ param }}",
+      "updated": "A Demographic Data Source is updated with identifier {{ param }}",
+      "deleted": "A Demographic Data Source is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Demographic Data Source {{ id }}?"
+      },
+      "detail": {
+        "title": "Demographic Data Source"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "demographicData": "Demographic Data",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

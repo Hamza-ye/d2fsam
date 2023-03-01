@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity DataValue.
+    -->
+    <changeSet id="10221120204058-1" author="Hamza">
+        <createTable tableName="data_value_audit">
+            <column name="datavalueauditid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="value" type="varchar(50000)">
+                <constraints nullable="true" />
+            </column>
+            <column name="modifiedby" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="audittype" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="dataelementid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="periodid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="organisationunitid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="data_value_audit" columnName="created" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+</databaseChangeLog>

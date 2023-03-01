@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElement.
+    -->
+    <changeSet id="21001120204044-3" author="Hamza">
+
+        <addForeignKeyConstraint baseColumnNames="offsetperiodtypeid"
+                                 baseTableName="period_boundary"
+                                 constraintName="fk_period_boundary__offset_period_type_id"
+                                 referencedColumnNames="periodtypeid"
+                                 referencedTableName="period_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="programindicatorid"
+                                 baseTableName="period_boundary"
+                                 constraintName="fk_period_boundary__program_indicator_id"
+                                 referencedColumnNames="programindicatorid"
+                                 referencedTableName="program_indicator"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="period_boundary"
+                                 constraintName="fk_period_boundary__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

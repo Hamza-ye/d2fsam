@@ -1,0 +1,34 @@
+{
+  "amSystemBackApp": {
+    "dataValue": {
+      "home": {
+        "title": "Data Values",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Data Value",
+        "createOrEditLabel": "Create or edit a Data Value",
+        "notFound": "No Data Values found"
+      },
+      "created": "A new Data Value is created with identifier {{ param }}",
+      "updated": "A Data Value is updated with identifier {{ param }}",
+      "deleted": "A Data Value is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Data Value {{ id }}?"
+      },
+      "detail": {
+        "title": "Data Value"
+      },
+      "id": "ID",
+      "value": "Value",
+      "storedBy": "Stored By",
+      "created": "Created",
+      "updated": "Updated",
+      "comment": "Comment",
+      "followup": "Followup",
+      "deleted": "Deleted",
+      "auditType": "Audit Type",
+      "dataElement": "Data Element",
+      "period": "Period",
+      "source": "Source"
+    }
+  }
+}

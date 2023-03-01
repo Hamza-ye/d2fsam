@@ -1,0 +1,167 @@
+<div>
+  <h2 id="page-heading" data-cy="TrackedEntityTypeAttributeHeading">
+    <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.home.title">Tracked Entity Type Attributes</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-tracked-entity-type-attribute"
+        [routerLink]="['/tracked-entity-type-attribute/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.home.createLabel"> Create a new Tracked Entity Type Attribute </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="trackedEntityTypeAttributes?.length === 0">
+    <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.home.notFound">No Tracked Entity Type Attributes found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="trackedEntityTypeAttributes && trackedEntityTypeAttributes.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="displayInList">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.displayInList">Display In List</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="mandatory">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.mandatory">Mandatory</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="searchable">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.searchable">Searchable</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityAttribute.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityAttribute">Tracked Entity Attribute</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="trackedEntityType.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityType">Tracked Entity Type</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let trackedEntityTypeAttribute of trackedEntityTypeAttributes; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/tracked-entity-type-attribute', trackedEntityTypeAttribute.id, 'view']">{{
+              trackedEntityTypeAttribute.id
+            }}</a>
+          </td>
+          <td>{{ trackedEntityTypeAttribute.uid }}</td>
+          <td>{{ trackedEntityTypeAttribute.code }}</td>
+          <td>{{ trackedEntityTypeAttribute.created | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityTypeAttribute.updated | formatMediumDatetime }}</td>
+          <td>{{ trackedEntityTypeAttribute.displayInList }}</td>
+          <td>{{ trackedEntityTypeAttribute.mandatory }}</td>
+          <td>{{ trackedEntityTypeAttribute.searchable }}</td>
+          <td>
+            <div *ngIf="trackedEntityTypeAttribute.trackedEntityAttribute">
+              <a [routerLink]="['/data-element', trackedEntityTypeAttribute.trackedEntityAttribute.id, 'view']">{{
+                trackedEntityTypeAttribute.trackedEntityAttribute.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="trackedEntityTypeAttribute.trackedEntityType">
+              <a [routerLink]="['/tracked-entity-type', trackedEntityTypeAttribute.trackedEntityType.id, 'view']">{{
+                trackedEntityTypeAttribute.trackedEntityType.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            {{ trackedEntityTypeAttribute.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-type-attribute', trackedEntityTypeAttribute.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/tracked-entity-type-attribute', trackedEntityTypeAttribute.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(trackedEntityTypeAttribute)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

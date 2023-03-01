@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElement.
+    -->
+    <changeSet id="20501120204044-2" author="Hamza">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_indicator_group"
+                                 constraintName="fk_program_indicator__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_indicator_group"
+                                 constraintName="fk_program_indicator__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programindicatorgroupid"
+                                 baseTableName="program_indicator_group__members"
+                                 constraintName="fk_program_indicator_group__members__program_indicator_group_id"
+                                 referencedColumnNames="programindicatorgroupid"
+                                 referencedTableName="program_indicator_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="programindicatorid"
+                                 baseTableName="program_indicator_group__members"
+                                 constraintName="fk_program_indicator_group__members__program_indicator_idd"
+                                 referencedColumnNames="programindicatorid"
+                                 referencedTableName="program_indicator"/>
+    </changeSet>
+</databaseChangeLog>

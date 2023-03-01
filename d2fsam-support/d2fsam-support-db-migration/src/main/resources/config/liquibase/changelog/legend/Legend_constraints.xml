@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Legend.
+    -->
+    <changeSet id="20230114221609-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="maplegendsetid"
+                                 baseTableName="map_legend"
+                                 constraintName="fk_legend__legend_set_id"
+                                 referencedColumnNames="maplegendsetid"
+                                 referencedTableName="map_legend_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="map_legend"
+                                 constraintName="fk_legend__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

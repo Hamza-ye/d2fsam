@@ -1,0 +1,33 @@
+{
+  "amSystemBackApp": {
+    "optionSet": {
+      "home": {
+        "title": "Option Sets",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Option Set",
+        "createOrEditLabel": "Create or edit a Option Set",
+        "notFound": "No Option Sets found"
+      },
+      "created": "A new Option Set is created with identifier {{ param }}",
+      "updated": "A Option Set is updated with identifier {{ param }}",
+      "deleted": "A Option Set is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Option Set {{ id }}?"
+      },
+      "detail": {
+        "title": "Option Set"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "valueType": "Value Type",
+      "version": "Version",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "option": "Option"
+    }
+  }
+}

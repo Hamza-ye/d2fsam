@@ -1,0 +1,98 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="programStageDataElement">
+      <h2 data-cy="programStageDataElementDetailsHeading">
+        <span appTranslate="amSystemBackApp.programStageDataElement.detail.title">Program Stage Data Element</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.uid">Uid</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.code">Code</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.created">Created</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.updated">Updated</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.compulsory">Compulsory</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.compulsory }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.allowProvidedElsewhere">Allow Provided Elsewhere</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.allowProvidedElsewhere }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.sortOrder">Sort Order</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.sortOrder }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.displayInReports">Display In Reports</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.displayInReports }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.allowFutureDate">Allow Future Date</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.allowFutureDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.skipSynchronization">Skip Synchronization</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.skipSynchronization }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.defaultValue">Default Value</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.defaultValue }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.programStage">Program Stage</span></dt>
+        <dd>
+          <div *ngIf="programStageDataElement.programStage">
+            <a [routerLink]="['/program-stage', programStageDataElement.programStage.id, 'view']">{{
+              programStageDataElement.programStage.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.dataElement">Data Element</span></dt>
+        <dd>
+          <div *ngIf="programStageDataElement.dataElement">
+            <a [routerLink]="['/data-element', programStageDataElement.dataElement.id, 'view']">{{
+              programStageDataElement.dataElement.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.programStageDataElement.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ programStageDataElement.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program-stage-data-element', programStageDataElement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

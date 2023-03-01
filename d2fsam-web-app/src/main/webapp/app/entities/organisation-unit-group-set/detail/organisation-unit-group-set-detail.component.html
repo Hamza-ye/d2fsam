@@ -1,0 +1,81 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="organisationUnitGroupSet">
+      <h2 data-cy="organisationUnitGroupSetDetailsHeading">
+        <span appTranslate="amSystemBackApp.organisationUnitGroupSet.detail.title">Organisation Unit Group Set</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.uid">Uid</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.code">Code</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.name">Name</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.created">Created</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.updated">Updated</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.compulsory">Compulsory</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.compulsory }}</span>
+        </dd>
+        <dt>
+          <span appTranslate="amSystemBackApp.organisationUnitGroupSet.includeSubhierarchyInAnalytics"
+            >Include Subhierarchy In Analytics</span
+          >
+        </dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.includeSubhierarchyInAnalytics }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ organisationUnitGroupSet.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.organisationUnitGroupSet.organisationUnitGroup">Organisation Unit Group</span></dt>
+        <dd>
+          <span *ngFor="let organisationUnitGroup of organisationUnitGroupSet.organisationUnitGroups; let last = last">
+            <a [routerLink]="['/organisation-unit-group', organisationUnitGroup.id, 'view']">{{ organisationUnitGroup.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/organisation-unit-group-set', organisationUnitGroupSet.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

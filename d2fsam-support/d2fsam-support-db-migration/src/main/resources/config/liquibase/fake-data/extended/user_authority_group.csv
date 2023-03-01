@@ -1,0 +1,7 @@
+userroleid,uid,code,name,description,created,updated
+11,SUPER_USER,10021,SUPER Users,Authority Group for SUPER Users,2022-09-26T10:18:28,2022-09-26T15:40:11
+12,CHV_SUP,10022,CHV Supervisor users,Authority Group for CHV SUP Users,2022-09-26T17:57:24,2022-09-26T14:35:25
+13,CHV_USER,10023,CHV Users,Authority Group for CHV Users,2022-09-26T17:57:24,2022-09-26T14:35:25
+14,LLINs_USER,10024,LLINs Users,Authority Group for LLINs Users,2022-09-26T17:57:24,2022-09-26T14:35:25
+15,HFs_USER,10025,Hfs Users,Authority Group for Hfs Users,2022-09-26T17:57:24,2022-09-26T14:35:25
+16,LLINs_SUP,10026,LLINs SUP_Users,Authority Group for LLINs SUPERVISOR Users,2022-09-26T17:57:24,2022-09-26T14:35:25

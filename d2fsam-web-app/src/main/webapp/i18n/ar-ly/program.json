@@ -1,0 +1,53 @@
+{
+  "amSystemBackApp": {
+    "program": {
+      "home": {
+        "title": "Programs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program",
+        "createOrEditLabel": "Create or edit a Program",
+        "notFound": "No Programs found"
+      },
+      "created": "A new Program is created with identifier {{ param }}",
+      "updated": "A Program is updated with identifier {{ param }}",
+      "deleted": "A Program is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program {{ id }}?"
+      },
+      "detail": {
+        "title": "Program"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "name": "Name",
+      "shortName": "Short Name",
+      "description": "Description",
+      "version": "Version",
+      "incidentDateLabel": "Incident Date Label",
+      "programType": "Program Type",
+      "displayIncidentDate": "Display Incident Date",
+      "onlyEnrollOnce": "Only Enroll Once",
+      "captureCoordinates": "Capture Coordinates",
+      "expiryDays": "Expiry Days",
+      "completeEventsExpiryDays": "Complete Events Expiry Days",
+      "accessLevel": "Access Level",
+      "ignoreOverDueEvents": "Ignore Over Due Events",
+      "selectEnrollmentDatesInFuture": "Select Enrollment Dates In Future",
+      "selectIncidentDatesInFuture": "Select Incident Dates In Future",
+      "featureType": "Feature Type",
+      "inactive": "Inactive",
+      "period": "Period",
+      "expiryPeriodType": "Expiry Period Type",
+      "relatedProgram": "Related Program",
+      "trackedEntityType": "Tracked Entity Type",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "organisationUnit": "Organisation Unit",
+      "programAttributes": "Program Attributes",
+      "programStage": "Program Stage"
+    }
+  }
+}

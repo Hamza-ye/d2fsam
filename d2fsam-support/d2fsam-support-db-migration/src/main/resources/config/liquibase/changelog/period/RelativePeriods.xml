@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity RelativePeriods.
+    -->
+    <changeSet id="20221120204027-1" author="jhipster">
+        <createTable tableName="relative_periods">
+            <column name="relativeperiodsid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="this_day" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="yesterday" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_3_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_7_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_14_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_30_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_60_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_90_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_180_days" type="boolean">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="this_month" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_month" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_bimonth" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_bimonth" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_quarter" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_quarter" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_six_month" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_six_month" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="weeks_this_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="months_this_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="bi_months_this_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="quarters_this_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="months_last_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="quarters_last_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_5_years" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_10_years" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_12_months" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_6_months" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_3_months" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_6_bi_months" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_4_quarters" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_2_six_months" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_financial_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_financial_year" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_5_financial_years" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_10_financial_years" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_week" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_week" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="this_bi_week" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_bi_week" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_4_weeks" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_4_bi_weeks" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_12_weeks" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="last_52_weeks" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+<!--    <changeSet id="20221120204027-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/relative_periods.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="relative_periods"-->
+<!--                  usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="this_day" type="boolean"/>-->
+<!--            <column name="yesterday" type="boolean"/>-->
+<!--            <column name="last_3_days" type="boolean"/>-->
+<!--            <column name="last_7_days" type="boolean"/>-->
+<!--            <column name="last_14_days" type="boolean"/>-->
+<!--            <column name="this_month" type="boolean"/>-->
+<!--            <column name="last_month" type="boolean"/>-->
+<!--            <column name="this_bimonth" type="boolean"/>-->
+<!--            <column name="last_bimonth" type="boolean"/>-->
+<!--            <column name="this_quarter" type="boolean"/>-->
+<!--            <column name="last_quarter" type="boolean"/>-->
+<!--            <column name="this_six_month" type="boolean"/>-->
+<!--            <column name="last_six_month" type="boolean"/>-->
+<!--            <column name="weeks_this_year" type="boolean"/>-->
+<!--            <column name="months_this_year" type="boolean"/>-->
+<!--            <column name="bi_months_this_year" type="boolean"/>-->
+<!--            <column name="quarters_this_year" type="boolean"/>-->
+<!--            <column name="this_year" type="boolean"/>-->
+<!--            <column name="months_last_year" type="boolean"/>-->
+<!--            <column name="quarters_last_year" type="boolean"/>-->
+<!--            <column name="last_year" type="boolean"/>-->
+<!--            <column name="last_5_years" type="boolean"/>-->
+<!--            <column name="last_12_months" type="boolean"/>-->
+<!--            <column name="last_6_months" type="boolean"/>-->
+<!--            <column name="last_3_months" type="boolean"/>-->
+<!--            <column name="last_6_bi_months" type="boolean"/>-->
+<!--            <column name="last_4_quarters" type="boolean"/>-->
+<!--            <column name="last_2_six_months" type="boolean"/>-->
+<!--            <column name="this_financial_year" type="boolean"/>-->
+<!--            <column name="last_financial_year" type="boolean"/>-->
+<!--            <column name="last_5_financial_years" type="boolean"/>-->
+<!--            <column name="this_week" type="boolean"/>-->
+<!--            <column name="last_week" type="boolean"/>-->
+<!--            <column name="this_bi_week" type="boolean"/>-->
+<!--            <column name="last_bi_week" type="boolean"/>-->
+<!--            <column name="last_4_weeks" type="boolean"/>-->
+<!--            <column name="last_4_bi_weeks" type="boolean"/>-->
+<!--            <column name="last_12_weeks" type="boolean"/>-->
+<!--            <column name="last_52_weeks" type="boolean"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

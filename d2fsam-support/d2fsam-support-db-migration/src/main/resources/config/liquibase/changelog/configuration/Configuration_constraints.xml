@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity configuration.
+    -->
+    <changeSet id="20221120204080-80" author="Hamza">
+        <addForeignKeyConstraint baseColumnNames="feedback_recipients_id"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__feedback_recipients_id"
+                                 referencedColumnNames="usergroupid"
+                                 referencedTableName="user_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="systemupdatenotificationrecipientsid"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__system_update_notification_recipients_id"
+                                 referencedColumnNames="usergroupid"
+                                 referencedTableName="user_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="offlineorgunitlevelid"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__offline_organisation_unit_level_id"
+                                 referencedColumnNames="orgunitlevelid"
+                                 referencedTableName="orgunit_level"/>
+
+<!--        <addForeignKeyConstraint baseColumnNames="infrastructural_indicators_id"-->
+<!--                                 baseTableName="configuration"-->
+<!--                                 constraintName="fk_configuration__infrastructural_indicators_id"-->
+<!--                                 referencedColumnNames="userid"-->
+<!--                                 referencedTableName="app_user"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="infrastructuraldataelementsid"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__infrastructural_data_elements_id"
+                                 referencedColumnNames="dataelementgroupid"
+                                 referencedTableName="data_element_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="infrastructuralperiodtypeid"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__infrastructural_period_type_id"
+                                 referencedColumnNames="periodtypeid"
+                                 referencedTableName="period_type"/>
+
+        <addForeignKeyConstraint baseColumnNames="selfregistrationrole"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__self_registration_role_id"
+                                 referencedColumnNames="userroleid"
+                                 referencedTableName="user_authority_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="selfregistrationorgunit"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__self_registration_org_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="facilityorgunitgroupset"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__facility_org_unit_group_set_id"
+                                 referencedColumnNames="orgunitgroupsetid"
+                                 referencedTableName="orgunit_groupset"/>
+
+        <addForeignKeyConstraint baseColumnNames="facilityorgunitlevel"
+                                 baseTableName="configuration"
+                                 constraintName="fk_configuration__facility_org_unit_level_id"
+                                 referencedColumnNames="orgunitlevelid"
+                                 referencedTableName="orgunit_level"/>
+
+    </changeSet>
+</databaseChangeLog>

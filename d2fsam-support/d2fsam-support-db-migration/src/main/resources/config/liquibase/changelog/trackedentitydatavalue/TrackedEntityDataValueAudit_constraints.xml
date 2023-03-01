@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityDataValueAudit.
+    -->
+    <changeSet id="20221120204046-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programstageinstanceid"
+                                 baseTableName="tracked_entity_data_value_audit"
+                                 constraintName="fk_tracked_entity_data_value_audit__program_stage_instance_id"
+                                 referencedColumnNames="programstageinstanceid"
+                                 referencedTableName="program_stage_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="tracked_entity_data_value_audit"
+                                 constraintName="fk_tracked_entity_data_value_audit__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+<!--        <addForeignKeyConstraint baseColumnNames="periodid"-->
+<!--                                 baseTableName="tracked_entity_data_value_audit"-->
+<!--                                 constraintName="fk_tracked_entity_data_value_audit__period_id"-->
+<!--                                 referencedColumnNames="id"-->
+<!--                                 referencedTableName="period"/>-->
+    </changeSet>
+</databaseChangeLog>

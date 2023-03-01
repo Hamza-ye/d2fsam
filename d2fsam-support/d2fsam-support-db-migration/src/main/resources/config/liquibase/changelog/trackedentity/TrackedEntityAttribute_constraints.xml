@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityAttribute.
+    -->
+    <changeSet id="20230114221608-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="optionsetid"
+                                 baseTableName="tracked_entity_attribute"
+                                 constraintName="fk_tracked_entity_attribute__option_set_id"
+                                 referencedColumnNames="optionsetid"
+                                 referencedTableName="option_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="tracked_entity_attribute"
+                                 constraintName="fk_tracked_entity_attribute__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="tracked_entity_attribute"
+                                 constraintName="fk_tracked_entity_attribute__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
+                                 baseTableName="tracked_entity_attribute__legend_set"
+                                 constraintName="fk_tracked_entity_attribute__legend_set__te_attribute_id"
+                                 referencedColumnNames="trackedentityattributeid"
+                                 referencedTableName="tracked_entity_attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="maplegendsetid"
+                                 baseTableName="tracked_entity_attribute__legend_set"
+                                 constraintName="fk_tracked_entity_attribute__legend_set__legend_set_id"
+                                 referencedColumnNames="maplegendsetid"
+                                 referencedTableName="map_legend_set"/>
+    </changeSet>
+</databaseChangeLog>

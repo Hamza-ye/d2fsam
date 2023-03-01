@@ -1,0 +1,68 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="stockItem">
+      <h2 data-cy="stockItemDetailsHeading"><span appTranslate="amSystemBackApp.stockItem.detail.title">Stock Item</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ stockItem.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.uid">Uid</span></dt>
+        <dd>
+          <span>{{ stockItem.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.code">Code</span></dt>
+        <dd>
+          <span>{{ stockItem.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.name">Name</span></dt>
+        <dd>
+          <span>{{ stockItem.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.shortName">Short Name</span></dt>
+        <dd>
+          <span>{{ stockItem.shortName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.description">Description</span></dt>
+        <dd>
+          <span>{{ stockItem.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.created">Created</span></dt>
+        <dd>
+          <span>{{ stockItem.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.updated">Updated</span></dt>
+        <dd>
+          <span>{{ stockItem.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ stockItem.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ stockItem.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItem.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ stockItem.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/stock-item', stockItem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

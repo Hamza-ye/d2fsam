@@ -1,0 +1,43 @@
+{
+  "amSystemBackApp": {
+    "activity": {
+      "home": {
+        "title": "Activities",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Activity",
+        "createOrEditLabel": "Create or edit a Activity",
+        "notFound": "No Activities found"
+      },
+      "created": "A new Activity is created with identifier {{ param }}",
+      "updated": "A Activity is updated with identifier {{ param }}",
+      "deleted": "A Activity is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Activity {{ id }}?"
+      },
+      "detail": {
+        "title": "Activity"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "shortName": "Short Name",
+      "description": "Description",
+      "created": "Created",
+      "updated": "Updated",
+      "startDate": "Start Date",
+      "endDate": "End Date",
+      "hidden": "Hidden",
+      "order": "Order",
+      "inactive": "Inactive",
+      "project": "Project",
+      "activityUsedAsTarget": "Activity Used As Target",
+      "demographicData": "Demographic Data",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "targetedOrganisationUnit": "Targeted Organisation Unit",
+      "team": "Team",
+      "assignment": "Assignment"
+    }
+  }
+}

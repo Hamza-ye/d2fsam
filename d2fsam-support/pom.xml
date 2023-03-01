@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>d2fsam</artifactId>
+        <groupId>org.nmcpye.am</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <name>D2-F Support Parent Project</name>
+
+    <artifactId>d2fsam-support</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>d2fsam-support-commons</module>
+        <module>d2fsam-support-db-migration</module>
+        <module>d2fsam-support-test</module>
+        <module>d2fsam-support-external</module>
+        <module>d2fsam-support-hibernate</module>
+        <module>d2fsam-support-audit</module>
+        <module>d2fsam-support-system</module>
+        <module>d2fsam-support-jdbc</module>
+<!--        <module>d2fsam-support-expression-parser</module>-->
+        <module>d2fsam-support-artemis</module>
+        <module>d2fsam-support-cache-invalidation</module>
+    </modules>
+
+    <properties>
+        <rootDir>../</rootDir>
+    </properties>
+
+</project>

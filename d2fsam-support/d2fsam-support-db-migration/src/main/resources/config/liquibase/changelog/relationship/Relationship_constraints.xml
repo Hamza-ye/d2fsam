@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Relationship.
+    -->
+    <changeSet id="20221120204107-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="relationshiptypeid"
+                                 baseTableName="relationship"
+                                 constraintName="fk_relationship__relationship_type_id"
+                                 referencedColumnNames="relationshiptypeid"
+                                 referencedTableName="relationship_type" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="from_relationshipitemid"
+                                 baseTableName="relationship"
+                                 constraintName="fk_relationship__from_id"
+                                 referencedColumnNames="relationshipitemid"
+                                 referencedTableName="relationship_item" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="to_relationshipitemid"
+                                 baseTableName="relationship"
+                                 constraintName="fk_relationship__to_id"
+                                 referencedColumnNames="relationshipitemid"
+                                 referencedTableName="relationship_item" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="relationship"
+                                 constraintName="fk_relationship__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,354 @@
+<div>
+  <h2 id="page-heading" data-cy="RelativePeriodsHeading">
+    <span appTranslate="amSystemBackApp.relativePeriods.home.title">Relative Periods</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.relativePeriods.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-relative-periods"
+        [routerLink]="['/relative-periods/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.relativePeriods.home.createLabel"> Create a new Relative Periods </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="relativePeriods?.length === 0">
+    <span appTranslate="amSystemBackApp.relativePeriods.home.notFound">No Relative Periods found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="relativePeriods && relativePeriods.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisDay">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisDay">This Day</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="yesterday">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.yesterday">Yesterday</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last3Days">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last3Days">Last 3 Days</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last7Days">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last7Days">Last 7 Days</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last14Days">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last14Days">Last 14 Days</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisMonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisMonth">This Month</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastMonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastMonth">Last Month</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisBimonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisBimonth">This Bimonth</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastBimonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastBimonth">Last Bimonth</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisQuarter">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisQuarter">This Quarter</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastQuarter">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastQuarter">Last Quarter</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisSixMonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisSixMonth">This Six Month</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastSixMonth">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastSixMonth">Last Six Month</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="weeksThisYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.weeksThisYear">Weeks This Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="monthsThisYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.monthsThisYear">Months This Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="biMonthsThisYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.biMonthsThisYear">Bi Months This Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="quartersThisYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.quartersThisYear">Quarters This Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisYear">This Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="monthsLastYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.monthsLastYear">Months Last Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="quartersLastYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.quartersLastYear">Quarters Last Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastYear">Last Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last5Years">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last5Years">Last 5 Years</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last12Months">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last12Months">Last 12 Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last6Months">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last6Months">Last 6 Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last3Months">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last3Months">Last 3 Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last6BiMonths">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last6BiMonths">Last 6 Bi Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last4Quarters">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last4Quarters">Last 4 Quarters</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last2SixMonths">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last2SixMonths">Last 2 Six Months</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisFinancialYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisFinancialYear">This Financial Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastFinancialYear">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastFinancialYear">Last Financial Year</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last5FinancialYears">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last5FinancialYears">Last 5 Financial Years</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisWeek">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisWeek">This Week</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastWeek">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastWeek">Last Week</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="thisBiWeek">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.thisBiWeek">This Bi Week</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lastBiWeek">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.lastBiWeek">Last Bi Week</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last4Weeks">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last4Weeks">Last 4 Weeks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last4BiWeeks">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last4BiWeeks">Last 4 Bi Weeks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last12Weeks">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last12Weeks">Last 12 Weeks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="last52Weeks">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.relativePeriods.last52Weeks">Last 52 Weeks</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let relativePeriods of relativePeriods; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/relative-periods', relativePeriods.id, 'view']">{{ relativePeriods.id }}</a>
+          </td>
+          <td>{{ relativePeriods.thisDay }}</td>
+          <td>{{ relativePeriods.yesterday }}</td>
+          <td>{{ relativePeriods.last3Days }}</td>
+          <td>{{ relativePeriods.last7Days }}</td>
+          <td>{{ relativePeriods.last14Days }}</td>
+          <td>{{ relativePeriods.thisMonth }}</td>
+          <td>{{ relativePeriods.lastMonth }}</td>
+          <td>{{ relativePeriods.thisBimonth }}</td>
+          <td>{{ relativePeriods.lastBimonth }}</td>
+          <td>{{ relativePeriods.thisQuarter }}</td>
+          <td>{{ relativePeriods.lastQuarter }}</td>
+          <td>{{ relativePeriods.thisSixMonth }}</td>
+          <td>{{ relativePeriods.lastSixMonth }}</td>
+          <td>{{ relativePeriods.weeksThisYear }}</td>
+          <td>{{ relativePeriods.monthsThisYear }}</td>
+          <td>{{ relativePeriods.biMonthsThisYear }}</td>
+          <td>{{ relativePeriods.quartersThisYear }}</td>
+          <td>{{ relativePeriods.thisYear }}</td>
+          <td>{{ relativePeriods.monthsLastYear }}</td>
+          <td>{{ relativePeriods.quartersLastYear }}</td>
+          <td>{{ relativePeriods.lastYear }}</td>
+          <td>{{ relativePeriods.last5Years }}</td>
+          <td>{{ relativePeriods.last12Months }}</td>
+          <td>{{ relativePeriods.last6Months }}</td>
+          <td>{{ relativePeriods.last3Months }}</td>
+          <td>{{ relativePeriods.last6BiMonths }}</td>
+          <td>{{ relativePeriods.last4Quarters }}</td>
+          <td>{{ relativePeriods.last2SixMonths }}</td>
+          <td>{{ relativePeriods.thisFinancialYear }}</td>
+          <td>{{ relativePeriods.lastFinancialYear }}</td>
+          <td>{{ relativePeriods.last5FinancialYears }}</td>
+          <td>{{ relativePeriods.thisWeek }}</td>
+          <td>{{ relativePeriods.lastWeek }}</td>
+          <td>{{ relativePeriods.thisBiWeek }}</td>
+          <td>{{ relativePeriods.lastBiWeek }}</td>
+          <td>{{ relativePeriods.last4Weeks }}</td>
+          <td>{{ relativePeriods.last4BiWeeks }}</td>
+          <td>{{ relativePeriods.last12Weeks }}</td>
+          <td>{{ relativePeriods.last52Weeks }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/relative-periods', relativePeriods.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/relative-periods', relativePeriods.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(relativePeriods)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

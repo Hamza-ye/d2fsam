@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElement.
+    -->
+    <changeSet id="20221120204044-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="optionsetid"
+                                 baseTableName="data_element"
+                                 constraintName="fk_data_element__option_set_id"
+                                 referencedColumnNames="optionsetid"
+                                 referencedTableName="option_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="data_element"
+                                 constraintName="fk_data_element__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="data_element"
+                                 constraintName="fk_data_element__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="data_element__legend_set"
+                                 constraintName="fk_data_element__legend_set__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="maplegendsetid"
+                                 baseTableName="data_element__legend_set"
+                                 constraintName="fk_data_element__legend_set__legend_set_id"
+                                 referencedColumnNames="maplegendsetid"
+                                 referencedTableName="map_legend_set"/>
+    </changeSet>
+</databaseChangeLog>

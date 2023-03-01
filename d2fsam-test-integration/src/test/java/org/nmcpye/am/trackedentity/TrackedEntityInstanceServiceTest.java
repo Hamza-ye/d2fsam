@@ -1,0 +1,368 @@
+/*
+ * Copyright (c) 2004-2022, University of Oslo
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ * Redistributions of source code must retain the above copyright notice, this
+ * list of conditions and the following disclaimer.
+ *
+ * Redistributions in binary form must reproduce the above copyright notice,
+ * this list of conditions and the following disclaimer in the documentation
+ * and/or other materials provided with the distribution.
+ * Neither the name of the HISP project nor the names of its contributors may
+ * be used to endorse or promote products derived from this software without
+ * specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+ * ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ * ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ */
+package org.nmcpye.am.trackedentity;
+
+import com.google.common.collect.Sets;
+import org.joda.time.DateTime;
+import org.junit.jupiter.api.Test;
+import org.nmcpye.am.activity.Activity;
+import org.nmcpye.am.activity.ActivityServiceExt;
+import org.nmcpye.am.assignment.Assignment;
+import org.nmcpye.am.assignment.AssignmentServiceExt;
+import org.nmcpye.am.common.Grid;
+import org.nmcpye.am.common.QueryFilter;
+import org.nmcpye.am.common.QueryOperator;
+import org.nmcpye.am.organisationunit.OrganisationUnit;
+import org.nmcpye.am.organisationunit.OrganisationUnitServiceExt;
+import org.nmcpye.am.program.*;
+import org.nmcpye.am.security.acl.AccessStringHelper;
+import org.nmcpye.am.team.Team;
+import org.nmcpye.am.team.TeamServiceExt;
+import org.nmcpye.am.test.integration.IntegrationTestBase;
+import org.nmcpye.am.trackedentityattributevalue.TrackedEntityAttributeValue;
+import org.nmcpye.am.trackedentityattributevalue.TrackedEntityAttributeValueServiceExt;
+import org.nmcpye.am.user.User;
+import org.nmcpye.am.user.UserServiceExt;
+import org.nmcpye.am.util.DateUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+/**
+ * @author Chau Thu Tran
+ */
+class TrackedEntityInstanceServiceTest extends IntegrationTestBase {
+    @Autowired
+    private TrackedEntityInstanceServiceExt entityInstanceService;
+
+    @Autowired
+    private OrganisationUnitServiceExt organisationUnitServiceExt;
+
+    @Autowired
+    private ProgramServiceExt programService;
+
+    @Autowired
+    private ProgramStageServiceExt programStageService;
+
+    @Autowired
+    private ProgramStageInstanceServiceExt programStageInstanceService;
+
+    @Autowired
+    private ProgramInstanceServiceExt programInstanceService;
+
+    @Autowired
+    private TrackedEntityAttributeServiceExt attributeService;
+
+    @Autowired
+    private TrackedEntityAttributeValueServiceExt attributeValueService;
+
+    @Autowired
+    private UserServiceExt _userService;
+
+    @Autowired
+    private TrackedEntityTypeServiceExt trackedEntityTypeService;
+
+    @Autowired
+    private TrackedEntityAttributeServiceExt trackedEntityAttributeService;
+
+    @Autowired
+    private ActivityServiceExt activityServiceExt;
+
+    @Autowired
+    private TeamServiceExt teamService;
+
+    @Autowired
+    private AssignmentServiceExt assignmentService;
+
+    private ProgramStageInstance programStageInstanceA;
+
+    private ProgramInstance programInstanceA;
+
+    private Program programA;
+
+    private TrackedEntityInstance entityInstanceA1;
+
+    private TrackedEntityInstance entityInstanceB1;
+
+    private TrackedEntityAttribute entityInstanceAttribute;
+
+    private Activity activityA;
+
+    private OrganisationUnit organisationUnit;
+
+    private TrackedEntityType trackedEntityTypeA;
+
+    private TrackedEntityAttribute attrD;
+
+    private TrackedEntityAttribute attrE;
+
+    private TrackedEntityAttribute filtF;
+
+    private TrackedEntityAttribute filtG;
+
+    private TrackedEntityAttribute filtH;
+
+    private final static String ATTRIBUTE_VALUE = "Value";
+
+    private User superUser;
+
+    private Team team;
+
+    private Assignment assignment;
+
+    @Override
+    public void setUpTest() {
+        // NMCP To Instant
+        super.userService = _userService;
+
+        this.superUser = preCreateInjectAdminUser();
+
+        activityA = createActivity('A');
+        activityServiceExt.addActivity(activityA);
+
+        team = createTeam('A');
+        team.setActivity(activityA);
+        teamService.addTeam(team);
+
+        trackedEntityTypeA = createTrackedEntityType('A');
+        attrD = createTrackedEntityAttribute('D');
+        attrE = createTrackedEntityAttribute('E');
+        filtF = createTrackedEntityAttribute('F');
+        filtG = createTrackedEntityAttribute('G');
+        filtH = createTrackedEntityAttribute('H');
+
+        trackedEntityAttributeService.addTrackedEntityAttribute(attrD);
+        trackedEntityAttributeService.addTrackedEntityAttribute(attrE);
+        trackedEntityAttributeService.addTrackedEntityAttribute(filtF);
+        trackedEntityAttributeService.addTrackedEntityAttribute(filtG);
+        trackedEntityAttributeService.addTrackedEntityAttribute(filtH);
+
+        organisationUnit = createOrganisationUnit('A');
+        organisationUnitServiceExt.addOrganisationUnit(organisationUnit);
+        OrganisationUnit organisationUnitB = createOrganisationUnit('B');
+        organisationUnitServiceExt.addOrganisationUnit(organisationUnitB);
+
+        organisationUnitServiceExt.forceUpdatePaths();
+
+        assignment = createAssignment('A', activityA, team, organisationUnit);
+        assignmentService.addAssignment(assignment);
+
+        entityInstanceAttribute = createTrackedEntityAttribute('A');
+        attributeService.addTrackedEntityAttribute(entityInstanceAttribute);
+        entityInstanceA1 = createTrackedEntityInstance(organisationUnit);
+        entityInstanceB1 = createTrackedEntityInstance(organisationUnit);
+        entityInstanceB1.setUid("UID-B1");
+        programA = createProgram('A', new HashSet<>(), organisationUnit);
+        programService.addProgram(programA);
+        ProgramStage stageA = createProgramStage('A', programA);
+        stageA.setSortOrder(1);
+        programStageService.saveProgramStage(stageA);
+        Set<ProgramStage> programStages = new HashSet<>();
+        programStages.add(stageA);
+        programA.setProgramStages(programStages);
+        programService.updateProgram(programA);
+        DateTime enrollmentDate = DateTime.now();
+        enrollmentDate.withTimeAtStartOfDay();
+        enrollmentDate = enrollmentDate.minusDays(70);
+        DateTime incidentDate = DateTime.now();
+        incidentDate.withTimeAtStartOfDay();
+        // NMCP To Instant
+        programInstanceA = new ProgramInstance(DateUtils.localDateTimeFromDate(enrollmentDate.toDate()),
+            DateUtils.localDateTimeFromDate(incidentDate.toDate()), entityInstanceA1,
+            programA);
+        programInstanceA.setUid("UID-A");
+        programInstanceA.setOrganisationUnit(organisationUnit);
+        programInstanceA.setActivity(activityA);
+        programStageInstanceA = new ProgramStageInstance(programInstanceA, stageA);
+        programInstanceA.setUid("UID-PSI-A");
+        programInstanceA.setOrganisationUnit(organisationUnit);
+        programInstanceA.setActivity(activityA);
+        trackedEntityTypeA.setPublicAccess(AccessStringHelper.FULL);
+        trackedEntityTypeService.addTrackedEntityType(trackedEntityTypeA);
+        attributeService.addTrackedEntityAttribute(attrD);
+        attributeService.addTrackedEntityAttribute(attrE);
+        attributeService.addTrackedEntityAttribute(filtF);
+        attributeService.addTrackedEntityAttribute(filtG);
+
+        User user = createUserWithAuth("testUser");
+        user.setTeiSearchOrganisationUnits(Sets.newHashSet(organisationUnit));
+        team.getMembers().add(user);
+        teamService.updateTeam(team);
+        injectSecurityContext(user);
+    }
+
+    @Test
+    void testSaveTrackedEntityInstance() {
+        long idA = entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        long idB = entityInstanceService.addTrackedEntityInstance(entityInstanceB1);
+        assertNotNull(entityInstanceService.getTrackedEntityInstance(idA));
+        assertNotNull(entityInstanceService.getTrackedEntityInstance(idB));
+    }
+
+    @Test
+    void testDeleteTrackedEntityInstance() {
+        long idA = entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        long idB = entityInstanceService.addTrackedEntityInstance(entityInstanceB1);
+        TrackedEntityInstance teiA = entityInstanceService.getTrackedEntityInstance(idA);
+        TrackedEntityInstance teiB = entityInstanceService.getTrackedEntityInstance(idB);
+        assertNotNull(teiA);
+        assertNotNull(teiB);
+        entityInstanceService.deleteTrackedEntityInstance(entityInstanceA1);
+        assertNull(entityInstanceService.getTrackedEntityInstance(teiA.getUid()));
+        assertNotNull(entityInstanceService.getTrackedEntityInstance(teiB.getUid()));
+        entityInstanceService.deleteTrackedEntityInstance(entityInstanceB1);
+        assertNull(entityInstanceService.getTrackedEntityInstance(teiA.getUid()));
+        assertNull(entityInstanceService.getTrackedEntityInstance(teiB.getUid()));
+    }
+
+    @Test
+    void testDeleteTrackedEntityInstanceAndLinkedEnrollmentsAndEvents() {
+        long idA = entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        long psIdA = programInstanceService.addProgramInstance(programInstanceA);
+        long psiIdA = programStageInstanceService.addProgramStageInstance(programStageInstanceA);
+        programInstanceA.setProgramStageInstances(Sets.newHashSet(programStageInstanceA));
+        entityInstanceA1.setProgramInstances(Sets.newHashSet(programInstanceA));
+        programInstanceService.updateProgramInstance(programInstanceA);
+        entityInstanceService.updateTrackedEntityInstance(entityInstanceA1);
+        TrackedEntityInstance teiA = entityInstanceService.getTrackedEntityInstance(idA);
+        ProgramInstance psA = programInstanceService.getProgramInstance(psIdA);
+        ProgramStageInstance psiA = programStageInstanceService.getProgramStageInstance(psiIdA);
+        assertNotNull(teiA);
+        assertNotNull(psA);
+        assertNotNull(psiA);
+        entityInstanceService.deleteTrackedEntityInstance(entityInstanceA1);
+        assertNull(entityInstanceService.getTrackedEntityInstance(teiA.getUid()));
+        assertNull(programInstanceService.getProgramInstance(psIdA));
+        assertNull(programStageInstanceService.getProgramStageInstance(psiIdA));
+    }
+
+    @Test
+    void testUpdateTrackedEntityInstance() {
+        long idA = entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        assertNotNull(entityInstanceService.getTrackedEntityInstance(idA));
+        entityInstanceA1.setName("B");
+        entityInstanceService.updateTrackedEntityInstance(entityInstanceA1);
+        assertEquals("B", entityInstanceService.getTrackedEntityInstance(idA).getName());
+    }
+
+    @Test
+    void testGetTrackedEntityInstanceById() {
+        long idA = entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        long idB = entityInstanceService.addTrackedEntityInstance(entityInstanceB1);
+        assertEquals(entityInstanceA1, entityInstanceService.getTrackedEntityInstance(idA));
+        assertEquals(entityInstanceB1, entityInstanceService.getTrackedEntityInstance(idB));
+    }
+
+    @Test
+    void testGetTrackedEntityInstanceByUid() {
+        entityInstanceA1.setUid("A1");
+        entityInstanceB1.setUid("B1");
+        entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        entityInstanceService.addTrackedEntityInstance(entityInstanceB1);
+        assertEquals(entityInstanceA1, entityInstanceService.getTrackedEntityInstance("A1"));
+        assertEquals(entityInstanceB1, entityInstanceService.getTrackedEntityInstance("B1"));
+    }
+
+    @Test
+    void testStoredByColumnForTrackedEntityInstance() {
+        entityInstanceA1.setStoredBy("test");
+        entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+        TrackedEntityInstance tei = entityInstanceService.getTrackedEntityInstance(entityInstanceA1.getUid());
+        assertEquals("test", tei.getStoredBy());
+    }
+
+    @Test
+    void testTrackedEntityAttributeFilter() {
+        injectSecurityContext(superUser);
+        filtH.setDisplayInListNoProgram(true);
+        attributeService.addTrackedEntityAttribute(filtH);
+
+        User user = createAndAddUser(false, "attributeFilterUser", Sets.newHashSet(organisationUnit),
+            Sets.newHashSet(organisationUnit));
+
+        team.setMembers(Sets.newHashSet(user));
+        teamService.updateTeam(team);
+
+        injectSecurityContext(user);
+
+        entityInstanceA1.setTrackedEntityType(trackedEntityTypeA);
+        entityInstanceService.addTrackedEntityInstance(entityInstanceA1);
+
+        TrackedEntityAttributeValue trackedEntityAttributeValue = new TrackedEntityAttributeValue();
+
+        trackedEntityAttributeValue.setAttribute(filtH);
+        trackedEntityAttributeValue.setEntityInstance(entityInstanceA1);
+        trackedEntityAttributeValue.setValue(ATTRIBUTE_VALUE);
+
+        attributeValueService.addTrackedEntityAttributeValue(trackedEntityAttributeValue);
+
+        TrackedEntityInstanceQueryParams params = new TrackedEntityInstanceQueryParams();
+        params.setOrganisationUnits(Sets.newHashSet(organisationUnit));
+        params.setTrackedEntityType(trackedEntityTypeA);
+
+        params.setQuery(new QueryFilter(QueryOperator.LIKE, ATTRIBUTE_VALUE));
+        Grid grid = entityInstanceService.getTrackedEntityInstancesGrid(params);
+
+        assertEquals(1, grid.getHeight());
+    }
+
+    // From Master
+    @Test
+    void testTrackedEntityInstanceGridWithNoFilterableAttributes() {
+        injectSecurityContext(superUser);
+
+        TrackedEntityInstanceQueryParams params = new TrackedEntityInstanceQueryParams();
+        params.setOrganisationUnits(Sets.newHashSet(organisationUnit));
+        params.setTrackedEntityType(trackedEntityTypeA);
+
+        params.setQuery(new QueryFilter(QueryOperator.LIKE, ATTRIBUTE_VALUE));
+
+        assertThrows(IllegalArgumentException.class,
+            () -> entityInstanceService.getTrackedEntityInstancesGrid(params));
+    }
+
+    @Test
+    void testTrackedEntityInstanceGridWithNoDisplayAttributes() {
+        injectSecurityContext(superUser);
+        filtH.setDisplayInListNoProgram(false);
+        attributeService.addTrackedEntityAttribute(filtH);
+
+        TrackedEntityInstanceQueryParams params = new TrackedEntityInstanceQueryParams();
+        params.setOrganisationUnits(Sets.newHashSet(organisationUnit));
+        params.setTrackedEntityType(trackedEntityTypeA);
+
+        params.setQuery(new QueryFilter(QueryOperator.LIKE, ATTRIBUTE_VALUE));
+
+        assertThrows(IllegalArgumentException.class,
+            () -> entityInstanceService.getTrackedEntityInstancesGrid(params));
+    }
+}

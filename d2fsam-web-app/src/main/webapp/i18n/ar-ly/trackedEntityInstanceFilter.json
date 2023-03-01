@@ -1,0 +1,34 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityInstanceFilter": {
+      "home": {
+        "title": "Tracked Entity Instance Filters",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Instance Filter",
+        "createOrEditLabel": "Create or edit a Tracked Entity Instance Filter",
+        "notFound": "No Tracked Entity Instance Filters found"
+      },
+      "created": "A new Tracked Entity Instance Filter is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Instance Filter is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Instance Filter is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Instance Filter {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Instance Filter"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "created": "Created",
+      "updated": "Updated",
+      "description": "Description",
+      "sortOrder": "Sort Order",
+      "enrollmentStatus": "Enrollment Status",
+      "program": "Program",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

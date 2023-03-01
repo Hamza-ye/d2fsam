@@ -1,0 +1,9 @@
+{
+  "amSystemBackApp": {
+    "VersionType": {
+      "null": "",
+      "BEST_EFFORT": "BEST_EFFORT",
+      "ATOMIC": "ATOMIC"
+    }
+  }
+}

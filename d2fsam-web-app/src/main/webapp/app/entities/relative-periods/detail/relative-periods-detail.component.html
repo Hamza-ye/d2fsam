@@ -1,0 +1,186 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="relativePeriods">
+      <h2 data-cy="relativePeriodsDetailsHeading">
+        <span appTranslate="amSystemBackApp.relativePeriods.detail.title">Relative Periods</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ relativePeriods.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisDay">This Day</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisDay }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.yesterday">Yesterday</span></dt>
+        <dd>
+          <span>{{ relativePeriods.yesterday }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last3Days">Last 3 Days</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last3Days }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last7Days">Last 7 Days</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last7Days }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last14Days">Last 14 Days</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last14Days }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisMonth">This Month</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisMonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastMonth">Last Month</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastMonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisBimonth">This Bimonth</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisBimonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastBimonth">Last Bimonth</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastBimonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisQuarter">This Quarter</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisQuarter }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastQuarter">Last Quarter</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastQuarter }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisSixMonth">This Six Month</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisSixMonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastSixMonth">Last Six Month</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastSixMonth }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.weeksThisYear">Weeks This Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.weeksThisYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.monthsThisYear">Months This Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.monthsThisYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.biMonthsThisYear">Bi Months This Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.biMonthsThisYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.quartersThisYear">Quarters This Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.quartersThisYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisYear">This Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.monthsLastYear">Months Last Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.monthsLastYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.quartersLastYear">Quarters Last Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.quartersLastYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastYear">Last Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last5Years">Last 5 Years</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last5Years }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last12Months">Last 12 Months</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last12Months }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last6Months">Last 6 Months</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last6Months }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last3Months">Last 3 Months</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last3Months }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last6BiMonths">Last 6 Bi Months</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last6BiMonths }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last4Quarters">Last 4 Quarters</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last4Quarters }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last2SixMonths">Last 2 Six Months</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last2SixMonths }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisFinancialYear">This Financial Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisFinancialYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastFinancialYear">Last Financial Year</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastFinancialYear }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last5FinancialYears">Last 5 Financial Years</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last5FinancialYears }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisWeek">This Week</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisWeek }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastWeek">Last Week</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastWeek }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.thisBiWeek">This Bi Week</span></dt>
+        <dd>
+          <span>{{ relativePeriods.thisBiWeek }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.lastBiWeek">Last Bi Week</span></dt>
+        <dd>
+          <span>{{ relativePeriods.lastBiWeek }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last4Weeks">Last 4 Weeks</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last4Weeks }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last4BiWeeks">Last 4 Bi Weeks</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last4BiWeeks }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last12Weeks">Last 12 Weeks</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last12Weeks }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relativePeriods.last52Weeks">Last 52 Weeks</span></dt>
+        <dd>
+          <span>{{ relativePeriods.last52Weeks }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/relative-periods', relativePeriods.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,724 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-demographic-data-heading"
+        data-cy="DemographicDataCreateUpdateHeading"
+        appTranslate="amSystemBackApp.demographicData.home.createOrEditLabel"
+      >
+        Create or edit a Demographic Data
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.date" for="field_date">Date</label>
+          <div class="input-group">
+            <input
+              id="field_date"
+              data-cy="date"
+              type="text"
+              class="form-control"
+              name="date"
+              ngbDatepicker
+              #dateDp="ngbDatepicker"
+              formControlName="date"
+            />
+            <button type="button" class="btn btn-secondary" (click)="dateDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+          </div>
+          <div *ngIf="editForm.get('date')!.invalid && (editForm.get('date')!.dirty || editForm.get('date')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('date')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.level" for="field_level">Level</label>
+          <select class="form-control" name="level" formControlName="level" id="field_level" data-cy="level">
+            <option [ngValue]="null">{{ 'amSystemBackApp.DemographicDataLevel.null' | translate }}</option>
+            <option *ngFor="let demographicDataLevel of demographicDataLevelValues" [value]="demographicDataLevel">
+              {{ 'amSystemBackApp.DemographicDataLevel.' + demographicDataLevel | translate }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.totalPopulation" for="field_totalPopulation"
+            >Total Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="totalPopulation"
+            id="field_totalPopulation"
+            data-cy="totalPopulation"
+            formControlName="totalPopulation"
+          />
+          <div
+            *ngIf="
+              editForm.get('totalPopulation')!.invalid &&
+              (editForm.get('totalPopulation')!.dirty || editForm.get('totalPopulation')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('totalPopulation')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('totalPopulation')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.malePopulation" for="field_malePopulation"
+            >Male Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="malePopulation"
+            id="field_malePopulation"
+            data-cy="malePopulation"
+            formControlName="malePopulation"
+          />
+          <div
+            *ngIf="
+              editForm.get('malePopulation')!.invalid && (editForm.get('malePopulation')!.dirty || editForm.get('malePopulation')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('malePopulation')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('malePopulation')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.femalePopulation" for="field_femalePopulation"
+            >Female Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="femalePopulation"
+            id="field_femalePopulation"
+            data-cy="femalePopulation"
+            formControlName="femalePopulation"
+          />
+          <div
+            *ngIf="
+              editForm.get('femalePopulation')!.invalid &&
+              (editForm.get('femalePopulation')!.dirty || editForm.get('femalePopulation')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('femalePopulation')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('femalePopulation')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.lessThan5Population" for="field_lessThan5Population"
+            >Less Than 5 Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="lessThan5Population"
+            id="field_lessThan5Population"
+            data-cy="lessThan5Population"
+            formControlName="lessThan5Population"
+          />
+          <div
+            *ngIf="
+              editForm.get('lessThan5Population')!.invalid &&
+              (editForm.get('lessThan5Population')!.dirty || editForm.get('lessThan5Population')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('lessThan5Population')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('lessThan5Population')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.greaterThan5Population" for="field_greaterThan5Population"
+            >Greater Than 5 Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="greaterThan5Population"
+            id="field_greaterThan5Population"
+            data-cy="greaterThan5Population"
+            formControlName="greaterThan5Population"
+          />
+          <div
+            *ngIf="
+              editForm.get('greaterThan5Population')!.invalid &&
+              (editForm.get('greaterThan5Population')!.dirty || editForm.get('greaterThan5Population')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('greaterThan5Population')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('greaterThan5Population')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.bw5And15Population" for="field_bw5And15Population"
+            >Bw 5 And 15 Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="bw5And15Population"
+            id="field_bw5And15Population"
+            data-cy="bw5And15Population"
+            formControlName="bw5And15Population"
+          />
+          <div
+            *ngIf="
+              editForm.get('bw5And15Population')!.invalid &&
+              (editForm.get('bw5And15Population')!.dirty || editForm.get('bw5And15Population')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('bw5And15Population')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('bw5And15Population')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.demographicData.greaterThan15Population"
+            for="field_greaterThan15Population"
+            >Greater Than 15 Population</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="greaterThan15Population"
+            id="field_greaterThan15Population"
+            data-cy="greaterThan15Population"
+            formControlName="greaterThan15Population"
+          />
+          <div
+            *ngIf="
+              editForm.get('greaterThan15Population')!.invalid &&
+              (editForm.get('greaterThan15Population')!.dirty || editForm.get('greaterThan15Population')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('greaterThan15Population')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('greaterThan15Population')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.households" for="field_households">Households</label>
+          <input
+            type="number"
+            class="form-control"
+            name="households"
+            id="field_households"
+            data-cy="households"
+            formControlName="households"
+          />
+          <div *ngIf="editForm.get('households')!.invalid && (editForm.get('households')!.dirty || editForm.get('households')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('households')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('households')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.houses" for="field_houses">Houses</label>
+          <input type="number" class="form-control" name="houses" id="field_houses" data-cy="houses" formControlName="houses" />
+          <div *ngIf="editForm.get('houses')!.invalid && (editForm.get('houses')!.dirty || editForm.get('houses')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('houses')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small class="form-text text-danger" [hidden]="!editForm.get('houses')?.errors?.number" appTranslate="entity.validation.number">
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.healthFacilities" for="field_healthFacilities"
+            >Health Facilities</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="healthFacilities"
+            id="field_healthFacilities"
+            data-cy="healthFacilities"
+            formControlName="healthFacilities"
+          />
+          <div
+            *ngIf="
+              editForm.get('healthFacilities')!.invalid &&
+              (editForm.get('healthFacilities')!.dirty || editForm.get('healthFacilities')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('healthFacilities')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0 }"
+            >
+              This field should be at least 0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('healthFacilities')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.avgNoOfRooms" for="field_avgNoOfRooms"
+            >Avg No Of Rooms</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgNoOfRooms"
+            id="field_avgNoOfRooms"
+            data-cy="avgNoOfRooms"
+            formControlName="avgNoOfRooms"
+          />
+          <div
+            *ngIf="editForm.get('avgNoOfRooms')!.invalid && (editForm.get('avgNoOfRooms')!.dirty || editForm.get('avgNoOfRooms')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('avgNoOfRooms')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0.0 }"
+            >
+              This field should be at least 0.0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('avgNoOfRooms')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.avgRoomArea" for="field_avgRoomArea">Avg Room Area</label>
+          <input
+            type="number"
+            class="form-control"
+            name="avgRoomArea"
+            id="field_avgRoomArea"
+            data-cy="avgRoomArea"
+            formControlName="avgRoomArea"
+          />
+          <div *ngIf="editForm.get('avgRoomArea')!.invalid && (editForm.get('avgRoomArea')!.dirty || editForm.get('avgRoomArea')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('avgRoomArea')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0.0 }"
+            >
+              This field should be at least 0.0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('avgRoomArea')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.avgHouseArea" for="field_avgHouseArea"
+            >Avg House Area</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="avgHouseArea"
+            id="field_avgHouseArea"
+            data-cy="avgHouseArea"
+            formControlName="avgHouseArea"
+          />
+          <div
+            *ngIf="editForm.get('avgHouseArea')!.invalid && (editForm.get('avgHouseArea')!.dirty || editForm.get('avgHouseArea')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('avgHouseArea')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0.0 }"
+            >
+              This field should be at least 0.0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('avgHouseArea')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.demographicData.individualsPerHousehold"
+            for="field_individualsPerHousehold"
+            >Individuals Per Household</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="individualsPerHousehold"
+            id="field_individualsPerHousehold"
+            data-cy="individualsPerHousehold"
+            formControlName="individualsPerHousehold"
+          />
+          <div
+            *ngIf="
+              editForm.get('individualsPerHousehold')!.invalid &&
+              (editForm.get('individualsPerHousehold')!.dirty || editForm.get('individualsPerHousehold')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('individualsPerHousehold')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0.0 }"
+            >
+              This field should be at least 0.0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('individualsPerHousehold')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.populationGrowthRate" for="field_populationGrowthRate"
+            >Population Growth Rate</label
+          >
+          <input
+            type="number"
+            class="form-control"
+            name="populationGrowthRate"
+            id="field_populationGrowthRate"
+            data-cy="populationGrowthRate"
+            formControlName="populationGrowthRate"
+          />
+          <div
+            *ngIf="
+              editForm.get('populationGrowthRate')!.invalid &&
+              (editForm.get('populationGrowthRate')!.dirty || editForm.get('populationGrowthRate')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('populationGrowthRate')?.errors?.min"
+              appTranslate="entity.validation.min"
+              [translateValues]="{ min: 0.0 }"
+            >
+              This field should be at least 0.0.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('populationGrowthRate')?.errors?.number"
+              appTranslate="entity.validation.number"
+            >
+              This field should be a number.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.comment" for="field_comment">Comment</label>
+          <input type="text" class="form-control" name="comment" id="field_comment" data-cy="comment" formControlName="comment" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.organisationUnit" for="field_organisationUnit"
+            >Organisation Unit</label
+          >
+          <select
+            class="form-control"
+            id="field_organisationUnit"
+            data-cy="organisationUnit"
+            name="organisationUnit"
+            formControlName="organisationUnit"
+            [compareWith]="compareOrganisationUnit"
+          >
+            <option *ngIf="editForm.get(['organisationUnit'])!.value == null" [ngValue]="null" selected></option>
+            <option [ngValue]="organisationUnitOption" *ngFor="let organisationUnitOption of organisationUnitsSharedCollection">
+              {{ organisationUnitOption.name }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['organisationUnit'])!.invalid &&
+            (editForm.get(['organisationUnit'])!.dirty || editForm.get(['organisationUnit'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['organisationUnit'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.createdBy" for="field_createdBy">Created By</label>
+          <select
+            class="form-control"
+            id="field_createdBy"
+            data-cy="createdBy"
+            name="createdBy"
+            formControlName="createdBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.updatedBy" for="field_updatedBy">Updated By</label>
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.demographicData.source" for="field_source">Source</label>
+          <select
+            class="form-control"
+            id="field_source"
+            data-cy="source"
+            name="source"
+            formControlName="source"
+            [compareWith]="compareDemographicDataSource"
+          >
+            <option *ngIf="editForm.get(['source'])!.value == null" [ngValue]="null" selected></option>
+            <option
+              [ngValue]="demographicDataSourceOption"
+              *ngFor="let demographicDataSourceOption of demographicDataSourcesSharedCollection"
+            >
+              {{ demographicDataSourceOption.name }}
+            </option>
+          </select>
+        </div>
+        <div *ngIf="editForm.get(['source'])!.invalid && (editForm.get(['source'])!.dirty || editForm.get(['source'])!.touched)">
+          <small class="form-text text-danger" *ngIf="editForm.get(['source'])?.errors?.required" appTranslate="entity.validation.required">
+            This field is required.
+          </small>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+name
+all
+create_all
+all_chvMalariaCase
+view_chvMalariaCase
+create_chvMalariaCase
+delete_chvMalariaCase
+all_chvStockMovement
+view_chvStockMovement
+create_chvStockMovement
+delete_chvStockMovement
+F_PROGRAM_PRIVATE_ADD

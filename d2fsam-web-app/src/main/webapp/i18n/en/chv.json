@@ -1,0 +1,40 @@
+{
+  "amSystemBackApp": {
+    "chv": {
+      "home": {
+        "title": "Chvs",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Chv",
+        "createOrEditLabel": "Create or edit a Chv",
+        "notFound": "No Chvs found"
+      },
+      "created": "A new Chv is created with identifier {{ param }}",
+      "updated": "A Chv is updated with identifier {{ param }}",
+      "deleted": "A Chv is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Chv {{ id }}?"
+      },
+      "detail": {
+        "title": "Chv"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "withdrawn": "Withdrawn",
+      "dateJoined": "Date Joined",
+      "dateWithdrawn": "Date Withdrawn",
+      "name": "Name",
+      "description": "Description",
+      "inactive": "Inactive",
+      "assignedTo": "Assigned To",
+      "coveredLocation": "Covered Location",
+      "district": "District",
+      "homeSubvillage": "Home Subvillage",
+      "managingHf": "Managing Hf",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

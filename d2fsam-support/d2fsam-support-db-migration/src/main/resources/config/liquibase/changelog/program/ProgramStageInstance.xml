@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ProgramStageInstance.
+    -->
+    <changeSet id="20221120204041-1" author="jhipster">
+        <createTable tableName="program_stage_instance">
+            <column name="programstageinstanceid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_program_stage_instance__uid" />
+            </column>
+            <column name="uuid" type="${uuidType}">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_program_stage_instance__uuid" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="createdatclient" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedatclient" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastsynchronized" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="duedate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="executiondate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="status" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="storedby" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completedby" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="completeddate" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="deleted" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="deletedat" type="${datetimeType}">
+                <constraints nullable="true" />
+            </column>
+            <column name="programinstanceid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="programstageid" type="bigint">
+                <constraints nullable="false" />
+            </column>
+            <column name="organisationunitid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="activityid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="assigneduserid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="periodid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="approvedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="geometry" type="geometry(GEOMETRY, 4326)">
+                <constraints nullable="true"/>
+            </column>
+            <column name="createdbyuserinfo" type="JSONB"/>
+            <column name="lastupdatedbyuserinfo" type="JSONB"/>
+            <column name="eventdatavalues" type="JSONB" defaultValue="{}">
+                <constraints nullable="false"/>
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="program_stage_instance" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="updated" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="createdatclient" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="lastupdatedatclient" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="lastsynchronized" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="duedate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="executiondate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="completeddate" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_instance" columnName="deletedat" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <changeSet id="20221120204041-1-relations" author="jhipster">
+
+        <createTable tableName="program_stage_instance__comments">
+            <column name="programstageinstanceid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="trackedentitycommentid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="programstageinstanceid, sortorder" tableName="program_stage_instance__comments"/>
+
+        <createTable tableName="program_stage_instance__message_conversations">
+            <column name="programstageinstanceid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="messageconversationid" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <addPrimaryKey columnNames="programstageinstanceid, sortorder" tableName="program_stage_instance__message_conversations"/>
+    </changeSet>
+</databaseChangeLog>

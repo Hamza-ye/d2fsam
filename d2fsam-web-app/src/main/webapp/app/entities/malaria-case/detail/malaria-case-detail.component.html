@@ -1,0 +1,136 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="malariaCase">
+      <h2 data-cy="malariaCaseDetailsHeading"><span appTranslate="amSystemBackApp.malariaCase.detail.title">Malaria Case</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ malariaCase.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.uuid">Uuid</span></dt>
+        <dd>
+          <span>{{ malariaCase.uuid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.code">Code</span></dt>
+        <dd>
+          <span>{{ malariaCase.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.name">Name</span></dt>
+        <dd>
+          <span>{{ malariaCase.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.entryStarted">Entry Started</span></dt>
+        <dd>
+          <span>{{ malariaCase.entryStarted | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.lastSynced">Last Synced</span></dt>
+        <dd>
+          <span>{{ malariaCase.lastSynced | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ malariaCase.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.dateOfExamination">Date Of Examination</span></dt>
+        <dd>
+          <span>{{ malariaCase.dateOfExamination | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.mobile">Mobile</span></dt>
+        <dd>
+          <span>{{ malariaCase.mobile }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.gender">Gender</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.Gender.' + malariaCase.gender }}">{{ malariaCase.gender }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.age">Age</span></dt>
+        <dd>
+          <span>{{ malariaCase.age }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.isPregnant">Is Pregnant</span></dt>
+        <dd>
+          <span>{{ malariaCase.isPregnant }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.malariaTestResult">Malaria Test Result</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.MalariaTestResult.' + malariaCase.malariaTestResult }}">{{
+            malariaCase.malariaTestResult
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.severity">Severity</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.Severity.' + malariaCase.severity }}">{{ malariaCase.severity }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.referral">Referral</span></dt>
+        <dd>
+          <span>{{ malariaCase.referral }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.barImageUrl">Bar Image Url</span></dt>
+        <dd>
+          <span>{{ malariaCase.barImageUrl }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.comment">Comment</span></dt>
+        <dd>
+          <span>{{ malariaCase.comment }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.status">Status</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.EventStatus.' + malariaCase.status }}">{{ malariaCase.status }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.seen">Seen</span></dt>
+        <dd>
+          <span>{{ malariaCase.seen }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.created">Created</span></dt>
+        <dd>
+          <span>{{ malariaCase.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.updated">Updated</span></dt>
+        <dd>
+          <span>{{ malariaCase.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.createdAtClient">Created At Client</span></dt>
+        <dd>
+          <span>{{ malariaCase.createdAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.updatedAtClient">Updated At Client</span></dt>
+        <dd>
+          <span>{{ malariaCase.updatedAtClient | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.deletedAt">Deleted At</span></dt>
+        <dd>
+          <span>{{ malariaCase.deletedAt | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.subVillage">Sub Village</span></dt>
+        <dd>
+          <div *ngIf="malariaCase.subVillage">
+            <a [routerLink]="['/organisation-unit', malariaCase.subVillage.id, 'view']">{{ malariaCase.subVillage.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ malariaCase.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.malariaCase.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ malariaCase.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/malaria-case', malariaCase.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

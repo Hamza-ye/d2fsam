@@ -1,0 +1,3 @@
+id,uid,code,created,updated,withdrawn,date_joined,date_withdrawn,description,district_id
+11,1001,1001,2022-09-17T17:06:06,2022-09-17T17:48:16,true,2022-09-16,2022-09-16,interface,15
+12,1002,1002,2022-09-17T04:52:46,2022-09-17T00:05:06,true,2022-09-17,2022-09-17,scale Assistant Profound,15

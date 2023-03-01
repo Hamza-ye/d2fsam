@@ -1,0 +1,43 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <!--Un-comment Later-->
+    <changeSet id="070-add audit table" author="jhipster">
+        <createTable tableName="audit">
+            <column name="auditId" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="auditType" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="createdAt" type="timestamp">
+                <constraints nullable="false" />
+            </column>
+            <column name="createdBy" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="klass" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="uid" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="attributes" type="JSONB" defaultValue="{}">
+                <constraints nullable="true" />
+            </column>
+            <column name="data" type="blob">
+                <constraints nullable="true" />
+            </column>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,198 @@
+######################
+# NMCP Ext
+######################
+/target/*
+/target/
+/d2fsam-api/target/
+/d2fsam-services/d2fsam-service-acl/target/
+/d2fsam-services/d2fsam-service-administration/target/
+/d2fsam-services/am-service-analytics/target/
+/d2fsam-services/d2fsam-service-core/target/
+/d2fsam-services/d2fsam-service-dxf2/target/
+/d2fsam-services/am-service-mobile/target/
+/d2fsam-services/am-service-node/target/
+/d2fsam-services/d2fsam-service-program-rule/target/
+/d2fsam-services/d2fsam-service-reporting/target/
+/d2fsam-services/d2fsam-service-schema/target/
+/d2fsam-services/d2fsam-service-setting/target/
+/d2fsam-services/am-service-validation/target/
+/d2fsam-services/am-service-audit/target
+/d2fsam-services/d2fsam-service-audit-consumer/target
+/d2fsam-services/d2fsam-service-tracker/target
+/d2fsam-support/d2fsam-support-cache-invalidation/target/
+/d2fsam-support/d2fsam-support-commons/target/
+/d2fsam-support/d2fsam-support-db-migration/target/
+/d2fsam-support/d2fsam-support-json-filtering/target/
+/d2fsam-support/d2fsam-support-expression-parser/target/
+/d2fsam-support/d2fsam-support-external/target/
+/d2fsam-support/d2fsam-support-hibernate/target/
+/d2fsam-support/d2fsam-support-jdbc/target/
+/d2fsam-support/d2fsam-support-system/target/
+/d2fsam-support/d2fsam-support-test/target/
+/d2fsam-test-integration/target/
+/d2fsam-web-api/target/
+/d2fsam-web-app/target/
+######################
+# Project Specific
+######################
+/d2fsam-web-app/src/main/webapp/content/css/main.css
+/target/classes/static/**
+/src/test/javascript/coverage/
+
+######################
+# Node
+######################
+/node/
+node_tmp/
+node_modules/
+npm-debug.log.*
+/.awcache/*
+/.cache-loader/*
+
+d2fsam-web-app/node/
+d2fsam-web-app/node_tmp/
+d2fsam-web-app/node_modules/
+d2fsam-web-app/npm-debug.log.*
+d2fsam-web-app/.awcache/*
+d2fsam-web-app/.cache-loader/*
+######################
+# SASS
+######################
+.sass-cache/
+
+######################
+# Eclipse
+######################
+*.pydevproject
+.project
+.metadata
+tmp/
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+.factorypath
+/src/main/resources/rebel.xml
+
+# External tool builders
+.externalToolBuilders/**
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# STS-specific
+/.sts4-cache/*
+
+######################
+# IntelliJ
+######################
+.idea/
+*.iml
+*.iws
+*.ipr
+*.ids
+*.orig
+classes/
+out/
+
+######################
+# Visual Studio Code
+######################
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+######################
+# Maven
+######################
+/log/
+
+######################
+# Gradle
+######################
+.gradle/
+/build/
+
+######################
+# Package Files
+######################
+*.jar
+*.war
+*.ear
+*.db
+
+######################
+# Windows
+######################
+# Windows image file caches
+Thumbs.db
+
+# Folder config file
+Desktop.ini
+
+######################
+# Mac OSX
+######################
+.DS_Store
+.svn
+
+# Thumbnails
+._*
+
+# Files that might appear on external disk
+.Spotlight-V100
+.Trashes
+
+######################
+# Directories
+######################
+/bin/
+/deploy/
+
+######################
+# Logs
+######################
+*.log*
+
+######################
+# Others
+######################
+*.class
+*.*~
+*~
+.merge_file*
+
+######################
+# Gradle Wrapper
+######################
+!gradle/wrapper/gradle-wrapper.jar
+
+######################
+# Maven Wrapper
+######################
+!.mvn/wrapper/maven-wrapper.jar
+
+######################
+# ESLint
+######################
+.eslintcache
+
+######################
+# Code coverage
+######################
+/coverage/
+/.nyc_output/

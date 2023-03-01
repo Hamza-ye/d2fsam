@@ -1,0 +1,92 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="userData">
+      <h2 data-cy="userDataDetailsHeading"><span appTranslate="amSystemBackApp.userData.detail.title">User Data</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ userData.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.uid">Uid</span></dt>
+        <dd>
+          <span>{{ userData.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.code">Code</span></dt>
+        <dd>
+          <span>{{ userData.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.name">Name</span></dt>
+        <dd>
+          <span>{{ userData.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.created">Created</span></dt>
+        <dd>
+          <span>{{ userData.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.updated">Updated</span></dt>
+        <dd>
+          <span>{{ userData.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.uuid">Uuid</span></dt>
+        <dd>
+          <span>{{ userData.uuid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ userData.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ userData.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ userData.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <span *ngFor="let organisationUnit of userData.organisationUnits; let last = last">
+            <a [routerLink]="['/organisation-unit', organisationUnit.id, 'view']">{{ organisationUnit.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.teiSearchOrganisationUnit">Tei Search Organisation Unit</span></dt>
+        <dd>
+          <span *ngFor="let teiSearchOrganisationUnit of userData.teiSearchOrganisationUnits; let last = last">
+            <a [routerLink]="['/organisation-unit', teiSearchOrganisationUnit.id, 'view']">{{ teiSearchOrganisationUnit.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.dataViewOrganisationUnit">Data View Organisation Unit</span></dt>
+        <dd>
+          <span *ngFor="let dataViewOrganisationUnit of userData.dataViewOrganisationUnits; let last = last">
+            <a [routerLink]="['/organisation-unit', dataViewOrganisationUnit.id, 'view']">{{ dataViewOrganisationUnit.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.userData.userAuthorityGroups">User Authority Groups</span></dt>
+        <dd>
+          <span *ngFor="let userAuthorityGroups of userData.userAuthorityGroups; let last = last">
+            <a [routerLink]="['/user-authority-group', userAuthorityGroups.id, 'view']">{{ userAuthorityGroups.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/user-data', userData.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

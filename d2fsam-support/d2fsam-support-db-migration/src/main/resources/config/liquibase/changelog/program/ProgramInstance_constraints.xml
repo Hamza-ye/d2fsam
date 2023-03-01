@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramInstance.
+    -->
+    <changeSet id="20221120204039-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityinstanceid"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__entity_instance_id"
+                                 referencedColumnNames="trackedentityinstanceid"
+                                 referencedTableName="tracked_entity_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="activityid"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__activity_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="approvedby"
+                                 baseTableName="program_instance"
+                                 constraintName="fk_program_instance__approved_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programinstanceid"
+                                 baseTableName="program_instance__comments"
+                                 constraintName="fk_program_instance_comment__program_instance_id"
+                                 referencedColumnNames="programinstanceid"
+                                 referencedTableName="program_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitycommentid"
+                                 baseTableName="program_instance__comments"
+                                 constraintName="fk_program_instance_comment__comment_id"
+                                 referencedColumnNames="trackedentitycommentid"
+                                 referencedTableName="comment"/>
+<!--        referencedTableName="comment" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="programinstanceid"
+                                 baseTableName="program_instance__message_conversations"
+                                 constraintName="fk_program_instance__message_conversations_program_instance_id"
+                                 referencedColumnNames="programinstanceid"
+                                 referencedTableName="program_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="messageconversationid"
+                                 baseTableName="program_instance__message_conversations"
+                                 constraintName="fk_program_instance__message_conversations_message_conversation_id"
+                                 referencedColumnNames="messageconversationid"
+                                 referencedTableName="message_conversation"/>
+    </changeSet>
+</databaseChangeLog>

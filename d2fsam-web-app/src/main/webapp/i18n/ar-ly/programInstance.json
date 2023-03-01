@@ -1,0 +1,50 @@
+{
+  "amSystemBackApp": {
+    "programInstance": {
+      "home": {
+        "title": "Program Instances",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program Instance",
+        "createOrEditLabel": "Create or edit a Program Instance",
+        "notFound": "No Program Instances found"
+      },
+      "created": "A new Program Instance is created with identifier {{ param }}",
+      "updated": "A Program Instance is updated with identifier {{ param }}",
+      "deleted": "A Program Instance is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Instance {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Instance"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "uuid": "Uuid",
+      "created": "Created",
+      "updated": "Updated",
+      "createdAtClient": "Created At Client",
+      "updatedAtClient": "Updated At Client",
+      "lastSynchronized": "Last Synchronized",
+      "incidentDate": "Incident Date",
+      "enrollmentDate": "Enrollment Date",
+      "periodLabel": "Period Label",
+      "endDate": "End Date",
+      "status": "Status",
+      "storedBy": "Stored By",
+      "completedBy": "Completed By",
+      "completedDate": "Completed Date",
+      "followup": "Followup",
+      "deleted": "Deleted",
+      "deletedAt": "Deleted At",
+      "entityInstance": "Entity Instance",
+      "program": "Program",
+      "organisationUnit": "Organisation Unit",
+      "activity": "Activity",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "approvedBy": "Approved By",
+      "comment": "Comment",
+      "programStageInstance": "Program Stage Instance"
+    }
+  }
+}

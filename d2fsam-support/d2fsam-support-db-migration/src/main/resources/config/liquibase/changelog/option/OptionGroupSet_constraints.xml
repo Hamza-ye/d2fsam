@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity OptionGroupSet.
+    -->
+    <changeSet id="20230119160359-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="optionsetid"
+                                 baseTableName="option_group_set"
+                                 constraintName="fk_option_group_set__option_set_id"
+                                 referencedColumnNames="optionsetid"
+                                 referencedTableName="option_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="option_group_set"
+                                 constraintName="fk_option_group_set__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="option_group_set"
+                                 constraintName="fk_option_group_set__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="optiongroupsetid"
+                                 baseTableName="option_group_set__members"
+                                 constraintName="fk_option_group_set__members__option_group_set_id"
+                                 referencedColumnNames="optiongroupsetid"
+                                 referencedTableName="option_group_set"/>
+
+        <addForeignKeyConstraint baseColumnNames="optionvalueid"
+                                 baseTableName="option_group_set__members"
+                                 constraintName="fk_option_group_set__members__members_id"
+                                 referencedColumnNames="optiongroupid"
+                                 referencedTableName="option_group"/>
+    </changeSet>
+</databaseChangeLog>

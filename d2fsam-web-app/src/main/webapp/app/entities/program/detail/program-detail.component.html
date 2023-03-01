@@ -1,0 +1,151 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="program">
+      <h2 data-cy="programDetailsHeading"><span appTranslate="amSystemBackApp.program.detail.title">Program</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ program.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.uid">Uid</span></dt>
+        <dd>
+          <span>{{ program.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.code">Code</span></dt>
+        <dd>
+          <span>{{ program.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.created">Created</span></dt>
+        <dd>
+          <span>{{ program.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.updated">Updated</span></dt>
+        <dd>
+          <span>{{ program.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.name">Name</span></dt>
+        <dd>
+          <span>{{ program.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.shortName">Short Name</span></dt>
+        <dd>
+          <span>{{ program.shortName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.description">Description</span></dt>
+        <dd>
+          <span>{{ program.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.version">Version</span></dt>
+        <dd>
+          <span>{{ program.version }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.incidentDateLabel">Incident Date Label</span></dt>
+        <dd>
+          <span>{{ program.incidentDateLabel }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.programType">Program Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.ProgramType.' + program.programType }}">{{ program.programType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.displayIncidentDate">Display Incident Date</span></dt>
+        <dd>
+          <span>{{ program.displayIncidentDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.onlyEnrollOnce">Only Enroll Once</span></dt>
+        <dd>
+          <span>{{ program.onlyEnrollOnce }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.captureCoordinates">Capture Coordinates</span></dt>
+        <dd>
+          <span>{{ program.captureCoordinates }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.expiryDays">Expiry Days</span></dt>
+        <dd>
+          <span>{{ program.expiryDays }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.completeEventsExpiryDays">Complete Events Expiry Days</span></dt>
+        <dd>
+          <span>{{ program.completeEventsExpiryDays }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.accessLevel">Access Level</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.AccessLevel.' + program.accessLevel }}">{{ program.accessLevel }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.ignoreOverDueEvents">Ignore Over Due Events</span></dt>
+        <dd>
+          <span>{{ program.ignoreOverDueEvents }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.selectEnrollmentDatesInFuture">Select Enrollment Dates In Future</span></dt>
+        <dd>
+          <span>{{ program.selectEnrollmentDatesInFuture }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.selectIncidentDatesInFuture">Select Incident Dates In Future</span></dt>
+        <dd>
+          <span>{{ program.selectIncidentDatesInFuture }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.featureType">Feature Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.FeatureType.' + program.featureType }}">{{ program.featureType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ program.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.period">Period</span></dt>
+        <dd>
+          <div *ngIf="program.period">
+            <a [routerLink]="['/period', program.period.id, 'view']">{{ program.period.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.expiryPeriodType">Expiry Period Type</span></dt>
+        <dd>
+          <div *ngIf="program.expiryPeriodType">
+            <a [routerLink]="['/period-type', program.expiryPeriodType.id, 'view']">{{ program.expiryPeriodType.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.relatedProgram">Related Program</span></dt>
+        <dd>
+          <div *ngIf="program.relatedProgram">
+            <a [routerLink]="['/program', program.relatedProgram.id, 'view']">{{ program.relatedProgram.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.trackedEntityType">Tracked Entity Type</span></dt>
+        <dd>
+          <div *ngIf="program.trackedEntityType">
+            <a [routerLink]="['/tracked-entity-type', program.trackedEntityType.id, 'view']">{{ program.trackedEntityType.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ program.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ program.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.program.organisationUnit">Organisation Unit</span></dt>
+        <dd>
+          <span *ngFor="let organisationUnit of program.organisationUnits; let last = last">
+            <a [routerLink]="['/organisation-unit', organisationUnit.id, 'view']">{{ organisationUnit.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/program', program.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,295 @@
+<div>
+  <h2 id="page-heading" data-cy="DemographicDataHeading">
+    <span appTranslate="amSystemBackApp.demographicData.home.title">Demographic Data</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.demographicData.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-demographic-data"
+        [routerLink]="['/demographic-data/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.demographicData.home.createLabel"> Create a new Demographic Data </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="demographicData?.length === 0">
+    <span appTranslate="amSystemBackApp.demographicData.home.notFound">No Demographic Data found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="demographicData && demographicData.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="date">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.date">Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="level">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.level">Level</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="totalPopulation">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.totalPopulation">Total Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="malePopulation">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.malePopulation">Male Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="femalePopulation">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.femalePopulation">Female Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="lessThan5Population">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.lessThan5Population">Less Than 5 Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="greaterThan5Population">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.greaterThan5Population">Greater Than 5 Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="bw5And15Population">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.bw5And15Population">Bw 5 And 15 Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="greaterThan15Population">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.greaterThan15Population">Greater Than 15 Population</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="households">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.households">Households</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="houses">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.houses">Houses</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="healthFacilities">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.healthFacilities">Health Facilities</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="avgNoOfRooms">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.avgNoOfRooms">Avg No Of Rooms</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="avgRoomArea">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.avgRoomArea">Avg Room Area</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="avgHouseArea">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.avgHouseArea">Avg House Area</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="individualsPerHousehold">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.individualsPerHousehold">Individuals Per Household</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="populationGrowthRate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.populationGrowthRate">Population Growth Rate</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="comment">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.comment">Comment</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="organisationUnit.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.organisationUnit">Organisation Unit</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="source.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.demographicData.source">Source</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let demographicData of demographicData; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/demographic-data', demographicData.id, 'view']">{{ demographicData.id }}</a>
+          </td>
+          <td>{{ demographicData.uid }}</td>
+          <td>{{ demographicData.code }}</td>
+          <td>{{ demographicData.created | formatMediumDatetime }}</td>
+          <td>{{ demographicData.updated | formatMediumDatetime }}</td>
+          <td>{{ demographicData.date | formatMediumDate }}</td>
+          <td appTranslate="{{ 'amSystemBackApp.DemographicDataLevel.' + demographicData.level }}">{{ demographicData.level }}</td>
+          <td>{{ demographicData.totalPopulation }}</td>
+          <td>{{ demographicData.malePopulation }}</td>
+          <td>{{ demographicData.femalePopulation }}</td>
+          <td>{{ demographicData.lessThan5Population }}</td>
+          <td>{{ demographicData.greaterThan5Population }}</td>
+          <td>{{ demographicData.bw5And15Population }}</td>
+          <td>{{ demographicData.greaterThan15Population }}</td>
+          <td>{{ demographicData.households }}</td>
+          <td>{{ demographicData.houses }}</td>
+          <td>{{ demographicData.healthFacilities }}</td>
+          <td>{{ demographicData.avgNoOfRooms }}</td>
+          <td>{{ demographicData.avgRoomArea }}</td>
+          <td>{{ demographicData.avgHouseArea }}</td>
+          <td>{{ demographicData.individualsPerHousehold }}</td>
+          <td>{{ demographicData.populationGrowthRate }}</td>
+          <td>{{ demographicData.comment }}</td>
+          <td>
+            <div *ngIf="demographicData.organisationUnit">
+              <a [routerLink]="['/organisation-unit', demographicData.organisationUnit.id, 'view']">{{
+                demographicData.organisationUnit.name
+              }}</a>
+            </div>
+          </td>
+          <td>
+            {{ demographicData.createdBy?.login }}
+          </td>
+          <td>
+            {{ demographicData.updatedBy?.login }}
+          </td>
+          <td>
+            <div *ngIf="demographicData.source">
+              <a [routerLink]="['/demographic-data-source', demographicData.source.id, 'view']">{{ demographicData.source.name }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/demographic-data', demographicData.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/demographic-data', demographicData.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(demographicData)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="demographicData && demographicData.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

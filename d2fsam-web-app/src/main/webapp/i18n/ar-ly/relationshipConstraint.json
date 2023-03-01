@@ -1,0 +1,27 @@
+{
+  "amSystemBackApp": {
+    "relationshipConstraint": {
+      "home": {
+        "title": "Relationship Constraints",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Relationship Constraint",
+        "createOrEditLabel": "Create or edit a Relationship Constraint",
+        "notFound": "No Relationship Constraints found"
+      },
+      "created": "A new Relationship Constraint is created with identifier {{ param }}",
+      "updated": "A Relationship Constraint is updated with identifier {{ param }}",
+      "deleted": "A Relationship Constraint is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Relationship Constraint {{ id }}?"
+      },
+      "detail": {
+        "title": "Relationship Constraint"
+      },
+      "id": "ID",
+      "relationshipEntity": "Relationship Entity",
+      "trackedEntityType": "Tracked Entity Type",
+      "program": "Program",
+      "programStage": "Program Stage"
+    }
+  }
+}

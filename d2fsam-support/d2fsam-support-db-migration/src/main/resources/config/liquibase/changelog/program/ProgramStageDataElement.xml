@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <!--
+        Added the entity ProgramStageDataElement.
+    -->
+    <changeSet id="20221120204042-1" author="jhipster">
+        <createTable tableName="program_stage_data_element">
+            <column name="programstagedataelementid" type="bigint">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="uid" type="varchar(11)">
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_program_stage_data_element__uid" />
+            </column>
+            <column name="code" type="varchar(255)">
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_program_stage_data_element__code" />
+            </column>
+            <column name="created" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="updated" type="${datetimeType}">
+                <constraints nullable="false" />
+            </column>
+            <column name="compulsory" type="boolean">
+                <constraints nullable="false" />
+            </column>
+            <column name="allowprovidedelsewhere" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="sortorder" type="integer">
+                <constraints nullable="true" />
+            </column>
+            <column name="displayinreports" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="allowfuturedate" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="skipsynchronization" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="skipanalytics" type="boolean">
+                <constraints nullable="true" />
+            </column>
+            <column name="defaultvalue" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+            <column name="programstageid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="dataelementid" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="createdby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="lastupdatedby" type="bigint">
+                <constraints nullable="true" />
+            </column>
+            <column name="render_type" type="JSONB"/>
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
+        </createTable>
+        <dropDefaultValue tableName="program_stage_data_element" columnName="created" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="program_stage_data_element" columnName="updated" columnDataType="${datetimeType}"/>
+    </changeSet>
+
+    <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
+
+    <!--
+        Load sample data generated with Faker.js
+        - This data can be easily edited using a CSV editor (or even MS Excel) and
+          is located in the 'src/main/resources/config/liquibase/fake-data' directory
+        - By default this data is applied when running with the JHipster 'dev' profile.
+          This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
+          Spring Boot configuration key.
+    -->
+<!--    <changeSet id="20221120204042-1-data" author="jhipster" context="faker">-->
+<!--        <loadData-->
+<!--                  file="config/liquibase/fake-data/program_stage_data_element.csv"-->
+<!--                  separator=";"-->
+<!--                  tableName="program_stage_data_element"-->
+<!--                  usePreparedStatements="true">-->
+<!--            <column name="id" type="numeric"/>-->
+<!--            <column name="uid" type="string"/>-->
+<!--            <column name="code" type="string"/>-->
+<!--            <column name="created" type="date"/>-->
+<!--            <column name="updated" type="date"/>-->
+<!--            <column name="compulsory" type="boolean"/>-->
+<!--            <column name="allowprovidedelsewhere" type="boolean"/>-->
+<!--            <column name="sortorder" type="numeric"/>-->
+<!--            <column name="displayinreports" type="boolean"/>-->
+<!--            <column name="allowfuturedate" type="boolean"/>-->
+<!--            <column name="skipsynchronization" type="boolean"/>-->
+<!--            <column name="defaultvalue" type="string"/>-->
+<!--            <column name="programstageid" type="numeric"/>-->
+<!--            <column name="dataelementid" type="numeric"/>-->
+<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+<!--        </loadData>-->
+<!--    </changeSet>-->
+</databaseChangeLog>

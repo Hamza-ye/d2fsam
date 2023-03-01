@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramRuleVariable.
+    -->
+    <changeSet id="20221230204038-8" author="hamza">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__attribute_id"
+                                 referencedColumnNames="trackedentityattributeid"
+                                 referencedTableName="tracked_entity_attribute"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="program_rule_variable"
+                                 constraintName="fk_program_rule_variable__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+    </changeSet>
+</databaseChangeLog>

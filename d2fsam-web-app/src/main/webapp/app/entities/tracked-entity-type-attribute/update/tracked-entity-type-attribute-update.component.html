@@ -1,0 +1,202 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-tracked-entity-type-attribute-heading"
+        data-cy="TrackedEntityTypeAttributeCreateUpdateHeading"
+        appTranslate="amSystemBackApp.trackedEntityTypeAttribute.home.createOrEditLabel"
+      >
+        Create or edit a Tracked Entity Type Attribute
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.uid" for="field_uid">Uid</label>
+          <input type="text" class="form-control" name="uid" id="field_uid" data-cy="uid" formControlName="uid" />
+          <div *ngIf="editForm.get('uid')!.invalid && (editForm.get('uid')!.dirty || editForm.get('uid')!.touched)">
+            <small class="form-text text-danger" *ngIf="editForm.get('uid')?.errors?.required" appTranslate="entity.validation.required">
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('uid')?.errors?.maxlength"
+              appTranslate="entity.validation.maxlength"
+              [translateValues]="{ max: 11 }"
+            >
+              This field cannot be longer than 11 characters.
+            </small>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.code" for="field_code">Code</label>
+          <input type="text" class="form-control" name="code" id="field_code" data-cy="code" formControlName="code" />
+          <div *ngIf="editForm.get('code')!.invalid && (editForm.get('code')!.dirty || editForm.get('code')!.touched)"></div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.created" for="field_created">Created</label>
+          <div class="d-flex">
+            <input
+              id="field_created"
+              data-cy="created"
+              type="datetime-local"
+              class="form-control"
+              name="created"
+              formControlName="created"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updated" for="field_updated">Updated</label>
+          <div class="d-flex">
+            <input
+              id="field_updated"
+              data-cy="updated"
+              type="datetime-local"
+              class="form-control"
+              name="updated"
+              formControlName="updated"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.displayInList" for="field_displayInList"
+            >Display In List</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="displayInList"
+            id="field_displayInList"
+            data-cy="displayInList"
+            formControlName="displayInList"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.mandatory" for="field_mandatory"
+            >Mandatory</label
+          >
+          <input type="checkbox" class="form-check" name="mandatory" id="field_mandatory" data-cy="mandatory" formControlName="mandatory" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.searchable" for="field_searchable"
+            >Searchable</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="searchable"
+            id="field_searchable"
+            data-cy="searchable"
+            formControlName="searchable"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityAttribute"
+            for="field_trackedEntityAttribute"
+            >Tracked Entity Attribute</label
+          >
+          <select
+            class="form-control"
+            id="field_trackedEntityAttribute"
+            data-cy="trackedEntityAttribute"
+            name="trackedEntityAttribute"
+            formControlName="trackedEntityAttribute"
+            [compareWith]="compareDataElement"
+          >
+            <option *ngIf="!editForm.get('trackedEntityAttribute')!.value" [ngValue]="null" selected></option>
+            <option [ngValue]="dataElementOption" *ngFor="let dataElementOption of dataElementsSharedCollection">
+              {{ dataElementOption.name }}
+            </option>
+          </select>
+        </div>
+        <div
+          *ngIf="
+            editForm.get(['trackedEntityAttribute'])!.invalid &&
+            (editForm.get(['trackedEntityAttribute'])!.dirty || editForm.get(['trackedEntityAttribute'])!.touched)
+          "
+        >
+          <small
+            class="form-text text-danger"
+            *ngIf="editForm.get(['trackedEntityAttribute'])?.errors?.required"
+            appTranslate="entity.validation.required"
+          >
+            This field is required.
+          </small>
+        </div>
+
+        <div class="row mb-3">
+          <label
+            class="form-label"
+            appTranslate="amSystemBackApp.trackedEntityTypeAttribute.trackedEntityType"
+            for="field_trackedEntityType"
+            >Tracked Entity Type</label
+          >
+          <select
+            class="form-control"
+            id="field_trackedEntityType"
+            data-cy="trackedEntityType"
+            name="trackedEntityType"
+            formControlName="trackedEntityType"
+            [compareWith]="compareTrackedEntityType"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="trackedEntityTypeOption" *ngFor="let trackedEntityTypeOption of trackedEntityTypesSharedCollection">
+              {{ trackedEntityTypeOption.name }}
+            </option>
+          </select>
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.trackedEntityTypeAttribute.updatedBy" for="field_updatedBy"
+            >Updated By</label
+          >
+          <select
+            class="form-control"
+            id="field_updatedBy"
+            data-cy="updatedBy"
+            name="updatedBy"
+            formControlName="updatedBy"
+            [compareWith]="compareUser"
+          >
+            <option [ngValue]="null"></option>
+            <option [ngValue]="userOption" *ngFor="let userOption of usersSharedCollection">{{ userOption.login }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

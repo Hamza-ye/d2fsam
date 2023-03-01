@@ -1,0 +1,17 @@
+export enum TeamType {
+  CHV = 'CHV',
+
+  CHV_SUPERVISOR = 'CHV_SUPERVISOR',
+
+  B_NET_TEAM = 'B_NET_TEAM',
+
+  B_NET_SUPERVISOR = 'B_NET_SUPERVISOR',
+
+  IRS_TEAM = 'IRS_TEAM',
+
+  IRS_SUPERVISOR = 'IRS_SUPERVISOR',
+
+  OR = 'OR',
+
+  OTHER = 'OTHER',
+}

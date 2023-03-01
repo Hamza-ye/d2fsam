@@ -1,0 +1,109 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="activity">
+      <h2 data-cy="activityDetailsHeading"><span appTranslate="amSystemBackApp.activity.detail.title">Activity</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ activity.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.uid">Uid</span></dt>
+        <dd>
+          <span>{{ activity.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.code">Code</span></dt>
+        <dd>
+          <span>{{ activity.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.name">Name</span></dt>
+        <dd>
+          <span>{{ activity.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.shortName">Short Name</span></dt>
+        <dd>
+          <span>{{ activity.shortName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.description">Description</span></dt>
+        <dd>
+          <span>{{ activity.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.created">Created</span></dt>
+        <dd>
+          <span>{{ activity.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.updated">Updated</span></dt>
+        <dd>
+          <span>{{ activity.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.startDate">Start Date</span></dt>
+        <dd>
+          <span>{{ activity.startDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.endDate">End Date</span></dt>
+        <dd>
+          <span>{{ activity.endDate | formatMediumDate }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.hidden">Hidden</span></dt>
+        <dd>
+          <span>{{ activity.hidden }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.order">Order</span></dt>
+        <dd>
+          <span>{{ activity.order }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ activity.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.project">Project</span></dt>
+        <dd>
+          <div *ngIf="activity.project">
+            <a [routerLink]="['/project', activity.project.id, 'view']">{{ activity.project.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.activityUsedAsTarget">Activity Used As Target</span></dt>
+        <dd>
+          <div *ngIf="activity.activityUsedAsTarget">
+            <a [routerLink]="['/activity', activity.activityUsedAsTarget.id, 'view']">{{ activity.activityUsedAsTarget.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.demographicData">Demographic Data</span></dt>
+        <dd>
+          <div *ngIf="activity.demographicData">
+            <a [routerLink]="['/demographic-data', activity.demographicData.id, 'view']">{{ activity.demographicData.id }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ activity.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ activity.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.activity.targetedOrganisationUnit">Targeted Organisation Unit</span></dt>
+        <dd>
+          <span *ngFor="let targetedOrganisationUnit of activity.targetedOrganisationUnits; let last = last">
+            <a [routerLink]="['/organisation-unit', targetedOrganisationUnit.id, 'view']">{{ targetedOrganisationUnit.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/activity', activity.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

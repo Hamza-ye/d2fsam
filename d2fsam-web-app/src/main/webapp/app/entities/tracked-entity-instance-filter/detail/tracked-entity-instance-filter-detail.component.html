@@ -1,0 +1,84 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="trackedEntityInstanceFilter">
+      <h2 data-cy="trackedEntityInstanceFilterDetailsHeading">
+        <span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.detail.title">Tracked Entity Instance Filter</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.uid">Uid</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.code">Code</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.name">Name</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.created">Created</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.updated">Updated</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.description">Description</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.sortOrder">Sort Order</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.sortOrder }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.enrollmentStatus">Enrollment Status</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.EventStatus.' + trackedEntityInstanceFilter.enrollmentStatus }}">{{
+            trackedEntityInstanceFilter.enrollmentStatus
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.program">Program</span></dt>
+        <dd>
+          <div *ngIf="trackedEntityInstanceFilter.program">
+            <a [routerLink]="['/program', trackedEntityInstanceFilter.program.id, 'view']">{{
+              trackedEntityInstanceFilter.program.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.trackedEntityInstanceFilter.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ trackedEntityInstanceFilter.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button
+        type="button"
+        [routerLink]="['/tracked-entity-instance-filter', trackedEntityInstanceFilter.id, 'edit']"
+        class="btn btn-primary"
+      >
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

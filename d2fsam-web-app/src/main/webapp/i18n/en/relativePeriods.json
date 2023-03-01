@@ -1,0 +1,62 @@
+{
+  "amSystemBackApp": {
+    "relativePeriods": {
+      "home": {
+        "title": "Relative Periods",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Relative Periods",
+        "createOrEditLabel": "Create or edit a Relative Periods",
+        "notFound": "No Relative Periods found"
+      },
+      "created": "A new Relative Periods is created with identifier {{ param }}",
+      "updated": "A Relative Periods is updated with identifier {{ param }}",
+      "deleted": "A Relative Periods is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Relative Periods {{ id }}?"
+      },
+      "detail": {
+        "title": "Relative Periods"
+      },
+      "id": "ID",
+      "thisDay": "This Day",
+      "yesterday": "Yesterday",
+      "last3Days": "Last 3 Days",
+      "last7Days": "Last 7 Days",
+      "last14Days": "Last 14 Days",
+      "thisMonth": "This Month",
+      "lastMonth": "Last Month",
+      "thisBimonth": "This Bimonth",
+      "lastBimonth": "Last Bimonth",
+      "thisQuarter": "This Quarter",
+      "lastQuarter": "Last Quarter",
+      "thisSixMonth": "This Six Month",
+      "lastSixMonth": "Last Six Month",
+      "weeksThisYear": "Weeks This Year",
+      "monthsThisYear": "Months This Year",
+      "biMonthsThisYear": "Bi Months This Year",
+      "quartersThisYear": "Quarters This Year",
+      "thisYear": "This Year",
+      "monthsLastYear": "Months Last Year",
+      "quartersLastYear": "Quarters Last Year",
+      "lastYear": "Last Year",
+      "last5Years": "Last 5 Years",
+      "last12Months": "Last 12 Months",
+      "last6Months": "Last 6 Months",
+      "last3Months": "Last 3 Months",
+      "last6BiMonths": "Last 6 Bi Months",
+      "last4Quarters": "Last 4 Quarters",
+      "last2SixMonths": "Last 2 Six Months",
+      "thisFinancialYear": "This Financial Year",
+      "lastFinancialYear": "Last Financial Year",
+      "last5FinancialYears": "Last 5 Financial Years",
+      "thisWeek": "This Week",
+      "lastWeek": "Last Week",
+      "thisBiWeek": "This Bi Week",
+      "lastBiWeek": "Last Bi Week",
+      "last4Weeks": "Last 4 Weeks",
+      "last4BiWeeks": "Last 4 Bi Weeks",
+      "last12Weeks": "Last 12 Weeks",
+      "last52Weeks": "Last 52 Weeks"
+    }
+  }
+}

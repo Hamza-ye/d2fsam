@@ -1,0 +1,234 @@
+<div>
+  <h2 id="page-heading" data-cy="ActivityHeading">
+    <span appTranslate="amSystemBackApp.activity.home.title">Activities</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span appTranslate="amSystemBackApp.activity.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-activity"
+        [routerLink]="['/activity/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span appTranslate="amSystemBackApp.activity.home.createLabel"> Create a new Activity </span>
+      </button>
+    </div>
+  </h2>
+
+  <app-alert-error></app-alert-error>
+
+  <app-alert></app-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="activities?.length === 0">
+    <span appTranslate="amSystemBackApp.activity.home.notFound">No Activities found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="activities && activities.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr appSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" appSortBy="id">
+            <div class="d-flex">
+              <span appTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="uid">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.uid">Uid</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="code">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.code">Code</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.name">Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="shortName">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.shortName">Short Name</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="description">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.description">Description</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="created">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.created">Created</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updated">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.updated">Updated</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="startDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.startDate">Start Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="endDate">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.endDate">End Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="hidden">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.hidden">Hidden</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="order">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.order">Order</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="inactive">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.inactive">Inactive</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="project.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.project">Project</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="activityUsedAsTarget.name">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.activityUsedAsTarget">Activity Used As Target</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="demographicData.id">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.demographicData">Demographic Data</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="createdBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.createdBy">Created By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" appSortBy="updatedBy.login">
+            <div class="d-flex">
+              <span appTranslate="amSystemBackApp.activity.updatedBy">Updated By</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of activities; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/activity', activity.id, 'view']">{{ activity.id }}</a>
+          </td>
+          <td>{{ activity.uid }}</td>
+          <td>{{ activity.code }}</td>
+          <td>{{ activity.name }}</td>
+          <td>{{ activity.shortName }}</td>
+          <td>{{ activity.description }}</td>
+          <td>{{ activity.created | formatMediumDatetime }}</td>
+          <td>{{ activity.updated | formatMediumDatetime }}</td>
+          <td>{{ activity.startDate | formatMediumDate }}</td>
+          <td>{{ activity.endDate | formatMediumDate }}</td>
+          <td>{{ activity.hidden }}</td>
+          <td>{{ activity.order }}</td>
+          <td>{{ activity.inactive }}</td>
+          <td>
+            <div *ngIf="activity.project">
+              <a [routerLink]="['/project', activity.project.id, 'view']">{{ activity.project.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="activity.activityUsedAsTarget">
+              <a [routerLink]="['/activity', activity.activityUsedAsTarget.id, 'view']">{{ activity.activityUsedAsTarget.name }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="activity.demographicData">
+              <a [routerLink]="['/demographic-data', activity.demographicData.id, 'view']">{{ activity.demographicData.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ activity.createdBy?.login }}
+          </td>
+          <td>
+            {{ activity.updatedBy?.login }}
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/activity', activity.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/activity', activity.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(activity)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" appTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="activities && activities.length > 0">
+    <div class="d-flex justify-content-center">
+      <app-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></app-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

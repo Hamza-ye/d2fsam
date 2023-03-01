@@ -1,0 +1,108 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="dataElement">
+      <h2 data-cy="dataElementDetailsHeading"><span appTranslate="amSystemBackApp.dataElement.detail.title">Data Element</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ dataElement.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.uid">Uid</span></dt>
+        <dd>
+          <span>{{ dataElement.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.code">Code</span></dt>
+        <dd>
+          <span>{{ dataElement.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.created">Created</span></dt>
+        <dd>
+          <span>{{ dataElement.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.updated">Updated</span></dt>
+        <dd>
+          <span>{{ dataElement.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.name">Name</span></dt>
+        <dd>
+          <span>{{ dataElement.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.description">Description</span></dt>
+        <dd>
+          <span>{{ dataElement.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.valueType">Value Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.ValueType.' + dataElement.valueType }}">{{ dataElement.valueType }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.aggregationType">Aggregation Type</span></dt>
+        <dd>
+          <span appTranslate="{{ 'amSystemBackApp.AggregationType.' + dataElement.aggregationType }}">{{
+            dataElement.aggregationType
+          }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.displayInListNoProgram">Display In List No Program</span></dt>
+        <dd>
+          <span>{{ dataElement.displayInListNoProgram }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.zeroIsSignificant">Zero Is Significant</span></dt>
+        <dd>
+          <span>{{ dataElement.zeroIsSignificant }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.mandatory">Mandatory</span></dt>
+        <dd>
+          <span>{{ dataElement.mandatory }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.uniqueAttribute">Unique Attribute</span></dt>
+        <dd>
+          <span>{{ dataElement.uniqueAttribute }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.fieldMask">Field Mask</span></dt>
+        <dd>
+          <span>{{ dataElement.fieldMask }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.orgunitScope">Orgunit Scope</span></dt>
+        <dd>
+          <span>{{ dataElement.orgunitScope }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.skipSynchronization">Skip Synchronization</span></dt>
+        <dd>
+          <span>{{ dataElement.skipSynchronization }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.confidential">Confidential</span></dt>
+        <dd>
+          <span>{{ dataElement.confidential }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.optionSet">Option Set</span></dt>
+        <dd>
+          <div *ngIf="dataElement.optionSet">
+            <a [routerLink]="['/option-set', dataElement.optionSet.id, 'view']">{{ dataElement.optionSet.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ dataElement.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.dataElement.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ dataElement.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/data-element', dataElement.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

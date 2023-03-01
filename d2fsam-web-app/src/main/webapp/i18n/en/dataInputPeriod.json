@@ -1,0 +1,26 @@
+{
+  "amSystemBackApp": {
+    "dataInputPeriod": {
+      "home": {
+        "title": "Data Input Periods",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Data Input Period",
+        "createOrEditLabel": "Create or edit a Data Input Period",
+        "notFound": "No Data Input Periods found"
+      },
+      "created": "A new Data Input Period is created with identifier {{ param }}",
+      "updated": "A Data Input Period is updated with identifier {{ param }}",
+      "deleted": "A Data Input Period is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Data Input Period {{ id }}?"
+      },
+      "detail": {
+        "title": "Data Input Period"
+      },
+      "id": "ID",
+      "openingDate": "Opening Date",
+      "closingDate": "Closing Date",
+      "period": "Period"
+    }
+  }
+}

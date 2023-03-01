@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+
+    <!--
+        Added the entity UserGroup.
+    -->
+    <changeSet id="2031010204025-99" author="Hamza">
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="oauth2_client"
+                                 constraintName="fk_oauth2_client__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+
+</databaseChangeLog>

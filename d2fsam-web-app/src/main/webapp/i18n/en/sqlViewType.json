@@ -1,0 +1,10 @@
+{
+  "amSystemBackApp": {
+    "SqlViewType": {
+      "null": "",
+      "VIEW": "VIEW",
+      "MATERIALIZED_VIEW": "MATERIALIZED_VIEW",
+      "QUERY": "QUERY"
+    }
+  }
+}

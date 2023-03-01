@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataElementGroup.
+    -->
+    <changeSet id="20230114231139-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="data_element_group"
+                                 constraintName="fk_data_element_group__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="data_element_group"
+                                 constraintName="fk_data_element_group__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementgroupid"
+                                 baseTableName="data_element_group__members"
+                                 constraintName="fk_data_element_group__members__data_element_group_id"
+                                 referencedColumnNames="dataelementgroupid"
+                                 referencedTableName="data_element_group"/>
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="data_element_group__members"
+                                 constraintName="fk_data_element_group__members__member_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity ProgramStageInstance.
+    -->
+    <changeSet id="20221120204041-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programinstanceid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__program_instance_id"
+                                 referencedColumnNames="programinstanceid"
+                                 referencedTableName="program_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__organisation_unit_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+
+        <addForeignKeyConstraint baseColumnNames="assigneduserid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__assigned_user_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="periodid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__period_id"
+                                 referencedColumnNames="periodid"
+                                 referencedTableName="period"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="approvedby"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__approved_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="activityid"
+                                 baseTableName="program_stage_instance"
+                                 constraintName="fk_program_stage_instance__activity_id"
+                                 referencedColumnNames="activityid"
+                                 referencedTableName="activity"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageinstanceid"
+                                 baseTableName="program_stage_instance__comments"
+                                 constraintName="fk_program_stage_instance_comment__program_stage_instance_id"
+                                 referencedColumnNames="programstageinstanceid"
+                                 referencedTableName="program_stage_instance"/>
+<!--        referencedTableName="program_stage_instance" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="trackedentitycommentid"
+                                 baseTableName="program_stage_instance__comments"
+                                 constraintName="fk_program_stage_instance_comment__comment_id"
+                                 referencedColumnNames="trackedentitycommentid"
+                                 referencedTableName="comment"/>
+<!--        referencedTableName="comment" onDelete="CASCADE"/>-->
+
+        <addForeignKeyConstraint baseColumnNames="programstageinstanceid"
+                                 baseTableName="program_stage_instance__message_conversations"
+                                 constraintName="fk_program_stage_instance__message_conversations__program_stage_instance_id"
+                                 referencedColumnNames="programstageinstanceid"
+                                 referencedTableName="program_stage_instance" />
+
+        <addForeignKeyConstraint baseColumnNames="messageconversationid"
+                                 baseTableName="program_stage_instance__message_conversations"
+                                 constraintName="fk_program_stage_instance__message_conversations__message_conversation_id"
+                                 referencedColumnNames="messageconversationid"
+                                 referencedTableName="message_conversation" />
+    </changeSet>
+</databaseChangeLog>

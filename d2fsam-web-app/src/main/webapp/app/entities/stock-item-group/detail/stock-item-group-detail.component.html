@@ -1,0 +1,77 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="stockItemGroup">
+      <h2 data-cy="stockItemGroupDetailsHeading">
+        <span appTranslate="amSystemBackApp.stockItemGroup.detail.title">Stock Item Group</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.uid">Uid</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.code">Code</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.name">Name</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.shortName">Short Name</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.shortName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.description">Description</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.created">Created</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.updated">Updated</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ stockItemGroup.updatedBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.stockItemGroup.item">Item</span></dt>
+        <dd>
+          <span *ngFor="let item of stockItemGroup.items; let last = last">
+            <a [routerLink]="['/stock-item', item.id, 'view']">{{ item.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/stock-item-group', stockItemGroup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

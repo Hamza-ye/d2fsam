@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity RelationshipItem.
+    -->
+    <changeSet id="20221120204109-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="relationshipid"
+                                 baseTableName="relationship_item"
+                                 constraintName="fk_relationship_item__relationship_id"
+                                 referencedColumnNames="relationshipid"
+                                 referencedTableName="relationship" onDelete="CASCADE"/>
+
+        <addForeignKeyConstraint baseColumnNames="trackedentityinstanceid"
+                                 baseTableName="relationship_item"
+                                 constraintName="fk_relationship_item__tracked_entity_instance_id"
+                                 referencedColumnNames="trackedentityinstanceid"
+                                 referencedTableName="tracked_entity_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="programinstanceid"
+                                 baseTableName="relationship_item"
+                                 constraintName="fk_relationship_item__program_instance_id"
+                                 referencedColumnNames="programinstanceid"
+                                 referencedTableName="program_instance"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageinstanceid"
+                                 baseTableName="relationship_item"
+                                 constraintName="fk_relationship_item__program_stage_instance_id"
+                                 referencedColumnNames="programstageinstanceid"
+                                 referencedTableName="program_stage_instance"/>
+    </changeSet>
+</databaseChangeLog>

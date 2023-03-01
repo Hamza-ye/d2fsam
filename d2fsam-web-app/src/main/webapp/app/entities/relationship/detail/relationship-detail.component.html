@@ -1,0 +1,86 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="relationship">
+      <h2 data-cy="relationshipDetailsHeading"><span appTranslate="amSystemBackApp.relationship.detail.title">Relationship</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ relationship.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.uid">Uid</span></dt>
+        <dd>
+          <span>{{ relationship.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.code">Code</span></dt>
+        <dd>
+          <span>{{ relationship.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.created">Created</span></dt>
+        <dd>
+          <span>{{ relationship.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.updated">Updated</span></dt>
+        <dd>
+          <span>{{ relationship.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.formName">Form Name</span></dt>
+        <dd>
+          <span>{{ relationship.formName }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.description">Description</span></dt>
+        <dd>
+          <span>{{ relationship.description }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.key">Key</span></dt>
+        <dd>
+          <span>{{ relationship.key }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.invertedKey">Inverted Key</span></dt>
+        <dd>
+          <span>{{ relationship.invertedKey }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.deleted">Deleted</span></dt>
+        <dd>
+          <span>{{ relationship.deleted }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.relationshipType">Relationship Type</span></dt>
+        <dd>
+          <div *ngIf="relationship.relationshipType">
+            <a [routerLink]="['/relationship-type', relationship.relationshipType.id, 'view']">{{ relationship.relationshipType.name }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.from">From</span></dt>
+        <dd>
+          <div *ngIf="relationship.from">
+            <a [routerLink]="['/relationship-item', relationship.from.id, 'view']">{{ relationship.from.id }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.to">To</span></dt>
+        <dd>
+          <div *ngIf="relationship.to">
+            <a [routerLink]="['/relationship-item', relationship.to.id, 'view']">{{ relationship.to.id }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.relationship.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ relationship.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/relationship', relationship.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

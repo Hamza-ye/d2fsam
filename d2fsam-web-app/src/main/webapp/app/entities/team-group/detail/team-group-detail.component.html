@@ -1,0 +1,71 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="teamGroup">
+      <h2 data-cy="teamGroupDetailsHeading"><span appTranslate="amSystemBackApp.teamGroup.detail.title">Team Group</span></h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ teamGroup.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.uid">Uid</span></dt>
+        <dd>
+          <span>{{ teamGroup.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.code">Code</span></dt>
+        <dd>
+          <span>{{ teamGroup.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.name">Name</span></dt>
+        <dd>
+          <span>{{ teamGroup.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.uuid">Uuid</span></dt>
+        <dd>
+          <span>{{ teamGroup.uuid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.created">Created</span></dt>
+        <dd>
+          <span>{{ teamGroup.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.updated">Updated</span></dt>
+        <dd>
+          <span>{{ teamGroup.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.activeFrom">Active From</span></dt>
+        <dd>
+          <span>{{ teamGroup.activeFrom | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.activeTo">Active To</span></dt>
+        <dd>
+          <span>{{ teamGroup.activeTo | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.inactive">Inactive</span></dt>
+        <dd>
+          <span>{{ teamGroup.inactive }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.teamGroup.member">Member</span></dt>
+        <dd>
+          <span *ngFor="let member of teamGroup.members; let last = last">
+            <a [routerLink]="['/team', member.id, 'view']">{{ member.name }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/team-group', teamGroup.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,468 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="app-relative-periods-heading"
+        data-cy="RelativePeriodsCreateUpdateHeading"
+        appTranslate="amSystemBackApp.relativePeriods.home.createOrEditLabel"
+      >
+        Create or edit a Relative Periods
+      </h2>
+
+      <div>
+        <app-alert-error></app-alert-error>
+
+        <div class="row mb-3" *ngIf="editForm.controls.id.value !== null">
+          <label class="form-label" appTranslate="global.field.id" for="field_id">ID</label>
+          <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisDay" for="field_thisDay">This Day</label>
+          <input type="checkbox" class="form-check" name="thisDay" id="field_thisDay" data-cy="thisDay" formControlName="thisDay" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.yesterday" for="field_yesterday">Yesterday</label>
+          <input type="checkbox" class="form-check" name="yesterday" id="field_yesterday" data-cy="yesterday" formControlName="yesterday" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last3Days" for="field_last3Days">Last 3 Days</label>
+          <input type="checkbox" class="form-check" name="last3Days" id="field_last3Days" data-cy="last3Days" formControlName="last3Days" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last7Days" for="field_last7Days">Last 7 Days</label>
+          <input type="checkbox" class="form-check" name="last7Days" id="field_last7Days" data-cy="last7Days" formControlName="last7Days" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last14Days" for="field_last14Days">Last 14 Days</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last14Days"
+            id="field_last14Days"
+            data-cy="last14Days"
+            formControlName="last14Days"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisMonth" for="field_thisMonth">This Month</label>
+          <input type="checkbox" class="form-check" name="thisMonth" id="field_thisMonth" data-cy="thisMonth" formControlName="thisMonth" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastMonth" for="field_lastMonth">Last Month</label>
+          <input type="checkbox" class="form-check" name="lastMonth" id="field_lastMonth" data-cy="lastMonth" formControlName="lastMonth" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisBimonth" for="field_thisBimonth">This Bimonth</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="thisBimonth"
+            id="field_thisBimonth"
+            data-cy="thisBimonth"
+            formControlName="thisBimonth"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastBimonth" for="field_lastBimonth">Last Bimonth</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="lastBimonth"
+            id="field_lastBimonth"
+            data-cy="lastBimonth"
+            formControlName="lastBimonth"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisQuarter" for="field_thisQuarter">This Quarter</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="thisQuarter"
+            id="field_thisQuarter"
+            data-cy="thisQuarter"
+            formControlName="thisQuarter"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastQuarter" for="field_lastQuarter">Last Quarter</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="lastQuarter"
+            id="field_lastQuarter"
+            data-cy="lastQuarter"
+            formControlName="lastQuarter"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisSixMonth" for="field_thisSixMonth"
+            >This Six Month</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="thisSixMonth"
+            id="field_thisSixMonth"
+            data-cy="thisSixMonth"
+            formControlName="thisSixMonth"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastSixMonth" for="field_lastSixMonth"
+            >Last Six Month</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="lastSixMonth"
+            id="field_lastSixMonth"
+            data-cy="lastSixMonth"
+            formControlName="lastSixMonth"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.weeksThisYear" for="field_weeksThisYear"
+            >Weeks This Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="weeksThisYear"
+            id="field_weeksThisYear"
+            data-cy="weeksThisYear"
+            formControlName="weeksThisYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.monthsThisYear" for="field_monthsThisYear"
+            >Months This Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="monthsThisYear"
+            id="field_monthsThisYear"
+            data-cy="monthsThisYear"
+            formControlName="monthsThisYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.biMonthsThisYear" for="field_biMonthsThisYear"
+            >Bi Months This Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="biMonthsThisYear"
+            id="field_biMonthsThisYear"
+            data-cy="biMonthsThisYear"
+            formControlName="biMonthsThisYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.quartersThisYear" for="field_quartersThisYear"
+            >Quarters This Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="quartersThisYear"
+            id="field_quartersThisYear"
+            data-cy="quartersThisYear"
+            formControlName="quartersThisYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisYear" for="field_thisYear">This Year</label>
+          <input type="checkbox" class="form-check" name="thisYear" id="field_thisYear" data-cy="thisYear" formControlName="thisYear" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.monthsLastYear" for="field_monthsLastYear"
+            >Months Last Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="monthsLastYear"
+            id="field_monthsLastYear"
+            data-cy="monthsLastYear"
+            formControlName="monthsLastYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.quartersLastYear" for="field_quartersLastYear"
+            >Quarters Last Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="quartersLastYear"
+            id="field_quartersLastYear"
+            data-cy="quartersLastYear"
+            formControlName="quartersLastYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastYear" for="field_lastYear">Last Year</label>
+          <input type="checkbox" class="form-check" name="lastYear" id="field_lastYear" data-cy="lastYear" formControlName="lastYear" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last5Years" for="field_last5Years">Last 5 Years</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last5Years"
+            id="field_last5Years"
+            data-cy="last5Years"
+            formControlName="last5Years"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last12Months" for="field_last12Months"
+            >Last 12 Months</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last12Months"
+            id="field_last12Months"
+            data-cy="last12Months"
+            formControlName="last12Months"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last6Months" for="field_last6Months">Last 6 Months</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last6Months"
+            id="field_last6Months"
+            data-cy="last6Months"
+            formControlName="last6Months"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last3Months" for="field_last3Months">Last 3 Months</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last3Months"
+            id="field_last3Months"
+            data-cy="last3Months"
+            formControlName="last3Months"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last6BiMonths" for="field_last6BiMonths"
+            >Last 6 Bi Months</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last6BiMonths"
+            id="field_last6BiMonths"
+            data-cy="last6BiMonths"
+            formControlName="last6BiMonths"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last4Quarters" for="field_last4Quarters"
+            >Last 4 Quarters</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last4Quarters"
+            id="field_last4Quarters"
+            data-cy="last4Quarters"
+            formControlName="last4Quarters"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last2SixMonths" for="field_last2SixMonths"
+            >Last 2 Six Months</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last2SixMonths"
+            id="field_last2SixMonths"
+            data-cy="last2SixMonths"
+            formControlName="last2SixMonths"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisFinancialYear" for="field_thisFinancialYear"
+            >This Financial Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="thisFinancialYear"
+            id="field_thisFinancialYear"
+            data-cy="thisFinancialYear"
+            formControlName="thisFinancialYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastFinancialYear" for="field_lastFinancialYear"
+            >Last Financial Year</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="lastFinancialYear"
+            id="field_lastFinancialYear"
+            data-cy="lastFinancialYear"
+            formControlName="lastFinancialYear"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last5FinancialYears" for="field_last5FinancialYears"
+            >Last 5 Financial Years</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last5FinancialYears"
+            id="field_last5FinancialYears"
+            data-cy="last5FinancialYears"
+            formControlName="last5FinancialYears"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisWeek" for="field_thisWeek">This Week</label>
+          <input type="checkbox" class="form-check" name="thisWeek" id="field_thisWeek" data-cy="thisWeek" formControlName="thisWeek" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastWeek" for="field_lastWeek">Last Week</label>
+          <input type="checkbox" class="form-check" name="lastWeek" id="field_lastWeek" data-cy="lastWeek" formControlName="lastWeek" />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.thisBiWeek" for="field_thisBiWeek">This Bi Week</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="thisBiWeek"
+            id="field_thisBiWeek"
+            data-cy="thisBiWeek"
+            formControlName="thisBiWeek"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.lastBiWeek" for="field_lastBiWeek">Last Bi Week</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="lastBiWeek"
+            id="field_lastBiWeek"
+            data-cy="lastBiWeek"
+            formControlName="lastBiWeek"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last4Weeks" for="field_last4Weeks">Last 4 Weeks</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last4Weeks"
+            id="field_last4Weeks"
+            data-cy="last4Weeks"
+            formControlName="last4Weeks"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last4BiWeeks" for="field_last4BiWeeks"
+            >Last 4 Bi Weeks</label
+          >
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last4BiWeeks"
+            id="field_last4BiWeeks"
+            data-cy="last4BiWeeks"
+            formControlName="last4BiWeeks"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last12Weeks" for="field_last12Weeks">Last 12 Weeks</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last12Weeks"
+            id="field_last12Weeks"
+            data-cy="last12Weeks"
+            formControlName="last12Weeks"
+          />
+        </div>
+
+        <div class="row mb-3">
+          <label class="form-label" appTranslate="amSystemBackApp.relativePeriods.last52Weeks" for="field_last52Weeks">Last 52 Weeks</label>
+          <input
+            type="checkbox"
+            class="form-check"
+            name="last52Weeks"
+            id="field_last52Weeks"
+            data-cy="last52Weeks"
+            formControlName="last52Weeks"
+          />
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span appTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span appTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

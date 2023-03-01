@@ -1,0 +1,37 @@
+{
+  "amSystemBackApp": {
+    "programTrackedEntityAttribute": {
+      "home": {
+        "title": "Program Tracked Entity Attributes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Program Tracked Entity Attribute",
+        "createOrEditLabel": "Create or edit a Program Tracked Entity Attribute",
+        "notFound": "No Program Tracked Entity Attributes found"
+      },
+      "created": "A new Program Tracked Entity Attribute is created with identifier {{ param }}",
+      "updated": "A Program Tracked Entity Attribute is updated with identifier {{ param }}",
+      "deleted": "A Program Tracked Entity Attribute is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Program Tracked Entity Attribute {{ id }}?"
+      },
+      "detail": {
+        "title": "Program Tracked Entity Attribute"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "displayInList": "Display In List",
+      "sortOrder": "Sort Order",
+      "mandatory": "Mandatory",
+      "allowFutureDate": "Allow Future Date",
+      "searchable": "Searchable",
+      "defaultValue": "Default Value",
+      "program": "Program",
+      "attribute": "Attribute",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "amSystemBackApp": {
+    "trackedEntityAttributeValue": {
+      "home": {
+        "title": "Tracked Entity Attribute Values",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Tracked Entity Attribute Value",
+        "createOrEditLabel": "Create or edit a Tracked Entity Attribute Value",
+        "notFound": "No Tracked Entity Attribute Values found"
+      },
+      "created": "A new Tracked Entity Attribute Value is created with identifier {{ param }}",
+      "updated": "A Tracked Entity Attribute Value is updated with identifier {{ param }}",
+      "deleted": "A Tracked Entity Attribute Value is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Tracked Entity Attribute Value {{ id }}?"
+      },
+      "detail": {
+        "title": "Tracked Entity Attribute Value"
+      },
+      "id": "ID",
+      "encryptedValue": "Encrypted Value",
+      "plainValue": "Plain Value",
+      "value": "Value",
+      "created": "Created",
+      "updated": "Updated",
+      "storedBy": "Stored By",
+      "attribute": "Attribute",
+      "entityInstance": "Entity Instance"
+    }
+  }
+}

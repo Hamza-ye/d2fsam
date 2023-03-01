@@ -1,0 +1,36 @@
+{
+  "amSystemBackApp": {
+    "relationship": {
+      "home": {
+        "title": "Relationships",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Relationship",
+        "createOrEditLabel": "Create or edit a Relationship",
+        "notFound": "No Relationships found"
+      },
+      "created": "A new Relationship is created with identifier {{ param }}",
+      "updated": "A Relationship is updated with identifier {{ param }}",
+      "deleted": "A Relationship is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Relationship {{ id }}?"
+      },
+      "detail": {
+        "title": "Relationship"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "created": "Created",
+      "updated": "Updated",
+      "formName": "Form Name",
+      "description": "Description",
+      "key": "Key",
+      "invertedKey": "Inverted Key",
+      "deleted": "Deleted",
+      "relationshipType": "Relationship Type",
+      "from": "From",
+      "to": "To",
+      "updatedBy": "Updated By"
+    }
+  }
+}

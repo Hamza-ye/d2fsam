@@ -1,0 +1,34 @@
+{
+  "amSystemBackApp": {
+    "stockItemGroup": {
+      "home": {
+        "title": "Stock Item Groups",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Stock Item Group",
+        "createOrEditLabel": "Create or edit a Stock Item Group",
+        "notFound": "No Stock Item Groups found"
+      },
+      "created": "A new Stock Item Group is created with identifier {{ param }}",
+      "updated": "A Stock Item Group is updated with identifier {{ param }}",
+      "deleted": "A Stock Item Group is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Stock Item Group {{ id }}?"
+      },
+      "detail": {
+        "title": "Stock Item Group"
+      },
+      "id": "ID",
+      "uid": "Uid",
+      "code": "Code",
+      "name": "Name",
+      "shortName": "Short Name",
+      "description": "Description",
+      "created": "Created",
+      "updated": "Updated",
+      "inactive": "Inactive",
+      "createdBy": "Created By",
+      "updatedBy": "Updated By",
+      "item": "Item"
+    }
+  }
+}

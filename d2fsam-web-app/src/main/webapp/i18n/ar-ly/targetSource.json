@@ -1,0 +1,10 @@
+{
+  "amSystemBackApp": {
+    "TargetSource": {
+      "null": "",
+      "ACTIVITY": "ACTIVITY",
+      "DEMOGRAPHIC": "DEMOGRAPHIC",
+      "NONE": "NONE"
+    }
+  }
+}

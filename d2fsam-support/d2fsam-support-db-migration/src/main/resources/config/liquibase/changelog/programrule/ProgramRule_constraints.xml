@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity programRule.
+    -->
+    <changeSet id="20221230204034-4" author="hamza">
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="program_rule"
+                                 constraintName="fk_program_rule__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="program_rule"
+                                 constraintName="fk_program_rule__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="program_rule"
+                                 constraintName="fk_program_rule__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="programstageid"
+                                 baseTableName="program_rule"
+                                 constraintName="fk_program_rule__program_stage_id"
+                                 referencedColumnNames="programstageid"
+                                 referencedTableName="program_stage"/>
+    </changeSet>
+</databaseChangeLog>

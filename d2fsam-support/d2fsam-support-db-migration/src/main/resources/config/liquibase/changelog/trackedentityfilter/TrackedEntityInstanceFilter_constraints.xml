@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity TrackedEntityInstanceFilter.
+    -->
+    <changeSet id="20221120204056-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="programid"
+                                 baseTableName="tracked_entity_instance_filter"
+                                 constraintName="fk_tracked_entity_instance_filter__program_id"
+                                 referencedColumnNames="programid"
+                                 referencedTableName="program"/>
+
+        <addForeignKeyConstraint baseColumnNames="createdby"
+                                 baseTableName="tracked_entity_instance_filter"
+                                 constraintName="fk_tracked_entity_instance_filter__created_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="lastupdatedby"
+                                 baseTableName="tracked_entity_instance_filter"
+                                 constraintName="fk_tracked_entity_instance_filter__updated_by_id"
+                                 referencedColumnNames="userid"
+                                 referencedTableName="app_user"/>
+    </changeSet>
+</databaseChangeLog>

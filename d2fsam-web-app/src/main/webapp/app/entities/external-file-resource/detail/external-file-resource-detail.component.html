@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="externalFileResource">
+      <h2 data-cy="externalFileResourceDetailsHeading">
+        <span appTranslate="amSystemBackApp.externalFileResource.detail.title">External File Resource</span>
+      </h2>
+
+      <hr />
+
+      <app-alert-error></app-alert-error>
+
+      <app-alert></app-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span appTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ externalFileResource.id }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.uid">Uid</span></dt>
+        <dd>
+          <span>{{ externalFileResource.uid }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.code">Code</span></dt>
+        <dd>
+          <span>{{ externalFileResource.code }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.name">Name</span></dt>
+        <dd>
+          <span>{{ externalFileResource.name }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.created">Created</span></dt>
+        <dd>
+          <span>{{ externalFileResource.created | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.updated">Updated</span></dt>
+        <dd>
+          <span>{{ externalFileResource.updated | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.accessToken">Access Token</span></dt>
+        <dd>
+          <span>{{ externalFileResource.accessToken }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.expires">Expires</span></dt>
+        <dd>
+          <span>{{ externalFileResource.expires | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.fileResource">File Resource</span></dt>
+        <dd>
+          <div *ngIf="externalFileResource.fileResource">
+            <a [routerLink]="['/file-resource', externalFileResource.fileResource.id, 'view']">{{
+              externalFileResource.fileResource.name
+            }}</a>
+          </div>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.createdBy">Created By</span></dt>
+        <dd>
+          <span>{{ externalFileResource.createdBy?.login }}</span>
+        </dd>
+        <dt><span appTranslate="amSystemBackApp.externalFileResource.updatedBy">Updated By</span></dt>
+        <dd>
+          <span>{{ externalFileResource.updatedBy?.login }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span appTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/external-file-resource', externalFileResource.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span appTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

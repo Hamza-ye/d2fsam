@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity DataValue.
+    -->
+    <changeSet id="10221120204058-2" author="Hamza">
+
+        <addForeignKeyConstraint baseColumnNames="dataelementid"
+                                 baseTableName="data_value_audit"
+                                 constraintName="fk_data_value_audit__data_element_id"
+                                 referencedColumnNames="dataelementid"
+                                 referencedTableName="data_element"/>
+
+        <addForeignKeyConstraint baseColumnNames="periodid"
+                                 baseTableName="data_value_audit"
+                                 constraintName="fk_data_value_audit__period_id"
+                                 referencedColumnNames="periodid"
+                                 referencedTableName="period"/>
+
+        <addForeignKeyConstraint baseColumnNames="organisationunitid"
+                                 baseTableName="data_value_audit"
+                                 constraintName="fk_data_value_audit__source_id"
+                                 referencedColumnNames="organisationunitid"
+                                 referencedTableName="organisation_unit"/>
+    </changeSet>
+</databaseChangeLog>
