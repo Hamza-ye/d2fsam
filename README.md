@@ -13,7 +13,7 @@ now most of DHIS2 api is merged to it.
 
 A Mobile App was also developed to connect to these functionalities.
 
-## Main Functionalities that it provide:
+## Main Functionalities provided:
  
  - Activities and tasks management.
  - Teams Management.
