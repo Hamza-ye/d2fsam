@@ -1,11 +1,33 @@
 # D2FSAM
 
-DHIS2 + Field Short-lived Activity Management.
-DHIS2 + some functionalities for managing field short-lived activities that we need to be part of
+DHIS2 API + Field Short-lived Activity Management.
+DHIS2 API + some functionalities for managing field short-lived activities that we need to be part of
 the core to meet some of our requirements, after the activity is completed and its data is reviewed,
 the data gets synchronized to a DHIS2 instance used as the core system for warehousing the core data.
-The main reason it was created for started to replace some of the tasks that is hard to manage by KOBO|ODK,
-or other general data collection tools.
+The main reason it was created for started to replace some tasks that is hard to manage by KOBO|ODK,
+or other general data collection tools based on our requirements.
+
+It was first only our simple system used to coordinate KOBO|ODK and other tools with the DHIS2 instance, 
+after that we merged DHIS2 API to utilize its dynamic core and design to it in stages,
+now most of DHIS2 api is merged to it.
+
+A Mobile App was also developed to connect to these functionalities.
+
+## Main Functionalities that it provide:
+ 
+ - Activities and tasks management.
+ - Teams Management.
+ - Assignments management: Creating plan and assign teams to it prior to the activity and in the field, field supervisors create users on the fly and
+connect each user with the team planned, and when the user sign in all his assignments gets synced to his mobile.
+ - Managing Review Process.
+ - A Profile for each user is kept on the system storing his info, his history of work, his achievements and scores, 
+  so it's easier in next activities to choose users that suits each task.
+   - A profile for each activity storing its detailed info, and the final report, and any documents related to the activity.
+  
+## Future Functionalities:
+
+ - Management of Shor-lived Warehouses, managing field warehouse that is setup on the fly for each activity.
+ - Other.
 
 ## Project Structure
 
