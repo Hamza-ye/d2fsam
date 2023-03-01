@@ -66,7 +66,7 @@ Run the following commands in two separate terminals to create a blissful develo
 auto-refreshes when files change on your hard drive.
 
 ```
-./mvnw
+./mvn
 npm start
 ```
 
@@ -135,36 +135,15 @@ create src/main/webapp/app/my-component/my-component.component.ts
 update src/main/webapp/app/app.module.ts
 ```
 
-### D2FSAM Control Center
-
-D2FSAM Control Center can help you manage and control your application(s). You can start a local control center server (accessible on http://localhost:7419) with:
-
-```
-docker-compose -f src/main/docker/d2fsam-control-center.yml up
-```
-
-### Doing API-First development using openapi-generator-cli
-
-[OpenAPI-Generator]() is configured for this application. You can generate API code from the `src/main/resources/swagger/api.yml` definition file by running:
-
-```bash
-./mvnw generate-sources
-```
-
-Then implements the generated delegate classes with `@Service` classes.
-
-To edit the `api.yml` definition file, you can use a tool such as [Swagger-Editor](). Start a local instance of the swagger-editor using docker by running: `docker-compose -f src/main/docker/swagger-editor.yml up -d`. The editor will then be reachable at [http://localhost:7742](http://localhost:7742).
-
-Refer to [Doing API-First development][] for more details.
-
 ## Building for production
+
 
 ### Packaging as jar
 
 To build the final jar and optimize the amSystemBack application for production, run:
 
 ```
-./mvnw -Pprod clean verify
+./mvn -Pprod clean verify
 ```
 
 This will concatenate and minify the client CSS and JavaScript files. It will also modify `index.html` so it references these new files.
@@ -183,7 +162,7 @@ Refer to [Using D2FSAM in production][] for more details.
 To package your application as a war in order to deploy it to an application server, run:
 
 ```
-./mvnw -Pprod,war clean verify
+./mvn -Pprod,war clean verify
 ```
 
 ## Testing
@@ -191,7 +170,7 @@ To package your application as a war in order to deploy it to an application ser
 To launch your application's tests, run:
 
 ```
-./mvnw verify
+./mvn verify
 ```
 
 ### Client tests
@@ -219,13 +198,13 @@ You can run a Sonar analysis with using the [sonar-scanner](https://docs.sonarqu
 Then, run a Sonar analysis:
 
 ```
-./mvnw -Pprod clean verify sonar:sonar
+./mvn -Pprod clean verify sonar:sonar
 ```
 
 If you need to re-run the Sonar phase, please be sure to specify at least the `initialize` phase since Sonar properties are loaded from the sonar-project.properties file.
 
 ```
-./mvnw initialize sonar:sonar
+./mvn initialize sonar:sonar
 ```
 
 For more information, refer to the [Code quality page][].
@@ -283,4 +262,3 @@ To configure CI for your project, run the ci-cd sub-generator (`d2fsam ci-cd`), 
 [angular cli]: https://cli.angular.io/
 [openapi-generator]: https://openapi-generator.tech
 [swagger-editor]: https://editor.swagger.io
-[doing api-first development]: https://www.jhipster.tech/documentation-archive/v7.9.3/doing-api-first-development/
