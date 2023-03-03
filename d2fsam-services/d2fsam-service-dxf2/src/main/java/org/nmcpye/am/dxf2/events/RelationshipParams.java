@@ -29,46 +29,39 @@ package org.nmcpye.am.dxf2.events;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class RelationshipParams
-{
-    public static final RelationshipParams TRUE = new RelationshipParams( true, true );
+public class RelationshipParams {
+    public static final RelationshipParams TRUE = new RelationshipParams(true, true);
 
-    public static final RelationshipParams FALSE = new RelationshipParams( false, false );
+    public static final RelationshipParams FALSE = new RelationshipParams(false, false);
 
     private boolean includeFrom;
 
     private boolean includeTo;
 
-    @SuppressWarnings( "unused" )
-    private RelationshipParams()
-    {
+    @SuppressWarnings("unused")
+    private RelationshipParams() {
     }
 
-    public RelationshipParams(boolean includeFrom, boolean includeTo )
-    {
+    public RelationshipParams(boolean includeFrom, boolean includeTo) {
         this.includeFrom = includeFrom;
         this.includeTo = includeTo;
     }
 
     @JsonProperty
-    public boolean isIncludeFrom()
-    {
+    public boolean isIncludeFrom() {
         return includeFrom;
     }
 
-    public void setIncludeFrom( boolean includeFrom )
-    {
+    public void setIncludeFrom(boolean includeFrom) {
         this.includeFrom = includeFrom;
     }
 
     @JsonProperty
-    public boolean isIncludeTo()
-    {
+    public boolean isIncludeTo() {
         return includeTo;
     }
 
-    public void setIncludeTo( boolean includeTo )
-    {
+    public void setIncludeTo(boolean includeTo) {
         this.includeTo = includeTo;
     }
 }

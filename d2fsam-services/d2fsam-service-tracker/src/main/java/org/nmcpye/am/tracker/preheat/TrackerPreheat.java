@@ -542,7 +542,7 @@ public class TrackerPreheat {
             RelationshipKey relationshipKey = getRelationshipKey(relationship, relationshipType);
 
             RelationshipKey inverseKey = null;
-            if (relationshipType.getBidirectional()) {
+            if (relationshipType.isBidirectional()) {
                 inverseKey = relationshipKey.inverseKey();
             }
             return Stream.of(relationshipKey, inverseKey)
@@ -564,7 +564,7 @@ public class TrackerPreheat {
 
     public void addExistingRelationship(Relationship relationship) {
         existingRelationships.add(relationship.getKey());
-        if (relationship.getRelationshipType().getBidirectional()) {
+        if (relationship.getRelationshipType().isBidirectional()) {
             existingRelationships.add(relationship.getInvertedKey());
         }
     }

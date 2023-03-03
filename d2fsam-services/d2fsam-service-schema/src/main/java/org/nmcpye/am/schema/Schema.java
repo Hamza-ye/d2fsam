@@ -473,8 +473,8 @@ public class Schema implements Ordered, Klass {
             for (Property property : propertyMap.values()) {
                 if (
                     property.isCollection() &&
-                    property.isManyToMany() &&
-                    (role.equals(property.getOwningRole()) || role.equals(property.getInverseRole()))
+                        property.isManyToMany() &&
+                        (role.equals(property.getOwningRole()) || role.equals(property.getInverseRole()))
                 ) {
                     return property;
                 }
@@ -661,19 +661,19 @@ public class Schema implements Ordered, Klass {
 
         return (
             Objects.equals(this.klass, other.klass) &&
-            Objects.equals(this.identifiableObject, other.identifiableObject) &&
-            Objects.equals(this.nameableObject, other.nameableObject) &&
-            Objects.equals(this.singular, other.singular) &&
-            Objects.equals(this.plural, other.plural) &&
-            Objects.equals(this.namespace, other.namespace) &&
-            Objects.equals(this.name, other.name) &&
-            Objects.equals(this.collectionName, other.collectionName) &&
-            Objects.equals(this.shareable, other.shareable) &&
-            Objects.equals(this.relativeApiEndpoint, other.relativeApiEndpoint) &&
-            Objects.equals(this.metadata, other.metadata) &&
-            Objects.equals(this.authorities, other.authorities) &&
-            Objects.equals(this.propertyMap, other.propertyMap) &&
-            Objects.equals(this.order, other.order)
+                Objects.equals(this.identifiableObject, other.identifiableObject) &&
+                Objects.equals(this.nameableObject, other.nameableObject) &&
+                Objects.equals(this.singular, other.singular) &&
+                Objects.equals(this.plural, other.plural) &&
+                Objects.equals(this.namespace, other.namespace) &&
+                Objects.equals(this.name, other.name) &&
+                Objects.equals(this.collectionName, other.collectionName) &&
+                Objects.equals(this.shareable, other.shareable) &&
+                Objects.equals(this.relativeApiEndpoint, other.relativeApiEndpoint) &&
+                Objects.equals(this.metadata, other.metadata) &&
+                Objects.equals(this.authorities, other.authorities) &&
+                Objects.equals(this.propertyMap, other.propertyMap) &&
+                Objects.equals(this.order, other.order)
         );
     }
 

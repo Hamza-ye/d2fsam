@@ -27,7 +27,6 @@
  */
 package org.nmcpye.am.trackedentityattributevalue;
 
-import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;

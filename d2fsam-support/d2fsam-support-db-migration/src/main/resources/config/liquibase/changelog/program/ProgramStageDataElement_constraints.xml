@@ -13,7 +13,7 @@
                                  constraintName="fk_program_stage_data_element__program_stage_id"
                                  referencedColumnNames="programstageid"
                                  referencedTableName="program_stage"/>
-<!--        referencedTableName="program_stage" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="program_stage" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="dataelementid"
                                  baseTableName="program_stage_data_element"

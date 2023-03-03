@@ -10,9 +10,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-schema</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Schema service</name>
 
     <dependencies>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-core</artifactId>
@@ -67,7 +69,7 @@
             <artifactId>hibernate-core</artifactId>
         </dependency>
 
-        <!-- D2-F -->
+        <!-- DHIS -->
 
         <dependency>
             <groupId>org.nmcpye.am</groupId>
@@ -103,10 +105,16 @@
             <artifactId>mockito-core</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- NMCP Used undeclared dependencies -->
+
+        <dependency>
+            <groupId>javax.persistence</groupId>
+            <artifactId>javax.persistence-api</artifactId>
+        </dependency>
     </dependencies>
     <properties>
         <rootDir>../../</rootDir>
-        <!--        <jib.skip>true</jib.skip>-->
     </properties>
 
 </project>

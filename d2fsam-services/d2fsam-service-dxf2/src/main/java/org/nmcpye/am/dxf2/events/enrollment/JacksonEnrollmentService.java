@@ -48,9 +48,9 @@ import org.nmcpye.am.query.QueryService;
 import org.nmcpye.am.schema.SchemaService;
 import org.nmcpye.am.system.notification.Notifier;
 import org.nmcpye.am.trackedentity.TrackedEntityAttributeServiceExt;
-import org.nmcpye.am.trackedentityattributevalue.TrackedEntityAttributeValueServiceExt;
 import org.nmcpye.am.trackedentity.TrackerAccessManager;
 import org.nmcpye.am.trackedentity.TrackerOwnershipManager;
+import org.nmcpye.am.trackedentityattributevalue.TrackedEntityAttributeValueServiceExt;
 import org.nmcpye.am.user.CurrentUserService;
 import org.nmcpye.am.user.UserServiceExt;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -72,6 +72,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
  * Last pull
+ *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 @Service("org.nmcpye.am.dxf2.events.enrollment.EnrollmentService")

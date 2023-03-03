@@ -98,7 +98,8 @@ public class StreamUtils {
         } finally {
             try {
                 reader.close();
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         }
 
         return content;

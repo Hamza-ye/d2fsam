@@ -28,8 +28,6 @@
 package org.nmcpye.am.jdbc.statementbuilder;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class H2StatementBuilder extends AbstractStatementBuilder {

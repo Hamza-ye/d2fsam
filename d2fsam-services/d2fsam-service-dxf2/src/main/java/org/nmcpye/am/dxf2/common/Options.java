@@ -55,7 +55,8 @@ public class Options {
         this.assumeTrue = options.get("assumeTrue") == null || options.get("assumeTrue").equalsIgnoreCase("true");
     }
 
-    public Options() {}
+    public Options() {
+    }
 
     // --------------------------------------------------------------------------
     // Object helpers
@@ -199,7 +200,8 @@ public class Options {
         if (str != null) {
             try {
                 return Integer.parseInt(str);
-            } catch (NumberFormatException ignored) {}
+            } catch (NumberFormatException ignored) {
+            }
         }
 
         return defaultValue;

@@ -28,7 +28,6 @@
 package org.nmcpye.am.dxf2.events.enrollment;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -39,8 +38,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 @JacksonXmlRootElement(localName = "enrollments", namespace = DxfNamespaces.DXF_2_0)
@@ -50,7 +47,8 @@ public class Enrollments {
 
     private Pager pager;
 
-    public Enrollments() {}
+    public Enrollments() {
+    }
 
     @JsonProperty("enrollments")
     @JacksonXmlElementWrapper(localName = "enrollments", useWrapping = false, namespace = DxfNamespaces.DXF_2_0)

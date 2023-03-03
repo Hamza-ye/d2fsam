@@ -235,7 +235,7 @@ class EventProgramPreProcessorTest {
 //            bundle.getEvents().get(0).getAttributeCategoryOptions());
 //    }
 
-//    @Test
+    //    @Test
     void testEventWithOnlyCOsIsNotEnhancedWithAOCIfItCantBeFound() {
 
         TrackerIdSchemeParams identifierParams = TrackerIdSchemeParams.builder()

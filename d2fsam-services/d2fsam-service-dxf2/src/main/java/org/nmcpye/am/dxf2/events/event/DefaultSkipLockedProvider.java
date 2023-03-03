@@ -31,7 +31,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("!test")
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 public class DefaultSkipLockedProvider implements SkipLockedProvider {
     @Override
     public String getSkipLocked() {

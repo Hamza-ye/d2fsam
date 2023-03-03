@@ -52,11 +52,11 @@ public class DefaultEnrollmentStore extends AbstractStore implements EnrollmentS
 
     private static final String GET_NOTES_SQL =
         "SELECT pi.uid AS key, tec.uid, tec.commenttext, " +
-        "tec.creator, tec.created " +
-        "FROM comment tec JOIN program_instance__comments pic " +
-        "ON tec.trackedentitycommentid = pic.trackedentitycommentid " +
-        "JOIN program_instance pi ON pic.programinstanceid = pi.programinstanceid " +
-        "WHERE pic.programinstanceid IN (:ids)";
+            "tec.creator, tec.created " +
+            "FROM comment tec JOIN program_instance__comments pic " +
+            "ON tec.trackedentitycommentid = pic.trackedentitycommentid " +
+            "JOIN program_instance pi ON pic.programinstanceid = pi.programinstanceid " +
+            "WHERE pic.programinstanceid IN (:ids)";
 
     private static final String FILTER_OUT_DELETED_ENROLLMENTS = "pi.deleted=false";
 

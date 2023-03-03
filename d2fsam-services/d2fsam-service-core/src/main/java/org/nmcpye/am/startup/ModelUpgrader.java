@@ -29,7 +29,6 @@ package org.nmcpye.am.startup;
 
 import org.nmcpye.am.organisationunit.OrganisationUnitServiceExt;
 import org.nmcpye.am.system.startup.TransactionContextStartupRoutine;
-import org.springframework.stereotype.Component;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 

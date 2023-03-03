@@ -35,8 +35,6 @@ import org.nmcpye.am.cache.Cache;
 import org.nmcpye.am.comment.Comment;
 import org.nmcpye.am.comment.CommentServiceExt;
 import org.nmcpye.am.common.*;
-import org.nmcpye.am.common.EventStatus;
-import org.nmcpye.am.common.ProgramType;
 import org.nmcpye.am.commons.collection.CachingMap;
 import org.nmcpye.am.commons.util.DebugUtils;
 import org.nmcpye.am.dataelement.DataElement;

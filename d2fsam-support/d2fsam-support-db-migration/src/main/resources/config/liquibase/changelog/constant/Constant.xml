@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <!--
         Added the entity constant.
@@ -15,34 +13,34 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="uid" type="varchar(11)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_constant__uid" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_constant__uid"/>
             </column>
             <column name="code" type="varchar(255)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_constant__code" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_constant__code"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_constant__name" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_constant__name"/>
             </column>
             <column name="shortname" type="varchar(50)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_constant__short_name" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_constant__short_name"/>
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="created" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="updated" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="value" type="double">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="createdby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="lastupdatedby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="translations" type="JSONB"/>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->

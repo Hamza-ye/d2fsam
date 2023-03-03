@@ -3,7 +3,6 @@ package org.nmcpye.am.datavalue.repository;
 import org.hibernate.SessionFactory;
 import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.datavalue.DataValue;
-import org.nmcpye.am.datavalue.DataValueRepositoryCustomExt;
 import org.nmcpye.am.datavalue.DataValueRepositoryExt;
 import org.nmcpye.am.hibernate.HibernateGenericStore;
 import org.nmcpye.am.jdbc.StatementBuilder;

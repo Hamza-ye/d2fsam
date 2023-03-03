@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-tracker</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Tracker services</name>
 
     <dependencies>
@@ -37,10 +38,10 @@
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-service-program-rule</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.nmcpye.am</groupId>-->
-<!--            <artifactId>am-service-node</artifactId>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>am-service-node</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-service-setting</artifactId>
@@ -85,10 +86,10 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-jms</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-web</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
@@ -105,10 +106,10 @@
             <groupId>io.github.classgraph</groupId>
             <artifactId>classgraph</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.scalified</groupId>
-            <artifactId>tree</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.scalified</groupId>-->
+        <!--            <artifactId>tree</artifactId>-->
+        <!--        </dependency>-->
 
         <dependency>
             <groupId>org.mapstruct</groupId>
@@ -205,11 +206,18 @@
             <artifactId>jsonassert</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>joda-time</groupId>-->
+        <!--            <artifactId>joda-time</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
+
+        <!-- NMCP Used undeclared-->
         <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-            <scope>test</scope>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
+
     </dependencies>
     <properties>
         <rootDir>../../</rootDir>

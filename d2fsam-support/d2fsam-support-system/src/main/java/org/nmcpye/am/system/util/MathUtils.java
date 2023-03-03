@@ -37,8 +37,6 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.regex.Pattern;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class MathUtils {
@@ -149,7 +147,7 @@ public class MathUtils {
      * whereas 0.12345 will be 0.123.
      *
      * @param value the value to round off.
-     * @param n the number of significant decimal digits desired.
+     * @param n     the number of significant decimal digits desired.
      * @return a rounded off number.
      */
     public static double roundToSignificantDigits(double value, int n) {
@@ -172,7 +170,7 @@ public class MathUtils {
      * 12.345 will be 12.3, and 0.12345 will be 0.123.
      *
      * @param value the value to round off.
-     * @param n the number of significant fraction decimal digits desired.
+     * @param n     the number of significant fraction decimal digits desired.
      * @return a rounded off number.
      */
     public static double roundFraction(double value, int n) {
@@ -194,9 +192,9 @@ public class MathUtils {
      * minimum.
      *
      * @param number the number.
-     * @param min the minimum.
+     * @param min    the minimum.
      * @return the given number if larger or equal to minimun, otherwise
-     *         minimum.
+     * minimum.
      */
     public static int getMin(int number, int min) {
         return number < min ? min : number;
@@ -207,9 +205,9 @@ public class MathUtils {
      * maximum.
      *
      * @param number the number.
-     * @param max the maximum.
+     * @param max    the maximum.
      * @return the the given number if smaller or equal to maximum, otherwise
-     *         maximum.
+     * maximum.
      */
     public static int getMax(int number, int max) {
         return number > max ? max : number;
@@ -220,8 +218,8 @@ public class MathUtils {
      * minimum, returns minimum, if higher than maximum, returns maximum.
      *
      * @param value the value.
-     * @param min the minimum value.
-     * @param max the maximum value.
+     * @param min   the minimum value.
+     * @param max   the maximum value.
      * @return an integer value.
      */
     public static int getWithin(int value, int min, int max) {
@@ -239,9 +237,9 @@ public class MathUtils {
     public static boolean isNumeric(String value) {
         return (
             value != null &&
-            DOUBLE_VALIDATOR.isValid(value, LOCALE) &&
-            NUMERIC_PATTERN.matcher(value).matches() &&
-            value.length() < NUMBER_MAX_LENGTH
+                DOUBLE_VALIDATOR.isValid(value, LOCALE) &&
+                NUMERIC_PATTERN.matcher(value).matches() &&
+                value.length() < NUMBER_MAX_LENGTH
         );
     }
 
@@ -263,7 +261,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered a unit
-     *         interval.
+     * interval.
      */
     public static boolean isUnitInterval(String value) {
         if (!isNumeric(value)) {
@@ -298,7 +296,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered an
-     *         integer.
+     * integer.
      */
     public static boolean isInteger(String value) {
         return value != null && INT_VALIDATOR.isValid(value) && INT_PATTERN.matcher(value).matches();
@@ -310,7 +308,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered a
-     *         positive integer.
+     * positive integer.
      */
     public static boolean isPositiveInteger(String value) {
         return value != null && INT_VALIDATOR.isValid(value) && POSITIVE_INT_PATTERN.matcher(value).matches();
@@ -322,7 +320,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered a
-     *         positive integer.
+     * positive integer.
      */
     public static boolean isZeroOrPositiveInteger(String value) {
         return value != null && INT_VALIDATOR.isValid(value) && POSITIVE_OR_ZERO_INT_PATTERN.matcher(value).matches();
@@ -334,7 +332,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered a
-     *         coordinate.
+     * coordinate.
      */
     public static boolean isCoordinate(String value) {
         if (value == null) {
@@ -362,7 +360,7 @@ public class MathUtils {
      *
      * @param value the value.
      * @return true if the provided string argument is to be considered a
-     *         negative integer.
+     * negative integer.
      */
     public static boolean isNegativeInteger(String value) {
         return value != null && INT_VALIDATOR.isValid(value) && NEGATIVE_INT_PATTERN.matcher(value).matches();
@@ -396,7 +394,7 @@ public class MathUtils {
      * @param d1 the first value.
      * @param d2 the second value.
      * @return true if the two decimal numbers are equal with a tolerance of
-     *         0.01.
+     * 0.01.
      */
     public static boolean isEqual(Double d1, Double d2) {
         if (d1 == null || d2 == null) {
@@ -412,7 +410,7 @@ public class MathUtils {
      * @param d1 the first value.
      * @param d2 the second value.
      * @return true if the two decimal numbers are equal with a tolerance of
-     *         0.01.
+     * 0.01.
      */
     public static boolean isEqual(double d1, double d2) {
         return Math.abs(d1 - d2) <= TOLERANCE;
@@ -578,9 +576,9 @@ public class MathUtils {
      * Returns the lower bound for the given standard deviation, number of
      * standard deviations and average.
      *
-     * @param stdDev the standard deviation.
+     * @param stdDev   the standard deviation.
      * @param stdDevNo the number of standard deviations.
-     * @param average the average.
+     * @param average  the average.
      * @return a double.
      */
     public static double getLowBound(double stdDev, double stdDevNo, double average) {
@@ -592,9 +590,9 @@ public class MathUtils {
      * Returns the high bound for the given standard deviation, number of
      * standard deviations and average.
      *
-     * @param stdDev the standard deviation.
+     * @param stdDev       the standard deviation.
      * @param stdDevFactor the number of standard deviations.
-     * @param average the average.
+     * @param average      the average.
      * @return a double.
      */
     public static double getHighBound(double stdDev, double stdDevFactor, double average) {
@@ -605,7 +603,7 @@ public class MathUtils {
     /**
      * Performs a division and rounds upwards to the next integer.
      *
-     * @param numerator the numerator.
+     * @param numerator   the numerator.
      * @param denominator the denominator.
      * @return an integer value.
      */
@@ -618,7 +616,7 @@ public class MathUtils {
     /**
      * Performs a division and rounds downwards to the next integer.
      *
-     * @param numerator the numerator.
+     * @param numerator   the numerator.
      * @param denominator the denominator.
      * @return an integer value.
      */

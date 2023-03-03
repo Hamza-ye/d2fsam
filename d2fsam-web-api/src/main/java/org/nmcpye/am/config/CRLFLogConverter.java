@@ -3,10 +3,6 @@ package org.nmcpye.am.config;
 import org.slf4j.Marker;
 import org.slf4j.MarkerFactory;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-
 public class CRLFLogConverter /*extends CompositeConverter<LoggingEvent>*/ {
 
     public static final Marker CRLF_SAFE_MARKER = MarkerFactory.getMarker("CRLF_SAFE");

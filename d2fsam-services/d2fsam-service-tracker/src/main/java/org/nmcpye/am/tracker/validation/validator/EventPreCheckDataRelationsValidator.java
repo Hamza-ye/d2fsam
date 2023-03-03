@@ -38,7 +38,6 @@ import org.nmcpye.am.tracker.domain.Enrollment;
 import org.nmcpye.am.tracker.domain.Event;
 import org.nmcpye.am.tracker.preheat.TrackerPreheat;
 import org.nmcpye.am.tracker.validation.Reporter;
-import org.nmcpye.am.tracker.validation.ValidationCode;
 import org.nmcpye.am.tracker.validation.Validator;
 import org.springframework.stereotype.Component;
 

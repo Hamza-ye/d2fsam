@@ -48,7 +48,8 @@ public class JsonRoot {
 
     private final Map<String, Object> properties = new LinkedHashMap<>();
 
-    public JsonRoot() {}
+    public JsonRoot() {
+    }
 
     public JsonRoot(String property, List<? extends JsonNode> nodes) {
         setProperty(property, nodes);

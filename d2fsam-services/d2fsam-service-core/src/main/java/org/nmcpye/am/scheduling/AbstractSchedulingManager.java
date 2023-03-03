@@ -34,6 +34,7 @@ import org.nmcpye.am.cache.CacheProvider;
 import org.nmcpye.am.commons.util.DebugUtils;
 import org.nmcpye.am.leader.election.LeaderManager;
 import org.nmcpye.am.message.MessageService;
+import org.nmcpye.am.scheduling.JobProgress.Process;
 import org.nmcpye.am.system.notification.Notifier;
 import org.nmcpye.am.system.util.Clock;
 import org.slf4j.MDC;
@@ -42,7 +43,6 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.ConcurrentHashMap;
-import org.nmcpye.am.scheduling.JobProgress.Process;
 
 import static java.util.Collections.*;
 import static org.nmcpye.am.scheduling.JobStatus.*;

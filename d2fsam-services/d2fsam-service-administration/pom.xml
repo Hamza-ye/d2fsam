@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-administration</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Administration Service</name>
 
     <dependencies>
@@ -27,14 +28,14 @@
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-service-acl</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-service-schema</artifactId>
-        </dependency>
 <!--        <dependency>-->
 <!--            <groupId>org.nmcpye.am</groupId>-->
-<!--            <artifactId>am-service-validation</artifactId>-->
+<!--            <artifactId>d2fsam-service-schema</artifactId>-->
 <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>am-service-validation</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-support-system</artifactId>
@@ -56,26 +57,26 @@
             <artifactId>d2fsam-support-artemis</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.dataformat</groupId>
-            <artifactId>jackson-dataformat-yaml</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.dataformat</groupId>-->
+<!--            <artifactId>jackson-dataformat-yaml</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>com.fasterxml.jackson.core</groupId>-->
+<!--            <artifactId>jackson-databind</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-annotations</artifactId>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.hisp.dhis.parser</groupId>-->
+        <!--            <artifactId>dhis-antlr-expression-parser</artifactId>-->
+        <!--        </dependency>-->
 <!--        <dependency>-->
-<!--            <groupId>org.hisp.dhis.parser</groupId>-->
-<!--            <artifactId>dhis-antlr-expression-parser</artifactId>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-core</artifactId>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-core</artifactId>
-        </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>
@@ -92,22 +93,22 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-beans</artifactId>
         </dependency>
-        <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-web</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>javax.annotation</groupId>-->
+<!--            <artifactId>javax.annotation-api</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.springframework</groupId>-->
+<!--            <artifactId>spring-web</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>commons-io</groupId>-->
+<!--            <artifactId>commons-io</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
@@ -138,11 +139,11 @@
         </dependency>
 
         <!-- Test -->
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-support-test</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.nmcpye.am</groupId>-->
+<!--            <artifactId>d2fsam-support-test</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -158,16 +159,16 @@
             <artifactId>d2fsam-support-audit</artifactId>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-core</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.mockito</groupId>-->
+<!--            <artifactId>mockito-junit-jupiter</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
 
         <!-- Other -->
 
@@ -179,7 +180,6 @@
     </dependencies>
     <properties>
         <rootDir>../../</rootDir>
-        <!--        <jib.skip>true</jib.skip>-->
     </properties>
 
 </project>

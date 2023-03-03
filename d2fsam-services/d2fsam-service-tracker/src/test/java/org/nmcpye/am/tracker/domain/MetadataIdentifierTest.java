@@ -187,7 +187,7 @@ class MetadataIdentifierTest {
         assertFalse(id.isEqualTo(p));
     }
 
-//    @Test
+    //    @Test
     void isEqualToAttribute() {
 
         Program p = new Program();
@@ -212,7 +212,7 @@ class MetadataIdentifierTest {
 //        assertFalse(id.isEqualTo(p));
 //    }
 
-//    @Test
+    //    @Test
     void isEqualToAttributeWithDifferentValue() {
 
         Program p = new Program();
@@ -225,7 +225,7 @@ class MetadataIdentifierTest {
         assertFalse(id.isEqualTo(p));
     }
 
-//    @Test
+    //    @Test
     void isBlankTrueForUIDIfIdentifierIsBlank() {
 
         assertTrue(MetadataIdentifier.ofUid((String) null).isBlank());

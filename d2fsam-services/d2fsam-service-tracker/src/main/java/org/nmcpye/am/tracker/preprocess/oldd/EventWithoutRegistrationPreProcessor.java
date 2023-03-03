@@ -32,7 +32,6 @@ import org.nmcpye.am.program.ProgramInstance;
 import org.nmcpye.am.program.ProgramStage;
 import org.nmcpye.am.tracker.bundle.TrackerBundle;
 import org.nmcpye.am.tracker.domain.Event;
-import org.springframework.stereotype.Component;
 
 /**
  * This preprocessor is responsible for setting the ProgramInstance UID on an

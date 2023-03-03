@@ -20,10 +20,10 @@
                                  referencedColumnNames="dataelementid"
                                  referencedTableName="data_element"/>
 
-<!--        <addForeignKeyConstraint baseColumnNames="periodid"-->
-<!--                                 baseTableName="tracked_entity_data_value_audit"-->
-<!--                                 constraintName="fk_tracked_entity_data_value_audit__period_id"-->
-<!--                                 referencedColumnNames="id"-->
-<!--                                 referencedTableName="period"/>-->
+        <!--        <addForeignKeyConstraint baseColumnNames="periodid"-->
+        <!--                                 baseTableName="tracked_entity_data_value_audit"-->
+        <!--                                 constraintName="fk_tracked_entity_data_value_audit__period_id"-->
+        <!--                                 referencedColumnNames="id"-->
+        <!--                                 referencedTableName="period"/>-->
     </changeSet>
 </databaseChangeLog>

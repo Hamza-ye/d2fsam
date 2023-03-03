@@ -56,6 +56,17 @@
                         <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-support-cache-invalidation</ignoredUnusedDeclaredDependency>
                         <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-support-db-migration</ignoredUnusedDeclaredDependency>
                         <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-support-expression-parser</ignoredUnusedDeclaredDependency>
+
+                        <!--       NMCP Temp          -->
+                        <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-service-administration</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-service-program-rule</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-service-reporting</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.nmcpye.am:d2fsam-support-jdbc</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.hisp.dhis.rules:rule-engine</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.awaitility:awaitility</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.apache.commons:commons-collections4</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.springframework:spring-context</ignoredUnusedDeclaredDependency>
+                        <ignoredUnusedDeclaredDependency>org.hisp:quick</ignoredUnusedDeclaredDependency>
                     </ignoredUnusedDeclaredDependencies>
                 </configuration>
             </plugin>

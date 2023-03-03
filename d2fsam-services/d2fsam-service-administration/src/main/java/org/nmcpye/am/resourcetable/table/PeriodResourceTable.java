@@ -37,7 +37,6 @@ import org.nmcpye.am.period.PeriodType;
 import org.nmcpye.am.period.WeeklyAbstractPeriodType;
 import org.nmcpye.am.resourcetable.ResourceTable;
 import org.nmcpye.am.resourcetable.ResourceTableType;
-import org.nmcpye.am.util.DateUtils;
 
 import java.util.*;
 

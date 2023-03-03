@@ -66,7 +66,7 @@ public class RelationshipTrackerConverterService
 
             Relationship toRelationship = new Relationship();
             toRelationship.setRelationship(fromRelationship.getUid());
-            toRelationship.setBidirectional(fromRelationship.getRelationshipType().getBidirectional());
+            toRelationship.setBidirectional(fromRelationship.getRelationshipType().isBidirectional());
             toRelationship.setCreatedAt(fromRelationship.getCreated());
             toRelationship.setFrom(convertRelationshipType(fromRelationship.getFrom()));
             toRelationship.setTo(convertRelationshipType(fromRelationship.getTo()));

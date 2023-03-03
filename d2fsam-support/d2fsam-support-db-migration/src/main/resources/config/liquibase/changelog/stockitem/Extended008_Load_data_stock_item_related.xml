@@ -1,29 +1,28 @@
 <?xml version="1.1" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.1.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
 
     <!--Un-comment Later-->
 
-<!--    <changeSet author="Hamza (generated)" id="008-custom-data" context="faker">-->
-<!--        <loadData-->
-<!--            file="config/liquibase/fake-data/extended/stock_item.csv"-->
-<!--            separator=","-->
-<!--            tableName="stock_item"-->
-<!--            usePreparedStatements="true">-->
-<!--            <column name="id" type="numeric"/>-->
-<!--            <column name="uid" type="string"/>-->
-<!--            <column name="code" type="string"/>-->
-<!--            <column name="name" type="string"/>-->
-<!--            <column name="shortname" type="string"/>-->
-<!--            <column name="description" type="string"/>-->
-<!--            <column name="created" type="date"/>-->
-<!--            <column name="updated" type="date"/>-->
-<!--            <column name="inactive" type="boolean"/>-->
-<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
-<!--        </loadData>-->
-<!--    </changeSet>-->
+    <!--    <changeSet author="Hamza (generated)" id="008-custom-data" context="faker">-->
+    <!--        <loadData-->
+    <!--            file="config/liquibase/fake-data/extended/stock_item.csv"-->
+    <!--            separator=","-->
+    <!--            tableName="stock_item"-->
+    <!--            usePreparedStatements="true">-->
+    <!--            <column name="id" type="numeric"/>-->
+    <!--            <column name="uid" type="string"/>-->
+    <!--            <column name="code" type="string"/>-->
+    <!--            <column name="name" type="string"/>-->
+    <!--            <column name="shortname" type="string"/>-->
+    <!--            <column name="description" type="string"/>-->
+    <!--            <column name="created" type="date"/>-->
+    <!--            <column name="updated" type="date"/>-->
+    <!--            <column name="inactive" type="boolean"/>-->
+    <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+    <!--        </loadData>-->
+    <!--    </changeSet>-->
 
 </databaseChangeLog>

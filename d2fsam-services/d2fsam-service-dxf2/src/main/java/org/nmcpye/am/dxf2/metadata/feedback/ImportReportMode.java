@@ -28,8 +28,6 @@
 package org.nmcpye.am.dxf2.metadata.feedback;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 public enum ImportReportMode {

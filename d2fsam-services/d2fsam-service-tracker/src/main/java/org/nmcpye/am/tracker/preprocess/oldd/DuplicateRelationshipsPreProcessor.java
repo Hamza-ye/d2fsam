@@ -33,7 +33,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.nmcpye.am.relationship.RelationshipType;
 import org.nmcpye.am.tracker.bundle.TrackerBundle;
 import org.nmcpye.am.tracker.domain.Relationship;
-import org.springframework.stereotype.Component;
 
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
@@ -110,10 +109,10 @@ public class DuplicateRelationshipsPreProcessor implements BundlePreProcessor {
     public void process(TrackerBundle bundle) {
         Predicate<Relationship> validRelationship = rel ->
             StringUtils.isNotEmpty(rel.getRelationship()) &&
-            rel.getRelationshipType().isNotBlank() &&
-            rel.getFrom() != null &&
-            rel.getTo() != null &&
-            bundle.getPreheat().getRelationshipType(rel.getRelationshipType()) != null;
+                rel.getRelationshipType().isNotBlank() &&
+                rel.getFrom() != null &&
+                rel.getTo() != null &&
+                bundle.getPreheat().getRelationshipType(rel.getRelationshipType()) != null;
 
         // Create a map where both key and value must be unique
         BidiMap<String, String> map = new DualHashBidiMap<>();
@@ -132,9 +131,9 @@ public class DuplicateRelationshipsPreProcessor implements BundlePreProcessor {
         RelationshipType relationshipType = bundle.getPreheat().getRelationshipType(rel.getRelationshipType());
         return (
             rel.getRelationshipType() +
-            "-" +
-            (relationshipType.getBidirectional() ? sortItems(rel) : rel.getFrom() + "-" + rel.getTo()) +
-            relationshipType.getBidirectional()
+                "-" +
+                (relationshipType.isBidirectional() ? sortItems(rel) : rel.getFrom() + "-" + rel.getTo()) +
+                relationshipType.isBidirectional()
         );
     }
 

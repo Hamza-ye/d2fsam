@@ -27,74 +27,70 @@
  */
 package org.nmcpye.am.tracker.preheat.mappers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.Test;
 import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.program.Program;
 import org.nmcpye.am.program.ProgramStage;
 import org.nmcpye.am.program.ProgramStageDataElement;
-import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.nmcpye.am.tracker.preheat.mappers.AttributeCreator.*;
 import static org.nmcpye.am.utils.Assertions.assertContainsOnly;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class ProgramStageMapperTest
-{
+class ProgramStageMapperTest {
 
     @Test
-    void testIdSchemeRelatedFieldsAreMapped()
-    {
+    void testIdSchemeRelatedFieldsAreMapped() {
 
         Program program = setIdSchemeFields(
             new Program(),
             "WTTYiPQDqh1",
             "friendship",
             "red",
-            attributeValues( "m0GpPuMUfFW", "yellow" ) );
+            attributeValues("m0GpPuMUfFW", "yellow"));
 
         DataElement dataElement = setIdSchemeFields(
             new DataElement(),
             "khBzbxTLo8k",
             "clouds",
             "orange",
-            attributeValues( "m0GpPuMUfFW", "purple" ) );
+            attributeValues("m0GpPuMUfFW", "purple"));
         ProgramStageDataElement programStageDataElement = new ProgramStageDataElement();
-        programStageDataElement.setDataElement( dataElement );
+        programStageDataElement.setDataElement(dataElement);
 
         ProgramStage programStage = setIdSchemeFields(
             new ProgramStage(),
             "HpSAvRWtdDR",
             "meet",
             "green",
-            attributeValues( "m0GpPuMUfFW", "purple" ) );
-        programStage.setProgram( program );
-        programStage.setProgramStageDataElements( Set.of( programStageDataElement ) );
+            attributeValues("m0GpPuMUfFW", "purple"));
+        programStage.setProgram(program);
+        programStage.setProgramStageDataElements(Set.of(programStageDataElement));
 
-        ProgramStage mapped = ProgramStageMapper.INSTANCE.map( programStage );
+        ProgramStage mapped = ProgramStageMapper.INSTANCE.map(programStage);
 
-        assertEquals( "HpSAvRWtdDR", mapped.getUid() );
-        assertEquals( "meet", mapped.getName() );
-        assertEquals( "green", mapped.getCode() );
-        assertContainsOnly( Set.of( attributeValue( "m0GpPuMUfFW", "purple" ) ), mapped.getAttributeValues() );
+        assertEquals("HpSAvRWtdDR", mapped.getUid());
+        assertEquals("meet", mapped.getName());
+        assertEquals("green", mapped.getCode());
+        assertContainsOnly(Set.of(attributeValue("m0GpPuMUfFW", "purple")), mapped.getAttributeValues());
 
-        assertEquals( "WTTYiPQDqh1", mapped.getProgram().getUid() );
-        assertEquals( "friendship", mapped.getProgram().getName() );
-        assertEquals( "red", mapped.getProgram().getCode() );
-        assertContainsOnly( Set.of( attributeValue( "m0GpPuMUfFW", "yellow" ) ),
-            mapped.getProgram().getAttributeValues() );
+        assertEquals("WTTYiPQDqh1", mapped.getProgram().getUid());
+        assertEquals("friendship", mapped.getProgram().getName());
+        assertEquals("red", mapped.getProgram().getCode());
+        assertContainsOnly(Set.of(attributeValue("m0GpPuMUfFW", "yellow")),
+            mapped.getProgram().getAttributeValues());
 
         Optional<ProgramStageDataElement> actual = mapped.getProgramStageDataElements().stream().findFirst();
-        assertTrue( actual.isPresent() );
+        assertTrue(actual.isPresent());
         ProgramStageDataElement value = actual.get();
-        assertEquals( "khBzbxTLo8k", value.getDataElement().getUid() );
-        assertEquals( "clouds", value.getDataElement().getName() );
-        assertEquals( "orange", value.getDataElement().getCode() );
-        assertContainsOnly( Set.of( attributeValue( "m0GpPuMUfFW", "purple" ) ),
-            value.getDataElement().getAttributeValues() );
+        assertEquals("khBzbxTLo8k", value.getDataElement().getUid());
+        assertEquals("clouds", value.getDataElement().getName());
+        assertEquals("orange", value.getDataElement().getCode());
+        assertContainsOnly(Set.of(attributeValue("m0GpPuMUfFW", "purple")),
+            value.getDataElement().getAttributeValues());
     }
 }

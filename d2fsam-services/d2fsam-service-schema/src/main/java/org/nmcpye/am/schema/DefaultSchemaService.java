@@ -124,8 +124,8 @@ public class DefaultSchemaService
 //        register( new MapSchemaDescriptor() );
 //        register( new MapViewSchemaDescriptor() );
         register(new MessageConversationSchemaDescriptor());
-        register( new MetadataVersionSchemaDescriptor() );
-        register( new OAuth2ClientSchemaDescriptor() );
+        register(new MetadataVersionSchemaDescriptor());
+        register(new OAuth2ClientSchemaDescriptor());
         register(new OptionSchemaDescriptor());
         register(new OptionSetSchemaDescriptor());
         register(new OrganisationUnitGroupSchemaDescriptor());
@@ -186,12 +186,12 @@ public class DefaultSchemaService
 //        register( new DataElementGroupSetDimensionSchemaDescriptor() );
 //        register( new OrganisationUnitGroupSetDimensionSchemaDescriptor() );
         register(new RelationshipSchemaDescriptor());
-        register( new KeyJsonValueSchemaDescriptor() );
+        register(new KeyJsonValueSchemaDescriptor());
         register(new ProgramStageInstanceSchemaDescriptor());
         register(new ProgramInstanceSchemaDescriptor());
         register(new ProgramStageInstanceFilterSchemaDescriptor());
 //        register( new VisualizationSchemaDescriptor() );
-        register( new ApiTokenSchemaDescriptor() );
+        register(new ApiTokenSchemaDescriptor());
         register(new AccessSchemaDescriptor());
 //        register( new ObjectStyleSchemaDescriptor() );
         register(new RelationshipConstraintSchemaDescriptor());

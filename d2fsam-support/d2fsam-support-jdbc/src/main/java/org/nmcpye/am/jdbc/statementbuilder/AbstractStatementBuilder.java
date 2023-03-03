@@ -34,8 +34,6 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public abstract class AbstractStatementBuilder implements StatementBuilder {
@@ -117,16 +115,16 @@ public abstract class AbstractStatementBuilder implements StatementBuilder {
     public String getNumberOfColumnsInPrimaryKey(String table) {
         return (
             "select count(cu.column_name) from information_schema.key_column_usage cu " +
-            "inner join information_schema.table_constraints tc  " +
-            "on cu.constraint_catalog=tc.constraint_catalog " +
-            "and cu.constraint_schema=tc.constraint_schema " +
-            "and cu.constraint_name=tc.constraint_name " +
-            "and cu.table_schema=tc.table_schema " +
-            "and cu.table_name=tc.table_name " +
-            "where tc.constraint_type='PRIMARY KEY' " +
-            "and cu.table_name='" +
-            table +
-            "';"
+                "inner join information_schema.table_constraints tc  " +
+                "on cu.constraint_catalog=tc.constraint_catalog " +
+                "and cu.constraint_schema=tc.constraint_schema " +
+                "and cu.constraint_name=tc.constraint_name " +
+                "and cu.table_schema=tc.table_schema " +
+                "and cu.table_name=tc.table_name " +
+                "where tc.constraint_type='PRIMARY KEY' " +
+                "and cu.table_name='" +
+                table +
+                "';"
         );
     }
 

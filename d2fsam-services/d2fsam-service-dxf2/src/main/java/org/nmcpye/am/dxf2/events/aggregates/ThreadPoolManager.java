@@ -34,7 +34,6 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
 
 /**
- *
  * <p>
  * Exposes a static method to fetch an Executor for the Aggregates operations
  *

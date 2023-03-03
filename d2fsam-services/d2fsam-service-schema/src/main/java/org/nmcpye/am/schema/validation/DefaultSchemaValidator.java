@@ -176,8 +176,8 @@ public class DefaultSchemaValidator implements SchemaValidator {
     private boolean isInvalidPassword(Property property, String value) {
         return (
             !BCRYPT_PATTERN.matcher(value).matches() &&
-            PropertyType.PASSWORD == property.getPropertyType() &&
-            !ValidationUtils.passwordIsValid(value)
+                PropertyType.PASSWORD == property.getPropertyType() &&
+                !ValidationUtils.passwordIsValid(value)
         );
     }
 

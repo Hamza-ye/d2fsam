@@ -96,7 +96,8 @@ public class AccessStringHelper {
         .enable(Permission.DATA_WRITE)
         .build();
 
-    public AccessStringHelper() {}
+    public AccessStringHelper() {
+    }
 
     public AccessStringHelper(char[] access) {
         this.access = access;
@@ -185,9 +186,9 @@ public class AccessStringHelper {
 
         return (
             (bytes[0] == '-' || bytes[0] == 'r') &&
-            (bytes[1] == '-' || bytes[1] == 'w') &&
-            (bytes[2] == '-' || bytes[2] == 'r') &&
-            (bytes[3] == '-' || bytes[3] == 'w')
+                (bytes[1] == '-' || bytes[1] == 'w') &&
+                (bytes[2] == '-' || bytes[2] == 'r') &&
+                (bytes[3] == '-' || bytes[3] == 'w')
         );
     }
 

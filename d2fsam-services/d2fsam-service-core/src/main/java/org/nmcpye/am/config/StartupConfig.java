@@ -31,6 +31,7 @@ import org.hibernate.SessionFactory;
 import org.nmcpye.am.configuration.ConfigurationService;
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
 import org.nmcpye.am.external.conf.ConfigurationKey;
+import org.nmcpye.am.i18n.I18nLocaleService;
 import org.nmcpye.am.message.MessageService;
 import org.nmcpye.am.organisationunit.OrganisationUnitServiceExt;
 import org.nmcpye.am.period.PeriodRepositoryExt;
@@ -77,14 +78,14 @@ public class StartupConfig {
         return populator;
     }
 
-//    @Bean("org.nmcpye.am.startup.I18nLocalePopulator")
-//    public I18nLocalePopulator i18nLocalePopulator(I18nLocaleService i18nLocaleService) {
-//        I18nLocalePopulator populator = new I18nLocalePopulator(i18nLocaleService);
-//        populator.setName("I18nLocalePopulator");
-//        populator.setRunlevel(13);
-//        populator.setSkipInTests(true);
-//        return populator;
-//    }
+    @Bean("org.nmcpye.am.startup.I18nLocalePopulator")
+    public I18nLocalePopulator i18nLocalePopulator(I18nLocaleService i18nLocaleService) {
+        I18nLocalePopulator populator = new I18nLocalePopulator(i18nLocaleService);
+        populator.setName("I18nLocalePopulator");
+        populator.setRunlevel(13);
+        populator.setSkipInTests(true);
+        return populator;
+    }
 
     @Bean("org.nmcpye.am.startup.ModelUpgrader")
     public ModelUpgrader modelUpgrader(OrganisationUnitServiceExt organisationUnitServiceExt/*,

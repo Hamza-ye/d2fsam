@@ -1,2 +1,4 @@
-create extension pg_trgm;
-create extension btree_gin;
+create
+extension pg_trgm;
+create
+extension btree_gin;

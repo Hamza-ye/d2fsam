@@ -52,7 +52,7 @@ import static org.nmcpye.am.common.CodeGenerator.generateUid;
 @Order(10002)
 @Configuration
 @ComponentScan(basePackages = {"org.nmcpye.am"})
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = RedisCacheInvalidationEnabledCondition.class)
 public class RedisCacheInvalidationConfiguration {
     public static final List<Class> EXCLUDE_LIST = List.of(JobConfiguration.class);

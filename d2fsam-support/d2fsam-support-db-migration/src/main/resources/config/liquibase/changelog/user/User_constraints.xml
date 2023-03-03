@@ -67,13 +67,13 @@
                                  constraintName="fk_user_user_aut_group__user_id"
                                  referencedColumnNames="userid"
                                  referencedTableName="app_user"/>
-<!--        referencedTableName="app_user" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+        <!--        referencedTableName="app_user" onDelete="CASCADE" onUpdate="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="userroleid"
                                  baseTableName="user__user_authority_group"
                                  constraintName="fk_user_user_aut_group__auth_group_id"
                                  referencedColumnNames="userroleid"
                                  referencedTableName="user_authority_group"/>
-<!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+        <!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
     </changeSet>
 </databaseChangeLog>

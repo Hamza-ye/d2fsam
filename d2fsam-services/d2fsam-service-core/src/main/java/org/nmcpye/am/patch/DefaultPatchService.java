@@ -411,7 +411,7 @@ public class DefaultPatchService implements PatchService {
         }
     }
 
-    @SuppressWarnings({ "unchecked", "rawtypes" })
+    @SuppressWarnings({"unchecked", "rawtypes"})
     private Object parseValue(Object value, Class<?> klass) {
         if (klass.isInstance(value) || !String.class.isInstance(value)) {
             return value;
@@ -422,23 +422,28 @@ public class DefaultPatchService implements PatchService {
         if (Integer.class.isAssignableFrom(klass)) {
             try {
                 return Integer.valueOf(stringValue);
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         } else if (Boolean.class.isAssignableFrom(klass)) {
             try {
                 return Boolean.valueOf(stringValue);
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         } else if (Float.class.isAssignableFrom(klass)) {
             try {
                 return Float.valueOf(stringValue);
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         } else if (Double.class.isAssignableFrom(klass)) {
             try {
                 return Double.valueOf(stringValue);
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         } else if (Date.class.isAssignableFrom(klass)) {
             try {
                 return DateUtils.parseDate(stringValue);
-            } catch (Exception ex) {}
+            } catch (Exception ex) {
+            }
         }
         if (Enum.class.isAssignableFrom(klass)) {
             Optional<? extends Enum<?>> enumValue = Enums.getIfPresent((Class<? extends Enum>) klass, stringValue);

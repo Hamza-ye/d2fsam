@@ -35,8 +35,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
 /**
- *
- *
  * Utility class for encoding and decoding operations.
  *
  * @author Lars Helge Overland

@@ -40,14 +40,17 @@ public interface AclStore {
                                                        List<String> userTeamGroupsUIDs);
 
     List<Long> getAccessiblePrograms(String userUID, List<String> userGroupUIDs);
+
     List<Long> getAccessiblePrograms(String userUID, List<String> userGroupUIDs, List<String> userTeamUIDs,
                                      List<String> userTeamGroupsUIDs);
 
     List<Long> getAccessibleProgramStages(String userUID, List<String> userGroupUIDs);
+
     List<Long> getAccessibleProgramStages(String userUID, List<String> userGroupUIDs, List<String> userTeamUIDs,
                                           List<String> userTeamGroupsUIDs);
 
     List<Long> getAccessibleRelationshipTypes(String userUID, List<String> userGroupUIDs);
+
     List<Long> getAccessibleRelationshipTypes(String userUID, List<String> userGroupUIDs, List<String> userTeamUIDs,
                                               List<String> userTeamGroupsUIDs);
 }

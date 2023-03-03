@@ -42,7 +42,8 @@ public class ClassPathUriResolver implements URIResolver {
 
     private String templatePath = "/templates/";
 
-    public ClassPathUriResolver() {}
+    public ClassPathUriResolver() {
+    }
 
     public ClassPathUriResolver(String templatePath) {
         this.templatePath = templatePath;

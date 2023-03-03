@@ -46,7 +46,7 @@ import javax.persistence.PersistenceUnit;
  *
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = DebeziumCacheInvalidationEnabledCondition.class)
 public class DebeziumPreStartupRoutine extends AbstractStartupRoutine {
     @PersistenceUnit

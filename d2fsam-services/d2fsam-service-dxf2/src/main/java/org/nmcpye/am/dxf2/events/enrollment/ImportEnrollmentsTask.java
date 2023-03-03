@@ -35,6 +35,7 @@ import java.util.List;
 
 /**
  * Last pull
+ *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 public class ImportEnrollmentsTask

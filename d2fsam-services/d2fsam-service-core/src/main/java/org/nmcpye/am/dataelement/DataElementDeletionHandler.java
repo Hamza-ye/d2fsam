@@ -58,7 +58,7 @@ public class DataElementDeletionHandler extends JdbcDeletionHandler {
         whenVetoing(OptionSet.class, this::allowDeleteOptionSet);
     }
 
-//    private void deleteCategoryCombo(CategoryCombo categoryCombo) {
+    //    private void deleteCategoryCombo(CategoryCombo categoryCombo) {
 //        CategoryCombo defaultCategoryCombo = categoryService
 //            .getCategoryComboByName(DEFAULT_CATEGORY_COMBO_NAME);
 //

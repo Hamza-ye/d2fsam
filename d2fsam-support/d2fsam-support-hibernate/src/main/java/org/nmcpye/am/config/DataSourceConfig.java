@@ -15,7 +15,6 @@ import org.nmcpye.am.datasource.DatabasePoolUtils;
 import org.nmcpye.am.datasource.DefaultReadOnlyDataSourceManager;
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
 import org.nmcpye.am.external.conf.ConfigurationKey;
-import org.nmcpye.am.hibernate.DefaultHibernateConfigurationProvider;
 import org.nmcpye.am.hibernate.HibernateConfigurationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

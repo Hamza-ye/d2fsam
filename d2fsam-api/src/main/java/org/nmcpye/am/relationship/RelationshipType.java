@@ -290,7 +290,7 @@ public class RelationshipType extends BaseIdentifiableObject implements Metadata
 
     @JsonProperty
     @JacksonXmlProperty(namespace = DxfNamespaces.DXF_2_0)
-    public Boolean getBidirectional() {
+    public Boolean isBidirectional() {
         return this.bidirectional != null && bidirectional;
     }
 

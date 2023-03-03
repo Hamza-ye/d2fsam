@@ -28,8 +28,8 @@
 package org.nmcpye.am.jdbc.statementbuilder;
 
 import org.hamcrest.CoreMatchers;
-import org.nmcpye.am.jdbc.StatementBuilder;
 import org.junit.jupiter.api.Test;
+import org.nmcpye.am.jdbc.StatementBuilder;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -37,22 +37,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author Lars Helge Overland
  */
-class StatementBuilderTest
-{
+class StatementBuilderTest {
 
     @Test
-    void testStatementBuilder()
-    {
+    void testStatementBuilder() {
         StatementBuilder builder = new PostgreSQLStatementBuilder();
         String autoIncrement = builder.getAutoIncrementValue();
-        assertEquals( "nextval('hibernate_sequence')", autoIncrement );
+        assertEquals("nextval('hibernate_sequence')", autoIncrement);
     }
 
     @Test
-    void encodeTest()
-    {
+    void encodeTest() {
         StatementBuilder builder = new PostgreSQLStatementBuilder();
-        String encoded = builder.encode( "contains'character" );
-        assertThat( encoded, CoreMatchers.containsString( "''" ) );
+        String encoded = builder.encode("contains'character");
+        assertThat(encoded, CoreMatchers.containsString("''"));
     }
 }

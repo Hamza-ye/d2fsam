@@ -42,7 +42,8 @@ public class JobTypes {
 
     private List<JobTypeInfo> jobTypes = new ArrayList<>();
 
-    public JobTypes() {}
+    public JobTypes() {
+    }
 
     public JobTypes(List<JobTypeInfo> jobTypes) {
         this.jobTypes = jobTypes;

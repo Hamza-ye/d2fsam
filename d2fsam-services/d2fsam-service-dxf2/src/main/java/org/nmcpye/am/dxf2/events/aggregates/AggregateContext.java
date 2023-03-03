@@ -35,8 +35,6 @@ import org.nmcpye.am.trackedentity.TrackedEntityInstanceQueryParams;
 import java.util.List;
 
 /**
- *
- *
  * @author Luciano Fiandesio
  */
 @Value

@@ -41,7 +41,7 @@ import org.springframework.stereotype.Service;
  */
 @Slf4j
 @Service
-@Profile({"!test", "!test-h2"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = RedisCacheInvalidationEnabledCondition.class)
 public class RedisCacheInvalidationSubscriptionService {
     @Autowired

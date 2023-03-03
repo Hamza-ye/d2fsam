@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-dxf2</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F DXF 2 Data Exchange</name>
 
     <dependencies>
@@ -37,10 +38,10 @@
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-service-schema</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-service-setting</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.nmcpye.am</groupId>-->
+<!--            <artifactId>d2fsam-service-setting</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-service-field-filtering</artifactId>
@@ -53,10 +54,10 @@
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-support-commons</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-support-external</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.nmcpye.am</groupId>-->
+<!--            <artifactId>d2fsam-support-external</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-support-hibernate</artifactId>
@@ -70,15 +71,15 @@
             <artifactId>d2fsam-support-system</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>org.hisp</groupId>
-            <artifactId>quick</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.hisp.dhis</groupId>
-            <artifactId>json-tree</artifactId>
-            <scope>compile</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.hisp</groupId>-->
+<!--            <artifactId>quick</artifactId>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.hisp.dhis</groupId>-->
+<!--            <artifactId>json-tree</artifactId>-->
+<!--            <scope>compile</scope>-->
+<!--        </dependency>-->
 
         <dependency>
             <groupId>org.springframework</groupId>
@@ -120,18 +121,18 @@
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
         </dependency>
-        <dependency>
-            <groupId>joda-time</groupId>
-            <artifactId>joda-time</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>joda-time</groupId>-->
+<!--            <artifactId>joda-time</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.locationtech.jts</groupId>
             <artifactId>jts-core</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-math3</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-math3</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.sf.jasperreports</groupId>
             <artifactId>jasperreports</artifactId>
@@ -140,18 +141,18 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-text</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.apache.commons</groupId>-->
+<!--            <artifactId>commons-text</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>net.sourceforge.javacsv</groupId>
             <artifactId>javacsv</artifactId>
         </dependency>
-        <dependency>
-            <groupId>com.lowagie</groupId>
-            <artifactId>itext</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>com.lowagie</groupId>-->
+<!--            <artifactId>itext</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
             <artifactId>jackson-core</artifactId>
@@ -172,14 +173,14 @@
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-csv</artifactId>
         </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.hisp</groupId>-->
+        <!--            <artifactId>staxwax</artifactId>-->
+        <!--        </dependency>-->
 <!--        <dependency>-->
-<!--            <groupId>org.hisp</groupId>-->
-<!--            <artifactId>staxwax</artifactId>-->
+<!--            <groupId>org.springframework.retry</groupId>-->
+<!--            <artifactId>spring-retry</artifactId>-->
 <!--        </dependency>-->
-        <dependency>
-            <groupId>org.springframework.retry</groupId>
-            <artifactId>spring-retry</artifactId>
-        </dependency>
         <dependency>
             <groupId>net.postgis</groupId>
             <artifactId>postgis-jdbc</artifactId>
@@ -190,10 +191,10 @@
             <scope>provided</scope>
         </dependency>
 
-        <dependency>
-            <groupId>xerces</groupId>
-            <artifactId>xercesImpl</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>xerces</groupId>-->
+<!--            <artifactId>xercesImpl</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>de.grundid.opendatalab</groupId>
             <artifactId>geojson-jackson</artifactId>
@@ -202,10 +203,10 @@
             <groupId>org.geotools</groupId>
             <artifactId>gt-main</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.geotools</groupId>
-            <artifactId>gt-geojson</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.geotools</groupId>-->
+<!--            <artifactId>gt-geojson</artifactId>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>javax.annotation</groupId>
             <artifactId>javax.annotation-api</artifactId>
@@ -230,10 +231,10 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.jasypt</groupId>
-            <artifactId>jasypt</artifactId>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.jasypt</groupId>-->
+<!--            <artifactId>jasypt</artifactId>-->
+<!--        </dependency>-->
 
         <!-- Test -->
         <dependency>
@@ -241,11 +242,11 @@
             <artifactId>d2fsam-support-test</artifactId>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.nmcpye.am</groupId>-->
-<!--            <artifactId>am-service-validation</artifactId>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>am-service-validation</artifactId>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
@@ -285,20 +286,26 @@
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+<!--        <dependency>-->
+<!--            <groupId>commons-beanutils</groupId>-->
+<!--            <artifactId>commons-beanutils</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+<!--        <dependency>-->
+<!--            <groupId>org.apache.httpcomponents</groupId>-->
+<!--            <artifactId>httpcore</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
+
+        <!-- NMCP  Used undeclared-->
+
         <dependency>
-            <groupId>commons-beanutils</groupId>
-            <artifactId>commons-beanutils</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpcore</artifactId>
-            <scope>test</scope>
+            <groupId>org.cache2k</groupId>
+            <artifactId>cache2k-api</artifactId>
         </dependency>
     </dependencies>
     <properties>
         <rootDir>../../</rootDir>
-<!--        <jib.skip>true</jib.skip>-->
     </properties>
 
 </project>

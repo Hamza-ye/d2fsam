@@ -33,7 +33,6 @@ import org.nmcpye.am.cache.CacheInfo.CacheCapInfo;
 import org.nmcpye.am.cache.CacheInfo.CacheGroupInfo;
 import org.nmcpye.am.cache.CappedLocalCache;
 import org.nmcpye.am.common.OpenApi;
-import org.nmcpye.am.security.AuthoritiesConstants;
 import org.nmcpye.am.webapi.controller.exception.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -59,7 +58,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 @RequiredArgsConstructor
 //@PreAuthorize("hasAuthority(\"" + AuthoritiesConstants.ADMIN + "\") " +
 //    "or hasRole('F_PERFORM_MAINTENANCE') or hasRole('ALL')")
-@PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+@PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
 public class CacheController {
 
     private final CappedLocalCache cache;

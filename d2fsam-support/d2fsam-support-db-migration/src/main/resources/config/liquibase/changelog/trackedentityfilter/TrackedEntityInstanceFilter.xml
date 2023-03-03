@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <!--
         Added the entity TrackedEntityInstanceFilter.
@@ -15,37 +13,40 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="uid" type="varchar(11)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_tracked_entity_instance_filter__uid" />
+                <constraints nullable="false" unique="true"
+                             uniqueConstraintName="ux_tracked_entity_instance_filter__uid"/>
             </column>
             <column name="code" type="varchar(255)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_tracked_entity_instance_filter__code" />
+                <constraints nullable="true" unique="true"
+                             uniqueConstraintName="ux_tracked_entity_instance_filter__code"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_tracked_entity_instance_filter__name" />
+                <constraints nullable="false" unique="true"
+                             uniqueConstraintName="ux_tracked_entity_instance_filter__name"/>
             </column>
             <column name="created" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="updated" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="sortorder" type="integer">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="enrollmentstatus" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="programid" type="bigint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="createdby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="lastupdatedby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="event_filters" type="JSONB"/>
             <column name="entity_query_criteria" type="JSONB"/>
@@ -54,8 +55,10 @@
             <column name="sharing" type="JSONB" defaultValue="{}"/>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
-        <dropDefaultValue tableName="tracked_entity_instance_filter" columnName="created" columnDataType="${datetimeType}"/>
-        <dropDefaultValue tableName="tracked_entity_instance_filter" columnName="updated" columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="tracked_entity_instance_filter" columnName="created"
+                          columnDataType="${datetimeType}"/>
+        <dropDefaultValue tableName="tracked_entity_instance_filter" columnName="updated"
+                          columnDataType="${datetimeType}"/>
     </changeSet>
 
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
@@ -68,22 +71,22 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-<!--    <changeSet id="20221120204056-1-data" author="jhipster" context="faker">-->
-<!--        <loadData-->
-<!--                  file="config/liquibase/fake-data/tracked_entity_instance_filter.csv"-->
-<!--                  separator=";"-->
-<!--                  tableName="tracked_entity_instance_filter"-->
-<!--                  usePreparedStatements="true">-->
-<!--            <column name="id" type="numeric"/>-->
-<!--            <column name="uid" type="string"/>-->
-<!--            <column name="code" type="string"/>-->
-<!--            <column name="name" type="string"/>-->
-<!--            <column name="created" type="date"/>-->
-<!--            <column name="updated" type="date"/>-->
-<!--            <column name="description" type="string"/>-->
-<!--            <column name="sortorder" type="numeric"/>-->
-<!--            <column name="enrollmentstatus" type="string"/>-->
-<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
-<!--        </loadData>-->
-<!--    </changeSet>-->
+    <!--    <changeSet id="20221120204056-1-data" author="jhipster" context="faker">-->
+    <!--        <loadData-->
+    <!--                  file="config/liquibase/fake-data/tracked_entity_instance_filter.csv"-->
+    <!--                  separator=";"-->
+    <!--                  tableName="tracked_entity_instance_filter"-->
+    <!--                  usePreparedStatements="true">-->
+    <!--            <column name="id" type="numeric"/>-->
+    <!--            <column name="uid" type="string"/>-->
+    <!--            <column name="code" type="string"/>-->
+    <!--            <column name="name" type="string"/>-->
+    <!--            <column name="created" type="date"/>-->
+    <!--            <column name="updated" type="date"/>-->
+    <!--            <column name="description" type="string"/>-->
+    <!--            <column name="sortorder" type="numeric"/>-->
+    <!--            <column name="enrollmentstatus" type="string"/>-->
+    <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+    <!--        </loadData>-->
+    <!--    </changeSet>-->
 </databaseChangeLog>

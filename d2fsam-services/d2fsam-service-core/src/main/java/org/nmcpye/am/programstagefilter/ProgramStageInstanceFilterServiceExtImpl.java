@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-@Service( "org.nmcpye.am.programstagefilter.ProgramStageInstanceFilterServiceExt" )
-@Transactional( readOnly = true )
+@Service("org.nmcpye.am.programstagefilter.ProgramStageInstanceFilterServiceExt")
+@Transactional(readOnly = true)
 public class ProgramStageInstanceFilterServiceExtImpl implements ProgramStageInstanceFilterServiceExt {
     private final ProgramServiceExt programService;
 

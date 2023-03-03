@@ -28,8 +28,8 @@
 package org.nmcpye.am.system.filter;
 
 import org.locationtech.jts.geom.Geometry;
-import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.commons.filter.Filter;
+import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.organisationunit.OrganisationUnit;
 import org.nmcpye.am.system.util.GeoUtils;
 
@@ -49,8 +49,8 @@ public class OrganisationUnitPolygonCoveringCoordinateFilter implements Filter<O
         Geometry geometry = unit.getGeometry();
         return (
             geometry != null &&
-            FeatureType.getTypeFromName(geometry.getGeometryType()) == FeatureType.POLYGON &&
-            GeoUtils.checkPointWithMultiPolygon(longitude, latitude, unit.getGeometry())
+                FeatureType.getTypeFromName(geometry.getGeometryType()) == FeatureType.POLYGON &&
+                GeoUtils.checkPointWithMultiPolygon(longitude, latitude, unit.getGeometry())
         );
     }
 }

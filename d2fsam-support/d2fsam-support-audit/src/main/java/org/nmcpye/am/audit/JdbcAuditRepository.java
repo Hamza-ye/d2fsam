@@ -182,7 +182,8 @@ public class JdbcAuditRepository implements AuditRepository {
 
         try {
             parameters.addValue("attributes", jsonMapper.writeValueAsString(audit.getAttributes()));
-        } catch (JsonProcessingException ignored) {}
+        } catch (JsonProcessingException ignored) {
+        }
 
         return parameters;
     }
@@ -205,14 +206,15 @@ public class JdbcAuditRepository implements AuditRepository {
         try {
             AuditAttributes attributes = jsonMapper.readValue(rs.getString("attributes"), AuditAttributes.class);
             auditBuilder.attributes(attributes);
-        } catch (JsonProcessingException ignored) {}
+        } catch (JsonProcessingException ignored) {
+        }
 
         return auditBuilder.build();
     };
 
     private static byte[] compress(String data) {
         if (StringUtils.isEmpty(data)) {
-            return new byte[] {};
+            return new byte[]{};
         }
 
         byte[] result = data.getBytes(StandardCharsets.UTF_8);
@@ -223,7 +225,8 @@ public class JdbcAuditRepository implements AuditRepository {
             gzip.close();
 
             result = bos.toByteArray();
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
 
         return result;
     }
@@ -241,7 +244,8 @@ public class JdbcAuditRepository implements AuditRepository {
             gzip.close();
 
             result = new String(bytes, StandardCharsets.UTF_8);
-        } catch (IOException ignored) {}
+        } catch (IOException ignored) {
+        }
 
         return result;
     }

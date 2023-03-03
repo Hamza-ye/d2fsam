@@ -45,7 +45,7 @@ import java.util.stream.Collectors;
 @Service
 public class DefaultContextService implements ContextService {
 
-//    private static Pattern API_VERSION = Pattern.compile("(/api/(\\d+)?/)");
+    //    private static Pattern API_VERSION = Pattern.compile("(/api/(\\d+)?/)");
     private static Pattern API_VERSION = Pattern.compile("(/api/\\(.*?\\)?/)");
 
     @Override

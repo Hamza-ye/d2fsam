@@ -43,7 +43,7 @@ import javax.persistence.PersistenceUnit;
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
 @Slf4j
-@Profile({"!test", "!test-h2"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = RedisCacheInvalidationEnabledCondition.class)
 public class RedisCacheInvalidationPreStartupRoutine extends AbstractStartupRoutine {
     @PersistenceUnit

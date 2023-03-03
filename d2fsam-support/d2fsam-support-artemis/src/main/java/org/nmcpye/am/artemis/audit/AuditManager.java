@@ -110,11 +110,11 @@ public class AuditManager {
         if (audit.getData() == null) {
             audit.setData(
                 this.objectFactory.create(
-                        audit.getAuditScope(),
-                        audit.getAuditType(),
-                        audit.getAuditableEntity().getEntity(),
-                        audit.getCreatedBy()
-                    )
+                    audit.getAuditScope(),
+                    audit.getAuditType(),
+                    audit.getAuditableEntity().getEntity(),
+                    audit.getCreatedBy()
+                )
             );
         }
 

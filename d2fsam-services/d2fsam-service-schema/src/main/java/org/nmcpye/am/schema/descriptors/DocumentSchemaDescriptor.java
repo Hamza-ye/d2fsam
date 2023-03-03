@@ -34,8 +34,6 @@ import org.nmcpye.am.schema.SchemaDescriptor;
 import org.nmcpye.am.security.Authority;
 import org.nmcpye.am.security.AuthorityType;
 
-import static com.google.common.collect.Lists.newArrayList;
-
 /**
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */

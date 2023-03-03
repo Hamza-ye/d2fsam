@@ -1,8 +1,8 @@
 package org.nmcpye.am.trackedentity;
 
 import org.apache.commons.lang3.StringUtils;
-import org.nmcpye.am.common.IllegalQueryException;
 import org.nmcpye.am.common.AuditType;
+import org.nmcpye.am.common.IllegalQueryException;
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
 import org.nmcpye.am.fileresource.FileResource;
 import org.nmcpye.am.fileresource.FileResourceServiceExt;

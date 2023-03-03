@@ -42,7 +42,6 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.toList;
@@ -59,12 +58,12 @@ public class JdbcEventCommentStore implements EventCommentStore {
 
     private final String INSERT_EVENT_NOTE_SQL =
         "INSERT INTO COMMENT (trackedentitycommentid, " + // 0
-        "uid, " + // 1
-        "commenttext, " + // 2
-        "created, " + // 3
-        "creator," + // 4
-        "updated" + // 5
-        ")  values ( nextval('hibernate_sequence'), ?, ?, ?, ?, ?)";
+            "uid, " + // 1
+            "commenttext, " + // 2
+            "created, " + // 3
+            "creator," + // 4
+            "updated" + // 5
+            ")  values ( nextval('hibernate_sequence'), ?, ?, ?, ?, ?)";
 
     private static final String INSERT_EVENT_COMMENT_LINK =
         "INSERT INTO program_stage_instance__comments (programstageinstanceid, " + "sortorder, trackedentitycommentid) values (?, ?, ?)";
@@ -115,7 +114,7 @@ public class JdbcEventCommentStore implements EventCommentStore {
             // notes, to avoid conflicts
             return jdbcTemplate.queryForObject(
                 "select coalesce(max(sortorder) + 1, 1) from program_stage_instance__comments where programstageinstanceid = " +
-                psi.getId(),
+                    psi.getId(),
                 Integer.class
             );
         }
@@ -141,7 +140,7 @@ public class JdbcEventCommentStore implements EventCommentStore {
         try {
             jdbcTemplate.update(
                 connection -> {
-                    PreparedStatement ps = connection.prepareStatement(INSERT_EVENT_NOTE_SQL, new String[] { "trackedentitycommentid" });
+                    PreparedStatement ps = connection.prepareStatement(INSERT_EVENT_NOTE_SQL, new String[]{"trackedentitycommentid"});
 
                     ps.setString(1, comment.getUid());
                     ps.setString(2, comment.getCommentText());
@@ -175,7 +174,7 @@ public class JdbcEventCommentStore implements EventCommentStore {
         } catch (DataAccessException e) {
             log.error(
                 "An error occurred saving a link between a TrackedEntityComment and a ProgramStageInstance with primary key: " +
-                programStageInstanceId,
+                    programStageInstanceId,
                 e
             );
             throw e;

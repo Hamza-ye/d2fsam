@@ -60,8 +60,6 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static org.nmcpye.am.dxf2.events.aggregates.ThreadPoolManager.getPool;
 
 /**
- *
- *
  * @author Luciano Fiandesio
  */
 @Component

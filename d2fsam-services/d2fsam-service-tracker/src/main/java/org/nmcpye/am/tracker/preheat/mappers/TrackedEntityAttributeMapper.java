@@ -31,7 +31,6 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
 
 @Mapper(uses = {DebugMapper.class, OptionSetMapper.class, AttributeValueMapper.class})

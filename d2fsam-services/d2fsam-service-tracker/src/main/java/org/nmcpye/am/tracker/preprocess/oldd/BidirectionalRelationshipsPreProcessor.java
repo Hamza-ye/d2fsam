@@ -29,7 +29,6 @@ package org.nmcpye.am.tracker.preprocess.oldd;
 
 import org.nmcpye.am.relationship.RelationshipType;
 import org.nmcpye.am.tracker.bundle.TrackerBundle;
-import org.springframework.stereotype.Component;
 
 /**
  * This preprocessor is responsible for populating the bidirectional field with
@@ -47,7 +46,7 @@ public class BidirectionalRelationshipsPreProcessor implements BundlePreProcesso
             .forEach(rel -> {
                 RelationshipType relType = bundle.getPreheat().getRelationshipType(rel.getRelationshipType());
                 if (relType != null) {
-                    rel.setBidirectional(relType.getBidirectional());
+                    rel.setBidirectional(relType.isBidirectional());
                 }
             });
     }

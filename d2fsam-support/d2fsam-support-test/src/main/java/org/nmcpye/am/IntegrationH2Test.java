@@ -37,9 +37,8 @@ import java.lang.annotation.Target;
 /**
  * @author Enrico Colasante
  */
-@Target( { ElementType.TYPE, ElementType.METHOD } )
-@Retention( RetentionPolicy.RUNTIME )
-@Tag( "integrationH2" )
-public @interface IntegrationH2Test
-{
+@Target({ElementType.TYPE, ElementType.METHOD})
+@Retention(RetentionPolicy.RUNTIME)
+@Tag("integrationH2")
+public @interface IntegrationH2Test {
 }

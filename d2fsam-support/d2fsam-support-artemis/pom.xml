@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-support-artemis</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Artemis AMQP/JMS Support</name>
 
     <dependencies>
@@ -120,6 +121,7 @@
         </dependency>
 
         <!-- Test -->
+
         <dependency>
             <groupId>org.hamcrest</groupId>
             <artifactId>hamcrest</artifactId>
@@ -139,6 +141,13 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
             <scope>test</scope>
+        </dependency>
+
+        <!-- NMCP Used undeclared dependencies-->
+
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
         </dependency>
     </dependencies>
     <properties>

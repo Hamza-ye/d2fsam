@@ -38,10 +38,9 @@ import org.nmcpye.am.user.User;
 import org.nmcpye.am.user.UserGroup;
 
 import java.util.Set;
-import java.util.UUID;
 
-@Mapper(uses = { DebugMapper.class, OrganisationUnitMapper.class,
-    UserGroupMapper.class, TeamMapper.class })
+@Mapper(uses = {DebugMapper.class, OrganisationUnitMapper.class,
+    UserGroupMapper.class, TeamMapper.class})
 public interface FullUserMapper extends PreheatMapper<User> {
     FullUserMapper INSTANCE = Mappers.getMapper(FullUserMapper.class);
 

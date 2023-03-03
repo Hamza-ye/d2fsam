@@ -47,8 +47,6 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 @JacksonXmlRootElement(localName = "event", namespace = DxfNamespaces.DXF_2_0)

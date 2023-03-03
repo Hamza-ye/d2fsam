@@ -33,7 +33,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.nmcpye.am.team.TeamGroup;
 
-@Mapper(uses = { DebugMapper.class })
+@Mapper(uses = {DebugMapper.class})
 public interface TeamGroupMapper extends PreheatMapper<TeamGroup> {
     TeamGroupMapper INSTANCE = Mappers.getMapper(TeamGroupMapper.class);
 

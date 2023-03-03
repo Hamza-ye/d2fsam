@@ -4,7 +4,6 @@ import org.hibernate.SessionFactory;
 import org.nmcpye.am.hibernate.HibernateGenericStore;
 import org.nmcpye.am.setting.SystemSetting;
 import org.nmcpye.am.setting.SystemSettingRepositoryExt;
-import org.nmcpye.am.setting.SystemSettingRepositoryExtCustom;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;

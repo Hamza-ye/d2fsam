@@ -29,7 +29,6 @@ package org.nmcpye.am.dxf2.events.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import org.nmcpye.am.common.DxfNamespaces;
@@ -38,8 +37,6 @@ import org.nmcpye.am.program.UserInfoSnapshot;
 import java.util.Objects;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 @JacksonXmlRootElement(localName = "dataValue", namespace = DxfNamespaces.DXF_2_0)
@@ -63,7 +60,8 @@ public class DataValue {
 
     private boolean skipSynchronization;
 
-    public DataValue() {}
+    public DataValue() {
+    }
 
     public DataValue(String dataElement, String value) {
         this.dataElement = dataElement;
@@ -182,21 +180,21 @@ public class DataValue {
     public String toString() {
         return (
             "DataValue{" +
-            "value='" +
-            value +
-            '\'' +
-            ", dataElement='" +
-            dataElement +
-            '\'' +
-            ", providedElsewhere=" +
-            providedElsewhere +
-            ", storedBy='" +
-            storedBy +
-            '\'' +
-            ", skipSynchronization='" +
-            skipSynchronization +
-            '\'' +
-            '}'
+                "value='" +
+                value +
+                '\'' +
+                ", dataElement='" +
+                dataElement +
+                '\'' +
+                ", providedElsewhere=" +
+                providedElsewhere +
+                ", storedBy='" +
+                storedBy +
+                '\'' +
+                ", skipSynchronization='" +
+                skipSynchronization +
+                '\'' +
+                '}'
         );
     }
 }

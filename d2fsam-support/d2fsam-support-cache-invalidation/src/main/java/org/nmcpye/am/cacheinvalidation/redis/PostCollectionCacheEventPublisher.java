@@ -49,7 +49,7 @@ import java.util.*;
  */
 @Slf4j
 @Component
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = RedisCacheInvalidationEnabledCondition.class)
 public class PostCollectionCacheEventPublisher implements PostCollectionRecreateEventListener,
     PreCollectionRemoveEventListener, PreCollectionUpdateEventListener {

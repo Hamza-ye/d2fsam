@@ -27,14 +27,9 @@
  */
 package org.nmcpye.am.dxf2.metadata.objectbundle.hooks;
 
-import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.dxf2.metadata.objectbundle.ObjectBundle;
-import org.nmcpye.am.feedback.ErrorCode;
 import org.nmcpye.am.feedback.ErrorReport;
 import org.nmcpye.am.program.ProgramStageDataElement;
-import org.nmcpye.am.render.DeviceRenderTypeMap;
-import org.nmcpye.am.render.type.ValueTypeRenderingObject;
-import org.nmcpye.am.system.util.ValidationUtils;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Consumer;

@@ -37,13 +37,13 @@ import org.nmcpye.am.dataelement.DataElement;
 public interface DataElementMapper extends PreheatMapper<DataElement> {
     DataElementMapper INSTANCE = Mappers.getMapper(DataElementMapper.class);
 
-    @BeanMapping( ignoreByDefault = true )
-    @Mapping( target = "id" )
-    @Mapping( target = "uid" )
-    @Mapping( target = "code" )
-    @Mapping( target = "name" )
-    @Mapping( target = "attributeValues" )
-    @Mapping( target = "valueType" )
-    @Mapping( target = "optionSet" )
+    @BeanMapping(ignoreByDefault = true)
+    @Mapping(target = "id")
+    @Mapping(target = "uid")
+    @Mapping(target = "code")
+    @Mapping(target = "name")
+    @Mapping(target = "attributeValues")
+    @Mapping(target = "valueType")
+    @Mapping(target = "optionSet")
     DataElement map(DataElement dataElement);
 }

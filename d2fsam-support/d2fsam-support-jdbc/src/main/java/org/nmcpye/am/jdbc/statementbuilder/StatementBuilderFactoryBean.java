@@ -34,8 +34,6 @@ import org.springframework.beans.factory.FactoryBean;
 import static com.google.common.base.Preconditions.checkNotNull;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class StatementBuilderFactoryBean

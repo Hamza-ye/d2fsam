@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-acl</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F ACL service</name>
 
     <dependencies>

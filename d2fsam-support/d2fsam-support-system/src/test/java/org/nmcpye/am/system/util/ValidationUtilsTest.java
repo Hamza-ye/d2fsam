@@ -29,11 +29,11 @@ package org.nmcpye.am.system.util;
 
 import com.google.common.collect.ImmutableSet;
 import org.junit.jupiter.api.Test;
+import org.nmcpye.am.common.AggregationType;
 import org.nmcpye.am.common.CodeGenerator;
 import org.nmcpye.am.common.FileTypeValueOptions;
-import org.nmcpye.am.common.AggregationType;
-import org.nmcpye.am.common.enumeration.FileResourceDomain;
 import org.nmcpye.am.common.ValueType;
+import org.nmcpye.am.common.enumeration.FileResourceDomain;
 import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.fileresource.FileResource;
 

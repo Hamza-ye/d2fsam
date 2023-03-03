@@ -34,11 +34,9 @@ import org.nmcpye.am.common.DxfNamespaces;
 import org.nmcpye.am.dxf2.webmessage.AbstractWebMessageResponse;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
-@JsonPropertyOrder({ "type", "created", "updated", "deleted" })
+@JsonPropertyOrder({"type", "created", "updated", "deleted"})
 public class ImportCountWebMessageResponse extends AbstractWebMessageResponse {
 
     private int created;

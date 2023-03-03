@@ -63,6 +63,7 @@ public class PaginationCacheManager {
     }
 
     private Cache<String, Long> createCache() {
-        return new Cache2kBuilder<String, Long>() {}.expireAfterWrite(1, TimeUnit.MINUTES).build();
+        return new Cache2kBuilder<String, Long>() {
+        }.expireAfterWrite(1, TimeUnit.MINUTES).build();
     }
 }

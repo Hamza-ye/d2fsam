@@ -28,10 +28,7 @@
 package org.nmcpye.am.webapi.controller.field.management.project;
 
 import lombok.AllArgsConstructor;
-import org.nmcpye.am.dataelement.DataElement;
-import org.nmcpye.am.dataelement.DataElementServiceExt;
 import org.nmcpye.am.project.Project;
-import org.nmcpye.am.schema.descriptors.DataElementSchemaDescriptor;
 import org.nmcpye.am.schema.descriptors.ProjectSchemaDescriptor;
 import org.nmcpye.am.webapi.controller.AbstractCrudController;
 import org.springframework.stereotype.Controller;

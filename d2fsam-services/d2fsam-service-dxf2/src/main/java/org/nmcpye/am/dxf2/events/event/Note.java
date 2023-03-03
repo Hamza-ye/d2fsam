@@ -28,7 +28,6 @@
 package org.nmcpye.am.dxf2.events.event;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import org.nmcpye.am.common.DxfNamespaces;
@@ -52,7 +51,8 @@ public class Note {
 
     private Instant updated;
 
-    public Note() {}
+    public Note() {
+    }
 
     @JsonProperty
     @JacksonXmlProperty(isAttribute = true)
@@ -127,9 +127,9 @@ public class Note {
         Note that = (Note) o;
         return (
             Objects.equals(note, that.note) &&
-            Objects.equals(storedDate, that.storedDate) &&
-            Objects.equals(storedBy, that.storedBy) &&
-            Objects.equals(value, that.value)
+                Objects.equals(storedDate, that.storedDate) &&
+                Objects.equals(storedBy, that.storedBy) &&
+                Objects.equals(value, that.value)
         );
     }
 
@@ -142,19 +142,19 @@ public class Note {
     public String toString() {
         return (
             "Note{" +
-            "note='" +
-            note +
-            '\'' +
-            ", value='" +
-            value +
-            '\'' +
-            ", storedBy='" +
-            storedBy +
-            '\'' +
-            ", storedDate='" +
-            storedDate +
-            '\'' +
-            '}'
+                "note='" +
+                note +
+                '\'' +
+                ", value='" +
+                value +
+                '\'' +
+                ", storedBy='" +
+                storedBy +
+                '\'' +
+                ", storedDate='" +
+                storedDate +
+                '\'' +
+                '}'
         );
     }
 }

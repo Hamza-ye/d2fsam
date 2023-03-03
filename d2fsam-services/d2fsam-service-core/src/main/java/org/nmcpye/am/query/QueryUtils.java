@@ -48,6 +48,7 @@ import java.util.stream.Collectors;
 
 /**
  * NMCP Ext
+ *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 public final class QueryUtils {

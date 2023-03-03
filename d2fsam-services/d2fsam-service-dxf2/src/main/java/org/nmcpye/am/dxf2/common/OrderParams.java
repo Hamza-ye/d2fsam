@@ -46,7 +46,8 @@ public class OrderParams {
 
     private Set<String> order = new HashSet<>();
 
-    public OrderParams() {}
+    public OrderParams() {
+    }
 
     public OrderParams(Set<String> order) {
         this.order = order;

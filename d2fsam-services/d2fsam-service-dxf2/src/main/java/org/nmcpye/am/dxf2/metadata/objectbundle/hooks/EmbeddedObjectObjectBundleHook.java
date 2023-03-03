@@ -28,7 +28,6 @@
 package org.nmcpye.am.dxf2.metadata.objectbundle.hooks;
 
 import lombok.AllArgsConstructor;
-import org.hibernate.Session;
 import org.nmcpye.am.common.BaseIdentifiableObject;
 import org.nmcpye.am.common.IdentifiableObject;
 import org.nmcpye.am.dxf2.metadata.objectbundle.ObjectBundle;
@@ -115,7 +114,7 @@ public class EmbeddedObjectObjectBundleHook
     }
 
     private void handleEmbeddedObjectsBackReference(IdentifiableObject parent, ObjectBundle bundle,
-                                       Collection<Property> embeddedProperties) {
+                                                    Collection<Property> embeddedProperties) {
         for (Property property : embeddedProperties) {
             Object embeddedPropertyObject = ReflectionUtils.invokeMethod(parent, property.getGetterMethod());
 
@@ -155,6 +154,7 @@ public class EmbeddedObjectObjectBundleHook
 //        getSession().update(parentObject);
         sessionFactory.getCurrentSession().update(parentObject);
     }
+
     /////////////////////////////////////////////
     @Override
     public void preUpdate(IdentifiableObject object, IdentifiableObject persistedObject, ObjectBundle bundle) {

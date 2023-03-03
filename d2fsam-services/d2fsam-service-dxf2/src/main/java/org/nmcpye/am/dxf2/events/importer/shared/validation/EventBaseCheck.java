@@ -40,8 +40,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import static org.nmcpye.am.program.ProgramStatus.COMPLETED;
 import static org.nmcpye.am.dxf2.importsummary.ImportStatus.ERROR;
+import static org.nmcpye.am.program.ProgramStatus.COMPLETED;
 import static org.nmcpye.am.security.Authorities.F_EDIT_EXPIRED;
 import static org.nmcpye.am.util.DateUtils.*;
 

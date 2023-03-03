@@ -33,7 +33,6 @@ import org.nmcpye.am.tracker.TrackerIdSchemeParams;
 import org.nmcpye.am.tracker.bundle.TrackerBundle;
 import org.nmcpye.am.tracker.domain.Event;
 import org.nmcpye.am.tracker.preheat.TrackerPreheat;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Objects;

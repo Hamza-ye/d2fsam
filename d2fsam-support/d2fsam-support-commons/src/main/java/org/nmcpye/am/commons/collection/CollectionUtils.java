@@ -36,7 +36,6 @@ import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
 
 /**
- *
  * <p>
  * Utility methods for operations on various collections.
  *

@@ -13,7 +13,7 @@
                                  constraintName="fk_program__attributes__program_id"
                                  referencedColumnNames="programid"
                                  referencedTableName="program"/>
-<!--        referencedTableName="program" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="program" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="trackedentityattributeid"
                                  baseTableName="program__attributes"

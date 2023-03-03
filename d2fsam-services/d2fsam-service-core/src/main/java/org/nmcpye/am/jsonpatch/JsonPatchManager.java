@@ -106,7 +106,7 @@ public class JsonPatchManager {
 
                 if (
                     BaseIdentifiableObject.class.isAssignableFrom(property.getItemKlass()) &&
-                    !EmbeddedObject.class.isAssignableFrom(property.getItemKlass())
+                        !EmbeddedObject.class.isAssignableFrom(property.getItemKlass())
                 ) {
                     ArrayNode arrayNode = jsonMapper.createArrayNode();
 

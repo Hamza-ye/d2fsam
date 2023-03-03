@@ -52,7 +52,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 /**
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-@ExtendWith( SpringExtension.class )
+@ExtendWith(SpringExtension.class)
 @Slf4j
 public abstract class BaseSpringTest
     extends AmConvenienceTest implements ApplicationContextAware {

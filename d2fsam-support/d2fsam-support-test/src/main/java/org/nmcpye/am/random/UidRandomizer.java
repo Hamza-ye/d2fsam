@@ -27,8 +27,8 @@
  */
 package org.nmcpye.am.random;
 
-import org.nmcpye.am.common.CodeGenerator;
 import org.jeasy.random.api.Randomizer;
+import org.nmcpye.am.common.CodeGenerator;
 
 /**
  * @author Luciano Fiandesio

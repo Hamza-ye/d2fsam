@@ -31,7 +31,6 @@ import org.mapstruct.BeanMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
-import org.nmcpye.am.activity.Activity;
 import org.nmcpye.am.project.Project;
 
 @Mapper(

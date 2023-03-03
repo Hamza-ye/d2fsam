@@ -183,21 +183,21 @@ public class CachingMap<K, V> extends HashMap<K, V> {
     public String toString() {
         return (
             "[" +
-            "Size: " +
-            size() +
-            ", " +
-            "Hit count: " +
-            cacheHitCount +
-            ", " +
-            "Miss count: " +
-            cacheMissCount +
-            ", " +
-            "Hit ratio: " +
-            getCacheHitRatio() +
-            ", " +
-            "Load count: " +
-            cacheLoadCount +
-            "]"
+                "Size: " +
+                size() +
+                ", " +
+                "Hit count: " +
+                cacheHitCount +
+                ", " +
+                "Miss count: " +
+                cacheMissCount +
+                ", " +
+                "Hit ratio: " +
+                getCacheHitRatio() +
+                ", " +
+                "Load count: " +
+                cacheLoadCount +
+                "]"
         );
     }
 }

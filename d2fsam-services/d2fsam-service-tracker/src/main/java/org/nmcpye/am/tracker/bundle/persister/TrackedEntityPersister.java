@@ -38,7 +38,7 @@ import org.nmcpye.am.tracker.job.TrackerSideEffectDataBundle;
 import org.nmcpye.am.tracker.preheat.TrackerPreheat;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Nonnull;
+import javax.validation.constraints.NotNull;
 import java.util.Collections;
 
 /**
@@ -46,7 +46,7 @@ import java.util.Collections;
  */
 @Component
 public class TrackedEntityPersister extends AbstractTrackerPersister<TrackedEntity, TrackedEntityInstance> {
-    @Nonnull
+    @NotNull
     private final TrackerConverterService<TrackedEntity, TrackedEntityInstance> teConverter;
 
     public TrackedEntityPersister(/*ReservedValueService reservedValueService,*/

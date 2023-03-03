@@ -38,7 +38,6 @@ import org.nmcpye.am.user.User;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.Instant;
-import java.util.Date;
 import java.util.List;
 
 /**

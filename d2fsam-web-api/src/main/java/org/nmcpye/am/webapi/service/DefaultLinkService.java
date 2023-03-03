@@ -292,7 +292,8 @@ public class DefaultLinkService implements LinkService {
                         }
                     }
                 }
-            } catch (InvocationTargetException | IllegalAccessException ignored) {}
+            } catch (InvocationTargetException | IllegalAccessException ignored) {
+            }
         }
     }
 
@@ -325,14 +326,16 @@ public class DefaultLinkService implements LinkService {
 
             Method setHref = getSetter(object.getClass());
             setHref.invoke(object, hrefBase + schema.getRelativeApiEndpoint() + "/" + value);
-        } catch (InvocationTargetException | IllegalAccessException ignored) {}
+        } catch (InvocationTargetException | IllegalAccessException ignored) {
+        }
     }
 
     private Method getSetter(Class<?> klass) {
         if (!setterCache.containsKey(klass)) {
             try {
                 setterCache.put(klass, klass.getMethod("setHref", String.class));
-            } catch (NoSuchMethodException ignored) {}
+            } catch (NoSuchMethodException ignored) {
+            }
         }
 
         return setterCache.get(klass);

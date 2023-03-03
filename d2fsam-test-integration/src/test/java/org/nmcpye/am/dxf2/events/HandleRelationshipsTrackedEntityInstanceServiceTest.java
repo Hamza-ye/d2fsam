@@ -243,7 +243,7 @@ class HandleRelationshipsTrackedEntityInstanceServiceTest
         relationship.setRelationshipType(relationshipType.getUid());
         relationship.setRelationship("UID_" + uniqueCharacter);
         relationship.setRelationshipName("Malaria case linked to person");
-        relationship.setBidirectional(relationshipType.getBidirectional());
+        relationship.setBidirectional(relationshipType.isBidirectional());
         return relationship;
     }
 
@@ -259,7 +259,7 @@ class HandleRelationshipsTrackedEntityInstanceServiceTest
         relationship.setRelationshipType(relationshipType.getUid());
         relationship.setRelationship("UID_" + key);
         relationship.setRelationshipName("Person to person");
-        relationship.setBidirectional(relationshipType.getBidirectional());
+        relationship.setBidirectional(relationshipType.isBidirectional());
         return relationship;
     }
 }

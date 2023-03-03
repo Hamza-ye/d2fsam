@@ -28,8 +28,8 @@
 package org.nmcpye.am.dxf2.events.trackedentity.store.mapper;
 
 import org.locationtech.jts.geom.Geometry;
-import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.dxf2.events.trackedentity.TrackedEntityInstance;
+import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.system.util.GeoUtils;
 import org.nmcpye.am.util.DateUtils;
 import org.springframework.jdbc.core.RowCallbackHandler;

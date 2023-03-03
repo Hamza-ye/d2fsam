@@ -40,7 +40,6 @@ import org.nmcpye.am.system.notification.NotificationLevel;
 import org.nmcpye.am.user.User;
 
 /**
- *
  * <p>
  * The idScheme is a general setting which will apply to all objects. The
  * idSchemes can also be defined for specific objects such as

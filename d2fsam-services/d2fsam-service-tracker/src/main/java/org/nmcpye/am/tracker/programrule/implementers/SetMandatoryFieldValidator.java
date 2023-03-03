@@ -30,7 +30,6 @@ package org.nmcpye.am.tracker.programrule.implementers;
 import com.google.common.collect.Lists;
 import org.apache.commons.lang3.StringUtils;
 import org.hisp.dhis.rules.models.RuleActionSetMandatoryField;
-import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.program.ProgramStage;
 import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
 import org.nmcpye.am.tracker.TrackerIdSchemeParams;

@@ -43,30 +43,26 @@ import static org.nmcpye.am.dxf2.webmessage.WebMessageUtils.unauthorized;
 /**
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
-public class Http401LoginUrlAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint
-{
+public class Http401LoginUrlAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
     @Autowired
     private RenderService renderService;
 
-    public Http401LoginUrlAuthenticationEntryPoint( String loginFormUrl )
-    {
-        super( loginFormUrl );
+    public Http401LoginUrlAuthenticationEntryPoint(String loginFormUrl) {
+        super(loginFormUrl);
     }
 
     @Override
-    public void commence( HttpServletRequest request, HttpServletResponse response,
-        AuthenticationException authException )
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException)
         throws IOException,
-        ServletException
-    {
-        if ( "XMLHttpRequest".equals( request.getHeader( "X-Requested-With" ) ) )
-        {
-            response.setStatus( HttpServletResponse.SC_UNAUTHORIZED );
-            response.setContentType( MediaType.APPLICATION_JSON_VALUE );
-            renderService.toJson( response.getOutputStream(), unauthorized( "Unauthorized" ) );
+        ServletException {
+        if ("XMLHttpRequest".equals(request.getHeader("X-Requested-With"))) {
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+            renderService.toJson(response.getOutputStream(), unauthorized("Unauthorized"));
             return;
         }
 
-        super.commence( request, response, authException );
+        super.commence(request, response, authException);
     }
 }

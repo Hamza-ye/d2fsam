@@ -56,8 +56,8 @@ public abstract class AbstractStore {
     // NMCP add as relationshipid for r.id
     private static final String GET_RELATIONSHIP_ID_BY_ENTITY_ID_SQL =
         "select ri.%s as id, r.relationshipid as relationshipid " +
-        "FROM relationship_item ri left join relationship r on ri.relationshipid = r.relationshipid " +
-        "where ri.%s in (:ids)";
+            "FROM relationship_item ri left join relationship r on ri.relationshipid = r.relationshipid " +
+            "where ri.%s in (:ids)";
 
     private final static String GET_RELATIONSHIP_BY_RELATIONSHIP_ID = "select "
         + "r.uid as rel_uid, r.created, r.updated, rst.name as reltype_name, rst.uid as reltype_uid, rst.bidirectional as reltype_bi, "

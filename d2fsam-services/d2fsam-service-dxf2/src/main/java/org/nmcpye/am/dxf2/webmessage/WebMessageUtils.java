@@ -238,5 +238,6 @@ public final class WebMessageUtils {
         }
     }
 
-    private WebMessageUtils() {}
+    private WebMessageUtils() {
+    }
 }

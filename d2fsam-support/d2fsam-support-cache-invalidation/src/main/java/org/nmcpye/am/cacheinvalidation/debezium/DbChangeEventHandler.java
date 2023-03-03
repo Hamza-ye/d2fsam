@@ -65,7 +65,7 @@ import static org.nmcpye.am.cacheinvalidation.debezium.TableNameToEntityMapping.
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
 @Slf4j
-@Profile({"!test", "!test-h2"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = DebeziumCacheInvalidationEnabledCondition.class)
 @Component
 public class DbChangeEventHandler extends BaseCacheEvictionService {

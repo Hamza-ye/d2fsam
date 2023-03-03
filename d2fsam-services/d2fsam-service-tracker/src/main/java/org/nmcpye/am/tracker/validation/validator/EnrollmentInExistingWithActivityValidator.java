@@ -52,6 +52,7 @@ import static org.nmcpye.am.tracker.validation.validator.TrackerImporterAssertEr
 
 /**
  * NMCP Extended
+ *
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
 @Component
@@ -134,7 +135,7 @@ public class EnrollmentInExistingWithActivityValidator
 
     // NMCP
     private void validateTeiNotEnrolledAlreadyWithActivity(Reporter reporter, TrackerBundle bundle,
-                                               Enrollment enrollment, Program program, Activity activity) {
+                                                           Enrollment enrollment, Program program, Activity activity) {
         checkNotNull(enrollment.getTrackedEntity(), TRACKED_ENTITY_INSTANCE_CANT_BE_NULL);
 
         TrackedEntityInstance tei = getTrackedEntityInstance(bundle, enrollment.getTrackedEntity());

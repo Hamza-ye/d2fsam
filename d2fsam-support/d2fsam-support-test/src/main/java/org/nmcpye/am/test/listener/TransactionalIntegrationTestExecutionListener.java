@@ -3,7 +3,6 @@ package org.nmcpye.am.test.listener;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.NamedInheritableThreadLocal;
-import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.test.context.TestContext;
 import org.springframework.test.context.support.AbstractTestExecutionListener;
 import org.springframework.test.context.transaction.TestContextTransactionUtils;

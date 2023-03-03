@@ -58,22 +58,22 @@ public class DefaultEventStore extends AbstractStore implements EventStore {
 
     private static final String GET_NOTES_SQL =
         "SELECT pi.uid as key, tec.uid, tec.commenttext, " +
-        "tec.creator, tec.created " +
-        "FROM comment tec " +
-        "JOIN program_stage_instance__comments psic " +
-        "ON tec.trackedentitycommentid = psic.trackedentitycommentid " +
-        "JOIN program_instance pi ON psic.programstageinstanceid = pi.programinstanceid " +
-        "WHERE psic.programstageinstanceid IN (:ids)";
+            "tec.creator, tec.created " +
+            "FROM comment tec " +
+            "JOIN program_stage_instance__comments psic " +
+            "ON tec.trackedentitycommentid = psic.trackedentitycommentid " +
+            "JOIN program_instance pi ON psic.programstageinstanceid = pi.programinstanceid " +
+            "WHERE psic.programstageinstanceid IN (:ids)";
 
     private static final String ACL_FILTER_SQL =
         "CASE WHEN p.type = 'WITH_REGISTRATION' THEN " +
-        "p.trackedentitytypeid in (:trackedEntityTypeIds) else true END " +
-        "AND psi.programstageid in (:programStageIds) AND pi.programid IN (:programIds)";
+            "p.trackedentitytypeid in (:trackedEntityTypeIds) else true END " +
+            "AND psi.programstageid in (:programStageIds) AND pi.programid IN (:programIds)";
 
     private static final String ACL_FILTER_SQL_NO_PROGRAM_STAGE =
         "CASE WHEN p.type = 'WITH_REGISTRATION' THEN " +
-        "p.trackedentitytypeid in (:trackedEntityTypeIds) else true END " +
-        "AND pi.programid IN (:programIds)";
+            "p.trackedentitytypeid in (:trackedEntityTypeIds) else true END " +
+            "AND pi.programid IN (:programIds)";
 
     private static final String FILTER_OUT_DELETED_EVENTS = "psi.deleted=false";
 

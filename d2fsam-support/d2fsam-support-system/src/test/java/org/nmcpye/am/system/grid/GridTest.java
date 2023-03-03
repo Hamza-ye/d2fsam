@@ -34,7 +34,6 @@ import com.google.common.collect.Lists;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.nmcpye.am.common.*;
-import org.nmcpye.am.common.ValueType;
 
 import java.util.*;
 

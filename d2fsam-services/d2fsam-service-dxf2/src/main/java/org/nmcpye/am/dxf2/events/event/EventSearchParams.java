@@ -28,12 +28,7 @@
 package org.nmcpye.am.dxf2.events.event;
 
 import org.nmcpye.am.activity.Activity;
-import org.nmcpye.am.common.AssignedUserSelectionMode;
-import org.nmcpye.am.common.IdSchemes;
-import org.nmcpye.am.common.OrganisationUnitSelectionMode;
-import org.nmcpye.am.common.QueryItem;
-import org.nmcpye.am.common.EventStatus;
-import org.nmcpye.am.common.ProgramType;
+import org.nmcpye.am.common.*;
 import org.nmcpye.am.organisationunit.OrganisationUnit;
 import org.nmcpye.am.program.Program;
 import org.nmcpye.am.program.ProgramStage;

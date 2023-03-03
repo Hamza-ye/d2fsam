@@ -59,8 +59,6 @@ import static java.util.stream.Collectors.toList;
 import static org.nmcpye.am.commons.collection.CollectionUtils.mapToList;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class ListGrid implements Grid, Serializable {

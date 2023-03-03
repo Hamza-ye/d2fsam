@@ -19,7 +19,7 @@
                                  constraintName="fk_message__attachments_message_id"
                                  referencedColumnNames="messageid"
                                  referencedTableName="message"/>
-<!--        referencedTableName="message" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="message" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="fileresourceid"
                                  baseTableName="message__attachments"

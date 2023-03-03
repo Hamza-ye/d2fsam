@@ -52,7 +52,8 @@
             </column>
         </createTable>
 
-        <addPrimaryKey columnNames="programindicatorgroupid, programindicatorid" tableName="program_indicator_group__members"/>
+        <addPrimaryKey columnNames="programindicatorgroupid, programindicatorid"
+                       tableName="program_indicator_group__members"/>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here -->
 

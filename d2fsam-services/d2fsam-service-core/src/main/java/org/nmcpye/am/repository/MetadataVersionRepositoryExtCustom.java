@@ -12,7 +12,7 @@ public interface MetadataVersionRepositoryExtCustom extends GenericStore<Metadat
     /**
      * @param id Key to lookup.
      * @return MetadataVersion Value that matched key, or null if there was no
-     *         match.
+     * match.
      */
     MetadataVersion getVersionByKey(long id);
 
@@ -41,7 +41,6 @@ public interface MetadataVersionRepositoryExtCustom extends GenericStore<Metadat
     List<MetadataVersion> getAllVersionsInBetween(Date startDate, Date endDate);
 
     /**
-     *
      * @return Initial/First MetadataVersion of the system
      */
     MetadataVersion getInitialVersion();

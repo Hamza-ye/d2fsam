@@ -35,7 +35,7 @@ import org.springframework.context.annotation.Profile;
 /**
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-@Profile({"!test", "!test-h2"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = RedisCacheInvalidationEnabledCondition.class)
 public class StartupRedisCacheInvalidationServiceRoutine extends AbstractStartupRoutine {
     @Autowired

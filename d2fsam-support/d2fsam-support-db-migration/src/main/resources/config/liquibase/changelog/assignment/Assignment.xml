@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <!--
         Added the entity Assignment.
@@ -15,58 +13,58 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="uid" type="varchar(11)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_assignment__uid" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_assignment__uid"/>
             </column>
             <column name="code" type="varchar(255)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_assignment__code" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_assignment__code"/>
             </column>
             <column name="created" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="updated" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="startdate" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="startperiod" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="targetsource" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="status" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="deleted" type="boolean">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="deletedat" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="activityid" type="bigint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="organisationunitid" type="bigint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="assignedteamid" type="bigint">
-                <constraints nullable="false" />
+                <constraints nullable="false"/>
             </column>
             <column name="periodid" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="periodtypeid" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="createdby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="lastupdatedby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
@@ -86,28 +84,28 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-<!--    <changeSet id="20221120204043-1-data" author="jhipster" context="faker">-->
-<!--        <loadData-->
-<!--                  file="config/liquibase/fake-data/assignment.csv"-->
-<!--                  separator=";"-->
-<!--                  tableName="assignment"-->
-<!--                  usePreparedStatements="true">-->
-<!--            <column name="id" type="numeric"/>-->
-<!--            <column name="uid" type="string"/>-->
-<!--            <column name="code" type="string"/>-->
-<!--            <column name="created" type="date"/>-->
-<!--            <column name="updated" type="date"/>-->
-<!--            <column name="description" type="string"/>-->
-<!--            <column name="startdate" type="date"/>-->
-<!--            <column name="startperiod" type="string"/>-->
-<!--            <column name="targetsource" type="string"/>-->
-<!--            <column name="status" type="string"/>-->
-<!--            <column name="deleted" type="boolean"/>-->
-<!--            <column name="deletedat" type="date"/>-->
-<!--            <column name="activityid" type="numeric"/>-->
-<!--            <column name="organisationunitid" type="numeric"/>-->
-<!--            <column name="assignedteamid" type="numeric"/>-->
-<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
-<!--        </loadData>-->
-<!--    </changeSet>-->
+    <!--    <changeSet id="20221120204043-1-data" author="jhipster" context="faker">-->
+    <!--        <loadData-->
+    <!--                  file="config/liquibase/fake-data/assignment.csv"-->
+    <!--                  separator=";"-->
+    <!--                  tableName="assignment"-->
+    <!--                  usePreparedStatements="true">-->
+    <!--            <column name="id" type="numeric"/>-->
+    <!--            <column name="uid" type="string"/>-->
+    <!--            <column name="code" type="string"/>-->
+    <!--            <column name="created" type="date"/>-->
+    <!--            <column name="updated" type="date"/>-->
+    <!--            <column name="description" type="string"/>-->
+    <!--            <column name="startdate" type="date"/>-->
+    <!--            <column name="startperiod" type="string"/>-->
+    <!--            <column name="targetsource" type="string"/>-->
+    <!--            <column name="status" type="string"/>-->
+    <!--            <column name="deleted" type="boolean"/>-->
+    <!--            <column name="deletedat" type="date"/>-->
+    <!--            <column name="activityid" type="numeric"/>-->
+    <!--            <column name="organisationunitid" type="numeric"/>-->
+    <!--            <column name="assignedteamid" type="numeric"/>-->
+    <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+    <!--        </loadData>-->
+    <!--    </changeSet>-->
 </databaseChangeLog>

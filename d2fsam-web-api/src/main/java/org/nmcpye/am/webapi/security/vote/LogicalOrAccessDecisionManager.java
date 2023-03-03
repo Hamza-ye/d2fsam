@@ -49,20 +49,17 @@ import java.util.List;
  *
  * @author Torgeir Lorange Ostby
  * @version $Id: LogicalOrAccessDecisionManager.java 6335 2008-11-20 11:11:26Z
- *          larshelg $
+ * larshelg $
  */
 @Primary
 @Component
 @Slf4j
-public class LogicalOrAccessDecisionManager implements AccessDecisionManager
-{
+public class LogicalOrAccessDecisionManager implements AccessDecisionManager {
     private List<AccessDecisionManager> accessDecisionManagers;
 
     public LogicalOrAccessDecisionManager(
-        List<AccessDecisionManager> accessDecisionManagers )
-    {
-        if ( accessDecisionManagers == null )
-        {
+        List<AccessDecisionManager> accessDecisionManagers) {
+        if (accessDecisionManagers == null) {
             accessDecisionManagers = Collections.emptyList();
         }
         this.accessDecisionManagers = accessDecisionManagers;
@@ -73,59 +70,46 @@ public class LogicalOrAccessDecisionManager implements AccessDecisionManager
     // -------------------------------------------------------------------------
 
     @Override
-    public void decide( Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes )
+    public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes)
         throws AccessDeniedException,
-        InsufficientAuthenticationException
-    {
+        InsufficientAuthenticationException {
         AccessDeniedException ade = null;
         InsufficientAuthenticationException iae = null;
 
-        for ( AccessDecisionManager accessDecisionManager : accessDecisionManagers )
-        {
+        for (AccessDecisionManager accessDecisionManager : accessDecisionManagers) {
             // Cannot assume that all decision managers can support the same
             // type
 
-            if ( accessDecisionManager.supports( object.getClass() ) )
-            {
-                try
-                {
-                    accessDecisionManager.decide( authentication, object, configAttributes );
+            if (accessDecisionManager.supports(object.getClass())) {
+                try {
+                    accessDecisionManager.decide(authentication, object, configAttributes);
 
-                    log.debug( "ACCESS GRANTED [" + object.toString() + "]" );
+                    log.debug("ACCESS GRANTED [" + object.toString() + "]");
 
                     return;
-                }
-                catch ( AccessDeniedException e )
-                {
+                } catch (AccessDeniedException e) {
                     ade = e;
-                }
-                catch ( InsufficientAuthenticationException e )
-                {
+                } catch (InsufficientAuthenticationException e) {
                     iae = e;
                 }
             }
         }
 
-        log.debug( "ACCESS DENIED [" + object.toString() + "]" );
+        log.debug("ACCESS DENIED [" + object.toString() + "]");
 
-        if ( ade != null )
-        {
+        if (ade != null) {
             throw ade;
         }
 
-        if ( iae != null )
-        {
+        if (iae != null) {
             throw iae;
         }
     }
 
     @Override
-    public boolean supports( ConfigAttribute configAttribute )
-    {
-        for ( AccessDecisionManager accessDecisionManager : accessDecisionManagers )
-        {
-            if ( accessDecisionManager.supports( configAttribute ) )
-            {
+    public boolean supports(ConfigAttribute configAttribute) {
+        for (AccessDecisionManager accessDecisionManager : accessDecisionManagers) {
+            if (accessDecisionManager.supports(configAttribute)) {
                 return true;
             }
         }
@@ -134,12 +118,9 @@ public class LogicalOrAccessDecisionManager implements AccessDecisionManager
     }
 
     @Override
-    public boolean supports( Class<?> clazz )
-    {
-        for ( AccessDecisionManager accessDecisionManager : accessDecisionManagers )
-        {
-            if ( accessDecisionManager.supports( clazz ) )
-            {
+    public boolean supports(Class<?> clazz) {
+        for (AccessDecisionManager accessDecisionManager : accessDecisionManagers) {
+            if (accessDecisionManager.supports(clazz)) {
                 return true;
             }
         }

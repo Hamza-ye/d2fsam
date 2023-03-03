@@ -70,7 +70,7 @@ public class EventDataValueRowCallbackHandler implements RowCallbackHandler {
 //            jsonValue = values.getValue();
 //        }
 //        Map<String, ?> eventDataValuesJson = gson.fromJson(jsonValue, Map.class);
-        Map<String, ?> eventDataValuesJson = gson.fromJson( values.getValue(), Map.class );
+        Map<String, ?> eventDataValuesJson = gson.fromJson(values.getValue(), Map.class);
 
         for (String dataElementUid : eventDataValuesJson.keySet()) {
             Map<?, ?> jsonValues = (Map<?, ?>) eventDataValuesJson.get(dataElementUid);

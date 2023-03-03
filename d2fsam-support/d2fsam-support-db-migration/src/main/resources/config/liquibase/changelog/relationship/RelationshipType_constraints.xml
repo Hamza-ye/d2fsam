@@ -13,14 +13,14 @@
                                  constraintName="fk_relationship_type__from_constraint_id"
                                  referencedColumnNames="relationshipconstraintid"
                                  referencedTableName="relationship_constraint"/>
-<!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="to_relationshipconstraintid"
                                  baseTableName="relationship_type"
                                  constraintName="fk_relationship_type__to_constraint_id"
                                  referencedColumnNames="relationshipconstraintid"
                                  referencedTableName="relationship_constraint"/>
-<!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="relationship_constraint" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="createdby"
                                  baseTableName="relationship_type"

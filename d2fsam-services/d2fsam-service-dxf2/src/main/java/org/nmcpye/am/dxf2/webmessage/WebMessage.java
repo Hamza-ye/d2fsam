@@ -41,13 +41,11 @@ import org.springframework.http.HttpStatus;
 import javax.annotation.Nonnull;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 //@JsonRootName(value = "webMessage", namespace = DxfNamespaces.DXF_2_0)
 @JacksonXmlRootElement(localName = "webMessage", namespace = DxfNamespaces.DXF_2_0)
-@JsonPropertyOrder({ "httpStatus", "httpStatusCode", "status", "code", "message", "devMessage", "response" })
+@JsonPropertyOrder({"httpStatus", "httpStatusCode", "status", "code", "message", "devMessage", "response"})
 public class WebMessage implements WebMessageResponse {
 
     /**
@@ -107,7 +105,8 @@ public class WebMessage implements WebMessageResponse {
     /**
      * Only for deserialisation
      */
-    public WebMessage() {}
+    public WebMessage() {
+    }
 
     public WebMessage(Status status, HttpStatus httpStatus) {
         this.status = status;

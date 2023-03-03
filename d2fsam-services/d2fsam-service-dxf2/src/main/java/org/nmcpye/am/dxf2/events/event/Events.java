@@ -29,7 +29,6 @@ package org.nmcpye.am.dxf2.events.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonRootName;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
@@ -56,7 +55,8 @@ public class Events {
 
     private Pager pager;
 
-    public Events() {}
+    public Events() {
+    }
 
     @JsonProperty
     @JacksonXmlProperty(isAttribute = true)

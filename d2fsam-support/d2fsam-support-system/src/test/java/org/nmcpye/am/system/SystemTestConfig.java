@@ -30,12 +30,11 @@ package org.nmcpye.am.system;
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
 import org.nmcpye.am.leader.election.LeaderManager;
 import org.nmcpye.am.leader.election.NoOpLeaderManager;
-import org.springframework.context.annotation.Bean;
 
 //@Configuration
 //@Import(ConfigProviderConfiguration.class)
 public class SystemTestConfig {
-//    @Bean
+    //    @Bean
     public LeaderManager leaderManager(AmConfigurationProvider amConfigurationProvider) {
         return new NoOpLeaderManager(amConfigurationProvider);
     }

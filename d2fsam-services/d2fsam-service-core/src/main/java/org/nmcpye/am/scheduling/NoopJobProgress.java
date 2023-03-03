@@ -35,72 +35,60 @@ package org.nmcpye.am.scheduling;
  *
  * @author Jan Bernitt
  */
-public class NoopJobProgress implements JobProgress
-{
+public class NoopJobProgress implements JobProgress {
     public static final JobProgress INSTANCE = new NoopJobProgress();
 
-    private NoopJobProgress()
-    {
+    private NoopJobProgress() {
         // hide
     }
 
     @Override
-    public boolean isCancellationRequested()
-    {
+    public boolean isCancellationRequested() {
         return false;
     }
 
     @Override
-    public void startingProcess( String description )
-    {
+    public void startingProcess(String description) {
         // as the name said we do nothing
     }
 
     @Override
-    public void completedProcess( String summary )
-    {
+    public void completedProcess(String summary) {
         // as the name said we do nothing
     }
 
     @Override
-    public void failedProcess( String error )
-    {
+    public void failedProcess(String error) {
         // as the name said we do nothing
     }
 
     @Override
-    public void startingStage( String description, int workItems, FailurePolicy onFailure )
-    {
+    public void startingStage(String description, int workItems, FailurePolicy onFailure) {
         // as the name said we do nothing
     }
 
     @Override
-    public void completedStage( String summary )
-    {
+    public void completedStage(String summary) {
         // as the name said we do nothing
     }
 
     @Override
-    public void failedStage( String error )
-    {
+    public void failedStage(String error) {
         // as the name said we do nothing
     }
 
     @Override
-    public void startingWorkItem( String description, FailurePolicy onFailure )
-    {
+    public void startingWorkItem(String description, FailurePolicy onFailure) {
         // as the name said we do nothing
     }
 
     @Override
-    public void completedWorkItem( String summary )
-    {
+    public void completedWorkItem(String summary) {
         // as the name said we do nothing
     }
 
     @Override
-    public void failedWorkItem( String error )
-    {
+    public void failedWorkItem(String error) {
         // as the name said we do nothing
     }
 }

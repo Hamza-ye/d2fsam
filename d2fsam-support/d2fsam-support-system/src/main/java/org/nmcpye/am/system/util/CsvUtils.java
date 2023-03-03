@@ -39,8 +39,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class CsvUtils {
@@ -61,7 +59,7 @@ public class CsvUtils {
      * Returns the CSV file represented by the given file path as a list of
      * string arrays. The file must exist on the class path.
      *
-     * @param filePath the file path on the class path.
+     * @param filePath       the file path on the class path.
      * @param ignoreFirstRow whether to ignore the first row.
      * @return a list of string arrays.
      * @throws IOException
@@ -75,7 +73,7 @@ public class CsvUtils {
      * Returns the CSV file represented by the given input stream as a list of
      * string arrays.
      *
-     * @param in the {@link InputStream} representing the CSV file.
+     * @param in             the {@link InputStream} representing the CSV file.
      * @param ignoreFirstRow whether to ignore the first row.
      * @return a list of string arrays.
      * @throws IOException

@@ -33,11 +33,9 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.locationtech.jts.geom.Geometry;
-import org.nmcpye.am.activity.Activity;
 import org.nmcpye.am.tracker.TrackerType;
 
 import java.time.Instant;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 

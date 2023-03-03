@@ -59,7 +59,7 @@ import java.util.concurrent.*;
  * @see <a href="https://debezium.io">https://debezium.io</a>
  */
 @Slf4j
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = DebeziumCacheInvalidationEnabledCondition.class)
 @Service
 public class DebeziumService {

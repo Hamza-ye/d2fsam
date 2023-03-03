@@ -434,7 +434,7 @@ public abstract class AbstractRelationshipService
         relationship.setFrom(includeRelationshipItem(dao.getFrom(), !params.isIncludeFrom()));
         relationship.setTo(includeRelationshipItem(dao.getTo(), !params.isIncludeTo()));
 
-        relationship.setBidirectional(dao.getRelationshipType().getBidirectional());
+        relationship.setBidirectional(dao.getRelationshipType().isBidirectional());
 
         relationship.setCreated(DateUtils.getIso8601NoTz(DateUtils.fromInstant(dao.getCreated())));
         relationship.setLastUpdated(DateUtils.getIso8601NoTz(DateUtils.fromInstant(dao.getUpdated())));

@@ -7,7 +7,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.annotations.QueryHints;
 import org.hibernate.query.Query;
 import org.nmcpye.am.common.*;
-import org.nmcpye.am.common.EventStatus;
 import org.nmcpye.am.common.hibernate.SoftDeleteHibernateObjectStore;
 import org.nmcpye.am.commons.util.SqlHelper;
 import org.nmcpye.am.commons.util.TextUtils;

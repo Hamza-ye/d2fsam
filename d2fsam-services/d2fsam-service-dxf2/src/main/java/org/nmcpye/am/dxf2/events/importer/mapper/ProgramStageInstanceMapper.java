@@ -46,9 +46,9 @@ import java.util.Optional;
 import static java.util.Collections.emptyList;
 import static java.util.stream.Collectors.toList;
 import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
+import static org.nmcpye.am.common.EventStatus.fromInt;
 import static org.nmcpye.am.common.IdScheme.CODE;
 import static org.nmcpye.am.common.IdScheme.UID;
-import static org.nmcpye.am.common.EventStatus.fromInt;
 import static org.nmcpye.am.util.DateUtils.*;
 
 /**

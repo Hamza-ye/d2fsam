@@ -47,7 +47,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = DebeziumCacheInvalidationEnabledCondition.class)
 @Component
 public class HibernateFlushListener implements FlushEventListener {

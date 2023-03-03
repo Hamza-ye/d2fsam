@@ -31,8 +31,6 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class PostgreSQLStatementBuilder extends AbstractStatementBuilder {
@@ -126,27 +124,27 @@ public class PostgreSQLStatementBuilder extends AbstractStatementBuilder {
     public String getAddPrimaryKeyToExistingTable(String table, String column) {
         return (
             "alter table " +
-            table +
-            " add column " +
-            column +
-            " bigint;" +
-            "update " +
-            table +
-            " set " +
-            column +
-            " = nextval('hibernate_sequence') where " +
-            column +
-            " is null;" +
-            "alter table " +
-            table +
-            " alter column " +
-            column +
-            " set not null;" +
-            "alter table " +
-            table +
-            " add primary key(" +
-            column +
-            ");"
+                table +
+                " add column " +
+                column +
+                " bigint;" +
+                "update " +
+                table +
+                " set " +
+                column +
+                " = nextval('hibernate_sequence') where " +
+                column +
+                " is null;" +
+                "alter table " +
+                table +
+                " alter column " +
+                column +
+                " set not null;" +
+                "alter table " +
+                table +
+                " add primary key(" +
+                column +
+                ");"
         );
     }
 

@@ -62,34 +62,34 @@ public abstract class AbstractOrganisationUnitAssociationsQueryBuilder {
     private String getInnerQuerySql() {
         return (
             "select " +
-            T_ALIAS +
-            ".uid, " +
-            T_ALIAS +
-            ".sharing, " +
-            "array_agg(ou.uid) agg_ou_uid " +
-            "from " +
-            getBaseTableName() +
-            " " +
-            T_ALIAS +
-            " left join " +
-            getRelationshipTableName() +
-            " " +
-            REL_TABLE_ALIAS +
-            " on " +
-            T_ALIAS +
-            "." +
-            getJoinColumnName() +
-            " = " +
-            REL_TABLE_ALIAS +
-            "." +
-            getRelJoinColumnName() +
-            " left join organisation_unit ou " +
-            " on " +
-            REL_TABLE_ALIAS +
-            "." +
-            getOrgUnitJoinColumnName() +
-            " = ou.organisationunitid " +
-            "where"
+                T_ALIAS +
+                ".uid, " +
+                T_ALIAS +
+                ".sharing, " +
+                "array_agg(ou.uid) agg_ou_uid " +
+                "from " +
+                getBaseTableName() +
+                " " +
+                T_ALIAS +
+                " left join " +
+                getRelationshipTableName() +
+                " " +
+                REL_TABLE_ALIAS +
+                " on " +
+                T_ALIAS +
+                "." +
+                getJoinColumnName() +
+                " = " +
+                REL_TABLE_ALIAS +
+                "." +
+                getRelJoinColumnName() +
+                " left join organisation_unit ou " +
+                " on " +
+                REL_TABLE_ALIAS +
+                "." +
+                getOrgUnitJoinColumnName() +
+                " = ou.organisationunitid " +
+                "where"
         );
     }
 

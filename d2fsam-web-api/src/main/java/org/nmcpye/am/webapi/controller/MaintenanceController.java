@@ -34,7 +34,6 @@ import org.nmcpye.am.dxf2.webmessage.WebMessage;
 import org.nmcpye.am.maintenance.MaintenanceService;
 import org.nmcpye.am.organisationunit.OrganisationUnit;
 import org.nmcpye.am.organisationunit.OrganisationUnitServiceExt;
-import org.nmcpye.am.security.AuthoritiesConstants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -99,35 +98,35 @@ public class MaintenanceController {
 //    }
 
     @RequestMapping(value = "/expiredInvitationsClear", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void clearExpiredInvitations() {
         maintenanceService.removeExpiredInvitations();
     }
 
     @RequestMapping(value = "/ouPathsUpdate", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void forceUpdatePaths() {
         organisationUnitServiceExt.forceUpdatePaths();
     }
 
     @RequestMapping(value = "/periodPruning", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void prunePeriods() {
         maintenanceService.prunePeriods();
     }
 
     @RequestMapping(value = "/zeroDataValueRemoval", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteZeroDataValues() {
         maintenanceService.deleteZeroDataValues();
     }
 
     @RequestMapping(value = "/softDeletedDataValueRemoval", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSoftDeletedDataValues() {
         maintenanceService.deleteSoftDeletedDataValues();
@@ -135,7 +134,7 @@ public class MaintenanceController {
 
     @RequestMapping(value = "/softDeletedProgramStageInstanceRemoval", method = {RequestMethod.PUT,
         RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSoftDeletedProgramStageInstances() {
         maintenanceService.deleteSoftDeletedProgramStageInstances();
@@ -143,14 +142,14 @@ public class MaintenanceController {
 
     @RequestMapping(value = "/softDeletedRelationshipRemoval", method = {RequestMethod.PUT,
         RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSoftDeletedRelationships() {
         maintenanceService.deleteSoftDeletedRelationships();
     }
 
     @RequestMapping(value = "/softDeletedProgramInstanceRemoval", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSoftDeletedProgramInstances() {
         maintenanceService.deleteSoftDeletedProgramInstances();
@@ -158,7 +157,7 @@ public class MaintenanceController {
 
     @RequestMapping(value = "/softDeletedTrackedEntityInstanceRemoval", method = {RequestMethod.PUT,
         RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteSoftDeletedTrackedEntityInstances() {
         maintenanceService.deleteSoftDeletedTrackedEntityInstances();
@@ -204,7 +203,7 @@ public class MaintenanceController {
 //    }
 
     @RequestMapping(value = {"/cacheClear", "/cache"}, method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void clearCache() {
         maintenanceService.clearApplicationCaches();
@@ -212,7 +211,7 @@ public class MaintenanceController {
 
     @RequestMapping(value = "/dataPruning/organisationUnits/{uid}", method = {RequestMethod.PUT,
         RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL')" )
+    @PreAuthorize("hasRole('ALL')")
     @ResponseBody
     public WebMessage pruneDataByOrganisationUnit(@PathVariable String uid) {
         OrganisationUnit organisationUnit = organisationUnitServiceExt.getOrganisationUnit(uid);
@@ -227,7 +226,7 @@ public class MaintenanceController {
     }
 
     @RequestMapping(value = "/dataPruning/dataElements/{uid}", method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL')" )
+    @PreAuthorize("hasRole('ALL')")
     @ResponseBody
     public WebMessage pruneDataByDataElement(@PathVariable String uid) {
         DataElement dataElement = dataElementService.getDataElement(uid);
@@ -251,7 +250,7 @@ public class MaintenanceController {
 //    }
 
     @RequestMapping(method = {RequestMethod.PUT, RequestMethod.POST})
-    @PreAuthorize( "hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')" )
+    @PreAuthorize("hasRole('ALL') or hasRole('F_PERFORM_MAINTENANCE')")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void performMaintenance(
         @RequestParam(required = false) boolean analyticsTableClear,

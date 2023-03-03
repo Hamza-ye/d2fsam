@@ -67,25 +67,25 @@
                                  constraintName="fk_program_stage_instance_comment__program_stage_instance_id"
                                  referencedColumnNames="programstageinstanceid"
                                  referencedTableName="program_stage_instance"/>
-<!--        referencedTableName="program_stage_instance" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="program_stage_instance" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="trackedentitycommentid"
                                  baseTableName="program_stage_instance__comments"
                                  constraintName="fk_program_stage_instance_comment__comment_id"
                                  referencedColumnNames="trackedentitycommentid"
                                  referencedTableName="comment"/>
-<!--        referencedTableName="comment" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="comment" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="programstageinstanceid"
                                  baseTableName="program_stage_instance__message_conversations"
                                  constraintName="fk_program_stage_instance__message_conversations__program_stage_instance_id"
                                  referencedColumnNames="programstageinstanceid"
-                                 referencedTableName="program_stage_instance" />
+                                 referencedTableName="program_stage_instance"/>
 
         <addForeignKeyConstraint baseColumnNames="messageconversationid"
                                  baseTableName="program_stage_instance__message_conversations"
                                  constraintName="fk_program_stage_instance__message_conversations__message_conversation_id"
                                  referencedColumnNames="messageconversationid"
-                                 referencedTableName="message_conversation" />
+                                 referencedTableName="message_conversation"/>
     </changeSet>
 </databaseChangeLog>

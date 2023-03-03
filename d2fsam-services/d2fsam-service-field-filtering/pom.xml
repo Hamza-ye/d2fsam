@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-field-filtering</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Service Field Filtering</name>
     <dependencies>
         <dependency>
@@ -68,11 +69,11 @@
 
 
         <!-- Test -->
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-support-commons</artifactId>
-            <scope>test</scope>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>org.nmcpye.am</groupId>-->
+<!--            <artifactId>d2fsam-support-commons</artifactId>-->
+<!--            <scope>test</scope>-->
+<!--        </dependency>-->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>

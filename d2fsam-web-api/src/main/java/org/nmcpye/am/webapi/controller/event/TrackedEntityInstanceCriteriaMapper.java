@@ -65,8 +65,6 @@ import static org.nmcpye.am.webapi.controller.event.mapper.OrderParamsHelper.toO
 import static org.nmcpye.am.webapi.controller.tracker.export.RequestParamUtils.parseUids;
 
 /**
- *
- *
  * @author Luciano Fiandesio
  */
 @Component

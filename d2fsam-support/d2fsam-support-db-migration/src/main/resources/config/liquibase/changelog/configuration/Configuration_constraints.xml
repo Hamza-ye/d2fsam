@@ -25,11 +25,11 @@
                                  referencedColumnNames="orgunitlevelid"
                                  referencedTableName="orgunit_level"/>
 
-<!--        <addForeignKeyConstraint baseColumnNames="infrastructural_indicators_id"-->
-<!--                                 baseTableName="configuration"-->
-<!--                                 constraintName="fk_configuration__infrastructural_indicators_id"-->
-<!--                                 referencedColumnNames="userid"-->
-<!--                                 referencedTableName="app_user"/>-->
+        <!--        <addForeignKeyConstraint baseColumnNames="infrastructural_indicators_id"-->
+        <!--                                 baseTableName="configuration"-->
+        <!--                                 constraintName="fk_configuration__infrastructural_indicators_id"-->
+        <!--                                 referencedColumnNames="userid"-->
+        <!--                                 referencedTableName="app_user"/>-->
 
         <addForeignKeyConstraint baseColumnNames="infrastructuraldataelementsid"
                                  baseTableName="configuration"

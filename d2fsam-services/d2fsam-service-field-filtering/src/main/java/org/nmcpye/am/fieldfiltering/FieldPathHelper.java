@@ -273,18 +273,18 @@ public class FieldPathHelper {
     private boolean isComplex(Property property) {
         return (
             property.is(PropertyType.COMPLEX) ||
-            property.itemIs(PropertyType.COMPLEX) ||
-            property.isEmbeddedObject() ||
-            Sharing.class.isAssignableFrom(property.getKlass()) ||
-            Access.class.isAssignableFrom(property.getKlass()) ||
-            UserAccess.class.isAssignableFrom(property.getKlass()) ||
-            org.nmcpye.am.user.UserAccess.class.isAssignableFrom(property.getKlass()) ||
-            UserGroupAccess.class.isAssignableFrom(property.getKlass()) ||
-            org.nmcpye.am.user.UserGroupAccess.class.isAssignableFrom(property.getKlass()) ||
-            TeamAccess.class.isAssignableFrom(property.getKlass()) ||
-            org.nmcpye.am.user.TeamAccess.class.isAssignableFrom(property.getKlass()) ||
-            TeamGroupAccess.class.isAssignableFrom(property.getKlass()) ||
-            org.nmcpye.am.user.TeamGroupAccess.class.isAssignableFrom(property.getKlass())
+                property.itemIs(PropertyType.COMPLEX) ||
+                property.isEmbeddedObject() ||
+                Sharing.class.isAssignableFrom(property.getKlass()) ||
+                Access.class.isAssignableFrom(property.getKlass()) ||
+                UserAccess.class.isAssignableFrom(property.getKlass()) ||
+                org.nmcpye.am.user.UserAccess.class.isAssignableFrom(property.getKlass()) ||
+                UserGroupAccess.class.isAssignableFrom(property.getKlass()) ||
+                org.nmcpye.am.user.UserGroupAccess.class.isAssignableFrom(property.getKlass()) ||
+                TeamAccess.class.isAssignableFrom(property.getKlass()) ||
+                org.nmcpye.am.user.TeamAccess.class.isAssignableFrom(property.getKlass()) ||
+                TeamGroupAccess.class.isAssignableFrom(property.getKlass()) ||
+                org.nmcpye.am.user.TeamGroupAccess.class.isAssignableFrom(property.getKlass())
         );
     }
 

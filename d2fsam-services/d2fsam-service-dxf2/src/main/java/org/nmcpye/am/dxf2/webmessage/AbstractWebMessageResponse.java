@@ -32,8 +32,6 @@ import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import org.nmcpye.am.webmessage.WebMessageResponse;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 public class AbstractWebMessageResponse implements WebMessageResponse {

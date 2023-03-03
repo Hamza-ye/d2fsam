@@ -787,28 +787,29 @@ public enum ConfigurationKey {
     /**
      * </p>
      */
-    LIQUIBASE_DROP_FIRST( "flyway.drop_first", Constants.OFF, false ),
+    LIQUIBASE_DROP_FIRST("flyway.drop_first", Constants.OFF, false),
 
     /**
      * </p>
      */
-    LIQUIBASE_ENABLED( "flyway.enabled", Constants.ON, false ),
+    LIQUIBASE_ENABLED("flyway.enabled", Constants.ON, false),
 
 
     /**
      * </p>
      */
-    LIQUIBASE_CLEAR_CHECK_SUMS( "liquibase.clear_check_sums", Constants.OFF, false ),
+    LIQUIBASE_CLEAR_CHECK_SUMS("liquibase.clear_check_sums", Constants.OFF, false),
 
     /**
      * </p>
      */
-    LIQUIBASE_ASYNC( "liquibase.async", Constants.OFF, false ),
+    LIQUIBASE_ASYNC("liquibase.async", Constants.OFF, false),
 
 
     /**
+     *
      */
-    LIQUIBASE_TEST_ROLLBACK_ON_UPDATE( "liquibase.test_rollback_on_update", Constants.OFF, false );
+    LIQUIBASE_TEST_ROLLBACK_ON_UPDATE("liquibase.test_rollback_on_update", Constants.OFF, false);
     /////////////
 
     private final String key;

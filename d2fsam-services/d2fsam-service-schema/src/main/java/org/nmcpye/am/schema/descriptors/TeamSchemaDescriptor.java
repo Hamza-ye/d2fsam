@@ -33,7 +33,6 @@ import org.nmcpye.am.schema.SchemaDescriptor;
 import org.nmcpye.am.security.Authority;
 import org.nmcpye.am.security.AuthorityType;
 import org.nmcpye.am.team.Team;
-import org.nmcpye.am.user.UserGroup;
 
 /**
  * @author Morten Olav Hansen <mortenoh@gmail.com>

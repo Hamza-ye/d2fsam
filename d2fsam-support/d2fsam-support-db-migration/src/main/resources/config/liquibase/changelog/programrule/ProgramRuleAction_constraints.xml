@@ -25,7 +25,7 @@
                                  constraintName="fk_program_rule_action__program_rule_id"
                                  referencedColumnNames="programruleid"
                                  referencedTableName="program_rule"/>
-<!--        referencedTableName="program_rule" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="program_rule" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="dataelementid"
                                  baseTableName="program_rule_action"

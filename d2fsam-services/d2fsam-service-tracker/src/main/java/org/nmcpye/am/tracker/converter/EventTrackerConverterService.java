@@ -56,6 +56,7 @@ import static org.apache.commons.collections4.CollectionUtils.isNotEmpty;
 
 /**
  * Extended add Activity to event
+ *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 @Service

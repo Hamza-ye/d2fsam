@@ -44,12 +44,10 @@ import java.util.Collection;
  */
 @Slf4j
 public class SimpleAccessVoter
-    implements AccessDecisionVoter<Object>
-{
+    implements AccessDecisionVoter<Object> {
     private String requiredAuthority;
 
-    public void setRequiredAuthority( String requiredAuthority )
-    {
+    public void setRequiredAuthority(String requiredAuthority) {
         this.requiredAuthority = requiredAuthority;
     }
 
@@ -57,38 +55,32 @@ public class SimpleAccessVoter
     // Interface implementation
     // -------------------------------------------------------------------------
 
-    public SimpleAccessVoter( String requiredAuthority )
-    {
+    public SimpleAccessVoter(String requiredAuthority) {
         this.requiredAuthority = requiredAuthority;
     }
 
     @Override
-    public boolean supports( ConfigAttribute configAttribute )
-    {
+    public boolean supports(ConfigAttribute configAttribute) {
         return configAttribute != null && configAttribute.getAttribute() != null
-            && configAttribute.getAttribute().equals( requiredAuthority );
+            && configAttribute.getAttribute().equals(requiredAuthority);
     }
 
     @Override
-    public boolean supports( Class<?> clazz )
-    {
+    public boolean supports(Class<?> clazz) {
         return true;
     }
 
     @Override
-    public int vote( Authentication authentication, Object object, Collection<ConfigAttribute> attributes )
-    {
-        for ( GrantedAuthority authority : authentication.getAuthorities() )
-        {
-            if ( authority.getAuthority().equals( requiredAuthority ) )
-            {
-                log.debug( "ACCESS GRANTED [" + object.toString() + "]" );
+    public int vote(Authentication authentication, Object object, Collection<ConfigAttribute> attributes) {
+        for (GrantedAuthority authority : authentication.getAuthorities()) {
+            if (authority.getAuthority().equals(requiredAuthority)) {
+                log.debug("ACCESS GRANTED [" + object.toString() + "]");
 
                 return ACCESS_GRANTED;
             }
         }
 
-        log.debug( "ACCESS DENIED [" + object.toString() + "]" );
+        log.debug("ACCESS DENIED [" + object.toString() + "]");
 
         return ACCESS_DENIED;
     }

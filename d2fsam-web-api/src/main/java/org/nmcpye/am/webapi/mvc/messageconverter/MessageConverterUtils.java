@@ -42,7 +42,8 @@ import java.util.List;
  */
 public final class MessageConverterUtils {
 
-    private MessageConverterUtils() {}
+    private MessageConverterUtils() {
+    }
 
     public static final ImmutableList<MediaType> XML_SUPPORTED_MEDIA_TYPES = ImmutableList
         .<MediaType>builder()

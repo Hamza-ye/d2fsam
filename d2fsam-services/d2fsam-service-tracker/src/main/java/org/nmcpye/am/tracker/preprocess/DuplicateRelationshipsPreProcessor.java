@@ -131,8 +131,8 @@ public class DuplicateRelationshipsPreProcessor implements BundlePreProcessor {
     private String hash(Relationship rel, TrackerBundle bundle) {
         RelationshipType relationshipType = bundle.getPreheat().getRelationshipType(rel.getRelationshipType());
         return rel.getRelationshipType() + "-"
-            + (relationshipType.getBidirectional() ? sortItems(rel) : rel.getFrom() + "-" + rel.getTo())
-            + relationshipType.getBidirectional();
+            + (relationshipType.isBidirectional() ? sortItems(rel) : rel.getFrom() + "-" + rel.getTo())
+            + relationshipType.isBidirectional();
     }
 
     private String sortItems(Relationship rel) {

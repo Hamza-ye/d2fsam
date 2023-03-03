@@ -37,8 +37,6 @@ import java.util.function.Supplier;
 import static java.util.concurrent.CompletableFuture.supplyAsync;
 
 /**
- *
- *
  * @author Luciano Fiandesio
  */
 public abstract class AbstractAggregate {

@@ -42,7 +42,8 @@ public class TranslateParams {
 
     private String locale;
 
-    public TranslateParams() {}
+    public TranslateParams() {
+    }
 
     public TranslateParams(boolean translate) {
         this.translate = translate;
@@ -69,7 +70,8 @@ public class TranslateParams {
     public Locale getLocale() {
         try {
             return Locale.forLanguageTag(locale);
-        } catch (Exception ignored) {}
+        } catch (Exception ignored) {
+        }
 
         return null;
     }

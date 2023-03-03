@@ -61,13 +61,13 @@
                                  constraintName="fk_program_user_aut_group__program_id"
                                  referencedColumnNames="programid"
                                  referencedTableName="program"/>
-<!--        referencedTableName="program" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+        <!--        referencedTableName="program" onDelete="CASCADE" onUpdate="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="userroleid"
                                  baseTableName="program__user_authority_group"
                                  constraintName="fk_program_user_aut_group__auth_group_id"
                                  referencedColumnNames="userroleid"
                                  referencedTableName="user_authority_group"/>
-<!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
+        <!--        referencedTableName="user_authority_group" onDelete="CASCADE" onUpdate="CASCADE"/>-->
     </changeSet>
 </databaseChangeLog>

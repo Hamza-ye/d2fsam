@@ -65,14 +65,14 @@ public class DefaultAclStore implements AclStore {
 
     private static final String TEAM_GROUP_ACCESS_CONDITION =
         JsonbFunctions.HAS_TEAM_GROUP_IDS +
-        "( sharing, :" +
-        TEAM_GROUP_SQL_PARAM_NAME +
-        ") = true " +
-        "and " +
-        JsonbFunctions.CHECK_TEAM_GROUPS_ACCESS +
-        "(sharing, '__r%', :" +
-        TEAM_GROUP_SQL_PARAM_NAME +
-        ") = true";
+            "( sharing, :" +
+            TEAM_GROUP_SQL_PARAM_NAME +
+            ") = true " +
+            "and " +
+            JsonbFunctions.CHECK_TEAM_GROUPS_ACCESS +
+            "(sharing, '__r%', :" +
+            TEAM_GROUP_SQL_PARAM_NAME +
+            ") = true";
     ///////////////////////////////////////////////
 
     private static final String USER_SQL_PARAM_NAME = "userId";
@@ -85,49 +85,49 @@ public class DefaultAclStore implements AclStore {
 
     private static final String USERGROUPACCESS_CONDITION =
         JsonbFunctions.HAS_USER_GROUP_IDS +
-        "( sharing, :" +
-        USER_GROUP_SQL_PARAM_NAME +
-        ") = true " +
-        "and " +
-        JsonbFunctions.CHECK_USER_GROUPS_ACCESS +
-        "(sharing, '__r%', :" +
-        USER_GROUP_SQL_PARAM_NAME +
-        ") = true";
+            "( sharing, :" +
+            USER_GROUP_SQL_PARAM_NAME +
+            ") = true " +
+            "and " +
+            JsonbFunctions.CHECK_USER_GROUPS_ACCESS +
+            "(sharing, '__r%', :" +
+            USER_GROUP_SQL_PARAM_NAME +
+            ") = true";
 
     private static final String GET_TEI_TYPE_ACL =
         "SELECT trackedentitytypeid FROM tracked_entity_type " +
-        " WHERE " +
-        PUBLIC_ACCESS_CONDITION +
-        " OR " +
-        USERACCESS_CONDITION /*+
+            " WHERE " +
+            PUBLIC_ACCESS_CONDITION +
+            " OR " +
+            USERACCESS_CONDITION /*+
         " OR " +
         TEAM_ACCESS_CONDITION*/;
 
     static final String GET_PROGRAM_ACL =
         "SELECT p.programid FROM program p " +
-        " WHERE " +
-        PUBLIC_ACCESS_CONDITION +
-        " OR " +
-        USERACCESS_CONDITION /*+
+            " WHERE " +
+            PUBLIC_ACCESS_CONDITION +
+            " OR " +
+            USERACCESS_CONDITION /*+
         " OR " +
         TEAM_ACCESS_CONDITION*/;
 
     static final String GET_PROGRAMSTAGE_ACL =
         "SELECT ps.programstageid FROM program_stage ps " +
-        " WHERE " +
-        PUBLIC_ACCESS_CONDITION +
-        " OR " +
-        USERACCESS_CONDITION /*+
+            " WHERE " +
+            PUBLIC_ACCESS_CONDITION +
+            " OR " +
+            USERACCESS_CONDITION /*+
         " OR " +
         TEAM_ACCESS_CONDITION*/;
 
     private static final String GET_RELATIONSHIPTYPE_ACL =
         "SELECT rs.relationshiptypeid " +
-        "FROM relationship_type rs" +
-        " WHERE " +
-        PUBLIC_ACCESS_CONDITION +
-        " OR " +
-        USERACCESS_CONDITION /*+
+            "FROM relationship_type rs" +
+            " WHERE " +
+            PUBLIC_ACCESS_CONDITION +
+            " OR " +
+            USERACCESS_CONDITION /*+
         " OR " +
         TEAM_ACCESS_CONDITION*/;
 

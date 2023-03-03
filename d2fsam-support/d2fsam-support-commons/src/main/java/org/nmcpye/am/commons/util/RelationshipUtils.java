@@ -37,8 +37,7 @@ import org.nmcpye.am.relationship.RelationshipKey;
 
 import java.util.Objects;
 
-public class RelationshipUtils
-{
+public class RelationshipUtils {
 
     /**
      * Generates a key of a relationship. The key consists of three parts: The
@@ -47,9 +46,8 @@ public class RelationshipUtils
      * @param relationship the relationship to generate a key for
      * @return a key
      */
-    public static String generateRelationshipKey( Relationship relationship )
-    {
-        return getRelationshipKey( relationship ).asString();
+    public static String generateRelationshipKey(Relationship relationship) {
+        return getRelationshipKey(relationship).asString();
     }
 
     /**
@@ -60,9 +58,8 @@ public class RelationshipUtils
      * @param relationship the relationship to generate an inverted key for
      * @return an inverted key
      */
-    public static String generateRelationshipInvertedKey( Relationship relationship )
-    {
-        return getRelationshipKey( relationship ).inverseKey().asString();
+    public static String generateRelationshipInvertedKey(Relationship relationship) {
+        return getRelationshipKey(relationship).inverseKey().asString();
     }
 
     /**
@@ -73,39 +70,34 @@ public class RelationshipUtils
      * @param relationshipItem to extract uid of
      * @return a uid
      */
-    public static String extractRelationshipItemUid( RelationshipItem relationshipItem )
-    {
-        IdentifiableObject identifiableObject = ObjectUtils.firstNonNull( relationshipItem.getTrackedEntityInstance(),
+    public static String extractRelationshipItemUid(RelationshipItem relationshipItem) {
+        IdentifiableObject identifiableObject = ObjectUtils.firstNonNull(relationshipItem.getTrackedEntityInstance(),
             relationshipItem.getProgramInstance(),
-            relationshipItem.getProgramStageInstance() );
+            relationshipItem.getProgramStageInstance());
 
         return identifiableObject.getUid();
     }
 
-    private static RelationshipKey.RelationshipItemKey getRelationshipItemKey( RelationshipItem relationshipItem )
-    {
-        if ( Objects.nonNull( relationshipItem ) )
-        {
+    private static RelationshipKey.RelationshipItemKey getRelationshipItemKey(RelationshipItem relationshipItem) {
+        if (Objects.nonNull(relationshipItem)) {
             return RelationshipKey.RelationshipItemKey.builder()
-                .trackedEntity( getUidOrEmptyString( relationshipItem.getTrackedEntityInstance() ) )
-                .enrollment( getUidOrEmptyString( relationshipItem.getProgramInstance() ) )
-                .event( getUidOrEmptyString( relationshipItem.getProgramStageInstance() ) )
+                .trackedEntity(getUidOrEmptyString(relationshipItem.getTrackedEntityInstance()))
+                .enrollment(getUidOrEmptyString(relationshipItem.getProgramInstance()))
+                .event(getUidOrEmptyString(relationshipItem.getProgramStageInstance()))
                 .build();
         }
-        throw new IllegalStateException( "Unable to determine uid for relationship item" );
+        throw new IllegalStateException("Unable to determine uid for relationship item");
     }
 
-    private static String getUidOrEmptyString( BaseIdentifiableObject baseIdentifiableObject )
-    {
-        return Objects.isNull( baseIdentifiableObject ) ? ""
-            : StringUtils.trimToEmpty( baseIdentifiableObject.getUid() );
+    private static String getUidOrEmptyString(BaseIdentifiableObject baseIdentifiableObject) {
+        return Objects.isNull(baseIdentifiableObject) ? ""
+            : StringUtils.trimToEmpty(baseIdentifiableObject.getUid());
     }
 
-    private static RelationshipKey getRelationshipKey( Relationship relationship )
-    {
+    private static RelationshipKey getRelationshipKey(Relationship relationship) {
         return RelationshipKey.of(
             relationship.getRelationshipType().getUid(),
-            getRelationshipItemKey( relationship.getFrom() ),
-            getRelationshipItemKey( relationship.getTo() ) );
+            getRelationshipItemKey(relationship.getFrom()),
+            getRelationshipItemKey(relationship.getTo()));
     }
 }

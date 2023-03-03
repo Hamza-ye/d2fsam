@@ -64,7 +64,7 @@ public class ProgramRuleActionValidationContextLoader {
 
     @Transactional(readOnly = true)
     public ProgramRuleActionValidationContext load(Preheat preheat, PreheatIdentifier preheatIdentifier,
-                                                  ProgramRuleAction ruleAction) {
+                                                   ProgramRuleAction ruleAction) {
         ProgramRule rule = preheat.get(preheatIdentifier, ProgramRule.class,
             ruleAction.getProgramRule());
 

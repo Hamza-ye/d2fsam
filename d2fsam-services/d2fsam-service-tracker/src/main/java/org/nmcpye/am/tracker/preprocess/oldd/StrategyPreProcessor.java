@@ -36,7 +36,6 @@ import org.nmcpye.am.tracker.domain.Enrollment;
 import org.nmcpye.am.tracker.domain.Event;
 import org.nmcpye.am.tracker.domain.Relationship;
 import org.nmcpye.am.tracker.domain.TrackedEntity;
-import org.springframework.stereotype.Component;
 
 /**
  * This preprocessor is responsible for setting the correct strategy for every

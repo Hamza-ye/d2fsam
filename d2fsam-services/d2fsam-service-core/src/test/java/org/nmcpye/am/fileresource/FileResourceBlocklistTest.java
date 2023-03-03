@@ -36,46 +36,43 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 /**
  * @author Lars Helge Overland
  */
-class FileResourceBlocklistTest
-{
+class FileResourceBlocklistTest {
 
     @Test
-    void testValid()
-    {
-        FileResource frA = new FileResource( "My_Checklist.pdf", "application/pdf", 324L, "",
-            FileResourceDomain.DATA_VALUE );
-        FileResource frB = new FileResource( "Evaluation.docx",
+    void testValid() {
+        FileResource frA = new FileResource("My_Checklist.pdf", "application/pdf", 324L, "",
+            FileResourceDomain.DATA_VALUE);
+        FileResource frB = new FileResource("Evaluation.docx",
             "application/vnd.openxmlformats-officedocument.wordprocessingml.document", 541L, "",
-            FileResourceDomain.MESSAGE_ATTACHMENT );
-        FileResource frC = new FileResource( "FinancialReport.xlsx",
+            FileResourceDomain.MESSAGE_ATTACHMENT);
+        FileResource frC = new FileResource("FinancialReport.xlsx",
             "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", 143L, "",
-            FileResourceDomain.DATA_VALUE );
-        assertTrue( FileResourceBlocklist.isValid( frA ) );
-        assertTrue( FileResourceBlocklist.isValid( frB ) );
-        assertTrue( FileResourceBlocklist.isValid( frC ) );
+            FileResourceDomain.DATA_VALUE);
+        assertTrue(FileResourceBlocklist.isValid(frA));
+        assertTrue(FileResourceBlocklist.isValid(frB));
+        assertTrue(FileResourceBlocklist.isValid(frC));
     }
 
     @Test
-    void testInvalid()
-    {
-        FileResource frA = new FileResource( "Click_Me.exe", "application/x-ms-dos-executable", 451L, "",
-            FileResourceDomain.DATA_VALUE );
-        FileResource frB = new FileResource( "evil_script.sh", "application/pdf", 125L, "", // Fake
-                                                                                           // content
-                                                                                           // type
-            FileResourceDomain.MESSAGE_ATTACHMENT );
-        FileResource frC = new FileResource( "cookie_stealer", "text/javascript", 631L, "", // No
-                                                                                           // file
-                                                                                           // extension
-            FileResourceDomain.USER_AVATAR );
+    void testInvalid() {
+        FileResource frA = new FileResource("Click_Me.exe", "application/x-ms-dos-executable", 451L, "",
+            FileResourceDomain.DATA_VALUE);
+        FileResource frB = new FileResource("evil_script.sh", "application/pdf", 125L, "", // Fake
+            // content
+            // type
+            FileResourceDomain.MESSAGE_ATTACHMENT);
+        FileResource frC = new FileResource("cookie_stealer", "text/javascript", 631L, "", // No
+            // file
+            // extension
+            FileResourceDomain.USER_AVATAR);
         // No
-        FileResource frD = new FileResource( "malicious_software.msi", null, 235L, "", FileResourceDomain.USER_AVATAR );
+        FileResource frD = new FileResource("malicious_software.msi", null, 235L, "", FileResourceDomain.USER_AVATAR);
         // content
         // type
-        assertFalse( FileResourceBlocklist.isValid( frA ) );
-        assertFalse( FileResourceBlocklist.isValid( frB ) );
-        assertFalse( FileResourceBlocklist.isValid( frC ) );
-        assertFalse( FileResourceBlocklist.isValid( frD ) );
-        assertFalse( FileResourceBlocklist.isValid( null ) );
+        assertFalse(FileResourceBlocklist.isValid(frA));
+        assertFalse(FileResourceBlocklist.isValid(frB));
+        assertFalse(FileResourceBlocklist.isValid(frC));
+        assertFalse(FileResourceBlocklist.isValid(frD));
+        assertFalse(FileResourceBlocklist.isValid(null));
     }
 }

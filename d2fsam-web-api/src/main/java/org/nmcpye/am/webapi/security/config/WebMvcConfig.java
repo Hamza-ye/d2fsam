@@ -45,7 +45,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.format.FormatterRegistry;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.ByteArrayHttpMessageConverter;
@@ -137,7 +136,6 @@ public class WebMvcConfig extends DelegatingWebMvcConfiguration {
         //        resolvers.add( dhisApiVersionHandlerMethodArgumentResolver() );
         resolvers.add(currentUserHandlerMethodArgumentResolver);
         resolvers.add(currentUserInfoHandlerMethodArgumentResolver);
-        resolvers.add(new PageableHandlerMethodArgumentResolver());
     }
 
 //    @Bean

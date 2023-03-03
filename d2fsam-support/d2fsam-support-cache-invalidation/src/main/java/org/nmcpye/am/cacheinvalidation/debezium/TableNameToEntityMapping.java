@@ -51,7 +51,7 @@ import java.util.*;
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
 @Slf4j
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Component
 public class TableNameToEntityMapping {
     @Autowired

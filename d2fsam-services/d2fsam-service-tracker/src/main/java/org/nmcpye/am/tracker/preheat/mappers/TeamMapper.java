@@ -37,7 +37,7 @@ import org.nmcpye.am.team.TeamGroup;
 
 import java.util.Set;
 
-@Mapper(uses = { DebugMapper.class, TeamGroupMapper.class })
+@Mapper(uses = {DebugMapper.class, TeamGroupMapper.class})
 public interface TeamMapper extends PreheatMapper<Team> {
     TeamMapper INSTANCE = Mappers.getMapper(TeamMapper.class);
 

@@ -14,17 +14,17 @@
                                  referencedColumnNames="organisationunitid"
                                  referencedTableName="organisation_unit"/>
 
-<!--        <addForeignKeyConstraint baseColumnNames="hf_home_sub_village_id"-->
-<!--                                 baseTableName="organisation_unit"-->
-<!--                                 constraintName="fk_organisation_unit__hf_home_sub_village_id"-->
-<!--                                 referencedColumnNames="id"-->
-<!--                                 referencedTableName="organisation_unit"/>-->
+        <!--        <addForeignKeyConstraint baseColumnNames="hf_home_sub_village_id"-->
+        <!--                                 baseTableName="organisation_unit"-->
+        <!--                                 constraintName="fk_organisation_unit__hf_home_sub_village_id"-->
+        <!--                                 referencedColumnNames="id"-->
+        <!--                                 referencedTableName="organisation_unit"/>-->
 
-<!--        <addForeignKeyConstraint baseColumnNames="servicing_hf_id"-->
-<!--                                 baseTableName="organisation_unit"-->
-<!--                                 constraintName="fk_organisation_unit__servicing_hf_id"-->
-<!--                                 referencedColumnNames="id"-->
-<!--                                 referencedTableName="organisation_unit"/>-->
+        <!--        <addForeignKeyConstraint baseColumnNames="servicing_hf_id"-->
+        <!--                                 baseTableName="organisation_unit"-->
+        <!--                                 constraintName="fk_organisation_unit__servicing_hf_id"-->
+        <!--                                 referencedColumnNames="id"-->
+        <!--                                 referencedTableName="organisation_unit"/>-->
 
         <addForeignKeyConstraint baseColumnNames="image"
                                  baseTableName="organisation_unit"

@@ -30,8 +30,6 @@ package org.nmcpye.am.commons.util;
 import org.apache.commons.text.StringEscapeUtils;
 
 /**
- *
- *
  * Utility class for encoding.
  *
  * @author Lars Helge Overland
@@ -80,7 +78,7 @@ public class Encoder {
 
     /**
      * Escaped the given JSON content using Java String rules.
-     *
+     * <p>
      * Assumes " is used as quote char and not used inside values and does not
      * escape '.
      *
@@ -94,11 +92,11 @@ public class Encoder {
     /**
      * JavaScript-escaped the given String.
      *
-     * @param object the object.
+     * @param object    the object.
      * @param quoteChar the quote char.
      * @return the escaped representation.
-     *
-     *         See {@link #jsEncode(String)}.
+     * <p>
+     * See {@link #jsEncode(String)}.
      * @deprecated quoteChar is ignored.
      */
     @Deprecated

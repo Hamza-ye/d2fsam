@@ -35,8 +35,6 @@ import java.util.function.BooleanSupplier;
 import java.util.function.Supplier;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 public class DescriptiveWebMessage extends WebMessage {

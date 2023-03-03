@@ -555,22 +555,22 @@
       "teiSearchOrganisationUnits": [],
       "translations": [],
       "userAccesses": [],
-        "catDimensionConstraints": [],
-        "cogsDimensionConstraints": [],
-        "disabled": false,
-        "externalAuth": false,
-        "invitation": false,
-        "lastLogin": "2020-04-23T09:17:46.912",
-        "passwordLastUpdated": "2019-10-16T12:06:30.668",
-        "selfRegistered": false,
-        "twoFA": false,
-        "userGroupAccesses": [],
-        "userRoles": [
-          {
-            "id": "rKLtmQLRMU8"
-          }
-        ],
-        "username": "who"
+      "catDimensionConstraints": [],
+      "cogsDimensionConstraints": [],
+      "disabled": false,
+      "externalAuth": false,
+      "invitation": false,
+      "lastLogin": "2020-04-23T09:17:46.912",
+      "passwordLastUpdated": "2019-10-16T12:06:30.668",
+      "selfRegistered": false,
+      "twoFA": false,
+      "userGroupAccesses": [],
+      "userRoles": [
+        {
+          "id": "rKLtmQLRMU8"
+        }
+      ],
+      "username": "who"
     }
   ],
   "userRoles": [
@@ -613,10 +613,11 @@
       "id": "yrB6vc5Ip3r",
       "lastUpdated": "2016-02-17T06:14:12.260+0000",
       "name": "SuperuserX",
-      "userGroupAccesses": [ ],
-      "dataSets": [ ],
-      "programs": [ ],
+      "userGroupAccesses": [],
+      "dataSets": [],
+      "programs": [],
       "created": "2016-02-17T06:14:12.260+0000",
       "publicAccess": "--------"
-    }]
+    }
+  ]
 }

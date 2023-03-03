@@ -28,12 +28,12 @@
 package org.nmcpye.am.dxf2.events.importer.shared.validation;
 
 import org.nmcpye.am.common.IdScheme;
-import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.dxf2.events.importer.Checker;
 import org.nmcpye.am.dxf2.events.importer.context.WorkContext;
 import org.nmcpye.am.dxf2.events.importer.shared.ImmutableEvent;
 import org.nmcpye.am.dxf2.importsummary.ImportStatus;
 import org.nmcpye.am.dxf2.importsummary.ImportSummary;
+import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.program.ProgramStage;
 import org.springframework.stereotype.Component;
 

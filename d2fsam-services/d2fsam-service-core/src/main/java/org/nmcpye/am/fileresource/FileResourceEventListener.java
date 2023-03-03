@@ -125,7 +125,7 @@ public class FileResourceEventListener {
 
         if (
             FileResource.IMAGE_CONTENT_TYPES.contains(deleteFileEvent.getContentType()) &&
-            FileResourceDomain.getDomainForMultipleImages().contains(deleteFileEvent.getDomain())
+                FileResourceDomain.getDomainForMultipleImages().contains(deleteFileEvent.getDomain())
         ) {
             String storageKey = deleteFileEvent.getStorageKey();
 

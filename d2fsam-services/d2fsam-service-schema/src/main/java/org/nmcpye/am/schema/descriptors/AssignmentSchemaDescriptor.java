@@ -29,7 +29,6 @@ package org.nmcpye.am.schema.descriptors;
 
 import com.google.common.collect.Lists;
 import org.nmcpye.am.assignment.Assignment;
-import org.nmcpye.am.program.Program;
 import org.nmcpye.am.schema.Schema;
 import org.nmcpye.am.schema.SchemaDescriptor;
 import org.nmcpye.am.security.Authority;

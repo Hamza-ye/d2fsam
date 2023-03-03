@@ -47,7 +47,7 @@ public class BidirectionalRelationshipsPreProcessor
             .forEach(rel -> {
                 RelationshipType relType = bundle.getPreheat().getRelationshipType(rel.getRelationshipType());
                 if (relType != null) {
-                    rel.setBidirectional(relType.getBidirectional());
+                    rel.setBidirectional(relType.isBidirectional());
                 }
             });
     }

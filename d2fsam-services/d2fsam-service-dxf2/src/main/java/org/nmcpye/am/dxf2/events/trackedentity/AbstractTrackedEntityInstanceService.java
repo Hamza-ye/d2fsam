@@ -33,12 +33,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.locationtech.jts.geom.Geometry;
 import org.nmcpye.am.audit.payloads.TrackedEntityInstanceAudit;
-import org.nmcpye.am.common.CodeGenerator;
-import org.nmcpye.am.common.IdSchemes;
-import org.nmcpye.am.common.IdentifiableObjectManager;
-import org.nmcpye.am.common.IllegalQueryException;
-import org.nmcpye.am.common.AuditType;
-import org.nmcpye.am.organisationunit.FeatureType;
+import org.nmcpye.am.common.*;
 import org.nmcpye.am.commons.collection.CachingMap;
 import org.nmcpye.am.commons.util.DebugUtils;
 import org.nmcpye.am.dbms.DbmsManager;
@@ -57,6 +52,7 @@ import org.nmcpye.am.dxf2.metadata.feedback.ImportReportMode;
 import org.nmcpye.am.fileresource.FileResource;
 import org.nmcpye.am.fileresource.FileResourceServiceExt;
 import org.nmcpye.am.importexport.ImportStrategy;
+import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.organisationunit.OrganisationUnit;
 import org.nmcpye.am.program.Program;
 import org.nmcpye.am.program.ProgramInstance;
@@ -84,6 +80,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.io.IOException;
 import java.time.Instant;
 import java.time.LocalDateTime;
+import java.util.Objects;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -967,7 +964,7 @@ public abstract class AbstractTrackedEntityInstanceService
         if (relationship.getFrom() != null && relationship.getFrom().getTrackedEntityInstance() != null
             && relationship.getFrom().getTrackedEntityInstance().getUid().equals(tei.getUid())) {
             return true;
-        } else if (!relationship.getRelationshipType().getBidirectional()) {
+        } else if (!relationship.getRelationshipType().isBidirectional()) {
             return false;
         } else {
             return relationship.getTo() != null && relationship.getTo().getTrackedEntityInstance() != null

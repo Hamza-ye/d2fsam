@@ -27,41 +27,36 @@
  */
 package org.nmcpye.am.tracker.preheat.mappers;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-
+import org.junit.jupiter.api.Test;
 import org.nmcpye.am.program.Program;
 import org.nmcpye.am.program.ProgramInstance;
-import org.junit.jupiter.api.Test;
 
 import java.util.Set;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.nmcpye.am.tracker.preheat.mappers.AttributeCreator.*;
 import static org.nmcpye.am.utils.Assertions.assertContainsOnly;
 
-class ProgramInstanceMapperTest
-{
+class ProgramInstanceMapperTest {
 
     @Test
-    void testIdSchemeRelatedFieldsAreMapped()
-    {
+    void testIdSchemeRelatedFieldsAreMapped() {
 
         Program program = setIdSchemeFields(
             new Program(),
             "WTTYiPQDqh1",
             "friendship",
             "red",
-            attributeValues( "m0GpPuMUfFW", "yellow" ) );
+            attributeValues("m0GpPuMUfFW", "yellow"));
         ProgramInstance programInstance = new ProgramInstance();
-        programInstance.setProgram( program );
+        programInstance.setProgram(program);
 
-        ProgramInstance mapped = ProgramInstanceMapper.INSTANCE.map( programInstance );
+        ProgramInstance mapped = ProgramInstanceMapper.INSTANCE.map(programInstance);
 
-        assertEquals( "WTTYiPQDqh1", mapped.getProgram().getUid() );
-        assertEquals( "friendship", mapped.getProgram().getName() );
-        assertEquals( "red", mapped.getProgram().getCode() );
-        assertContainsOnly( Set.of( attributeValue( "m0GpPuMUfFW", "yellow" ) ),
-            mapped.getProgram().getAttributeValues() );
+        assertEquals("WTTYiPQDqh1", mapped.getProgram().getUid());
+        assertEquals("friendship", mapped.getProgram().getName());
+        assertEquals("red", mapped.getProgram().getCode());
+        assertContainsOnly(Set.of(attributeValue("m0GpPuMUfFW", "yellow")),
+            mapped.getProgram().getAttributeValues());
     }
 }

@@ -40,8 +40,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- *
  * JDBC Utility methods
  */
 public class JdbcUtils {
@@ -50,10 +48,9 @@ public class JdbcUtils {
      * Executes a JDBC batch update using the provided {@see JdbcTemplate}
      *
      * @param jdbcTemplate a JdbcTemplate
-     * @param sql the SQL string to be executed
-     * @param pss a {@see BatchPreparedStatementSetterWithKeyHolder} containing
-     *        the binding information
-     *
+     * @param sql          the SQL string to be executed
+     * @param pss          a {@see BatchPreparedStatementSetterWithKeyHolder} containing
+     *                     the binding information
      * @return a int, where each element corresponds to an executed statement
      */
     public static <T> int[] batchUpdateWithKeyHolder(

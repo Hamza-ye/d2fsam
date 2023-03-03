@@ -40,7 +40,7 @@ import org.springframework.context.annotation.Profile;
  *
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-@Profile({"!testdev", "!testprod"})
+@Profile({"!testdev", "!testprod", "!test", "!test-h2"})
 @Conditional(value = DebeziumCacheInvalidationEnabledCondition.class)
 public class StartupDebeziumServiceRoutine extends AbstractStartupRoutine {
     @Autowired

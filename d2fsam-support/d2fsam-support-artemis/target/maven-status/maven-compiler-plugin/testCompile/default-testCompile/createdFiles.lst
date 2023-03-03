@@ -1,0 +1,7 @@
+org\nmcpye\am\artemis\audit\configuration\AuditMatrixConfigurerTest.class
+org\nmcpye\am\artemis\audit\listener\NestedTestImplementation.class
+org\nmcpye\am\artemis\audit\listener\AuditHibernateListenerTest.class
+org\nmcpye\am\artemis\audit\listener\TestImplementation.class
+org\nmcpye\am\artemis\audit\listener\TestInterface.class
+org\nmcpye\am\artemis\audit\AuditManagerTest.class
+org\nmcpye\am\artemis\audit\listener\AnnotationUtilsTest.class

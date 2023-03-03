@@ -19,7 +19,7 @@
                                  constraintName="fk_tracked_entity_type_attribute__tracked_entity_type_id"
                                  referencedColumnNames="trackedentitytypeid"
                                  referencedTableName="tracked_entity_type"/>
-<!--        referencedTableName="tracked_entity_type" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="tracked_entity_type" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="lastupdatedby"
                                  baseTableName="tracked_entity_type_attribute"
@@ -27,8 +27,8 @@
                                  referencedColumnNames="userid"
                                  referencedTableName="app_user"/>
 
-<!--        <addUniqueConstraint columnNames="trackedentitytypeid, trackedentityattributeid"-->
-<!--                             constraintName="UX_tracked_entity_type_attribute_unique_key"-->
-<!--                             tableName="tracked_entity_type_attribute"/>-->
+        <!--        <addUniqueConstraint columnNames="trackedentitytypeid, trackedentityattributeid"-->
+        <!--                             constraintName="UX_tracked_entity_type_attribute_unique_key"-->
+        <!--                             tableName="tracked_entity_type_attribute"/>-->
     </changeSet>
 </databaseChangeLog>

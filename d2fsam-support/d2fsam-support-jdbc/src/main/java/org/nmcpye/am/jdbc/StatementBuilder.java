@@ -31,8 +31,6 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- *
- *
  * @author Lars Helge Overland
  * @version $Id: StatementBuilder.java 5715 2008-09-17 14:05:28Z larshelg $
  */

@@ -621,7 +621,7 @@ public class DefaultSecurityService
                     userToModify));
         }
         if (!(userService.canAddOrUpdateUserInGroups(getUids(userToModify.getGroups()), currentUser)
-            || userService.canAddOrUpdateUserInTeams(getUids(userToModify.getTeams()), currentUser))
+            && userService.canAddOrUpdateUserInTeams(getUids(userToModify.getTeams()), currentUser))
             || !currentUser.canModifyUser(userToModify)) {
             throw new UpdateAccessDeniedException("You don't have the proper permissions to update this user.");
         }

@@ -70,8 +70,6 @@ import java.util.stream.Collectors;
 import static org.nmcpye.am.system.util.PDFUtils.*;
 
 /**
- *
- *
  * @author Lars Helge Overland
  */
 @Slf4j

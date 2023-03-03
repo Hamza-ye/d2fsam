@@ -29,7 +29,6 @@ package org.nmcpye.am.config;
 
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 //@Configuration
 public class ConfigProviderConfiguration {

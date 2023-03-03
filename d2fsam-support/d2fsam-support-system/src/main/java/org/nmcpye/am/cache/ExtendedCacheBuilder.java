@@ -28,8 +28,8 @@
 package org.nmcpye.am.cache;
 
 import lombok.extern.slf4j.Slf4j;
-import org.nmcpye.am.external.conf.ConfigurationKey;
 import org.nmcpye.am.external.conf.AmConfigurationProvider;
+import org.nmcpye.am.external.conf.ConfigurationKey;
 import org.springframework.data.redis.core.RedisTemplate;
 
 import java.util.function.Function;
@@ -40,13 +40,11 @@ import static java.lang.Integer.parseInt;
  * A Builder class that helps in building Cache instances. Sensible defaults are
  * in place which can be modified with a fluent builder api.
  *
- * @author Ameen Mohamed
- *
  * @param <V> The Value type to be stored in cache
+ * @author Ameen Mohamed
  */
 @Slf4j
-public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V>
-{
+public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V> {
     private final AmConfigurationProvider configuration;
 
     private final RedisTemplate<String, ?> redisTemplate;
@@ -55,9 +53,8 @@ public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V>
 
     private final Function<CacheBuilder<V>, Cache<V>> cappedLocalCacheFactory;
 
-    public ExtendedCacheBuilder( RedisTemplate<String, ?> redisTemplate,
-        AmConfigurationProvider configuration, Function<CacheBuilder<V>, Cache<V>> cappedLocalCacheFactory )
-    {
+    public ExtendedCacheBuilder(RedisTemplate<String, ?> redisTemplate,
+                                AmConfigurationProvider configuration, Function<CacheBuilder<V>, Cache<V>> cappedLocalCacheFactory) {
         this.configuration = configuration;
         this.redisTemplate = redisTemplate;
         this.forceInMemory = false;
@@ -72,8 +69,7 @@ public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V>
      * @return The builder instance.
      */
     @Override
-    public CacheBuilder<V> forceInMemory()
-    {
+    public CacheBuilder<V> forceInMemory() {
         this.forceInMemory = true;
         return this;
     }
@@ -92,43 +88,36 @@ public class ExtendedCacheBuilder<V> extends SimpleCacheBuilder<V>
      * created using this method will use the same redis store.
      *
      * @return A cache instance based on the system configuration and input
-     *         parameters. Returns one of {@link RedisCache}, {@link LocalCache}
-     *         or {@link NoOpCache}
+     * parameters. Returns one of {@link RedisCache}, {@link LocalCache}
+     * or {@link NoOpCache}
      */
     @Override
-    public Cache<V> build()
-    {
-        if ( getMaximumSize() == 0 || isDisabled() )
-        {
-            log.debug( String.format( "NoOp Cache instance created for region:'%s'", getRegion() ) );
-            return new NoOpCache<>( this );
+    public Cache<V> build() {
+        if (getMaximumSize() == 0 || isDisabled()) {
+            log.debug(String.format("NoOp Cache instance created for region:'%s'", getRegion()));
+            return new NoOpCache<>(this);
         }
-        if ( forceInMemory )
-        {
-            int capPercentage = parseInt( configuration.getProperty( ConfigurationKey.SYSTEM_CACHE_CAP_PERCENTAGE ) );
-            if ( capPercentage > 0 )
-            {
-                return cappedLocalCacheFactory.apply( this );
+        if (forceInMemory) {
+            int capPercentage = parseInt(configuration.getProperty(ConfigurationKey.SYSTEM_CACHE_CAP_PERCENTAGE));
+            if (capPercentage > 0) {
+                return cappedLocalCacheFactory.apply(this);
             }
-            log.debug( String.format( "Local Cache (forced) instance created for region:'%s'", getRegion() ) );
-            return new LocalCache<>( this );
+            log.debug(String.format("Local Cache (forced) instance created for region:'%s'", getRegion()));
+            return new LocalCache<>(this);
         }
-        if ( configuration.isEnabled( ConfigurationKey.REDIS_ENABLED ) )
-        {
-            log.debug( String.format( "Redis Cache instance created for region:'%s'", getRegion() ) );
-            return new RedisCache<>( this );
+        if (configuration.isEnabled(ConfigurationKey.REDIS_ENABLED)) {
+            log.debug(String.format("Redis Cache instance created for region:'%s'", getRegion()));
+            return new RedisCache<>(this);
         }
-        int capPercentage = parseInt( configuration.getProperty( ConfigurationKey.SYSTEM_CACHE_CAP_PERCENTAGE ) );
-        if ( capPercentage > 0 )
-        {
-            return cappedLocalCacheFactory.apply( this );
+        int capPercentage = parseInt(configuration.getProperty(ConfigurationKey.SYSTEM_CACHE_CAP_PERCENTAGE));
+        if (capPercentage > 0) {
+            return cappedLocalCacheFactory.apply(this);
         }
-        log.debug( String.format( "Local Cache instance created for region:'%s'", getRegion() ) );
-        return new LocalCache<>( this );
+        log.debug(String.format("Local Cache instance created for region:'%s'", getRegion()));
+        return new LocalCache<>(this);
     }
 
-    public RedisTemplate<String, ?> getRedisTemplate()
-    {
+    public RedisTemplate<String, ?> getRedisTemplate() {
         return redisTemplate;
     }
 }

@@ -40,7 +40,8 @@ public class CsvImportOptions {
     // Constructor
     // ---------------------------------------------------
 
-    public CsvImportOptions() {}
+    public CsvImportOptions() {
+    }
 
     public CsvImportOptions(CsvImportClass importClass, boolean firstRowIsHeader) {
         this.importClass = importClass;

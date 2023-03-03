@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <databaseChangeLog
     xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
-                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
 
     <!--
         Added the entity DataElementGroup.
@@ -15,31 +13,31 @@
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="uid" type="varchar(11)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_data_element_group__uid" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_data_element_group__uid"/>
             </column>
             <column name="code" type="varchar(255)">
-                <constraints nullable="true" unique="true" uniqueConstraintName="ux_data_element_group__code" />
+                <constraints nullable="true" unique="true" uniqueConstraintName="ux_data_element_group__code"/>
             </column>
             <column name="created" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="updated" type="${datetimeType}">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="name" type="varchar(255)">
-                <constraints nullable="false" unique="true" uniqueConstraintName="ux_data_element_group__name" />
+                <constraints nullable="false" unique="true" uniqueConstraintName="ux_data_element_group__name"/>
             </column>
             <column name="shortname" type="varchar(50)">
                 <constraints nullable="true" unique="true" uniqueConstraintName="ux_data_element_group__short_name"/>
             </column>
             <column name="description" type="varchar(255)">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="lastupdatedby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="createdby" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="true"/>
             </column>
             <column name="attributevalues" type="JSONB" defaultValue="{}"/>
             <column name="translations" type="JSONB"/>
@@ -74,21 +72,21 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-<!--    <changeSet id="20230114231139-1-data" author="jhipster" context="faker">-->
-<!--        <loadData-->
-<!--                  file="config/liquibase/fake-data/data_element_group.csv"-->
-<!--                  separator=";"-->
-<!--                  tableName="data_element_group"-->
-<!--                  usePreparedStatements="true">-->
-<!--            <column name="id" type="numeric"/>-->
-<!--            <column name="uid" type="string"/>-->
-<!--            <column name="code" type="string"/>-->
-<!--            <column name="created" type="date"/>-->
-<!--            <column name="updated" type="date"/>-->
-<!--            <column name="name" type="string"/>-->
-<!--            <column name="shortname" type="string"/>-->
-<!--            <column name="description" type="string"/>-->
-<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
-<!--        </loadData>-->
-<!--    </changeSet>-->
+    <!--    <changeSet id="20230114231139-1-data" author="jhipster" context="faker">-->
+    <!--        <loadData-->
+    <!--                  file="config/liquibase/fake-data/data_element_group.csv"-->
+    <!--                  separator=";"-->
+    <!--                  tableName="data_element_group"-->
+    <!--                  usePreparedStatements="true">-->
+    <!--            <column name="id" type="numeric"/>-->
+    <!--            <column name="uid" type="string"/>-->
+    <!--            <column name="code" type="string"/>-->
+    <!--            <column name="created" type="date"/>-->
+    <!--            <column name="updated" type="date"/>-->
+    <!--            <column name="name" type="string"/>-->
+    <!--            <column name="shortname" type="string"/>-->
+    <!--            <column name="description" type="string"/>-->
+    <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+    <!--        </loadData>-->
+    <!--    </changeSet>-->
 </databaseChangeLog>

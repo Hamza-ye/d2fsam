@@ -28,8 +28,6 @@
 package org.nmcpye.am.commons.util;
 
 /**
- *
- *
  * Class with utility methods for constructing SQL strings.
  *
  * @author Lars Helge Overland
@@ -50,7 +48,8 @@ public class SqlHelper {
 
     private boolean andInvoked = false;
 
-    public SqlHelper() {}
+    public SqlHelper() {
+    }
 
     public SqlHelper(boolean includeSpaces) {
         this.includeSpaces = includeSpaces;

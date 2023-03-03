@@ -30,7 +30,6 @@ package org.nmcpye.am.tracker.preprocess.oldd;
 import org.nmcpye.am.tracker.bundle.TrackerBundle;
 import org.nmcpye.am.tracker.domain.Event;
 import org.nmcpye.am.tracker.domain.User;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 import java.util.Optional;

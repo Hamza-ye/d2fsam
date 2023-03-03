@@ -63,55 +63,49 @@ public class EnrollmentAggregate extends AbstractAggregate {
      * Key: tei uid , value Enrollment
      *
      * @param ids a List of {@see TrackedEntityInstance} Primary Keys
-     *
      * @return a MultiMap where key is a {@see TrackedEntityInstance} uid and
-     *         the key a List of {@see Enrollment} objects
+     * the key a List of {@see Enrollment} objects
      */
-    Multimap<String, Enrollment> findByTrackedEntityInstanceIds( List<Long> ids, AggregateContext ctx )
-    {
-        Multimap<String, Enrollment> enrollments = enrollmentStore.getEnrollmentsByTrackedEntityInstanceIds( ids, ctx );
+    Multimap<String, Enrollment> findByTrackedEntityInstanceIds(List<Long> ids, AggregateContext ctx) {
+        Multimap<String, Enrollment> enrollments = enrollmentStore.getEnrollmentsByTrackedEntityInstanceIds(ids, ctx);
 
-        if ( enrollments.isEmpty() )
-        {
+        if (enrollments.isEmpty()) {
             return enrollments;
         }
 
-        List<Long> enrollmentIds = enrollments.values().stream().map( Enrollment::getId )
-            .collect( Collectors.toList() );
+        List<Long> enrollmentIds = enrollments.values().stream().map(Enrollment::getId)
+            .collect(Collectors.toList());
 
         final CompletableFuture<Multimap<String, Event>> eventAsync = conditionalAsyncFetch(
             ctx.getParams().isIncludeEvents(),
-            () -> eventAggregate.findByEnrollmentIds( enrollmentIds, ctx ), getPool() );
+            () -> eventAggregate.findByEnrollmentIds(enrollmentIds, ctx), getPool());
 
         final CompletableFuture<Multimap<String, Relationship>> relationshipAsync = conditionalAsyncFetch(
             ctx.getParams().isIncludeRelationships(),
-            () -> enrollmentStore.getRelationships( enrollmentIds, ctx ), getPool() );
+            () -> enrollmentStore.getRelationships(enrollmentIds, ctx), getPool());
 
         final CompletableFuture<Multimap<String, Note>> notesAsync = asyncFetch(
-            () -> enrollmentStore.getNotes( enrollmentIds ), getPool() );
+            () -> enrollmentStore.getNotes(enrollmentIds), getPool());
 
-        return allOf( eventAsync, notesAsync, relationshipAsync ).thenApplyAsync( fn -> {
+        return allOf(eventAsync, notesAsync, relationshipAsync).thenApplyAsync(fn -> {
 
             Multimap<String, Event> events = eventAsync.join();
             Multimap<String, Note> notes = notesAsync.join();
             Multimap<String, Relationship> relationships = relationshipAsync.join();
 
-            for ( Enrollment enrollment : enrollments.values() )
-            {
-                if ( ctx.getParams().isIncludeEvents() )
-                {
-                    enrollment.setEvents( new ArrayList<>( events.get( enrollment.getEnrollment() ) ) );
+            for (Enrollment enrollment : enrollments.values()) {
+                if (ctx.getParams().isIncludeEvents()) {
+                    enrollment.setEvents(new ArrayList<>(events.get(enrollment.getEnrollment())));
                 }
-                if ( ctx.getParams().isIncludeRelationships() )
-                {
-                    enrollment.setRelationships( new HashSet<>( relationships.get( enrollment.getEnrollment() ) ) );
+                if (ctx.getParams().isIncludeRelationships()) {
+                    enrollment.setRelationships(new HashSet<>(relationships.get(enrollment.getEnrollment())));
                 }
 
-                enrollment.setNotes( new ArrayList<>( notes.get( enrollment.getEnrollment() ) ) );
+                enrollment.setNotes(new ArrayList<>(notes.get(enrollment.getEnrollment())));
             }
 
             return enrollments;
 
-        }, getPool() ).join();
+        }, getPool()).join();
     }
 }

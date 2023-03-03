@@ -28,7 +28,6 @@
 package org.nmcpye.am.tracker.preheat.mappers;
 
 import org.junit.jupiter.api.Test;
-import org.nmcpye.am.dataelement.DataElement;
 import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
 
 import java.util.Set;

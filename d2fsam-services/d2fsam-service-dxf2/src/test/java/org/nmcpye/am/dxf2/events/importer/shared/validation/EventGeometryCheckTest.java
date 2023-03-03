@@ -35,10 +35,10 @@ import org.locationtech.jts.geom.Point;
 import org.mockito.junit.jupiter.MockitoSettings;
 import org.mockito.quality.Strictness;
 import org.nmcpye.am.AmConvenienceTest;
-import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.dxf2.events.importer.shared.ImmutableEvent;
 import org.nmcpye.am.dxf2.events.importer.validation.BaseValidationTest;
 import org.nmcpye.am.dxf2.importsummary.ImportSummary;
+import org.nmcpye.am.organisationunit.FeatureType;
 import org.nmcpye.am.program.Program;
 import org.nmcpye.am.program.ProgramStage;
 

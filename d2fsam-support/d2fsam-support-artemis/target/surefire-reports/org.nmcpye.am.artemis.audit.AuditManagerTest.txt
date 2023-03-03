@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: org.nmcpye.am.artemis.audit.AuditManagerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.198 s - in org.nmcpye.am.artemis.audit.AuditManagerTest

@@ -61,6 +61,7 @@ public class SchemaGenerators {
     }
 
     // NMCP
+
     /**
      * A "virtual" UID type that is "context-sensitive" and points to a UID of
      * the current {@link Api.Endpoint}'s

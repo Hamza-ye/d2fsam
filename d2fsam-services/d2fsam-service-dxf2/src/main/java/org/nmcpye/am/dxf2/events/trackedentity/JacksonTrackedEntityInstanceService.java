@@ -269,6 +269,6 @@ public class JacksonTrackedEntityInstanceService
         Optional.of(relationship)
             .map(Relationship::getRelationshipType)
             .map(relationshipTypeService::getRelationshipType)
-            .ifPresent(relationshipType -> relationship.setBidirectional(relationshipType.getBidirectional()));
+            .ifPresent(relationshipType -> relationship.setBidirectional(relationshipType.isBidirectional()));
     }
 }

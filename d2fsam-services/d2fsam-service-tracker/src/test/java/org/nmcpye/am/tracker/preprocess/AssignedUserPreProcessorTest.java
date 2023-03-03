@@ -46,15 +46,13 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class AssignedUserPreProcessorTest extends AmConvenienceTest {
     private static final String UID = "User uid";
 
-//    private static final String USERNAME = "Username";
+    //    private static final String USERNAME = "Username";
     private static final String USERNAME = "username";
 
     private AssignedUserPreProcessor preProcessorToTest = new AssignedUserPreProcessor();

@@ -154,25 +154,25 @@ public class Audit implements SerializableMessage {
     String toLog() {
         return (
             "Audit{" +
-            "auditType=" +
-            auditType +
-            ", auditScope=" +
-            auditScope +
-            ", createdAt=" +
-            createdAt +
-            ", createdBy='" +
-            createdBy +
-            '\'' +
-            ", klass='" +
-            klass +
-            '\'' +
-            ", uid='" +
-            uid +
-            '\'' +
-            ", code='" +
-            code +
-            '\'' +
-            '}'
+                "auditType=" +
+                auditType +
+                ", auditScope=" +
+                auditScope +
+                ", createdAt=" +
+                createdAt +
+                ", createdBy='" +
+                createdBy +
+                '\'' +
+                ", klass='" +
+                klass +
+                '\'' +
+                ", uid='" +
+                uid +
+                '\'' +
+                ", code='" +
+                code +
+                '\'' +
+                '}'
         );
     }
 }

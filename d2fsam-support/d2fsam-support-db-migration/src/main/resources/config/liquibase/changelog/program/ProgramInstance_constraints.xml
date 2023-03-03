@@ -61,7 +61,7 @@
                                  constraintName="fk_program_instance_comment__comment_id"
                                  referencedColumnNames="trackedentitycommentid"
                                  referencedTableName="comment"/>
-<!--        referencedTableName="comment" onDelete="CASCADE"/>-->
+        <!--        referencedTableName="comment" onDelete="CASCADE"/>-->
 
         <addForeignKeyConstraint baseColumnNames="programinstanceid"
                                  baseTableName="program_instance__message_conversations"

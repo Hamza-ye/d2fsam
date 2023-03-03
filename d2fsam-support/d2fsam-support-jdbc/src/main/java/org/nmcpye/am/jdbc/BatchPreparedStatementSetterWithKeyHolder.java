@@ -36,8 +36,6 @@ import java.util.List;
 import java.util.Map;
 
 /**
- *
- *
  * A {@see BatchPreparedStatementSetter} with support for a {@see KeyHolder}
  * This class allows to execute a JDBC batch update operation using a
  * {@see JdbcTemplate} and retrieve the generated primary keys

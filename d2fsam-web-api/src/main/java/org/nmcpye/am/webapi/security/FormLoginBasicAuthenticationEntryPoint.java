@@ -49,61 +49,52 @@ import static org.nmcpye.am.dxf2.webmessage.WebMessageUtils.unauthorized;
  * @author Viet Nguyen <viet@dhis2.org>
  * @author Morten Svanæs <msvanaes@dhis2.org>
  */
-public class FormLoginBasicAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint
-{
+public class FormLoginBasicAuthenticationEntryPoint extends LoginUrlAuthenticationEntryPoint {
     @Autowired
     private RenderService renderService;
 
     /**
      * @param loginFormUrl URL where the login page can be found. Should either
-     *        be relative to the web-app context path (include a leading
-     *        {@code /}) or an absolute URL.
+     *                     be relative to the web-app context path (include a leading
+     *                     {@code /}) or an absolute URL.
      */
-    public FormLoginBasicAuthenticationEntryPoint( String loginFormUrl )
-    {
-        super( loginFormUrl );
+    public FormLoginBasicAuthenticationEntryPoint(String loginFormUrl) {
+        super(loginFormUrl);
     }
 
     @Override
-    public void commence( HttpServletRequest request, HttpServletResponse response,
-        AuthenticationException authException )
+    public void commence(HttpServletRequest request, HttpServletResponse response,
+                         AuthenticationException authException)
         throws IOException,
-        ServletException
-    {
-        String acceptHeader = MoreObjects.firstNonNull( request.getHeader( HttpHeaders.ACCEPT ), "" );
-        String requestWithHeader = MoreObjects.firstNonNull( request.getHeader( HttpHeaders.X_REQUESTED_WITH ), "" );
-        String authorizationHeader = MoreObjects.firstNonNull( request.getHeader( HttpHeaders.AUTHORIZATION ), "" );
+        ServletException {
+        String acceptHeader = MoreObjects.firstNonNull(request.getHeader(HttpHeaders.ACCEPT), "");
+        String requestWithHeader = MoreObjects.firstNonNull(request.getHeader(HttpHeaders.X_REQUESTED_WITH), "");
+        String authorizationHeader = MoreObjects.firstNonNull(request.getHeader(HttpHeaders.AUTHORIZATION), "");
 
-        if ( "XMLHttpRequest".equals( requestWithHeader ) || authorizationHeader.contains( "Basic" ) )
-        {
+        if ("XMLHttpRequest".equals(requestWithHeader) || authorizationHeader.contains("Basic")) {
             String message = "Unauthorized";
 
-            if ( ExceptionUtils.indexOfThrowable( authException, LockedException.class ) != -1 )
-            {
+            if (ExceptionUtils.indexOfThrowable(authException, LockedException.class) != -1) {
                 message = "Account locked";
             }
 
-            if ( ExceptionUtils.indexOfThrowable( authException, DisabledException.class ) != -1 )
-            {
+            if (ExceptionUtils.indexOfThrowable(authException, DisabledException.class) != -1) {
                 message = "Account disabled";
             }
 
-            response.setStatus( HttpServletResponse.SC_UNAUTHORIZED );
+            response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
 
-            if ( acceptHeader.contains( MediaType.APPLICATION_XML_VALUE ) )
-            {
-                response.setContentType( MediaType.APPLICATION_XML_VALUE );
-                renderService.toXml( response.getOutputStream(), unauthorized( message ) );
-            }
-            else
-            {
-                response.setContentType( MediaType.APPLICATION_JSON_VALUE );
-                renderService.toJson( response.getOutputStream(), unauthorized( message ) );
+            if (acceptHeader.contains(MediaType.APPLICATION_XML_VALUE)) {
+                response.setContentType(MediaType.APPLICATION_XML_VALUE);
+                renderService.toXml(response.getOutputStream(), unauthorized(message));
+            } else {
+                response.setContentType(MediaType.APPLICATION_JSON_VALUE);
+                renderService.toJson(response.getOutputStream(), unauthorized(message));
             }
 
             return;
         }
 
-        super.commence( request, response, authException );
+        super.commence(request, response, authException);
     }
 }

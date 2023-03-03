@@ -29,6 +29,8 @@ package org.nmcpye.am.dxf2.events.importer.shared.preprocess;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Sets;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.nmcpye.am.common.BaseIdentifiableObject;
 import org.nmcpye.am.dxf2.common.ImportOptions;
 import org.nmcpye.am.dxf2.events.event.DataValue;
@@ -36,8 +38,6 @@ import org.nmcpye.am.dxf2.events.event.Event;
 import org.nmcpye.am.dxf2.events.importer.context.EventDataValueAggregator;
 import org.nmcpye.am.dxf2.events.importer.context.WorkContext;
 import org.nmcpye.am.eventdatavalue.EventDataValue;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -45,42 +45,39 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static org.nmcpye.am.dxf2.events.importer.shared.DataValueFilteringTestSupport.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.nmcpye.am.dxf2.events.importer.shared.DataValueFilteringTestSupport.*;
 
 /**
  * @author Giuseppe Nespolino <g.nespolino@gmail.com>
  */
-class FilteringOutUndeclaredDataElementsProcessorTest
-{
+class FilteringOutUndeclaredDataElementsProcessorTest {
 
     private FilteringOutUndeclaredDataElementsProcessor preProcessor;
 
     @BeforeEach
-    void setUp()
-    {
+    void setUp() {
         preProcessor = new FilteringOutUndeclaredDataElementsProcessor();
     }
 
     @Test
-    void testNotLinkedDataElementsAreRemovedFromEvent()
-    {
+    void testNotLinkedDataElementsAreRemovedFromEvent() {
         Event event = new Event();
-        event.setProgramStage( PROGRAMSTAGE );
-        HashSet<DataValue> dataValues = Sets.newHashSet( new DataValue( DATA_ELEMENT_1, "whatever" ),
-            new DataValue( DATA_ELEMENT_2, "another value" ) );
-        event.setDataValues( dataValues );
-        WorkContext ctx = WorkContext.builder().importOptions( ImportOptions.getDefaultImportOptions() )
-            .programsMap( getProgramMap() )
-            .eventDataValueMap( new EventDataValueAggregator().aggregateDataValues( ImmutableList.of( event ),
-                Collections.emptyMap(), ImportOptions.getDefaultImportOptions() ) )
+        event.setProgramStage(PROGRAMSTAGE);
+        HashSet<DataValue> dataValues = Sets.newHashSet(new DataValue(DATA_ELEMENT_1, "whatever"),
+            new DataValue(DATA_ELEMENT_2, "another value"));
+        event.setDataValues(dataValues);
+        WorkContext ctx = WorkContext.builder().importOptions(ImportOptions.getDefaultImportOptions())
+            .programsMap(getProgramMap())
+            .eventDataValueMap(new EventDataValueAggregator().aggregateDataValues(ImmutableList.of(event),
+                Collections.emptyMap(), ImportOptions.getDefaultImportOptions()))
             .build();
-        preProcessor.process( event, ctx );
+        preProcessor.process(event, ctx);
         Set<String> allowedDataValues = ctx
-            .getProgramStage( ctx.getImportOptions().getIdSchemes().getProgramStageIdScheme(), PROGRAMSTAGE )
-            .getDataElements().stream().map( BaseIdentifiableObject::getUid ).collect( Collectors.toSet() );
-        Set<String> filteredEventDataValues = ctx.getEventDataValueMap().values().stream().flatMap( Collection::stream )
-            .map( EventDataValue::getDataElement ).collect( Collectors.toSet() );
-        assertTrue( allowedDataValues.containsAll( filteredEventDataValues ) );
+            .getProgramStage(ctx.getImportOptions().getIdSchemes().getProgramStageIdScheme(), PROGRAMSTAGE)
+            .getDataElements().stream().map(BaseIdentifiableObject::getUid).collect(Collectors.toSet());
+        Set<String> filteredEventDataValues = ctx.getEventDataValueMap().values().stream().flatMap(Collection::stream)
+            .map(EventDataValue::getDataElement).collect(Collectors.toSet());
+        assertTrue(allowedDataValues.containsAll(filteredEventDataValues));
     }
 }

@@ -28,8 +28,6 @@
 package org.nmcpye.am.dxf2.webmessage;
 
 /**
- *
- *
  * @author Morten Olav Hansen <mortenoh@gmail.com>
  */
 public class WebMessageException extends Exception {

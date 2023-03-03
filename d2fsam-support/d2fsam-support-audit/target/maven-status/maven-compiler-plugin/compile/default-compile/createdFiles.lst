@@ -1,0 +1,2 @@
+org\nmcpye\am\audit\DefaultAuditService.class
+org\nmcpye\am\audit\JdbcAuditRepository.class

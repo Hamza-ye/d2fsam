@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>d2fsam-service-setting</artifactId>
+    <packaging>jar</packaging>
     <name>D2-F Settings service</name>
 
     <dependencies>
@@ -77,10 +78,10 @@
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-api</artifactId>
         </dependency>
-        <dependency>
-            <groupId>org.nmcpye.am</groupId>
-            <artifactId>d2fsam-support-commons</artifactId>
-        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>org.nmcpye.am</groupId>-->
+        <!--            <artifactId>d2fsam-support-commons</artifactId>-->
+        <!--        </dependency>-->
         <dependency>
             <groupId>org.nmcpye.am</groupId>
             <artifactId>d2fsam-support-hibernate</artifactId>
@@ -97,10 +98,20 @@
             <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <!-- NMCP Used undeclared dependencies -->
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.validation</groupId>
+            <artifactId>validation-api</artifactId>
+        </dependency>
     </dependencies>
     <properties>
         <rootDir>../../</rootDir>
-        <!--        <jib.skip>true</jib.skip>-->
     </properties>
 
 </project>

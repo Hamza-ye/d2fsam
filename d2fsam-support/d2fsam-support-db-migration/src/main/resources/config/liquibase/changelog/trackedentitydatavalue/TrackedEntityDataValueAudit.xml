@@ -33,9 +33,9 @@
             <column name="dataelementid" type="bigint">
                 <constraints nullable="true"/>
             </column>
-<!--            <column name="periodid" type="bigint">-->
-<!--                <constraints nullable="true"/>-->
-<!--            </column>-->
+            <!--            <column name="periodid" type="bigint">-->
+            <!--                <constraints nullable="true"/>-->
+            <!--            </column>-->
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here -->
         </createTable>
         <dropDefaultValue tableName="tracked_entity_data_value_audit" columnName="created"
@@ -52,21 +52,21 @@
           This can be customized by adding or removing 'faker' in the 'spring.liquibase.contexts'
           Spring Boot configuration key.
     -->
-<!--    <changeSet id="20221120204046-1-data" author="jhipster" context="faker">-->
-<!--        <loadData-->
-<!--            file="config/liquibase/fake-data/tracked_entity_data_value_audit.csv"-->
-<!--            separator=","-->
-<!--            tableName="tracked_entity_data_value_audit"-->
-<!--            usePreparedStatements="true">-->
-<!--            <column name="id" type="numeric"/>-->
-<!--            <column name="value" type="string"/>-->
-<!--            <column name="created" type="date"/>-->
-<!--            <column name="modifiedby" type="string"/>-->
-<!--            <column name="providedelsewhere" type="boolean"/>-->
-<!--            <column name="audittype" type="string"/>-->
-<!--            <column name="programstageinstanceid" type="numeric"/>-->
-<!--            <column name="dataelementid" type="numeric"/>-->
-<!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
-<!--        </loadData>-->
-<!--    </changeSet>-->
+    <!--    <changeSet id="20221120204046-1-data" author="jhipster" context="faker">-->
+    <!--        <loadData-->
+    <!--            file="config/liquibase/fake-data/tracked_entity_data_value_audit.csv"-->
+    <!--            separator=","-->
+    <!--            tableName="tracked_entity_data_value_audit"-->
+    <!--            usePreparedStatements="true">-->
+    <!--            <column name="id" type="numeric"/>-->
+    <!--            <column name="value" type="string"/>-->
+    <!--            <column name="created" type="date"/>-->
+    <!--            <column name="modifiedby" type="string"/>-->
+    <!--            <column name="providedelsewhere" type="boolean"/>-->
+    <!--            <column name="audittype" type="string"/>-->
+    <!--            <column name="programstageinstanceid" type="numeric"/>-->
+    <!--            <column name="dataelementid" type="numeric"/>-->
+    <!--            &lt;!&ndash; jhipster-needle-liquibase-add-loadcolumn - JHipster (and/or extensions) can add load columns here &ndash;&gt;-->
+    <!--        </loadData>-->
+    <!--    </changeSet>-->
 </databaseChangeLog>

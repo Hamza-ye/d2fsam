@@ -666,7 +666,10 @@ public class UserController
 
         List<String> groupsUids = getUids(inputUser.getGroups());
 
-        if (!userService.canAddOrUpdateUserInGroups(groupsUids, currentUser)
+        List<String> teamsUids = getUids(inputUser.getTeams());
+
+        if (!(userService.canAddOrUpdateUserInGroups(groupsUids, currentUser)
+            && userService.canAddOrUpdateUserInTeams(teamsUids, currentUser))
             || !currentUser.canModifyUser(users.get(0))) {
             throw new WebMessageException(conflict(
                 "You must have permissions to create user, " +
@@ -751,7 +754,7 @@ public class UserController
         User currentUser = currentUserService.getCurrentUser();
 
         if (!(userService.canAddOrUpdateUserInGroups(getUids(entity.getGroups()), currentUser)
-            || userService.canAddOrUpdateUserInGroups(getUids(entity.getTeams()), currentUser))
+            && userService.canAddOrUpdateUserInGroups(getUids(entity.getTeams()), currentUser))
             || !currentUser.canModifyUser(entity)) {
             throw new WebMessageException(conflict(
                 "You must have permissions to create user, or ability to manage at least one user group or Team for the user."));
@@ -778,7 +781,7 @@ public class UserController
         }
 
         if (!(userService.canAddOrUpdateUserInGroups(getUids(user.getGroups()), currentUser)
-            || userService.canAddOrUpdateUserInTeams(getUids(user.getTeams()), currentUser))) {
+            && userService.canAddOrUpdateUserInTeams(getUids(user.getTeams()), currentUser))) {
             throw new WebMessageException(conflict(
                 "You must have permissions to create user, or ability to manage at least one user group or Team for the user."));
         }
@@ -944,7 +947,8 @@ public class UserController
             throw new UpdateAccessDeniedException("You don't have the proper permissions to update this object.");
         }
 
-        if (!userService.canAddOrUpdateUserInGroups(getUids(userToModify.getGroups()), currentUser)
+        if (!(userService.canAddOrUpdateUserInGroups(getUids(userToModify.getGroups()), currentUser)
+            && userService.canAddOrUpdateUserInTeams(getUids(userToModify.getTeams()), currentUser))
             || !currentUser.canModifyUser(userToModify)) {
             throw new WebMessageException(conflict(
                 "You must have permissions to create user, or ability to manage at least one user group for the user."));

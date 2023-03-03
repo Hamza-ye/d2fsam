@@ -49,7 +49,6 @@ import org.nmcpye.am.trackedentity.TrackedEntityInstanceQueryParams;
 import org.nmcpye.am.user.CurrentUserService;
 import org.nmcpye.am.user.User;
 import org.nmcpye.am.user.UserGroup;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.Nonnull;
 import java.util.*;
@@ -63,8 +62,6 @@ import static java.util.concurrent.CompletableFuture.supplyAsync;
 import static org.nmcpye.am.dxf2.events.aggregates.ThreadPoolManager.getPool;
 
 /**
- *
- *
  * @author Luciano Fiandesio
  */
 //@Component
@@ -185,7 +182,7 @@ public class TrackedEntityInstanceAggregateOld extends AbstractAggregate {
 
         final User user = currentUserService.getCurrentUser();
 
-        final Optional<User> userOptional = Optional.ofNullable( currentUserService.getCurrentUser() );
+        final Optional<User> userOptional = Optional.ofNullable(currentUserService.getCurrentUser());
 
         if (user == null) {
             var userO = userOptional.isPresent();
@@ -360,7 +357,7 @@ public class TrackedEntityInstanceAggregateOld extends AbstractAggregate {
         // skipSynchronization in case this is a dataSynchronization query
         Set<String> allowedAttributeUids = trackedEntityTypeAttributes
             .stream()
-            .filter(att -> (!ctx.getParams().isDataSynchronizationQuery()|| !att.getSkipSynchronization() ))
+            .filter(att -> (!ctx.getParams().isDataSynchronizationQuery() || !att.getSkipSynchronization()))
             .map(BaseIdentifiableObject::getUid)
             .collect(Collectors.toSet());
 
@@ -370,7 +367,7 @@ public class TrackedEntityInstanceAggregateOld extends AbstractAggregate {
                     teaByProgram
                         .get(program)
                         .stream()
-                        .filter(att -> (!ctx.getParams().isDataSynchronizationQuery()|| !att.getSkipSynchronization() ))
+                        .filter(att -> (!ctx.getParams().isDataSynchronizationQuery() || !att.getSkipSynchronization()))
                         .map(BaseIdentifiableObject::getUid)
                         .collect(Collectors.toSet())
                 );

@@ -84,14 +84,14 @@ public class TimeTest {
             .ofEpochMilli(nowInstant.toEpochMilli())
             .atZone(ZoneId.systemDefault());
 
-        String enrollmentDate = LocalDate.now().plus( 2, ChronoUnit.DAYS ).toString();
+        String enrollmentDate = LocalDate.now().plus(2, ChronoUnit.DAYS).toString();
 
         ///////////////////////////////
         ZonedDateTime now1 = ZonedDateTime.now();
-        Date twoMonthsAgo1 = Date.from( now1.minusMonths( 2 ).toInstant() );
-        Date threeMonthAgo1 = Date.from( now1.minusMonths( 3 ).toInstant() );
-        Date fourMonthAgo1 = Date.from( now1.minusMonths( 4 ).toInstant() );
-        Date twentyTwoDaysAgo1 = Date.from( now1.minusDays( 22 ).toInstant() );
+        Date twoMonthsAgo1 = Date.from(now1.minusMonths(2).toInstant());
+        Date threeMonthAgo1 = Date.from(now1.minusMonths(3).toInstant());
+        Date fourMonthAgo1 = Date.from(now1.minusMonths(4).toInstant());
+        Date twentyTwoDaysAgo1 = Date.from(now1.minusDays(22).toInstant());
 
         ZonedDateTime now = ZonedDateTime.now();
         LocalDateTime twoMonthsAgo = now.minusMonths(2).toLocalDateTime();

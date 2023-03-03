@@ -33,7 +33,7 @@ import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
 import org.nmcpye.am.user.TeamGroupAccess;
 
-@Mapper(uses = { DebugMapper.class, TeamGroupMapper.class })
+@Mapper(uses = {DebugMapper.class, TeamGroupMapper.class})
 public interface TeamGroupAccessMapper extends PreheatMapper<TeamGroupAccess> {
     TeamGroupAccessMapper INSTANCE = Mappers.getMapper(TeamGroupAccessMapper.class);
 

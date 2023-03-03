@@ -30,7 +30,6 @@ package org.nmcpye.am.dxf2.webmessage;
 import java.io.IOException;
 
 /**
- *
  * <p>
  * Created by vanyas on 5/5/17.
  */

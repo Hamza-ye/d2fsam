@@ -82,6 +82,6 @@ public class AMPostgresDialect
 
     // NMCP From Jhip FixedPostgreSQL10Dialect
     public SqlTypeDescriptor remapSqlTypeDescriptor(SqlTypeDescriptor sqlTypeDescriptor) {
-        return (SqlTypeDescriptor)(sqlTypeDescriptor.getSqlType() == 2004 ? BinaryTypeDescriptor.INSTANCE : super.remapSqlTypeDescriptor(sqlTypeDescriptor));
+        return (SqlTypeDescriptor) (sqlTypeDescriptor.getSqlType() == 2004 ? BinaryTypeDescriptor.INSTANCE : super.remapSqlTypeDescriptor(sqlTypeDescriptor));
     }
 }

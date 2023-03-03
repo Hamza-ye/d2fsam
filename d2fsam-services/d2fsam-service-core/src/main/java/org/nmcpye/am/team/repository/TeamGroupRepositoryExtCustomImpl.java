@@ -14,7 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Nonnull;
 import javax.persistence.criteria.CriteriaBuilder;
-import java.util.*;
+import java.util.Collection;
+import java.util.List;
 
 @Repository("org.nmcpye.am.team.TeamGroupRepositoryExt")
 public class TeamGroupRepositoryExtCustomImpl

@@ -25,8 +25,8 @@
                        tableName="tracked_entity_attribute_value"
                        validate="true"/>
 
-<!--        <addUniqueConstraint columnNames="trackedentityinstanceid, trackedentityattributeid"-->
-<!--                             constraintName="UX_attribute_value"-->
-<!--                             tableName="tracked_entity_attribute_value"/>-->
+        <!--        <addUniqueConstraint columnNames="trackedentityinstanceid, trackedentityattributeid"-->
+        <!--                             constraintName="UX_attribute_value"-->
+        <!--                             tableName="tracked_entity_attribute_value"/>-->
     </changeSet>
 </databaseChangeLog>

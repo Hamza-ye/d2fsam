@@ -74,11 +74,11 @@ public class SystemUtils {
     public static String getMemoryString() {
         return (
             "Mem Total in JVM: " +
-            (Runtime.getRuntime().totalMemory() / FACTOR_MB) +
-            " Free in JVM: " +
-            (Runtime.getRuntime().freeMemory() / FACTOR_MB) +
-            " Max Limit: " +
-            (Runtime.getRuntime().maxMemory() / FACTOR_MB)
+                (Runtime.getRuntime().totalMemory() / FACTOR_MB) +
+                " Free in JVM: " +
+                (Runtime.getRuntime().freeMemory() / FACTOR_MB) +
+                " Max Limit: " +
+                (Runtime.getRuntime().maxMemory() / FACTOR_MB)
         );
     }
 }
