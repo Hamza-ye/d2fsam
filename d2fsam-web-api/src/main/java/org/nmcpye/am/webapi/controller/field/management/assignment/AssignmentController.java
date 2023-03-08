@@ -34,9 +34,6 @@ import org.nmcpye.am.webapi.controller.AbstractCrudController;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-/**
- * @author Morten Olav Hansen <mortenoh@gmail.com>
- */
 @Controller
 @RequestMapping(value = AssignmentSchemaDescriptor.API_ENDPOINT)
 @AllArgsConstructor
