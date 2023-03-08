@@ -484,7 +484,7 @@ public class UserGroup extends BaseIdentifiableObject implements MetadataObject 
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     // prettier-ignore
     @Override

@@ -136,7 +136,7 @@ public class RelationshipConstraint implements EmbeddedObject {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @JsonProperty()
     @JacksonXmlProperty(namespace = DxfNamespaces.DXF_2_0)

@@ -379,7 +379,7 @@ public class ProgramStageDataElement
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public boolean equals(Object o) {

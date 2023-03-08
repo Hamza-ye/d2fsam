@@ -689,7 +689,7 @@ public class ProgramStage extends BaseNameableObject implements MetadataObject {
     public void setNextScheduleDate(DataElement nextScheduleDate) {
         this.nextScheduleDate = nextScheduleDate;
     }
-// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     // prettier-ignore
     @Override

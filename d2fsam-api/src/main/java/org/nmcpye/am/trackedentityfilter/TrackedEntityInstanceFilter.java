@@ -432,5 +432,5 @@ public class TrackedEntityInstanceFilter extends BaseIdentifiableObject
     public void setEntityQueryCriteria(EntityQueryCriteria entityQueryCriteria) {
         this.entityQueryCriteria = entityQueryCriteria;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 }

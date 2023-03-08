@@ -954,7 +954,7 @@ public class Program extends BaseNameableObject
         this.userAuthorityGroups = userAuthorityGroups;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
 //    @Override
 //    public boolean equals(Object o) {

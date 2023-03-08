@@ -97,7 +97,7 @@ public class SystemSetting implements Serializable {
         this.value = value;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     public void setDisplayValue(Serializable displayValue) {
         this.displayValue = displayValue;

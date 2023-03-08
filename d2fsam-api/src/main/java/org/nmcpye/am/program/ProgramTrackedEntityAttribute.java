@@ -407,6 +407,4 @@ public class ProgramTrackedEntityAttribute
         this.setUpdatedBy(user);
         return this;
     }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 }

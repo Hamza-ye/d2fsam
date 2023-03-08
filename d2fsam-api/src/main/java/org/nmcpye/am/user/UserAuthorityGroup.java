@@ -318,7 +318,7 @@ public class UserAuthorityGroup extends BaseIdentifiableObject implements Metada
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @JsonProperty
     @JsonSerialize(contentAs = BaseIdentifiableObject.class)
