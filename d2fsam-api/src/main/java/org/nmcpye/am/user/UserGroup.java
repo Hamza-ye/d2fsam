@@ -145,7 +145,6 @@ public class UserGroup extends BaseIdentifiableObject implements MetadataObject 
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<UserGroup> managedByGroups = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

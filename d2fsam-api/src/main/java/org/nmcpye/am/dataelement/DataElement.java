@@ -187,7 +187,6 @@ public class DataElement extends BaseDimensionalItemObject
     @ManyToMany(mappedBy = "members")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<DataElementGroup> groups = new HashSet<>();
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

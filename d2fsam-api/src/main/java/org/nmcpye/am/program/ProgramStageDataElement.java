@@ -104,7 +104,6 @@ public class ProgramStageDataElement
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
 //    @Type(type = "jbValueRenderType")
 //    @Column(name = "render_type", columnDefinition = "jsonb")

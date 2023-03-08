@@ -59,7 +59,6 @@ public class RelationshipConstraint implements EmbeddedObject {
     @Type(type = "jbTrackerDataView")
     @Column(name = "dataview", columnDefinition = "jsonb")
     private TrackerDataView trackerDataView;
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public RelationshipConstraint() {
     }

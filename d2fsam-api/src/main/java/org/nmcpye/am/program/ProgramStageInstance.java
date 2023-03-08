@@ -191,7 +191,6 @@ public class ProgramStageInstance extends SoftDeletableObject {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<Comment> comments = new ArrayList<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     @Type(type = "jsbEventDataValues")
     @Column(name = "eventdatavalues", columnDefinition = "jsonb")

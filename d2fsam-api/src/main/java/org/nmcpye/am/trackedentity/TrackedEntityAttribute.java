@@ -183,7 +183,6 @@ public class TrackedEntityAttribute extends BaseDimensionalItemObject
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<LegendSet> legendSets = new ArrayList<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     @Type(type = "jblTranslations")
     @Column(name = "translations", columnDefinition = "jsonb")

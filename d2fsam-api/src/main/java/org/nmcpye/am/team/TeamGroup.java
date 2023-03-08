@@ -153,7 +153,6 @@ public class TeamGroup extends BaseIdentifiableObject implements MetadataObject 
         this.translationCache.clear();
         this.translations = translations;
     }
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     @Override
     public void setAutoFields() {

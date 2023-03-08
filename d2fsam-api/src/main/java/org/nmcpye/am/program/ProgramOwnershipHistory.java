@@ -53,7 +53,6 @@ public class ProgramOwnershipHistory implements Serializable {
     @JoinColumn(name = "organisationunitid")
     private OrganisationUnit organisationUnit;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public ProgramOwnershipHistory() {
     }

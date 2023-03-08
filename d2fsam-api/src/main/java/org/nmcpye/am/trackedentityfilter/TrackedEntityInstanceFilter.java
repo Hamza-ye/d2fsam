@@ -185,7 +185,6 @@ public class TrackedEntityInstanceFilter extends BaseIdentifiableObject
         this.translations = translations;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;

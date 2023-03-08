@@ -111,7 +111,6 @@ public class LegendSet extends BaseIdentifiableObject implements MetadataObject 
     @Immutable
     private User createdBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

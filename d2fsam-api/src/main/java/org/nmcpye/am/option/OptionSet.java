@@ -88,7 +88,6 @@ public class OptionSet extends BaseIdentifiableObject
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<Option> options = new ArrayList<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

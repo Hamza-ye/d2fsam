@@ -64,7 +64,6 @@ public class DemographicDataSource extends BaseIdentifiableObject implements Met
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;

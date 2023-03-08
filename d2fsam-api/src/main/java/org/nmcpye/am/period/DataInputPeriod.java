@@ -33,7 +33,6 @@ public class DataInputPeriod implements Serializable {
     @JoinColumn(name = "periodid")
     private Period period;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;

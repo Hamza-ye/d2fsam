@@ -67,7 +67,6 @@ public class TrackedEntityAttributeValueAudit implements Serializable {
     @NotNull
     private TrackedEntityInstance entityInstance;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public TrackedEntityAttributeValueAudit() {
     }

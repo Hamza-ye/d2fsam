@@ -57,7 +57,6 @@ public class SystemSetting implements Serializable {
     protected Map<String, String> translations = new HashMap<>();
 
     private transient Serializable displayValue;
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;

@@ -77,7 +77,6 @@ public class StockItemGroup implements Serializable {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<StockItem> items = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;

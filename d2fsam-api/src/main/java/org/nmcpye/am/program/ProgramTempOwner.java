@@ -61,7 +61,6 @@ public class ProgramTempOwner implements Serializable {
     @JoinColumn(name = "userid")
     private User user;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public ProgramTempOwner() {
     }

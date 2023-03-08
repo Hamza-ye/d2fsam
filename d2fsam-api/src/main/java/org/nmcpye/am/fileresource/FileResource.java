@@ -92,7 +92,6 @@ public class FileResource extends BaseIdentifiableObject {
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Current storage status of content.

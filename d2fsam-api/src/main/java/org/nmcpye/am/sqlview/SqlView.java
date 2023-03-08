@@ -135,7 +135,6 @@ public class SqlView extends BaseIdentifiableObject
         this.sharing = sharing;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public SqlView() {
     }

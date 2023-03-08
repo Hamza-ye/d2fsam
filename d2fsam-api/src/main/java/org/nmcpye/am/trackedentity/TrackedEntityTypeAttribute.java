@@ -70,7 +70,6 @@ public class TrackedEntityTypeAttribute
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public TrackedEntityTypeAttribute() {
         setAutoFields();
