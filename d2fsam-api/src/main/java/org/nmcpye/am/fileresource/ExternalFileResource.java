@@ -69,7 +69,6 @@ public class ExternalFileResource extends BaseIdentifiableObject {
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
@@ -221,7 +220,7 @@ public class ExternalFileResource extends BaseIdentifiableObject {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
     // prettier-ignore
     @Override
     public String toString() {

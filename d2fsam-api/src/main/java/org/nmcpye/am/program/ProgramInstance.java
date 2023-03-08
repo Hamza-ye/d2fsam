@@ -182,7 +182,6 @@ public class ProgramInstance extends SoftDeletableObject {
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<ProgramStageInstance> programStageInstances = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     @Column(columnDefinition = "geometry(Geometry,4326)")
     private Geometry geometry;
@@ -801,7 +800,7 @@ public class ProgramInstance extends SoftDeletableObject {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
 //    @Override
 //    public boolean equals(Object o) {

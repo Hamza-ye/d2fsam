@@ -106,7 +106,6 @@ public class Project extends BaseNameableObject implements MetadataObject {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Activity> activities = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

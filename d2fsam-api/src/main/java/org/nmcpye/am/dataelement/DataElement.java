@@ -187,7 +187,6 @@ public class DataElement extends BaseDimensionalItemObject
     @ManyToMany(mappedBy = "members")
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<DataElementGroup> groups = new HashSet<>();
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.
@@ -622,5 +621,5 @@ public class DataElement extends BaseDimensionalItemObject
         dataElementGroup.getMembers().remove(this);
         return this;
     }
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 }

@@ -104,7 +104,6 @@ public class ProgramStageDataElement
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
 //    @Type(type = "jbValueRenderType")
 //    @Column(name = "render_type", columnDefinition = "jsonb")
@@ -380,7 +379,7 @@ public class ProgramStageDataElement
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public boolean equals(Object o) {

@@ -61,7 +61,6 @@ public class OrganisationUnitLevel extends BaseIdentifiableObject implements Met
     @Column(name = "offlinelevels")
     private Integer offlineLevels;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

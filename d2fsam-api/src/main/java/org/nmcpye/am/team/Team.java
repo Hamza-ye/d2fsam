@@ -147,7 +147,6 @@ public class Team extends BaseIdentifiableObject implements MetadataObject {
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<Team> managedByTeams = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.
@@ -581,7 +580,7 @@ public class Team extends BaseIdentifiableObject implements MetadataObject {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
 //    @Override
 //    public boolean equals(Object o) {

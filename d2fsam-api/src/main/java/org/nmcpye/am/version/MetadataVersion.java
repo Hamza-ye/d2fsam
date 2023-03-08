@@ -64,7 +64,6 @@ public class MetadataVersion extends BaseIdentifiableObject implements Serializa
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public MetadataVersion() {
     }
@@ -208,7 +207,7 @@ public class MetadataVersion extends BaseIdentifiableObject implements Serializa
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public String toString() {

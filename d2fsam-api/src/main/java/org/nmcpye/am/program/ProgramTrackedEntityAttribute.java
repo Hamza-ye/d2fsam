@@ -5,15 +5,20 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
 import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Immutable;
+import org.hibernate.annotations.*;
 import org.nmcpye.am.common.BaseIdentifiableObject;
 import org.nmcpye.am.common.DxfNamespaces;
 import org.nmcpye.am.common.EmbeddedObject;
 import org.nmcpye.am.common.ValueType;
+import org.nmcpye.am.common.adapter.DeviceRenderTypeMapSerializer;
+import org.nmcpye.am.hibernate.jsonb.type.JsonDeviceRenderTypeMap;
+import org.nmcpye.am.render.DeviceRenderTypeMap;
+import org.nmcpye.am.render.type.ValueTypeRenderingObject;
 import org.nmcpye.am.trackedentity.TrackedEntityAttribute;
 import org.nmcpye.am.user.User;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -26,14 +31,16 @@ import java.time.Instant;
 @Table(name = "program__attributes",
     uniqueConstraints = {@UniqueConstraint(name = "UX_program__attributes",
         columnNames = {"programid", "trackedentityattributeid"})})
-//@TypeDef(
-//    name = "jbValueRenderType",
-//    typeClass = JsonDeviceRenderTypeMap.class,
-//    parameters = {
-//        @org.hibernate.annotations.Parameter(name = "clazz", value = "org.nmcpye.am.render.DeviceRenderTypeMap"),
-//        @org.hibernate.annotations.Parameter(name = "renderType", value = "org.nmcpye.am.render.ValueTypeRenderingObject"),
-//    }
-//)
+@TypeDef(
+    name = "jbValueRenderType",
+    typeClass = JsonDeviceRenderTypeMap.class,
+    parameters = {
+        @org.hibernate.annotations.Parameter(name = "clazz",
+            value = "org.nmcpye.am.render.DeviceRenderTypeMap"),
+        @org.hibernate.annotations.Parameter(name = "renderType",
+            value = "org.nmcpye.am.render.type.ValueTypeRenderingObject"),
+    }
+)
 @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 @SuppressWarnings("common-java:DuplicatedBlocks")
 @JacksonXmlRootElement(localName = "programTrackedEntityAttribute", namespace = DxfNamespaces.DXF_2_0)
@@ -96,11 +103,9 @@ public class ProgramTrackedEntityAttribute
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-
-//    @Type(type = "jbValueRenderType")
-//    @Column(name = "render_type", columnDefinition = "jsonb")
-//    private DeviceRenderTypeMap<ValueTypeRenderingObject> renderType;
+    @Type(type = "jbValueRenderType")
+    @Column(name = "rendertype", columnDefinition = "jsonb")
+    private DeviceRenderTypeMap<ValueTypeRenderingObject> renderType;
 
     // -------------------------------------------------------------------------
     // Constructors
@@ -178,16 +183,17 @@ public class ProgramTrackedEntityAttribute
             '}';
     }
 
-//    @JsonProperty
-//    @JacksonXmlProperty(namespace = DxfNamespaces.DXF_2_0)
-//    @JsonSerialize(using = DeviceRenderTypeMapSerializer.class)
-//    public DeviceRenderTypeMap<ValueTypeRenderingObject> getRenderType() {
-//        return renderType;
-//    }
-//
-//    public void setRenderType(DeviceRenderTypeMap<ValueTypeRenderingObject> renderType) {
-//        this.renderType = renderType;
-//    }
+    @JsonProperty
+    @JacksonXmlProperty(namespace = DxfNamespaces.DXF_2_0)
+    @JsonSerialize(using = DeviceRenderTypeMapSerializer.class)
+    public DeviceRenderTypeMap<ValueTypeRenderingObject> getRenderType() {
+        return renderType;
+    }
+
+    public void setRenderType(
+        DeviceRenderTypeMap<ValueTypeRenderingObject> renderType) {
+        this.renderType = renderType;
+    }
 
     public Long getId() {
         return this.id;
@@ -401,6 +407,4 @@ public class ProgramTrackedEntityAttribute
         this.setUpdatedBy(user);
         return this;
     }
-
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
 }

@@ -84,7 +84,6 @@ public class Option extends BaseNameableObject implements MetadataObject {
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

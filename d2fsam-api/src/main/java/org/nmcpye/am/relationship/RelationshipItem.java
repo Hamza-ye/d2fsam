@@ -46,7 +46,6 @@ public class RelationshipItem implements EmbeddedObject {
     @JoinColumn(name = "programstageinstanceid")
     private ProgramStageInstance programStageInstance;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public RelationshipItem() {
 

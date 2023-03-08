@@ -108,7 +108,6 @@ public class ProgramStageInstanceFilter extends BaseIdentifiableObject implement
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.
@@ -334,5 +333,5 @@ public class ProgramStageInstanceFilter extends BaseIdentifiableObject implement
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 }

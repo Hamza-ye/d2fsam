@@ -119,7 +119,6 @@ public class Assignment extends BaseIdentifiableObject implements MetadataObject
     @JoinColumn(name = "lastupdatedby")
     private User updatedBy;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Assignment() {
         this.setAutoFields();

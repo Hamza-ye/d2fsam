@@ -234,8 +234,7 @@ public class Program extends BaseNameableObject
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<ProgramIndicator> programIndicators = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-    @Type(type = "jsbAttributeValues")
+        @Type(type = "jsbAttributeValues")
     @Column(name = "attributevalues", columnDefinition = "jsonb")
     Set<AttributeValue> attributeValues = new HashSet<>();
 
@@ -955,7 +954,7 @@ public class Program extends BaseNameableObject
         this.userAuthorityGroups = userAuthorityGroups;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
 //    @Override
 //    public boolean equals(Object o) {

@@ -142,7 +142,6 @@ public class DemographicData extends BaseIdentifiableObject implements MetadataO
     @NotNull
     private DemographicDataSource source;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public Long getId() {
         return this.id;
@@ -536,7 +535,7 @@ public class DemographicData extends BaseIdentifiableObject implements MetadataO
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
 //    @Override
 //    public boolean equals(Object o) {

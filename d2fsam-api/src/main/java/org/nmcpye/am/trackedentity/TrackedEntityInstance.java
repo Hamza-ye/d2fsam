@@ -155,7 +155,6 @@ public class TrackedEntityInstance extends SoftDeletableObject {
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<TrackedEntityAttributeValue> trackedEntityAttributeValues = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     @Column(columnDefinition = "geometry(Geometry,4326)")
     private Geometry geometry;
@@ -649,7 +648,7 @@ public class TrackedEntityInstance extends SoftDeletableObject {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public String toString() {

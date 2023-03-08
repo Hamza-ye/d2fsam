@@ -77,8 +77,7 @@ public class TrackedEntityAttributeValue implements Serializable {
     @AuditAttribute
     private TrackedEntityInstance entityInstance;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
-    private transient boolean auditValueIsSet = false;
+        private transient boolean auditValueIsSet = false;
 
     private transient boolean valueIsSet = false;
 
@@ -274,7 +273,7 @@ public class TrackedEntityAttributeValue implements Serializable {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public int hashCode() {

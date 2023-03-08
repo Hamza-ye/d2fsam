@@ -108,7 +108,6 @@ public class OrganisationUnitGroupSet extends BaseDimensionalObject implements M
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<OrganisationUnitGroup> organisationUnitGroups = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.

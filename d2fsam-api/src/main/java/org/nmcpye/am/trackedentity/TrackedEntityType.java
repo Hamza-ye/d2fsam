@@ -126,7 +126,6 @@ public class TrackedEntityType extends BaseNameableObject implements MetadataObj
 //    @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private List<TrackedEntityTypeAttribute> trackedEntityTypeAttributes = new ArrayList<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.
@@ -425,7 +424,7 @@ public class TrackedEntityType extends BaseNameableObject implements MetadataObj
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     // prettier-ignore
     @Override

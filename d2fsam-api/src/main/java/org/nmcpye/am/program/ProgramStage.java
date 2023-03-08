@@ -173,7 +173,6 @@ public class ProgramStage extends BaseNameableObject implements MetadataObject {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "nextscheduledateid")
     private DataElement nextScheduleDate;
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     /**
      * Set of available object translation, normally filtered by locale.
@@ -690,7 +689,7 @@ public class ProgramStage extends BaseNameableObject implements MetadataObject {
     public void setNextScheduleDate(DataElement nextScheduleDate) {
         this.nextScheduleDate = nextScheduleDate;
     }
-// jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     // prettier-ignore
     @Override

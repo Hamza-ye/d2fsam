@@ -59,7 +59,6 @@ public class TrackedEntityDataValueAudit implements Serializable {
     @JoinColumn(name = "dataelementid")
     private DataElement dataElement;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public TrackedEntityDataValueAudit() {
     }
@@ -196,7 +195,7 @@ public class TrackedEntityDataValueAudit implements Serializable {
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public int hashCode() {

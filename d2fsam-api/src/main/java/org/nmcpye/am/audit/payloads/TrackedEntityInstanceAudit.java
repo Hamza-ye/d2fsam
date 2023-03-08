@@ -46,7 +46,6 @@ public class TrackedEntityInstanceAudit implements Serializable {
     @Column(name = "audittype")
     private AuditType auditType;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public TrackedEntityInstanceAudit() {
     }
@@ -153,7 +152,7 @@ public class TrackedEntityInstanceAudit implements Serializable {
         this.auditType = auditType;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public boolean equals(Object obj) {

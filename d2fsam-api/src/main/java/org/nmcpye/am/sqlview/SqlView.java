@@ -135,7 +135,6 @@ public class SqlView extends BaseIdentifiableObject
         this.sharing = sharing;
     }
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public SqlView() {
     }
@@ -421,7 +420,7 @@ public class SqlView extends BaseIdentifiableObject
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @Override
     public boolean equals(Object o) {

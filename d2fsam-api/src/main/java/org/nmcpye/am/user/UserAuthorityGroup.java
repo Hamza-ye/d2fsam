@@ -81,7 +81,6 @@ public class UserAuthorityGroup extends BaseIdentifiableObject implements Metada
     @Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     private Set<User> members = new HashSet<>();
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here
 
     public static final String AUTHORITY_ALL = "ALL";
 
@@ -319,7 +318,7 @@ public class UserAuthorityGroup extends BaseIdentifiableObject implements Metada
         return this;
     }
 
-    // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here
+
 
     @JsonProperty
     @JsonSerialize(contentAs = BaseIdentifiableObject.class)
